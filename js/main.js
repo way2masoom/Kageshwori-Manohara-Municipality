@@ -351,8 +351,10 @@ function applyLanguage(lang) {
   document.documentElement.lang = lang;
   if (lang === 'en') {
     document.body.classList.add('lang-en');
+    document.body.classList.remove('lang-ne');
   } else {
     document.body.classList.remove('lang-en');
+    document.body.classList.add('lang-ne');
   }
 
   document.querySelectorAll('[data-i18n]').forEach(el => {

@@ -45,7 +45,9 @@
   --radius-full: 9999px;
   
   --transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
-  --font-base: 'Mukta', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-ne: 'Mukta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-en: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-base: var(--font-ne);
 }
 
 * {
@@ -59,8 +61,9 @@ html {
   font-size: 15px;
 }
 
-body {
-  font-family: var(--font-base);
+body,
+body.lang-ne {
+  font-family: var(--font-ne);
   color: var(--text-dark);
   background-color: var(--bg-main);
   line-height: 1.6;
@@ -70,7 +73,7 @@ body {
 }
 
 body.lang-en {
-  font-family: var(--font-base);
+  font-family: var(--font-en);
 }
 
 a {
@@ -288,6 +291,7 @@ button {
 }
 
 .gov-title {
+  font-family: var(--font-ne);
   font-size: 1.45rem;
   font-weight: 700;
   color: #ffffff;
@@ -297,36 +301,51 @@ button {
 }
 
 body.lang-en .gov-title {
-  font-size: 1.35rem;
+  font-family: var(--font-en);
+  font-size: 1.28rem;
   font-weight: 700;
-  letter-spacing: -0.2px;
+  letter-spacing: -0.3px;
 }
 
 .gov-office {
+  font-family: var(--font-ne);
   font-size: 1.02rem;
   font-weight: 600;
   color: #f1f5f9;
   line-height: 1.25;
 }
 
+body.lang-en .gov-office {
+  font-family: var(--font-en);
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: #f1f5f9;
+}
+
 .gov-location {
-  font-size: 0.8rem;
+  font-family: var(--font-ne);
+  font-size: 0.82rem;
   color: #a7f3d0;
   font-weight: 500;
+}
+
+body.lang-en .gov-location {
+  font-family: var(--font-en);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #a7f3d0;
 }
 
 /* Nav Menu Items */
 .navbar-nav {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
 }
 
 .nav-link {
   color: #ffffff;
-  padding: 8px 16px;
-  font-size: 1rem;
-  font-weight: 600;
+  padding: 8px 14px;
   border-radius: var(--radius-sm);
   display: flex;
   align-items: center;
@@ -334,6 +353,62 @@ body.lang-en .gov-title {
   white-space: nowrap;
   position: relative;
   transition: var(--transition);
+}
+
+/* Nepali Typography for Nav */
+body:not(.lang-en) .nav-link,
+body.lang-ne .nav-link {
+  font-family: var(--font-ne);
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+body:not(.lang-en) .dropdown-menu .dropdown-item,
+body.lang-ne .dropdown-menu .dropdown-item {
+  font-family: var(--font-ne);
+  font-size: 0.98rem;
+  font-weight: 500;
+}
+
+/* English Typography for Nav */
+body.lang-en .nav-link {
+  font-family: var(--font-en);
+  font-size: 0.93rem;
+  font-weight: 500;
+  letter-spacing: 0px;
+}
+
+body.lang-en .dropdown-menu .dropdown-item {
+  font-family: var(--font-en);
+  font-size: 0.88rem;
+  font-weight: 500;
+}
+
+/* Active Nav Link (Consistent across Masons List & Designer List) */
+.nav-link.active {
+  color: #34d399 !important;
+}
+
+body:not(.lang-en) .nav-link.active,
+body.lang-ne .nav-link.active {
+  font-weight: 700;
+}
+
+body.lang-en .nav-link.active {
+  font-weight: 600;
+}
+
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  width: 75% !important;
+  height: 2.5px;
+  background: #34d399;
+  transform: translateX(-50%);
+  border-radius: 2px;
 }
 
 .nav-link::after {
@@ -424,16 +499,29 @@ body.lang-en .gov-title {
   background: rgba(255, 255, 255, 0.14);
   border: 1.5px solid rgba(255, 255, 255, 0.4);
   color: #ffffff;
-  padding: 7px 15px;
+  padding: 6px 14px;
   border-radius: var(--radius-full);
-  font-size: 0.88rem;
-  font-weight: 700;
   display: inline-flex;
   align-items: center;
   gap: 7px;
   margin-left: 6px;
   cursor: pointer;
   transition: var(--transition);
+}
+
+body:not(.lang-en) .nav-lang-btn,
+body.lang-ne .nav-lang-btn {
+  font-family: var(--font-en);
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+body.lang-en .nav-lang-btn {
+  font-family: var(--font-ne);
+  font-size: 0.98rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
 }
 
 .nav-lang-btn:hover {
