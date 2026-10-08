@@ -1,9 +1,11 @@
 /**
  * Kageshwori Manohara Municipality - E-BPS
  * Designer List Management Controller
- * Handles live backend fetching, graceful fallback to 91 official registered designers,
- * search, pagination, and Excel/CSV export.
+ * Strictly fetches live data from https://192.168.1.73:8444/ebps/designer-list/fetch
+ * NO static data or fallback files.
  */
+
+const API_URL = 'https://192.168.1.73:8444/ebps/designer-list/fetch';
 
 let allDesigners = [];
 let filteredDesigners = [];
@@ -11,21 +13,13 @@ let currentPage = 1;
 let pageSize = 10;
 let searchQuery = '';
 
-const BACKEND_API_URL = 'https://192.168.1.73:8444/ebps/designer-list/fetch';
-const LOCAL_JSON_URL = 'designer-list.json';
-
 document.addEventListener('DOMContentLoaded', () => {
-  initDesignerPage();
+  setupEventListeners();
+  loadDesignerData();
 });
 
-async function initDesignerPage() {
-  setupEventListeners();
-  await loadDesignerData();
-}
-
 /**
- * Fetch data strictly from your friend's backend API (https://192.168.1.73:8444/ebps/designer-list/fetch)
- * or fallback directly to your local designer-list.json file.
+ * Fetch data strictly from the backend API endpoint
  */
 async function loadDesignerData() {
   const loader = document.getElementById('designerLoader');
@@ -35,82 +29,100 @@ async function loadDesignerData() {
 
   if (loader) loader.style.display = 'flex';
   if (errorMsg) errorMsg.style.display = 'none';
-
-  let fetchedData = null;
-  let dataSource = '';
-
-  // 1. Try friend's live API endpoint
-  try {
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 2500);
-
-    const response = await fetch(BACKEND_API_URL, {
-      method: 'GET',
-      headers: { 'Accept': 'application/json' },
-      signal: controller.signal
-    });
-    clearTimeout(timeoutId);
-
-    if (response.ok) {
-      const json = await response.json();
-      if (json && json.data && Array.isArray(json.data) && json.data.length > 0) {
-        fetchedData = json.data;
-        dataSource = 'live_api';
-      }
-    }
-  } catch (err) {
-    console.warn('Backend API (192.168.1.73:8444) unreachable or certificate rejected. Falling back to local designer-list.json.', err);
-  }
-
-  // 2. Fallback to your local designer-list.json
-  if (!fetchedData) {
-    try {
-      const localResponse = await fetch(LOCAL_JSON_URL, { cache: 'no-store' });
-      if (localResponse.ok) {
-        const localJson = await localResponse.json();
-        if (localJson && localJson.data && Array.isArray(localJson.data)) {
-          fetchedData = localJson.data;
-          dataSource = 'local_json';
-        }
-      }
-    } catch (localErr) {
-      console.warn('Failed to fetch designer-list.json via HTTP, checking in-memory dataset...', localErr);
-    }
-  }
-
-  // 3. Fallback to in-memory DEFAULT_DESIGNER_DATA
-  if (!fetchedData && typeof DEFAULT_DESIGNER_DATA !== 'undefined' && Array.isArray(DEFAULT_DESIGNER_DATA)) {
-    fetchedData = DEFAULT_DESIGNER_DATA;
-    dataSource = 'memory_data';
-  }
-
-  allDesigners = fetchedData || [];
+  if (tableWrap) tableWrap.style.display = 'none';
 
   if (statusBadge) {
-    if (dataSource === 'live_api') {
-      statusBadge.innerHTML = '<i class="fa-solid fa-network-wired"></i> प्रत्यक्ष सर्भरबाट लोड (Live API: 192.168.1.73:8444)';
-      statusBadge.className = 'status-badge status-live';
-    } else {
-      statusBadge.innerHTML = '<i class="fa-solid fa-file-code"></i> आधिकारिक JSON बाट लोड (Loaded from designer-list.json)';
-      statusBadge.className = 'status-badge status-verified';
-    }
+    statusBadge.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> सर्भरबाट लोड हुँदैछ (Connecting: 192.168.1.73:8444)...';
+    statusBadge.className = 'status-badge';
   }
 
-  if (loader) loader.style.display = 'none';
+  try {
+    const response = await fetch(API_URL, {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json'
+      }
+    });
 
-  if (allDesigners.length === 0) {
-    if (errorMsg) {
-      errorMsg.style.display = 'block';
-      errorMsg.textContent = 'कुनै प्राविधिक तथ्याङ्क फेला परेन। (No data available)';
+    if (!response.ok) {
+      throw new Error(`HTTP Error: ${response.status} ${response.statusText}`);
     }
-  } else {
+
+    const data = await response.json();
+
+    if (loader) loader.style.display = 'none';
+
+    if (data.Error || !data.data || !Array.isArray(data.data)) {
+      showError(data.Error || 'सर्भरबाट कुनै प्राविधिक डेटा प्राप्त भएन (No Data Found in response).');
+      return;
+    }
+
+    allDesigners = data.data;
+
+    if (statusBadge) {
+      statusBadge.innerHTML = '<i class="fa-solid fa-circle-check"></i> प्रत्यक्ष सर्भरबाट लोड (Live API: 192.168.1.73:8444)';
+      statusBadge.className = 'status-badge status-live';
+    }
+
     if (tableWrap) tableWrap.style.display = 'block';
     applyFilterAndRender();
+
+  } catch (err) {
+    if (loader) loader.style.display = 'none';
+
+    if (statusBadge) {
+      statusBadge.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> सर्भर सम्पर्क हुन सकेन (Connection Failed)';
+      statusBadge.className = 'status-badge';
+      statusBadge.style.background = 'rgba(239, 68, 68, 0.2)';
+      statusBadge.style.color = '#fca5a5';
+      statusBadge.style.border = '1px solid rgba(239, 68, 68, 0.4)';
+    }
+
+    const isSslOrNetworkError = (err.message && err.message.includes('Failed to fetch')) || err.name === 'TypeError';
+
+    let errorDetail = `
+      <div style="font-weight: 700; font-size: 1rem; margin-bottom: 8px;">
+        <i class="fa-solid fa-circle-exclamation"></i> API बाट तथ्याङ्क तान्न सकिएन (Error fetching data)
+      </div>
+      <div style="font-size: 0.88rem; margin-bottom: 12px; color: #4b5563;">
+        <strong>लक्ष्य URL:</strong> <code>${API_URL}</code><br>
+        <strong>विवरण:</strong> ${err.message || err}
+      </div>
+    `;
+
+    if (isSslOrNetworkError) {
+      errorDetail += `
+        <div style="font-size: 0.85rem; background: #fff; padding: 12px; border-radius: 6px; border: 1px dashed #fca5a5; text-align: left; margin-bottom: 12px; color: #374151;">
+          <strong><i class="fa-solid fa-lightbulb" style="color: #f59e0b;"></i> सम्भावित कारण र समाधान:</strong><br>
+          १. सर्भर <code>https://192.168.1.73:8444</code> मा सेल्फ-साइन्ड (Self-Signed) SSL सर्टिफिकेट प्रयोग भएको हुनसक्छ।<br>
+          २. कृपया नयाँ ट्याबमा सिधै यो लिङ्क खोल्नुहोस्: <a href="${API_URL}" target="_blank" style="color: #2563eb; font-weight: 600; text-decoration: underline;">${API_URL}</a> र <strong>"Advanced &rarr; Proceed (unsafe)"</strong> मा क्लिक गरी सर्टिफिकेट स्वीकार गर्नुहोस्।<br>
+          ३. त्यसपछि तलको बटन थिचेर पुनः प्रयास गर्नुहोस्।
+        </div>
+      `;
+    }
+
+    errorDetail += `
+      <button type="button" onclick="loadDesignerData()" style="background: #dc2626; color: #fff; border: none; padding: 8px 18px; border-radius: 6px; font-weight: 600; cursor: pointer;">
+        <i class="fa-solid fa-rotate-right"></i> पुनः प्रयास गर्नुहोस् (Retry Fetch)
+      </button>
+    `;
+
+    showError(errorDetail);
+  }
+}
+
+function showError(htmlContent) {
+  const errorMsg = document.getElementById('designerErrorMessage');
+  const tableWrap = document.getElementById('designerTableWrap');
+  if (tableWrap) tableWrap.style.display = 'none';
+  if (errorMsg) {
+    errorMsg.innerHTML = htmlContent;
+    errorMsg.style.display = 'block';
   }
 }
 
 /**
- * Setup search, pagination controls, and export listeners
+ * Setup search, entries selector, and excel export listeners
  */
 function setupEventListeners() {
   const searchInput = document.getElementById('designerSearchInput');
@@ -209,12 +221,12 @@ function renderTable() {
       ? 'परामर्शदाता (Registered Designer)'
       : item.name;
     const displayAddress = (!item.address || item.address.trim() === '-' || item.address.trim() === '')
-      ? 'कागेश्वरी मनोहरा'
+      ? '-'
       : item.address;
     const displayPhone = item.phone || '-';
     const displayEmail = item.email || '-';
 
-    // Photo avatar handling
+    // Photo avatar handling (base64 or URL)
     let photoHtml = '';
     if (item.image && item.image.trim() !== '') {
       const imgSrc = item.image.startsWith('http') || item.image.startsWith('data:')
@@ -226,7 +238,6 @@ function renderTable() {
         </div>
       `;
     } else {
-      // Elegant initial or icon badge
       const initial = displayName.charAt(0);
       photoHtml = `
         <div class="designer-avatar-wrap">
@@ -290,7 +301,6 @@ function renderPagination() {
 
   let html = '';
 
-  // Previous button
   html += `
     <button class="page-btn page-nav-btn ${currentPage === 1 ? 'disabled' : ''}" 
             onclick="changePage(${currentPage - 1})" 
@@ -299,7 +309,6 @@ function renderPagination() {
     </button>
   `;
 
-  // Page numbers logic (max 5 buttons visible)
   let startPage = Math.max(1, currentPage - 2);
   let endPage = Math.min(totalPages, startPage + 4);
   if (endPage - startPage < 4) {
@@ -327,7 +336,6 @@ function renderPagination() {
     html += `<button class="page-btn" onclick="changePage(${totalPages})">${totalPages}</button>`;
   }
 
-  // Next button
   html += `
     <button class="page-btn page-nav-btn ${currentPage === totalPages ? 'disabled' : ''}" 
             onclick="changePage(${currentPage + 1})" 
@@ -347,7 +355,6 @@ function changePage(page) {
   renderPagination();
   updateEntriesInfo();
 
-  // Smooth scroll back to table top on page change
   const tableCard = document.querySelector('.designer-report-card');
   if (tableCard) {
     tableCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -389,7 +396,6 @@ function exportToExcelCSV() {
     return;
   }
 
-  // Header row
   const headers = ['क्र.सं. (S.N.)', 'नाम (Designer Name)', 'ठेगाना (Address)', 'इमेल (Email)', 'सम्पर्क नं (Phone)'];
   
   const csvRows = [
@@ -406,7 +412,6 @@ function exportToExcelCSV() {
     csvRows.push([sn, name, address, email, phone].join(','));
   });
 
-  // UTF-8 BOM prefix ensures Nepali fonts open correctly in Microsoft Excel
   const csvContent = '\uFEFF' + csvRows.join('\r\n');
   const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
   const url = URL.createObjectURL(blob);
