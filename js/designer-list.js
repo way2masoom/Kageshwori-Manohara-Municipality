@@ -354,11 +354,6 @@ function changePage(page) {
   renderTable();
   renderPagination();
   updateEntriesInfo();
-
-  const tableCard = document.querySelector('.designer-report-card');
-  if (tableCard) {
-    tableCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
 }
 
 /**
