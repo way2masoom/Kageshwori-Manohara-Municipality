@@ -1,7 +1,7 @@
 /* ========================================================
    E-BPS Kageshwori Manohara Municipality Stylesheet
    Color Palette: Official Municipality Green & Crimson Red
-   Modern UI with Hover & Scroll Animations
+   Modern Hero Slider & Quick Services Strip
    ======================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
@@ -13,7 +13,6 @@
   --primary-light: #10b981;       /* Light Emerald */
   --primary-dark: #053b24;        /* Deep Night Pine */
   --primary-gradient: linear-gradient(135deg, #0a5233 0%, #063d25 100%);
-  --hero-gradient: linear-gradient(135deg, #052e1b 0%, #0a5233 50%, #0d6e44 100%);
   
   --accent-crimson: #c8102e;      /* Nepal National Crimson Red */
   --accent-crimson-light: #ef4444;
@@ -46,8 +45,6 @@
   --radius-full: 9999px;
   
   --transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
-  
-  /* Unified Font Family for Both Languages to ensure identical weight and size */
   --font-base: 'Mukta', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
@@ -72,7 +69,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* English mode preserves the exact same font family, weight and scale */
 body.lang-en {
   font-family: var(--font-base);
 }
@@ -109,7 +105,7 @@ button {
 }
 
 /* ========================================================
-   1. TOP UTILITY BAR (Deep Pine Green)
+   1. TOP UTILITY BAR
    ======================================================== */
 .top-bar {
   background-color: var(--topbar-bg);
@@ -204,7 +200,7 @@ button {
 }
 
 /* ========================================================
-   2. MAIN NAVBAR & DUAL LOGOS (Green Palette)
+   2. MAIN NAVBAR & DUAL LOGOS
    ======================================================== */
 .main-header {
   background: var(--primary-gradient);
@@ -212,7 +208,7 @@ button {
   box-shadow: 0 4px 20px rgba(5, 59, 36, 0.35);
   position: sticky;
   top: 0;
-  z-index: 99;
+  z-index: 999;
   transition: background 0.3s ease, padding 0.3s ease;
   border-bottom: 2px solid rgba(16, 185, 129, 0.3);
 }
@@ -464,288 +460,207 @@ body.lang-en .gov-title {
 }
 
 /* ========================================================
-   3. MODERN & ATTRACTIVE HERO SECTION
+   3. STABLE HERO SECTION (REAL MUNICIPAL BUILDING & E-BPS MOTTO)
    ======================================================== */
-.modern-hero-section {
+.hero-stable-section {
   position: relative;
-  background: var(--hero-gradient);
-  color: #ffffff;
-  padding: 65px 30px 75px;
+  width: 100%;
+  min-height: 540px;
+  background: #042919;
   overflow: hidden;
-  border-bottom: 3px solid var(--primary-light);
+  display: flex;
+  align-items: center;
 }
 
-/* Geometric & Mesh Lighting Orbs in Background */
-.hero-glow-orb-1 {
-  position: absolute;
-  top: -100px;
-  right: -50px;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(16, 185, 129, 0.25) 0%, rgba(10, 82, 51, 0) 70%);
-  border-radius: 50%;
-  pointer-events: none;
-}
-
-.hero-glow-orb-2 {
-  position: absolute;
-  bottom: -150px;
-  left: -80px;
-  width: 450px;
-  height: 450px;
-  background: radial-gradient(circle, rgba(2, 132, 199, 0.2) 0%, rgba(10, 82, 51, 0) 70%);
-  border-radius: 50%;
-  pointer-events: none;
-}
-
-/* Blueprint Grid Background Pattern */
-.modern-hero-section::before {
-  content: '';
+/* Background Carousel Slides (Full cover, smooth crossfade) */
+.hero-bg-slider {
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: 
-    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
-  background-size: 36px 36px;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.hero-bg-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  z-index: 1;
+  transform: scale(1.05);
+  transition: opacity 1.2s ease-in-out, transform 6s ease-out;
   pointer-events: none;
 }
 
-.hero-layout-grid {
+.hero-bg-slide.active {
+  opacity: 1;
+  z-index: 2;
+  transform: scale(1);
+  pointer-events: auto;
+}
+
+.hero-stable-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 35%;
+  filter: contrast(1.05) brightness(0.9);
+}
+
+/* Asymmetric Dark Green Gradient Overlay on Left Side */
+.hero-stable-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(4, 38, 24, 0.95) 0%,
+    rgba(5, 45, 28, 0.90) 45%,
+    rgba(6, 50, 31, 0.55) 75%,
+    rgba(6, 50, 31, 0.25) 100%
+  );
+  z-index: 3;
+  pointer-events: none;
+}
+
+.hero-stable-container {
   max-width: 1440px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1.15fr 1fr;
-  align-items: center;
-  gap: 55px;
+  padding: 85px 40px 105px;
   position: relative;
-  z-index: 2;
+  z-index: 4;
+  width: 100%;
 }
 
-/* Hero Left Text Column */
-.hero-text-col {
-  display: flex;
-  flex-direction: column;
+.hero-stable-content {
+  max-width: 760px;
+  color: #ffffff;
 }
 
-.hero-status-pill {
+.hero-stable-pill {
   display: inline-flex;
   align-items: center;
-  gap: 9px;
-  background: rgba(255, 255, 255, 0.14);
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.16);
   backdrop-filter: blur(8px);
-  border: 1px solid rgba(167, 243, 208, 0.35);
-  padding: 6px 16px;
+  border: 1px solid rgba(167, 243, 208, 0.4);
+  padding: 7px 18px;
   border-radius: var(--radius-full);
-  font-size: 0.86rem;
+  font-size: 0.88rem;
   font-weight: 600;
   color: #a7f3d0;
   margin-bottom: 20px;
-  width: fit-content;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
-.pulse-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #34d399;
-  box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.7);
-  animation: pulse-green 1.8s infinite;
+.hero-stable-pill i {
+  color: var(--accent-gold);
 }
 
-@keyframes pulse-green {
-  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.7); }
-  70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(52, 211, 153, 0); }
-  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(52, 211, 153, 0); }
-}
-
-.hero-main-title {
-  font-size: 2.5rem;
+.hero-stable-title {
+  font-size: 2.75rem;
   font-weight: 700;
   line-height: 1.25;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
   letter-spacing: -0.3px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
 
-body.lang-en .hero-main-title {
-  font-size: 2.45rem;
-  font-weight: 700;
-  letter-spacing: -0.3px;
+body.lang-en .hero-stable-title {
+  font-size: 2.6rem;
+  line-height: 1.26;
 }
 
-.hero-title-highlight {
-  background: linear-gradient(90deg, #6ee7b7 0%, #fef08a 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  display: inline-block;
+.gold-text {
+  color: var(--accent-gold);
+  text-shadow: 0 2px 10px rgba(245, 158, 11, 0.3);
 }
 
-.hero-description {
-  font-size: 1.1rem;
-  color: #e2e8f0;
-  line-height: 1.7;
-  margin-bottom: 30px;
-  max-width: 620px;
+.hero-stable-desc {
+  font-size: 1.15rem;
+  color: #f1f5f9;
+  line-height: 1.85;
+  margin-bottom: 0;
+  max-width: 720px;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
 }
 
-/* Hero CTA Action Buttons */
-.hero-btn-group {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  flex-wrap: wrap;
-  margin-bottom: 35px;
-}
-
-.btn-hero-primary {
-  background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-amber) 100%);
-  color: #042919;
-  font-size: 1rem;
-  font-weight: 700;
-  padding: 13px 28px;
-  border-radius: var(--radius-sm);
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  box-shadow: 0 6px 18px rgba(245, 158, 11, 0.35);
-  transition: var(--transition);
-}
-
-.btn-hero-primary:hover {
-  background: linear-gradient(135deg, #fbbf24 0%, var(--accent-gold) 100%);
-  transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(245, 158, 11, 0.5);
-}
-
-.btn-hero-secondary {
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(8px);
-  border: 1.5px solid rgba(255, 255, 255, 0.4);
-  color: #ffffff;
-  font-size: 1rem;
-  font-weight: 600;
-  padding: 13px 26px;
-  border-radius: var(--radius-sm);
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  transition: var(--transition);
-}
-
-.btn-hero-secondary:hover {
-  background: rgba(255, 255, 255, 0.24);
-  border-color: #ffffff;
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-}
-
-/* Feature Trust Badges */
-.hero-features-list {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.feature-chip {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.88rem;
-  color: #d1fae5;
-  font-weight: 500;
-}
-
-.feature-chip i {
-  color: #34d399;
-}
-
-/* Hero Right 3D Showcase Card */
-.hero-visual-col {
-  position: relative;
-}
-
-.hero-showcase-card {
-  position: relative;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  background: #ffffff;
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
-  border: 3px solid rgba(255, 255, 255, 0.3);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-
-.hero-showcase-card:hover {
-  transform: translateY(-6px) scale(1.01);
-  box-shadow: 0 28px 55px rgba(0, 0, 0, 0.45);
-}
-
-.showcase-img {
-  width: 100%;
-  height: 380px;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.6s ease;
-}
-
-.hero-showcase-card:hover .showcase-img {
-  transform: scale(1.04);
-}
-
-/* Floating Glass Badges on 3D Card */
-.floating-glass-badge {
+/* Background Carousel Arrow Controls */
+.hero-nav-arrow {
   position: absolute;
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  padding: 10px 18px;
-  border-radius: var(--radius-md);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  z-index: 3;
-  color: var(--primary-dark);
-  font-size: 0.86rem;
-  font-weight: 700;
-  animation: float 4s ease-in-out infinite alternate;
-}
-
-.badge-top-right {
-  top: 18px;
-  right: 18px;
-}
-
-.badge-bottom-left {
-  bottom: 18px;
-  left: 18px;
-  animation-delay: 2s;
-}
-
-@keyframes float {
-  0% { transform: translateY(0px); }
-  100% { transform: translateY(-7px); }
-}
-
-.badge-icon-box {
-  width: 32px;
-  height: 32px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 46px;
+  height: 46px;
   border-radius: 50%;
-  background: var(--bg-green-soft);
-  color: var(--primary-emerald);
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(8px);
+  color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1rem;
+  font-size: 1.15rem;
+  z-index: 6;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.hero-nav-arrow:hover {
+  background: #ffffff;
+  color: var(--primary-dark);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+  transform: translateY(-50%) scale(1.08);
+}
+
+.hero-nav-prev {
+  left: 24px;
+}
+
+.hero-nav-next {
+  right: 24px;
+}
+
+/* Background Carousel Pagination Dots */
+.hero-slider-dots {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 6;
+}
+
+.slider-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  border: 1.5px solid rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.slider-dot.active {
+  background: var(--accent-gold);
+  border-color: var(--accent-gold);
+  width: 28px;
+  border-radius: 8px;
 }
 
 /* ========================================================
    4. E-BPS ABOUT SECTION (Clean Typography)
    ======================================================== */
 .about-ebps-section {
-  padding: 65px 24px 60px;
+  padding: 75px 24px 60px;
   background: #ffffff;
   text-align: center;
   position: relative;
@@ -797,7 +712,7 @@ body.lang-en .hero-main-title {
   background: var(--primary-gradient);
   color: #ffffff;
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0.5px;
   padding: 12px 38px;
   border-radius: var(--radius-sm);
@@ -815,7 +730,7 @@ body.lang-en .hero-main-title {
 }
 
 /* ========================================================
-   5. BUILDING PERMIT PROCESS INFORMATION (CARD GRID)
+   6. BUILDING PERMIT PROCESS INFORMATION (CARD GRID)
    ======================================================== */
 .process-info-section {
   padding: 65px 24px 85px;
@@ -987,7 +902,7 @@ body.lang-en .hero-main-title {
 }
 
 /* ========================================================
-   6. MODALS
+   7. MODALS
    ======================================================== */
 .modal-overlay {
   position: fixed;
@@ -997,7 +912,7 @@ body.lang-en .hero-main-title {
   height: 100%;
   background: rgba(4, 41, 25, 0.7);
   backdrop-filter: blur(5px);
-  z-index: 999;
+  z-index: 2000;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1084,7 +999,7 @@ body.lang-en .hero-main-title {
 }
 
 /* ========================================================
-   7. FOOTER
+   8. FOOTER
    ======================================================== */
 .main-footer {
   background: var(--primary-dark);
@@ -1186,22 +1101,6 @@ body.lang-en .hero-main-title {
 /* ========================================================
    RESPONSIVE DESIGN
    ======================================================== */
-@media (max-width: 1100px) {
-  .hero-layout-grid {
-    grid-template-columns: 1fr;
-    gap: 40px;
-    text-align: center;
-  }
-  .hero-status-pill, .hero-features-list, .hero-btn-group {
-    justify-content: center;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .cards-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
 @media (max-width: 900px) {
   .top-bar-container {
     flex-direction: column;
@@ -1224,8 +1123,15 @@ body.lang-en .hero-main-title {
   .mobile-nav-toggle {
     display: block;
   }
-  .hero-main-title {
-    font-size: 2.2rem;
+  .hero-slide-title,
+  .hero-stable-title {
+    font-size: 2rem;
+  }
+  .hero-nav-arrow {
+    display: none;
+  }
+  .hero-slider-dots {
+    bottom: 16px;
   }
   .cards-grid {
     grid-template-columns: 1fr;

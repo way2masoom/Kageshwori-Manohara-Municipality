@@ -1,6 +1,6 @@
 /**
  * E-BPS - Kageshwori Manohara Municipality
- * Frontend Controller, Multilingual Support & Modern Scroll Effects
+ * Frontend Controller, Multilingual Support, Hero Slider & Scroll Effects
  */
 
 const TRANSLATIONS = {
@@ -27,19 +27,26 @@ const TRANSLATIONS = {
     feeRates: 'राजश्व तथा दस्तुर दररेट',
     digiSign: 'डिजिटल हस्ताक्षर निर्देशिका',
     
-    // Modern Hero Translations
-    heroPill: 'ई-विपिएस अनलाइन प्रणाली | कागेश्वरी मनोहरा',
-    heroTitle1: 'सुरक्षित, व्यवस्थित र',
-    heroTitleHighlight: 'डिजिटल भवन निर्माण',
-    heroTitle2: 'इजाजत',
-    heroDesc: 'कागेश्वरी मनोहरा नगरपालिकाको अत्याधुनिक ई-विपिएस (E-BPS) प्रणालीमार्फत घरको नक्सा पास आवेदन, प्राविधिक प्रमाणीकरण तथा निर्माण सम्पन्न प्रमाणपत्र अनलाइनमै प्राप्त गर्नुहोस्।',
-    heroBtnApply: 'नयाँ नक्सा पास आवेदन',
-    heroBtnBylaws: 'भवन निर्माण मापदण्ड २०८०',
-    feat1: 'छिटो र पारदर्शी',
-    feat2: 'NBC 105:2020 संहिता',
-    feat3: '१००% कागज-रहित',
-    badgeGov: 'ई-सुशासन सेवा',
-    badgePermit: 'डिजिटल इजाजतपत्र',
+    // Stable Hero Section (Real Municipal Building & E-BPS Motto)
+    heroPill: 'नगर कार्यपालिकाको कार्यालय, डाँछी, काठमाडौं',
+    heroMottoMain: 'सुदृढ पूर्वाधार, समृद्ध नगर',
+    heroMottoHighlight: 'विद्युतीय भवन निर्माण इजाजत प्रणाली',
+    heroMottoAbbr: '(E-BPS)',
+    heroDesc: 'कागेश्वरी मनोहरा नगरपालिकाको विद्युतीय भवन निर्माण इजाजत प्रणाली (Electronic Building Permit System - E-BPS) मार्फत सुरक्षित, भूकम्प प्रतिरोधी र व्यवस्थित सहरी विकासका लागि १००% पारदर्शी र कागज-रहित अनलाइन नक्सा पास सेवा।',
+    heroBtnApply: 'नयाँ नक्सा पास आवेदन →',
+    heroBtnBylaws: 'भवन निर्माण मापदण्ड २०८० →',
+
+    // 5 Quick Service Pills
+    serv1Title: 'अनलाइन नक्सा दर्ता',
+    serv1Sub: 'डिजिटल ड्रइङ पेश',
+    serv2Title: 'NBC 105 संहिता',
+    serv2Sub: 'प्राविधिक मापदण्ड जाँच',
+    serv3Title: 'स्थलगत सर्जिमिन',
+    serv3Sub: 'वडा प्राविधिक टोली',
+    serv4Title: '१५ दिने सूचना',
+    serv4Sub: 'सार्वजनिक पारदर्शिता',
+    serv5Title: 'इजाजत प्रमाणपत्र',
+    serv5Sub: 'डिजिटल हस्ताक्षरयुक्त',
 
     // About Section
     ebpsTitle: 'E-BPS',
@@ -64,7 +71,7 @@ const TRANSLATIONS = {
     // Footer
     footerContactTitle: 'सम्पर्क ठेगाना',
     footerAddress: 'नगर कार्यपालिकाको कार्यालय, डाँछी, काठमाडौं',
-    footerPhone: 'फोन: +९७थ ०१-४४५१२४२, ०१-४४५०९८६ | टोल-फ्री: १६६००१२७७७७',
+    footerPhone: 'फोन: +९७७ ०१-४४५१२४२, ०१-४४५०९८६ | टोल-फ्री: १६६००१२७७७७',
     footerEmail: 'इमेल: info@kageshworimanoharamun.gov.np, er.kageshworimun@gmail.com',
     footerLinksTitle: 'द्रुत लिङ्कहरु',
     footerHelpdeskTitle: 'ई-विपिएस सहायता कक्ष',
@@ -96,19 +103,26 @@ const TRANSLATIONS = {
     feeRates: 'Revenue & Fee Structure',
     digiSign: 'Digital Signature Guidelines',
 
-    // Modern Hero Translations
-    heroPill: 'E-BPS Online Portal | Kageshwori Manohara',
-    heroTitle1: 'Smart, Resilient &',
-    heroTitleHighlight: 'Digital Building Permit',
-    heroTitle2: 'System',
-    heroDesc: 'Experience streamlined municipal building permit applications, online architectural scrutinies, transparent field verifications, and digital building completion certificates.',
-    heroBtnApply: 'Apply for Permit Online',
-    heroBtnBylaws: 'Municipal By-Laws 2080',
-    feat1: 'Fast & Transparent',
-    feat2: 'NBC 105:2020 Compliant',
-    feat3: '100% Paperless',
-    badgeGov: 'E-Governance',
-    badgePermit: 'Digital Verification',
+    // Stable Hero Section (Real Municipal Building & E-BPS Motto)
+    heroPill: 'Office of the Municipal Executive, Danchhi, Kathmandu',
+    heroMottoMain: 'Building Tomorrow, Safeguarding Today',
+    heroMottoHighlight: 'Electronic Building Permit System',
+    heroMottoAbbr: '(E-BPS)',
+    heroDesc: 'Empowering planned, earthquake-resilient urban expansion in Kageshwori Manohara Municipality through an advanced paperless Electronic Building Permit System (E-BPS).',
+    heroBtnApply: 'Apply for Permit Online →',
+    heroBtnBylaws: 'Municipal By-Laws 2080 →',
+
+    // 5 Quick Service Pills
+    serv1Title: 'Online Permit',
+    serv1Sub: 'Digital Drawings',
+    serv2Title: 'NBC 105 Code',
+    serv2Sub: 'Technical Scrutiny',
+    serv3Title: 'Site Inspection',
+    serv3Sub: 'Ward Field Reports',
+    serv4Title: 'Public Notice',
+    serv4Sub: '15-Day Transparency',
+    serv5Title: 'Permit Issuance',
+    serv5Sub: 'Digital Signature',
 
     // About Section
     ebpsTitle: 'E-BPS',
@@ -149,12 +163,87 @@ let currentLang = 'ne';
 document.addEventListener('DOMContentLoaded', () => {
   initLanguageSwitcher();
   initMobileNav();
+  initHeroBgCarousel();
   initReadMoreToggle();
   initModals();
   initWardSelector();
   initDesignerDirectory();
   initScrollEffects();
 });
+
+/* ========================================================
+   HERO BACKGROUND CAROUSEL CONTROLLER
+   - Automatically crossfades background images
+   - Text remains completely static and fixed
+   ======================================================== */
+function initHeroBgCarousel() {
+  const slides = document.querySelectorAll('.hero-bg-slide');
+  const dots = document.querySelectorAll('.slider-dot');
+  const prevBtn = document.getElementById('heroPrevBtn');
+  const nextBtn = document.getElementById('heroNextBtn');
+  const heroSection = document.getElementById('home');
+
+  if (!slides || slides.length === 0) return;
+
+  let currentIndex = 0;
+  let carouselInterval = null;
+
+  function showSlide(index) {
+    slides.forEach((s, idx) => {
+      s.classList.toggle('active', idx === index);
+    });
+    dots.forEach((d, idx) => {
+      d.classList.toggle('active', idx === index);
+    });
+    currentIndex = index;
+  }
+
+  function nextSlide() {
+    let nextIndex = (currentIndex + 1) % slides.length;
+    showSlide(nextIndex);
+  }
+
+  function prevSlide() {
+    let prevIndex = (currentIndex - 1 + slides.length) % slides.length;
+    showSlide(prevIndex);
+  }
+
+  function startAutoPlay() {
+    stopAutoPlay();
+    carouselInterval = setInterval(nextSlide, 4000);
+  }
+
+  function stopAutoPlay() {
+    if (carouselInterval) {
+      clearInterval(carouselInterval);
+      carouselInterval = null;
+    }
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      nextSlide();
+      startAutoPlay();
+    });
+  }
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      prevSlide();
+      startAutoPlay();
+    });
+  }
+
+  dots.forEach((dot, idx) => {
+    dot.addEventListener('click', () => {
+      showSlide(idx);
+      startAutoPlay();
+    });
+  });
+
+  showSlide(0);
+  startAutoPlay();
+}
 
 /* ========================================================
    LANGUAGE SWITCHER
@@ -201,7 +290,6 @@ function initScrollEffects() {
   const navbar = document.getElementById('navbar');
   const backToTopBtn = document.getElementById('backToTopBtn');
 
-  // Scroll Progress & Navbar Scrolled State
   window.addEventListener('scroll', () => {
     const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
     const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -234,7 +322,6 @@ function initScrollEffects() {
     });
   }
 
-  // Scroll Reveal Animations with IntersectionObserver
   const revealElements = document.querySelectorAll('.reveal-on-scroll');
   if ('IntersectionObserver' in window && revealElements.length > 0) {
     const revealObserver = new IntersectionObserver((entries, observer) => {
@@ -248,7 +335,6 @@ function initScrollEffects() {
 
     revealElements.forEach(el => revealObserver.observe(el));
   } else {
-    // Fallback if observer not supported
     revealElements.forEach(el => el.classList.add('revealed'));
   }
 }
