@@ -49,12 +49,18 @@ const TRANSLATIONS = {
     serv5Sub: 'डिजिटल हस्ताक्षरयुक्त',
 
     // About Section
+    aboutPill: 'डिजिटल भवन निर्माण प्रणाली | Digital Governance',
     ebpsTitle: 'E-BPS',
-    ebpsSubtitle: 'An application software system',
+    ebpsSubtitle: 'Electronic Building Permit System',
+    aboutChip1: 'NBC 105:2020 मापदण्ड प्रमाणीकरण',
+    aboutChip2: '१००% कागज-रहित पारदर्शी सेवा',
+    aboutChip3: 'वडा-नगरपालिका एकीकृत प्रणाली',
     ebpsP1: 'ई-विपिएस (E-BPS) कागेश्वरी मनोहरा नगरपालिकामा भवन निर्माण इजाजत प्रक्रियालाई पारदर्शी, छिटो र व्यवस्थित बनाउन लागू गरिएको विद्युतीय प्रणाली हो। यसले नेपाल राष्ट्रिय भवन संहिता (NBC 105:2020) र नगरपालिकाको भवन निर्माण मापदण्डको पूर्ण पालना सुनिश्चित गरी सुरक्षित र योजनाबद्ध सहरी विकासमा सहयोग पुर्‍याउँछ।',
     ebpsP2: 'यस प्रणालीमार्फत नगरबासी तथा सूचीकृत प्राविधिकहरूले घरमै बसी अनलाइनबाटै नक्सा दर्ता गर्न, स्थलगत सर्जिमिन स्थिति बुझ्न, १५ दिने सूचना प्रक्रिया तथा अन्तिम निर्माण सम्पन्न प्रमाणपत्र प्राप्त गर्न सक्दछन्।',
-    btnReadMore: 'READ MORE >>',
-    btnReadLess: 'SHOW LESS <<',
+    ebpsP3: 'यो सफ्टवेयर प्रणालीले भौतिक कागजातको झन्झट हटाउँदै आर्किटेक्चरल, स्ट्रक्चरल ड्रइङ तथा कित्ता नम्बर र जिओ-कोअर्डिनेटको डिजिटल रेकर्ड सुरक्षित राख्दछ। सूचीकृत इन्जिनियर, नगरपालिकाका प्राविधिक अधिकृत तथा वडा सचिवहरू एउटै सुरक्षित प्लेटफर्ममा जोडिएका छन्।',
+    ebpsP4: 'कागेश्वरी मनोहरा नगरपालिकाका वडा नं. १ देखि ९ सम्मका सम्पूर्ण वडा कार्यालयहरू सिधै नगर कार्यपालिकाको ई-विपिएस केन्द्रिय सर्भरसँग जोडिएका छन्, जसले गर्दा सेवाग्राहीले आफ्नै वडाबाट सहजै सर्जिमिन तथा स्थलगत प्रतिवेदन प्रमाणीकरण गर्न सक्दछन्।',
+    btnReadMore: 'थप जानकारी पढ्नुहोस्',
+    btnReadLess: 'कम जानकारी देखाउनुहोस्',
 
     // Cards Grid
     sectionProcessTitle: 'BUILDING PERMIT PROCESS INFORMATION',
@@ -71,8 +77,9 @@ const TRANSLATIONS = {
     // Footer
     footerContactTitle: 'सम्पर्क ठेगाना',
     footerAddress: 'नगर कार्यपालिकाको कार्यालय, डाँछी, काठमाडौं',
-    footerPhone: 'फोन: +९७७ ०१-४४५१२४२, ०१-४४५०९८६ | टोल-फ्री: १६६००१२७७७७',
-    footerEmail: 'इमेल: info@kageshworimanoharamun.gov.np, er.kageshworimun@gmail.com',
+    footerPhoneLabel: 'फोन:',
+    footerTollFreeLabel: 'टोल-फ्री:',
+    footerEmailLabel: 'इमेल:',
     footerLinksTitle: 'द्रुत लिङ्कहरु',
     footerHelpdeskTitle: 'ई-विपिएस सहायता कक्ष',
     footerHoursTitle: 'कार्यालय समय:',
@@ -125,12 +132,18 @@ const TRANSLATIONS = {
     serv5Sub: 'Digital Signature',
 
     // About Section
+    aboutPill: 'Digital Building Permit Platform | Digital Governance',
     ebpsTitle: 'E-BPS',
-    ebpsSubtitle: 'An application software system',
-    ebpsP1: 'E-BPS is an application software system which has been developed to assist municipalities to improve their current building permit process. It does this by ensuring the effective compliance of the NBC and BBL in urban regions, thus promoting safe building practices and planned urban development for the entire municipality.',
-    ebpsP2: 'Through this digital platform, citizens and registered consultants can apply for building permits online, track technical scrutinies, schedule site inspections, monitor public notices, and receive digitally signed completion certificates.',
-    btnReadMore: 'READ MORE >>',
-    btnReadLess: 'SHOW LESS <<',
+    ebpsSubtitle: 'Electronic Building Permit System',
+    aboutChip1: 'NBC 105:2020 Standard Compliance',
+    aboutChip2: '100% Paperless & Transparent',
+    aboutChip3: 'Integrated Municipal & Ward System',
+    ebpsP1: 'E-BPS is an advanced application software system developed to modernize and streamline the municipal building permit process in Kageshwori Manohara Municipality. It guarantees strict compliance with the National Building Code (NBC 105:2020) and municipal building by-laws.',
+    ebpsP2: 'Through this digital portal, citizens and certified technical consultants can submit drawings online, track field verifications, monitor 15-day public notices, and receive digitally signed construction completion certificates without visiting municipal offices in person.',
+    ebpsP3: 'The platform eliminates redundant paperwork, facilitates centralized storage of architectural and structural AutoCAD designs, and integrates geographic coordinates. Registered engineers, municipal review officers, ward secretaries, and executive authorities collaborate seamlessly.',
+    ebpsP4: 'All nine ward offices of Kageshwori Manohara Municipality are interconnected with the central E-BPS cloud infrastructure, enabling instantaneous field inspection validation and expedited municipal approval workflows.',
+    btnReadMore: 'Read More Details',
+    btnReadLess: 'Show Less Details',
 
     // Cards Grid
     sectionProcessTitle: 'BUILDING PERMIT PROCESS INFORMATION',
@@ -147,8 +160,9 @@ const TRANSLATIONS = {
     // Footer
     footerContactTitle: 'Contact Us',
     footerAddress: 'Office of the Municipal Executive, Danchhi, Kathmandu',
-    footerPhone: 'Phone: +977 01-4451242, 01-4450986 | Toll-Free: 16600127777',
-    footerEmail: 'Email: info@kageshworimanoharamun.gov.np, er.kageshworimun@gmail.com',
+    footerPhoneLabel: 'Phone:',
+    footerTollFreeLabel: 'Toll-Free:',
+    footerEmailLabel: 'Email:',
     footerLinksTitle: 'Quick Links',
     footerHelpdeskTitle: 'E-BPS Helpdesk',
     footerHoursTitle: 'Office Hours:',
@@ -280,6 +294,15 @@ function applyLanguage(lang) {
   if (langBtnText) {
     langBtnText.textContent = data.langBtnText;
   }
+
+  const btnReadMore = document.getElementById('btnReadMoreEbps');
+  if (btnReadMore) {
+    const isExpanded = btnReadMore.classList.contains('active');
+    const textSpan = btnReadMore.querySelector('.btn-text');
+    if (textSpan) {
+      textSpan.textContent = isExpanded ? data.btnReadLess : data.btnReadMore;
+    }
+  }
 }
 
 /* ========================================================
@@ -368,15 +391,23 @@ function initReadMoreToggle() {
   if (btn && extraContent) {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
-      const isHidden = extraContent.style.display === 'none' || !extraContent.style.display;
+      const isExpanded = extraContent.classList.contains('expanded');
       const dict = TRANSLATIONS[currentLang];
-      
-      if (isHidden) {
-        extraContent.style.display = 'block';
-        btn.innerHTML = `<span>${dict.btnReadLess}</span> <i class="fa-solid fa-chevron-up"></i>`;
+      const textSpan = btn.querySelector('.btn-text');
+      const icon = btn.querySelector('.btn-icon-bubble i');
+
+      if (!isExpanded) {
+        extraContent.classList.add('expanded');
+        btn.classList.add('active');
+        btn.setAttribute('aria-expanded', 'true');
+        if (textSpan) textSpan.textContent = dict.btnReadLess;
+        if (icon) icon.className = 'fa-solid fa-chevron-up';
       } else {
-        extraContent.style.display = 'none';
-        btn.innerHTML = `<span>${dict.btnReadMore}</span> <i class="fa-solid fa-angles-right"></i>`;
+        extraContent.classList.remove('expanded');
+        btn.classList.remove('active');
+        btn.setAttribute('aria-expanded', 'false');
+        if (textSpan) textSpan.textContent = dict.btnReadMore;
+        if (icon) icon.className = 'fa-solid fa-arrow-right';
       }
     });
   }
