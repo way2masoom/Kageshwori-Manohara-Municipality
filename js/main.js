@@ -19,6 +19,7 @@ const TRANSLATIONS = {
     munLocation: 'डाँछी, काठमाडौं | बागमती प्रदेश',
     navWard: 'वडा विवरण',
     navReferences: 'सन्दर्भ सामग्री',
+    navMasons: 'डकर्मी सूची',
     navDesigners: 'प्राविधिक सूची',
     wardPrefix: 'वडा नं. ',
     bylawsDoc: 'भवन निर्माण मापदण्ड २०८०',
@@ -103,6 +104,7 @@ const TRANSLATIONS = {
     munLocation: 'Danchhi, Kathmandu | Bagmati Province',
     navWard: 'Ward Information',
     navReferences: 'References',
+    navMasons: 'Masons List',
     navDesigners: 'Designer List',
     wardPrefix: 'Ward No. ',
     bylawsDoc: 'Building By-Laws 2080',
@@ -183,6 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initReadMoreToggle();
   initModals();
   initWardSelector();
+  initMasonDirectory();
   initDesignerDirectory();
   initScrollEffects();
 });
@@ -544,3 +547,55 @@ function initDesignerDirectory() {
     });
   }
 }
+
+/* ========================================================
+   CERTIFIED MASONS DIRECTORY
+   ======================================================== */
+const MASONS_DATA = [
+  { name: 'राम बहादुर श्रेष्ठ (Ram Bahadur Shrestha)', training: 'भूकम्प प्रतिरोधी डकर्मी (७ दिने तालिम प्राप्त)', certNo: 'KM-MSN-2078-042', ward: 'वडा नं. ४ (गोठाटार)', phone: '९८४१२३४५६७' },
+  { name: 'कृष्ण प्रसाद दंगाल (Krishna Prasad Dangal)', training: 'प्रमाणित डकर्मी स्तर-२ (DUDBC / CTEVT)', certNo: 'KM-MSN-2079-018', ward: 'वडा नं. ६ (मुलपानी)', phone: '९८५१०२३९८१' },
+  { name: 'बुद्धिमान तामाङ (Buddhiman Tamang)', training: 'भूकम्प प्रतिरोधी आवास निर्माण तालिम', certNo: 'KM-MSN-2078-105', ward: 'वडा नं. १ (गागलफेदी)', phone: '९८६०१२९८३४' },
+  { name: 'सुरज नगरकोटी (Suraj Nagarkoti)', training: 'प्रमाणित मुख्य डकर्मी (Lead Mason)', certNo: 'KM-MSN-2080-007', ward: 'वडा नं. ३ (भद्रबास)', phone: '९८४९८७१२३०' },
+  { name: 'प्रेम कुमार कार्की (Prem Kumar Karki)', training: 'भूकम्प प्रतिरोधी आर.सी.सी. र गारो तालिम', certNo: 'KM-MSN-2079-089', ward: 'वडा नं. ८ (डाँछी)', phone: '९८५११७८२३४' },
+  { name: 'मीन बहादुर पुडासैनी (Min Bahadur Pudasaini)', training: 'CTEVT लेभल-१ प्रमाणित डकर्मी', certNo: 'KM-MSN-2080-054', ward: 'वडा नं. ९ (थली)', phone: '९८६१४५८९००' }
+];
+
+function initMasonDirectory() {
+  const container = document.getElementById('masonsTableBody');
+  const searchInput = document.getElementById('masonSearchInput');
+  if (!container) return;
+
+  function render(list) {
+    if (list.length === 0) {
+      container.innerHTML = `<tr><td colspan="4" style="text-align: center; padding: 20px; color: #94a3b8;">कुनै डकर्मी भेटिएन (No masons matched)</td></tr>`;
+      return;
+    }
+    container.innerHTML = list.map((m, idx) => `
+      <tr style="border-bottom: 1px solid #f1f5f9;">
+        <td style="padding: 12px; font-weight: 600; color: #0a5233;">${idx + 1}. ${m.name}</td>
+        <td style="padding: 12px; color: #475569;">
+          <span style="background: #e0f2fe; color: #0369a1; padding: 2px 7px; border-radius: 4px; font-size: 0.78rem; font-weight: 600;">${m.certNo}</span>
+          <br><small style="color: #64748b;">${m.training}</small>
+        </td>
+        <td style="padding: 12px; color: #334155; font-weight: 500;">${m.ward}</td>
+        <td style="padding: 12px; color: #15803d; font-weight: 600;"><i class="fa-solid fa-phone"></i> ${m.phone}</td>
+      </tr>
+    `).join('');
+  }
+
+  render(MASONS_DATA);
+
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      const val = e.target.value.toLowerCase();
+      const filtered = MASONS_DATA.filter(m => 
+        m.name.toLowerCase().includes(val) || 
+        m.training.toLowerCase().includes(val) || 
+        m.certNo.toLowerCase().includes(val) || 
+        m.ward.toLowerCase().includes(val)
+      );
+      render(filtered);
+    });
+  }
+}
+
