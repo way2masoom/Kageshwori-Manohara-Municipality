@@ -275,12 +275,28 @@ function initFormSubmission() {
         return;
       }
 
+      const firmPan = document.getElementById('firmPan');
+      if (!firmPan || !firmPan.value.trim()) {
+        alert(isEn ? 'Please enter Firm PAN/VAT ID.' : 'कृपया फर्मको प्यान वा भ्याट नम्बर लेख्नुहोस्।');
+        if (firmPan) firmPan.focus();
+        return;
+      }
+
       // Check Company Registration Certificate for Consultancy
       const companyRegCert = document.getElementById('companyRegCertInput');
       if (!companyRegCert || !companyRegCert.files || companyRegCert.files.length === 0) {
         alert(isEn ? 'Please upload Company Registration Certificate (*).' : 'कृपया कम्पनी दर्ता प्रमाणपत्र (*) अपलोड गर्नुहोस्।');
         const compDz = companyRegCert ? companyRegCert.closest('.upload-dropzone-box') : null;
         if (compDz) compDz.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+
+      // Check PAN / VAT Registration Certificate for Consultancy
+      const panVatCert = document.getElementById('panVatCertInput');
+      if (!panVatCert || !panVatCert.files || panVatCert.files.length === 0) {
+        alert(isEn ? 'Please upload PAN / VAT Certificate (*).' : 'कृपया पान / भ्याट दर्ता प्रमाणपत्र (*) अपलोड गर्नुहोस्।');
+        const panDz = panVatCert ? panVatCert.closest('.upload-dropzone-box') : null;
+        if (panDz) panDz.scrollIntoView({ behavior: 'smooth', block: 'center' });
         return;
       }
     }
@@ -322,6 +338,14 @@ function initFormSubmission() {
     if (!email || !email.value.trim()) {
       alert(isEn ? 'Please enter Designer Email Address.' : 'कृपया इमेल ठेगाना प्रविष्ट गर्नुहोस्।');
       if (email) email.focus();
+      return;
+    }
+
+    // Check Designer PAN
+    const designerPan = document.getElementById('designerPan');
+    if (!designerPan || !designerPan.value.trim()) {
+      alert(isEn ? 'Please enter Designer PAN Number / ID.' : 'कृपया डिजाइनरको प्यान नम्बर लेख्नुहोस्।');
+      if (designerPan) designerPan.focus();
       return;
     }
 

@@ -293,7 +293,7 @@
               </div>
             </div>
 
-            <div class="form-grid-2">
+            <div class="form-grid-3">
               <div class="form-group">
                 <label for="propEmail" class="form-label">
                   <span data-i18n="lblPropEmail">इमेल ठेगाना *</span>
@@ -306,6 +306,13 @@
                   <span data-i18n="lblPropMobile">मोबाइल नम्बर *</span>
                 </label>
                 <input type="tel" id="propMobile" class="form-control" placeholder="९८XXXXXXXX" data-i18n-placeholder="phPropMobile">
+              </div>
+
+              <div class="form-group">
+                <label for="firmPan" class="form-label">
+                  <span data-i18n="lblFirmPan">फर्मको प्यान/भ्याट नं. (Firm PAN/VAT ID) *</span>
+                </label>
+                <input type="text" id="firmPan" class="form-control" placeholder="फर्मको प्यान वा भ्याट नम्बर..." data-i18n-placeholder="phFirmPan">
               </div>
             </div>
           </div>
@@ -325,7 +332,7 @@
               <span data-i18n="docUploadNote">नोट: कृपया .jpg, .jpeg, .png वा .pdf फाइल मात्र अपलोड गर्नुहोस्। फाइलको आकार ५०० KB भन्दा कम हुनुपर्दछ।</span>
             </div>
 
-            <div class="form-grid-1" style="max-width: 650px;">
+            <div class="form-grid-2">
               <!-- Company Registration Certificate -->
               <div class="doc-upload-box-wrapper">
                 <label class="form-label"><span data-i18n="lblCompanyRegCert">कम्पनी दर्ता प्रमाणपत्र (Company Registration Certificate) *</span></label>
@@ -335,6 +342,30 @@
                     <div class="dropzone-icon-circle"><i class="fa-solid fa-file-contract"></i></div>
                     <div class="dropzone-text-group">
                       <div class="dropzone-main-text"><span class="highlight">कम्पनी दर्ता प्रमाणपत्र</span> (Company Registration Certificate)</div>
+                      <div class="dropzone-sub-text">PDF, JPG, PNG • अधिकतम ५०० KB</div>
+                    </div>
+                    <button type="button" class="btn-dropzone-browse"><i class="fa-solid fa-cloud-arrow-up"></i> Choose File</button>
+                  </div>
+                  <div class="dropzone-preview-view" style="display: none;">
+                    <div class="dropzone-icon-circle success-circle"><i class="fa-solid fa-circle-check"></i></div>
+                    <div class="dropzone-preview-info">
+                      <span class="preview-filename">file.pdf</span>
+                      <span class="preview-filesize">0 KB</span>
+                    </div>
+                    <button type="button" class="btn-dropzone-remove" title="हटाउनुहोस्"><i class="fa-solid fa-xmark"></i></button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- PAN / VAT Registration Certificate -->
+              <div class="doc-upload-box-wrapper">
+                <label class="form-label"><span data-i18n="lblPanVatCert">पान / भ्याट दर्ता प्रमाणपत्र (PAN / VAT Certificate) *</span></label>
+                <div class="upload-dropzone-box" tabindex="0">
+                  <input type="file" id="panVatCertInput" class="upload-dropzone-input custom-file-input" accept=".jpg,.jpeg,.png,.pdf" style="display: none;">
+                  <div class="dropzone-default-view">
+                    <div class="dropzone-icon-circle"><i class="fa-solid fa-receipt"></i></div>
+                    <div class="dropzone-text-group">
+                      <div class="dropzone-main-text"><span class="highlight">पान / भ्याट प्रमाणपत्र</span> (PAN / VAT Certificate)</div>
                       <div class="dropzone-sub-text">PDF, JPG, PNG • अधिकतम ५०० KB</div>
                     </div>
                     <button type="button" class="btn-dropzone-browse"><i class="fa-solid fa-cloud-arrow-up"></i> Choose File</button>
