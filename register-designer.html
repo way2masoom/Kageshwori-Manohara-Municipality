@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register Designer | कागेश्वरी मनोहरा नगरपालिका - E-BPS</title>
+  
+  <!-- SEO & OpenGraph Meta -->
+  <meta name="description" content="कागेश्वरी मनोहरा नगरपालिका ई-विपिएस (E-BPS) प्रणालीमा नयाँ प्राविधिक तथा परामर्शदाता दर्ता आवेदन फारम (Register Designer)">
+  <meta name="keywords" content="EBPS, Register Designer, Architect, Civil Engineer, Building Permit, Kageshwori Manohara">
+  <meta name="author" content="कागेश्वरी मनोहरा नगरपालिका">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/nepal_sarkar_logo.png">
+
+  <!-- Google Fonts: Mukta & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome 6 Pro / Free CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Master Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ========================================================
+       1. TOP EMERGENCY & QUICK CONTACT BAR
+       ======================================================== -->
+  <header class="top-bar">
+    <div class="top-bar-container">
+      <div class="top-bar-left">
+        <a href="tel:014451242" class="top-item">
+          <i class="fa-solid fa-phone"></i>
+          <span data-i18n="topPhone">+९७७ ०१-४४५१२४२ / ४४५०९८६</span>
+        </a>
+        <span class="top-divider">|</span>
+        <span class="top-item">
+          <i class="fa-solid fa-headset"></i>
+          <span data-i18n="topTollFree">टोल-फ्री: १६६००१२७७७७</span>
+        </span>
+      </div>
+
+      <div class="top-bar-right">
+        <a href="index.html#home" class="top-item">
+          <i class="fa-solid fa-house"></i>
+          <span data-i18n="navHome">गृहपृष्ठ</span>
+        </a>
+        <span class="top-divider">|</span>
+        <a href="index.html#about-ebps" class="top-item">
+          <i class="fa-solid fa-circle-info"></i>
+          <span data-i18n="navAbout">हाम्रो बारेमा</span>
+        </a>
+        <span class="top-divider">|</span>
+        <div class="auth-btn-group">
+          <a href="https://ebps.kageshworimanoharamun.gov.np/webui/" class="btn-top-login">
+            <i class="fa-solid fa-lock"></i>
+            <span data-i18n="navLogin">लगइन</span>
+          </a>
+          <a href="register-designer.html" class="btn-top-signup" style="background: #fbbf24; color: #1e293b;">
+            <i class="fa-solid fa-user-plus"></i>
+            <span data-i18n="navSignUp">दर्ता</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================
+       2. MAIN NAVBAR & DUAL LOGO BRANDING
+       ======================================================== -->
+  <nav class="main-header" id="navbar">
+    <div class="header-container">
+      <!-- Dual Logos Brand Identity -->
+      <a href="index.html#home" class="brand-identity">
+        <div class="logos-group">
+          <!-- Nepal Government Emblem -->
+          <img src="images/nepal_sarkar_logo.png" alt="नेपाल सरकार" class="logo-nepal" title="नेपाल सरकार निशान छाप">
+          <!-- Kageshwori Manohara Municipality Emblem -->
+          <div class="logo-kageshwori-wrap" title="कागेश्वरी मनोहरा नगरपालिका">
+            <img src="images/kageshwori_logo.png" alt="कागेश्वरी मनोहरा नगरपालिका" class="logo-kageshwori">
+          </div>
+        </div>
+        <div class="brand-text">
+          <h1 class="gov-title" data-i18n="munTitle">कागेश्वरी मनोहरा नगरपालिका</h1>
+          <span class="gov-office" data-i18n="munOffice">नगर कार्यपालिकाको कार्यालय</span>
+          <span class="gov-location" data-i18n="munLocation">डाँछी, काठमाडौं | बागमती प्रदेश</span>
+        </div>
+      </a>
+
+      <!-- Mobile Navigation Hamburger -->
+      <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="नेभिगेसन खोल्नुहोस्">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+      <!-- Desktop & Mobile Navigation Links -->
+      <div class="navbar-nav" id="navbarLinks">
+        <a href="index.html#home" class="nav-link">
+          <span data-i18n="navHome">गृहपृष्ठ</span>
+        </a>
+        <a href="index.html#about-ebps" class="nav-link">
+          <span data-i18n="navAbout">हाम्रो बारेमा</span>
+        </a>
+
+        <!-- Ward Information Dropdown -->
+        <div class="nav-dropdown">
+          <a href="#" class="nav-link dropdown-toggle" id="wardDropdownBtn">
+            <span data-i18n="navWard">वडा विवरण</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="index.html#" class="dropdown-item trigger-ward-item" data-ward="1">वडा नं. १ (गागलफेदी)</a>
+            <a href="index.html#" class="dropdown-item trigger-ward-item" data-ward="2">वडा नं. २ (आलापोट)</a>
+            <a href="index.html#" class="dropdown-item trigger-ward-item" data-ward="3">वडा नं. ३ (भद्रबास)</a>
+            <a href="index.html#" class="dropdown-item trigger-ward-item" data-ward="4">वडा नं. ४ (डाँछी उत्तर)</a>
+            <a href="index.html#" class="dropdown-item trigger-ward-item" data-ward="5">वडा नं. ५ (थली)</a>
+            <a href="index.html#" class="dropdown-item trigger-ward-item" data-ward="6">वडा नं. ६ (मूलपानी)</a>
+            <a href="index.html#" class="dropdown-item trigger-ward-item" data-ward="7">वडा नं. ७ (काँडाघारी)</a>
+            <a href="index.html#" class="dropdown-item trigger-ward-item" data-ward="8">वडा नं. ८ (गोठाटार)</a>
+            <a href="index.html#" class="dropdown-item trigger-ward-item" data-ward="9">वडा नं. ९ (गोठाटार दक्षिण)</a>
+          </div>
+        </div>
+
+        <!-- References Dropdown -->
+        <div class="nav-dropdown">
+          <a href="#" class="nav-link dropdown-toggle" id="refDropdownBtn">
+            <span data-i18n="navReferences">सन्दर्भ सामग्री</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="index.html#" class="dropdown-item trigger-bylaws-modal"><i class="fa-solid fa-book"></i> <span data-i18n="bylawsDoc">भवन निर्माण मापदण्ड २०८०</span></a>
+            <a href="index.html#" class="dropdown-item trigger-bylaws-modal"><i class="fa-solid fa-building-shield"></i> <span data-i18n="nbcCode">राष्ट्रिय भवन संहिता (NBC 105)</span></a>
+            <a href="index.html#" class="dropdown-item trigger-process-modal"><i class="fa-solid fa-file-invoice"></i> <span data-i18n="docChecklist">आवश्यक कागजात चेकलिस्ट</span></a>
+            <a href="index.html#" class="dropdown-item trigger-bylaws-modal"><i class="fa-solid fa-hand-holding-dollar"></i> <span data-i18n="feeRates">राजश्व तथा दस्तुर दररेट</span></a>
+            <a href="index.html#" class="dropdown-item trigger-bylaws-modal"><i class="fa-solid fa-signature"></i> <span data-i18n="digiSign">डिजिटल हस्ताक्षर निर्देशिका</span></a>
+          </div>
+        </div>
+
+        <!-- Masons List -->
+        <a href="mason-list.html" class="nav-link">
+          <span data-i18n="navMasons">डकर्मी सूची</span>
+        </a>
+
+        <!-- Designer List -->
+        <a href="designer-list.html" class="nav-link">
+          <span data-i18n="navDesigners">प्राविधिक सूची</span>
+        </a>
+
+        <!-- Language Switcher Button -->
+        <button type="button" class="nav-lang-btn" id="langToggleBtn" title="भाषा परिवर्तन / Change Language">
+          <i class="fa-solid fa-globe"></i>
+          <span id="langBtnText">English</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========================================================
+       3. REGISTER DESIGNER APPLICATION PAGE
+       ======================================================== -->
+  <main class="register-page-wrapper">
+    <div class="register-container">
+      
+      <!-- Top Banner with Breadcrumb -->
+      <section class="designer-page-header" style="margin-bottom: 22px;">
+        <div class="designer-breadcrumb">
+          <a href="index.html#home"><i class="fa-solid fa-house"></i> <span data-i18n="navHome">गृहपृष्ठ</span></a>
+          <span>/</span>
+          <span data-i18n="regBreadcrumb">डिजाइनर दर्ता</span>
+        </div>
+
+        <div class="designer-page-title-row">
+          <div>
+            <h1 class="designer-main-title">
+              <i class="fa-solid fa-user-pen"></i>
+              <span data-i18n="regPageTitle">प्राविधिक / डिजाइनर दर्ता आवेदन</span>
+            </h1>
+            <p class="designer-main-subtitle" data-i18n="regPageSubtitle">
+              कागेश्वरी मनोहरा नगरपालिका विद्युतीय भवन निर्माण इजाजत प्रणाली (E-BPS) मा नयाँ इन्जिनियर, आर्किटेक्ट तथा परामर्शदाता दर्ता प्रक्रिया।
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Alert Notices matching Municipal Portal -->
+      <div class="reg-alerts-wrap">
+        <!-- Red Notice for Existing Designers -->
+        <div class="reg-alert-box reg-alert-danger">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <i class="fa-solid fa-triangle-exclamation" style="font-size: 1.25rem;"></i>
+            <span data-i18n="regOldAlertText">पुरानो डिजाइनरहरूको अद्यावधिक गर्नको लागि Login मा गएर फारम दर्ता गरि दिनु होला । धन्यवाद !</span>
+          </div>
+          <a href="https://ebps.kageshworimanoharamun.gov.np/webui/" data-i18n="regOldAlertLink">लगइन गर्नुहोस् →</a>
+        </div>
+
+        <!-- Green Notice for New Designers -->
+        <div class="reg-alert-box reg-alert-success">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <i class="fa-solid fa-circle-check" style="font-size: 1.25rem;"></i>
+            <span data-i18n="regNewAlertText">नयाँ डिजाइनरहरूको अद्यावधिक गर्नको लागि यो फारम दर्ता गरि दिनु होला । धन्यवाद !</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Registration Form Card -->
+      <div class="reg-form-card">
+        <form id="designerRegistrationForm" novalidate>
+          
+          <!-- ==============================================
+               SECTION 1: REGISTRATION METHOD & TYPE
+               ============================================== -->
+          <div class="form-section-block">
+            <h3 class="form-section-title">
+              <i class="fa-solid fa-id-card-clip"></i>
+              <span>दर्ता प्रकार र मापदण्ड (Registration Method & Category)</span>
+            </h3>
+
+            <div class="form-grid-2">
+              <!-- Registration Method -->
+              <div class="form-group">
+                <label for="regMethodSelect" class="form-label">
+                  <span data-i18n="lblRegMethod">दर्ता प्रक्रिया (Registration Method) *</span>
+                </label>
+                <select id="regMethodSelect" class="form-select" required>
+                  <option value="" data-i18n="optSelectMethod">-- दर्ता प्रक्रिया छान्नुहोस् --</option>
+                  <option value="nec" data-i18n="optNec">नेपाल इन्जिनियरिङ्ग परिषद् (व्यक्तिगत प्राविधिक - NEC)</option>
+                  <option value="consultancy" data-i18n="optConsultancy">परामर्शदाता कम्पनी / कन्सल्टेन्सी फर्म (Consultancy Firm)</option>
+                </select>
+              </div>
+
+              <!-- Designer Type -->
+              <div class="form-group">
+                <label for="designerTypeSelect" class="form-label">
+                  <span data-i18n="lblDesignerType">डिजाइनर प्रकार (Designer Type) *</span>
+                </label>
+                <select id="designerTypeSelect" class="form-select" required>
+                  <option value="" data-i18n="optSelectDesignerType">-- डिजाइनर प्रकार छान्नुहोस् --</option>
+                  <option value="architect" data-i18n="optArchitect">आर्किटेक्ट (Architect)</option>
+                  <option value="civil" data-i18n="optCivilEng">सिभिल इन्जिनियर (Civil Engineer)</option>
+                  <option value="structural" data-i18n="optStructuralEng">स्ट्रक्चरल इन्जिनियर (Structural Engineer)</option>
+                  <option value="electrical" data-i18n="optElectricalEng">विद्युतीय इन्जिनियर (Electrical Engineer)</option>
+                  <option value="urban_planner" data-i18n="optUrbanPlanner">सहरी योजनाकार (Urban Planner)</option>
+                  <option value="sub_engineer" data-i18n="optSubEng">सब-इन्जिनियर / ओभरसियर (Sub-Engineer)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-grid-2">
+              <!-- Nepal Engineering Council No -->
+              <div class="form-group">
+                <label for="necCouncilNo" class="form-label">
+                  <span data-i18n="lblCouncilNo">नेपाल इन्जिनियरिङ्ग परिषद् नं. (NEC No.) *</span>
+                </label>
+                <input type="text" id="necCouncilNo" class="form-control" placeholder="काउन्सिल दर्ता नम्बर लेख्नुहोस्..." data-i18n-placeholder="phCouncilNo" required>
+              </div>
+
+              <!-- Consultancy Firm Name -->
+              <div class="form-group" id="firmNameGroup">
+                <label for="firmNameInput" class="form-label">
+                  <span data-i18n="lblFirmName">परामर्शदाता फर्मको नाम (Consultancy Firm Name)</span>
+                  <span class="req-star" style="display: none;">*</span>
+                </label>
+                <input type="text" id="firmNameInput" class="form-control" placeholder="कन्सल्टेन्सी संस्थाको आधिकारिक नाम..." data-i18n-placeholder="phFirmName">
+              </div>
+            </div>
+          </div>
+
+          <!-- ==============================================
+               SECTION 2: PROPRIETOR DETAILS
+               (Visible when Consultancy Firm is selected)
+               ============================================== -->
+          <div class="form-section-block" id="proprietorDetailsSection" style="display: none;">
+            <h3 class="form-section-title">
+              <i class="fa-solid fa-briefcase"></i>
+              <span data-i18n="secProprietorTitle">प्रोपराइटर / सञ्चालक विवरण (Proprietor Details)</span>
+            </h3>
+
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label for="propNameEn" class="form-label">
+                  <span data-i18n="lblPropNameEn">प्रोपराइटरको नाम (अंग्रेजीमा) *</span>
+                </label>
+                <input type="text" id="propNameEn" class="form-control" placeholder="Proprietor's Full Name..." data-i18n-placeholder="phPropNameEn">
+              </div>
+
+              <div class="form-group">
+                <label for="propNameNe" class="form-label">
+                  <span data-i18n="lblPropNameNe">प्रोपराइटरको नाम (नेपालीमा) *</span>
+                </label>
+                <input type="text" id="propNameNe" class="form-control" placeholder="प्रोपराइटरको पूरा नाम..." data-i18n-placeholder="phPropNameNe">
+              </div>
+            </div>
+
+            <div class="form-grid-3">
+              <div class="form-group">
+                <label for="propAddress" class="form-label">
+                  <span data-i18n="lblPropAddress">ठेगाना *</span>
+                </label>
+                <input type="text" id="propAddress" class="form-control" placeholder="स्थायी ठेगाना..." data-i18n-placeholder="phPropAddress">
+              </div>
+
+              <div class="form-group">
+                <label for="propEmail" class="form-label">
+                  <span data-i18n="lblPropEmail">इमेल ठेगाना *</span>
+                </label>
+                <input type="email" id="propEmail" class="form-control" placeholder="example@domain.com" data-i18n-placeholder="phPropEmail">
+              </div>
+
+              <div class="form-group">
+                <label for="propMobile" class="form-label">
+                  <span data-i18n="lblPropMobile">मोबाइल नम्बर *</span>
+                </label>
+                <input type="tel" id="propMobile" class="form-control" placeholder="९८XXXXXXXX" data-i18n-placeholder="phPropMobile">
+              </div>
+            </div>
+          </div>
+
+          <!-- ==============================================
+               SECTION 3: PROPRIETOR DOCUMENTS
+               (Visible when Consultancy Firm is selected)
+               ============================================== -->
+          <div class="form-section-block" id="proprietorDocsSection" style="display: none;">
+            <h3 class="form-section-title">
+              <i class="fa-solid fa-folder-open"></i>
+              <span data-i18n="secPropDocsTitle">प्रोपराइटर तथा कम्पनीका कागजातहरू (Proprietor Documents)</span>
+            </h3>
+
+            <div class="upload-note-pill">
+              <i class="fa-solid fa-circle-info"></i>
+              <span data-i18n="docUploadNote">नोट: कृपया .jpg, .jpeg, .png वा .pdf फाइल मात्र अपलोड गर्नुहोस्। फाइलको आकार ५०० KB भन्दा कम हुनुपर्दछ।</span>
+            </div>
+
+            <div class="form-grid-2">
+              <!-- Profile Photo -->
+              <div class="file-upload-item">
+                <label class="form-label"><span data-i18n="lblPropPhoto">प्रोपराइटरको फोटो *</span></label>
+                <div class="file-upload-btn-wrap">
+                  <button type="button" class="btn-file-custom"><i class="fa-solid fa-arrow-up-from-bracket"></i> Choose File</button>
+                  <input type="file" class="custom-file-input" accept=".jpg,.jpeg,.png,.pdf" style="display: none;">
+                  <span class="file-chosen-status">कुनै फाइल छानिएको छैन</span>
+                </div>
+              </div>
+
+              <!-- PAN/VAT Certificate -->
+              <div class="file-upload-item">
+                <label class="form-label"><span data-i18n="lblPanVatCert">प्यान / भ्याट दर्ता प्रमाणपत्र *</span></label>
+                <div class="file-upload-btn-wrap">
+                  <button type="button" class="btn-file-custom"><i class="fa-solid fa-arrow-up-from-bracket"></i> Choose File</button>
+                  <input type="file" class="custom-file-input" accept=".jpg,.jpeg,.png,.pdf" style="display: none;">
+                  <span class="file-chosen-status">कुनै फाइल छानिएको छैन</span>
+                </div>
+              </div>
+
+              <!-- Company Registration Certificate -->
+              <div class="file-upload-item">
+                <label class="form-label"><span data-i18n="lblCompanyRegCert">कम्पनी दर्ता प्रमाणपत्र *</span></label>
+                <div class="file-upload-btn-wrap">
+                  <button type="button" class="btn-file-custom"><i class="fa-solid fa-arrow-up-from-bracket"></i> Choose File</button>
+                  <input type="file" class="custom-file-input" accept=".jpg,.jpeg,.png,.pdf" style="display: none;">
+                  <span class="file-chosen-status">कुनै फाइल छानिएको छैन</span>
+                </div>
+              </div>
+
+              <!-- Company Renewal Certificate -->
+              <div class="file-upload-item">
+                <label class="form-label"><span data-i18n="lblCompanyRenewCert">कम्पनी नविकरण प्रमाणपत्र *</span></label>
+                <div class="file-upload-btn-wrap">
+                  <button type="button" class="btn-file-custom"><i class="fa-solid fa-arrow-up-from-bracket"></i> Choose File</button>
+                  <input type="file" class="custom-file-input" accept=".jpg,.jpeg,.png,.pdf" style="display: none;">
+                  <span class="file-chosen-status">कुनै फाइल छानिएको छैन</span>
+                </div>
+              </div>
+
+              <!-- Tax Clearance Certificate -->
+              <div class="file-upload-item">
+                <label class="form-label"><span data-i18n="lblTaxClearCert">कर चुक्ता प्रमाणपत्र *</span></label>
+                <div class="file-upload-btn-wrap">
+                  <button type="button" class="btn-file-custom"><i class="fa-solid fa-arrow-up-from-bracket"></i> Choose File</button>
+                  <input type="file" class="custom-file-input" accept=".jpg,.jpeg,.png,.pdf" style="display: none;">
+                  <span class="file-chosen-status">कुनै फाइल छानिएको छैन</span>
+                </div>
+              </div>
+
+              <!-- MOA / AOA -->
+              <div class="file-upload-item">
+                <label class="form-label"><span data-i18n="lblMoaAoa">प्रबन्ध पत्र र नियमावली (MOA/AOA)</span></label>
+                <div class="file-upload-btn-wrap">
+                  <button type="button" class="btn-file-custom"><i class="fa-solid fa-arrow-up-from-bracket"></i> Choose File</button>
+                  <input type="file" class="custom-file-input" accept=".jpg,.jpeg,.png,.pdf" style="display: none;">
+                  <span class="file-chosen-status">कुनै फाइल छानिएको छैन</span>
+                </div>
+              </div>
+
+              <!-- Citizenship Front -->
+              <div class="file-upload-item">
+                <label class="form-label"><span data-i18n="lblCitizenshipFront">नागरिकता अगाडिको भाग *</span></label>
+                <div class="file-upload-btn-wrap">
+                  <button type="button" class="btn-file-custom"><i class="fa-solid fa-arrow-up-from-bracket"></i> Choose File</button>
+                  <input type="file" class="custom-file-input" accept=".jpg,.jpeg,.png,.pdf" style="display: none;">
+                  <span class="file-chosen-status">कुनै फाइल छानिएको छैन</span>
+                </div>
+              </div>
+
+              <!-- Citizenship Back -->
+              <div class="file-upload-item">
+                <label class="form-label"><span data-i18n="lblCitizenshipBack">नागरिकता पछाडिको भाग *</span></label>
+                <div class="file-upload-btn-wrap">
+                  <button type="button" class="btn-file-custom"><i class="fa-solid fa-arrow-up-from-bracket"></i> Choose File</button>
+                  <input type="file" class="custom-file-input" accept=".jpg,.jpeg,.png,.pdf" style="display: none;">
+                  <span class="file-chosen-status">कुनै फाइल छानिएको छैन</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ==============================================
+               SECTION 4: DESIGNER DETAILS
+               ============================================== -->
+          <div class="form-section-block" id="designerDetailsSection">
+            <h3 class="form-section-title">
+              <i class="fa-solid fa-user-tie"></i>
+              <span data-i18n="secDesignerTitle">डिजाइनर / प्राविधिकको व्यक्तिगत विवरण (Designer Details)</span>
+            </h3>
+
+            <!-- Designer Names -->
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label for="designerNameEn" class="form-label">
+                  <span data-i18n="lblDesignerNameEn">डिजाइनरको नाम (अंग्रेजीमा) *</span>
+                </label>
+                <input type="text" id="designerNameEn" class="form-control" placeholder="Designer's Full Name (In English)..." data-i18n-placeholder="phDesignerNameEn" required>
+              </div>
+
+              <div class="form-group">
+                <label for="designerNameNe" class="form-label">
+                  <span data-i18n="lblDesignerNameNe">डिजाइनरको नाम (नेपालीमा) *</span>
+                </label>
+                <input type="text" id="designerNameNe" class="form-control" placeholder="डिजाइनरको नाम (नेपालीमा)..." data-i18n-placeholder="phDesignerNameNe">
+              </div>
+            </div>
+
+            <!-- Citizenship No -->
+            <div class="form-group" style="max-width: 50%;">
+              <label for="designerCitizenshipNo" class="form-label">
+                <span data-i18n="lblCitizenshipNo">नागरिकता नम्बर *</span>
+              </label>
+              <input type="text" id="designerCitizenshipNo" class="form-control" placeholder="नागरिकता प्रमाणपत्र नम्बर..." data-i18n-placeholder="phCitizenshipNo" required>
+            </div>
+
+            <!-- Permanent Address -->
+            <div class="address-sub-card">
+              <h4 class="address-sub-header">
+                <i class="fa-solid fa-house-chimney"></i>
+                <span data-i18n="secPermAddress">स्थायी ठेगाना (Permanent Address)</span>
+              </h4>
+              <div class="form-grid-3">
+                <div class="form-group">
+                  <label class="form-label"><span data-i18n="lblDistrict">जिल्ला *</span></label>
+                  <select class="form-select" id="permDistrict" required>
+                    <option value="Kathmandu">Kathmandu (काठमाडौं)</option>
+                    <option value="Bhaktapur">Bhaktapur (भक्तपुर)</option>
+                    <option value="Lalitpur">Lalitpur (ललितपुर)</option>
+                    <option value="Kavre">Kavrepalanchok (काभ्रे)</option>
+                    <option value="Other">Other Districts</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label"><span data-i18n="lblMunicipality">नगरपालिका / गाउँपालिका *</span></label>
+                  <input type="text" class="form-control" id="permMunicipality" placeholder="कागेश्वरी मनोहरा..." data-i18n-placeholder="phMunicipality" required>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label"><span data-i18n="lblWard">वडा नं. *</span></label>
+                  <select class="form-select" id="permWard" required>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Temporary Address -->
+            <div class="address-sub-card">
+              <h4 class="address-sub-header">
+                <i class="fa-solid fa-location-dot"></i>
+                <span data-i18n="secTempAddress">अस्थायी ठेगाना (Temporary Address)</span>
+              </h4>
+              <div class="form-grid-3">
+                <div class="form-group">
+                  <label class="form-label"><span data-i18n="lblDistrict">जिल्ला *</span></label>
+                  <select class="form-select" id="tempDistrict">
+                    <option value="Kathmandu">Kathmandu (काठमाडौं)</option>
+                    <option value="Bhaktapur">Bhaktapur (भक्तपुर)</option>
+                    <option value="Lalitpur">Lalitpur (ललितपुर)</option>
+                    <option value="Other">Other Districts</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label"><span data-i18n="lblMunicipality">नगरपालिका / गाउँपालिका *</span></label>
+                  <input type="text" class="form-control" id="tempMunicipality" placeholder="कागेश्वरी मनोहरा..." data-i18n-placeholder="phMunicipality">
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label"><span data-i18n="lblWard">वडा नं. *</span></label>
+                  <select class="form-select" id="tempWard">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Contact & Tax Identifiers -->
+            <div class="form-grid-3">
+              <div class="form-group">
+                <label for="designerMobile" class="form-label">
+                  <span data-i18n="lblMobileNo">मोबाइल नम्बर *</span>
+                </label>
+                <input type="tel" id="designerMobile" class="form-control" placeholder="९८XXXXXXXX" data-i18n-placeholder="phMobileNo" required>
+              </div>
+
+              <div class="form-group">
+                <label for="designerEmail" class="form-label">
+                  <span data-i18n="lblEmail">इमेल ठेगाना *</span>
+                </label>
+                <input type="email" id="designerEmail" class="form-control" placeholder="designer@domain.com" data-i18n-placeholder="phEmail" required>
+              </div>
+
+              <div class="form-group">
+                <label for="designerPan" class="form-label">
+                  <span data-i18n="lblPanNo">प्यान (PAN) नम्बर *</span>
+                </label>
+                <input type="text" id="designerPan" class="form-control" placeholder="व्यक्तिगत प्यान नम्बर..." data-i18n-placeholder="phPanNo" required>
+              </div>
+            </div>
+          </div>
+
+          <!-- ==============================================
+               SECTION 5: DESIGNER DOCUMENTS
+               ============================================== -->
+          <div class="form-section-block" id="designerDocsSection">
+            <h3 class="form-section-title">
+              <i class="fa-solid fa-file-shield"></i>
+              <span data-i18n="secDesignerDocsTitle">प्राविधिक शैक्षिक तथा कानूनी कागजातहरू (Designer Documents)</span>
+            </h3>
+
+            <div class="upload-note-pill">
+              <i class="fa-solid fa-circle-info"></i>
+              <span data-i18n="docUploadNote">नोट: कृपया .jpg, .jpeg, .png वा .pdf फाइल मात्र अपलोड गर्नुहोस्। फाइलको आकार ५०० KB भन्दा कम हुनुपर्दछ।</span>
+            </div>
+
+            <div class="form-grid-2">
+              <!-- Profile Photo -->
+              <div class="file-upload-item">
+                <label class="form-label"><span data-i18n="lblDesignerPhoto">डिजाइनरको पासपोर्ट साइज फोटो *</span></label>
+                <div class="file-upload-btn-wrap">
+                  <button type="button" class="btn-file-custom"><i class="fa-solid fa-arrow-up-from-bracket"></i> Choose File</button>
+                  <input type="file" class="custom-file-input" accept=".jpg,.jpeg,.png,.pdf" style="display: none;">
+                  <span class="file-chosen-status">कुनै फाइल छानिएको छैन</span>
+                </div>
+              </div>
+
+              <!-- Bank Voucher -->
+              <div class="file-upload-item">
+                <label class="form-label"><span data-i18n="lblBankVoucher">बैंक भौचर / राजश्व रसिद *</span></label>
+                <div class="file-upload-btn-wrap">
+                  <button type="button" class="btn-file-custom"><i class="fa-solid fa-arrow-up-from-bracket"></i> Choose File</button>
+                  <input type="file" class="custom-file-input" accept=".jpg,.jpeg,.png,.pdf" style="display: none;">
+                  <span class="file-chosen-status">कुनै फाइल छानिएको छैन</span>
+                </div>
+              </div>
+
+              <!-- Experience Letter -->
+              <div class="file-upload-item">
+                <label class="form-label"><span data-i18n="lblExperienceLetter">कार्य अनुभव पत्र (Experience Letter)</span></label>
+                <div class="file-upload-btn-wrap">
+                  <button type="button" class="btn-file-custom"><i class="fa-solid fa-arrow-up-from-bracket"></i> Choose File</button>
+                  <input type="file" class="custom-file-input" accept=".jpg,.jpeg,.png,.pdf" style="display: none;">
+                  <span class="file-chosen-status">कुनै फाइल छानिएको छैन</span>
+                </div>
+              </div>
+
+              <!-- NEC Certificate -->
+              <div class="file-upload-item">
+                <label class="form-label"><span data-i18n="lblNecCert">नेपाल इन्जिनियरिङ्ग परिषद् प्रमाणपत्र *</span></label>
+                <div class="file-upload-btn-wrap">
+                  <button type="button" class="btn-file-custom"><i class="fa-solid fa-arrow-up-from-bracket"></i> Choose File</button>
+                  <input type="file" class="custom-file-input" accept=".jpg,.jpeg,.png,.pdf" style="display: none;">
+                  <span class="file-chosen-status">कुनै फाइल छानिएको छैन</span>
+                </div>
+              </div>
+
+              <!-- Bachelor Transcript -->
+              <div class="file-upload-item">
+                <label class="form-label"><span data-i18n="lblBachelorTranscript">स्नातक तह (BE/B.Arch) ट्रान्सक्रिप्ट *</span></label>
+                <div class="file-upload-btn-wrap">
+                  <button type="button" class="btn-file-custom"><i class="fa-solid fa-arrow-up-from-bracket"></i> Choose File</button>
+                  <input type="file" class="custom-file-input" accept=".jpg,.jpeg,.png,.pdf" style="display: none;">
+                  <span class="file-chosen-status">कुनै फाइल छानिएको छैन</span>
+                </div>
+              </div>
+
+              <!-- Master Transcript -->
+              <div class="file-upload-item">
+                <label class="form-label"><span data-i18n="lblMasterTranscript">स्नातकोत्तर तह (ME/M.Sc) ट्रान्सक्रिप्ट</span></label>
+                <div class="file-upload-btn-wrap">
+                  <button type="button" class="btn-file-custom"><i class="fa-solid fa-arrow-up-from-bracket"></i> Choose File</button>
+                  <input type="file" class="custom-file-input" accept=".jpg,.jpeg,.png,.pdf" style="display: none;">
+                  <span class="file-chosen-status">कुनै फाइल छानिएको छैन</span>
+                </div>
+              </div>
+
+              <!-- Citizenship Front -->
+              <div class="file-upload-item">
+                <label class="form-label"><span data-i18n="lblCitizenshipFront">नागरिकता अगाडिको भाग *</span></label>
+                <div class="file-upload-btn-wrap">
+                  <button type="button" class="btn-file-custom"><i class="fa-solid fa-arrow-up-from-bracket"></i> Choose File</button>
+                  <input type="file" class="custom-file-input" accept=".jpg,.jpeg,.png,.pdf" style="display: none;">
+                  <span class="file-chosen-status">कुनै फाइल छानिएको छैन</span>
+                </div>
+              </div>
+
+              <!-- Citizenship Back -->
+              <div class="file-upload-item">
+                <label class="form-label"><span data-i18n="lblCitizenshipBack">नागरिकता पछाडिको भाग *</span></label>
+                <div class="file-upload-btn-wrap">
+                  <button type="button" class="btn-file-custom"><i class="fa-solid fa-arrow-up-from-bracket"></i> Choose File</button>
+                  <input type="file" class="custom-file-input" accept=".jpg,.jpeg,.png,.pdf" style="display: none;">
+                  <span class="file-chosen-status">कुनै फाइल छानिएको छैन</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ==============================================
+               SECTION 6: EDUCATION QUALIFICATION
+               ============================================== -->
+          <div class="form-section-block" id="educationSection">
+            <h3 class="form-section-title">
+              <i class="fa-solid fa-graduation-cap"></i>
+              <span data-i18n="secEducationTitle">शैक्षिक योग्यता (Educational Qualification)</span>
+            </h3>
+
+            <div class="edu-table-wrap">
+              <table class="edu-table">
+                <thead>
+                  <tr>
+                    <th style="width: 25%;" data-i18n="thEquivalentLevel">तह (Level)</th>
+                    <th style="width: 25%;" data-i18n="thSubject">विषय (Subject)</th>
+                    <th style="width: 30%;" data-i18n="thInstitute">शिक्षण संस्था / देश (Institute / Country)</th>
+                    <th style="width: 20%;" data-i18n="thYear">उत्तीर्ण साल (Year)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- SLC / SEE -->
+                  <tr>
+                    <td class="edu-level-label" data-i18n="lvlSlc">SLC / SEE / Certificate *</td>
+                    <td><input type="text" class="form-control" placeholder="विषय..." data-i18n-placeholder="phSubject" required></td>
+                    <td><input type="text" class="form-control" placeholder="संस्था वा विद्यालय..." data-i18n-placeholder="phInstitute" required></td>
+                    <td><input type="text" class="form-control" placeholder="साल..." data-i18n-placeholder="phYear" required></td>
+                  </tr>
+                  <!-- BE / Bachelor -->
+                  <tr>
+                    <td class="edu-level-label" data-i18n="lvlBe">BE / B.Arch / Equivalent *</td>
+                    <td><input type="text" class="form-control" placeholder="विषय..." data-i18n-placeholder="phSubject" required></td>
+                    <td><input type="text" class="form-control" placeholder="कलेज वा विश्वविद्यालय..." data-i18n-placeholder="phInstitute" required></td>
+                    <td><input type="text" class="form-control" placeholder="साल..." data-i18n-placeholder="phYear" required></td>
+                  </tr>
+                  <!-- ME / Master -->
+                  <tr>
+                    <td class="edu-level-label" data-i18n="lvlMe">ME / M.Sc / Equivalent</td>
+                    <td><input type="text" class="form-control" placeholder="विषय..." data-i18n-placeholder="phSubject"></td>
+                    <td><input type="text" class="form-control" placeholder="विश्वविद्यालय..." data-i18n-placeholder="phInstitute"></td>
+                    <td><input type="text" class="form-control" placeholder="साल..." data-i18n-placeholder="phYear"></td>
+                  </tr>
+                  <!-- Ph.D -->
+                  <tr>
+                    <td class="edu-level-label" data-i18n="lvlPhd">Ph.D / Equivalent</td>
+                    <td><input type="text" class="form-control" placeholder="विषय..." data-i18n-placeholder="phSubject"></td>
+                    <td><input type="text" class="form-control" placeholder="विश्वविद्यालय..." data-i18n-placeholder="phInstitute"></td>
+                    <td><input type="text" class="form-control" placeholder="साल..." data-i18n-placeholder="phYear"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- ==============================================
+               SECTION 7: DECLARATION & CAPTCHA
+               ============================================== -->
+          <div class="form-section-block" style="border-bottom: none; margin-bottom: 0;">
+            <!-- Legal Declaration Checkbox -->
+            <label class="declaration-box">
+              <input type="checkbox" id="declarationCheckbox" required>
+              <span class="declaration-text" data-i18n="lblDeclaration">
+                मैले पेश गरेका सम्पूर्ण विवरण तथा कागजातहरू सत्य तथ्य छन्, यदि झुट्टा ठहरेमा प्रचलित कानुन बमोजिम कारबाही भोग्न मन्जुर छु।
+              </span>
+            </label>
+
+            <!-- Dynamic Visual Captcha -->
+            <div class="captcha-container">
+              <div class="captcha-badge" id="captchaBadge">A A E G Z</div>
+              <button type="button" class="captcha-refresh-btn" id="captchaRefreshBtn" title="क्याप्चा परिवर्तन गर्नुहोस्">
+                <i class="fa-solid fa-arrows-rotate"></i>
+              </button>
+              <div class="captcha-input-box">
+                <input type="text" id="captchaInput" class="form-control" placeholder="माथिको क्याप्चा कोड लेख्नुहोस्..." data-i18n-placeholder="phCaptcha" required>
+              </div>
+            </div>
+
+            <!-- Form Actions -->
+            <div class="form-actions-row">
+              <button type="submit" class="btn-submit-reg" id="btnSubmitForm">
+                <i class="fa-solid fa-paper-plane"></i>
+                <span data-i18n="btnSubmitReg">फारम दर्ता गर्नुहोस् (Submit Application)</span>
+              </button>
+              <button type="button" class="btn-reset-reg" id="btnResetForm">
+                <i class="fa-solid fa-rotate-left"></i>
+                <span data-i18n="btnResetReg">सबै रिसेट गर्नुहोस् (Reset)</span>
+              </button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ========================================================
+       4. FOOTER SECTION
+       ======================================================== -->
+  <footer class="main-footer">
+    <div class="footer-container">
+      <!-- Col 1: Contact Information -->
+      <div class="footer-col">
+        <h4 class="footer-col-title" data-i18n="footerContactTitle">सम्पर्क ठेगाना</h4>
+        <div class="footer-contact-list">
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-building-columns"></i>
+            <div>
+              <strong>कागेश्वरी मनोहरा नगरपालिका</strong><br>
+              <span data-i18n="footerAddress">नगर कार्यपालिकाको कार्यालय, डाँछी, काठमाडौं</span>
+            </div>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-phone"></i>
+            <div class="footer-contact-details">
+              <div class="contact-line">
+                <span class="contact-label" data-i18n="footerPhoneLabel">फोन:</span>
+                <a href="tel:014451242" class="footer-contact-link">+९७७ ०१-४४५१२४२</a>, 
+                <a href="tel:014450986" class="footer-contact-link">०१-४४५०९८६</a>
+              </div>
+              <div class="footer-tollfree">
+                <span class="tollfree-badge" data-i18n="footerTollFreeLabel">टोल-फ्री:</span>
+                <a href="tel:16600127777" class="footer-contact-link tollfree-link">१६६००१२७७७७</a>
+              </div>
+            </div>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-envelope"></i>
+            <div class="footer-contact-details">
+              <span class="contact-label" data-i18n="footerEmailLabel">इमेल:</span>
+              <div class="footer-email-list">
+                <a href="mailto:info@kageshworimanoharamun.gov.np" class="footer-contact-link email-link">
+                  <i class="fa-regular fa-envelope"></i> info@kageshworimanoharamun.gov.np
+                </a>
+                <a href="mailto:er.kageshworimun@gmail.com" class="footer-contact-link email-link">
+                  <i class="fa-regular fa-envelope"></i> er.kageshworimun@gmail.com
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Col 2: Quick Links -->
+      <div class="footer-col">
+        <h4 class="footer-col-title" data-i18n="footerLinksTitle">द्रुत लिङ्कहरु</h4>
+        <ul class="footer-links-list">
+          <li><a href="index.html#"><i class="fa-solid fa-angle-right"></i> <span data-i18n="bylawsDoc">भवन निर्माण मापदण्ड २०८०</span></a></li>
+          <li><a href="index.html#ward"><i class="fa-solid fa-angle-right"></i> <span data-i18n="navWard">वडा विवरण</span></a></li>
+          <li><a href="mason-list.html"><i class="fa-solid fa-angle-right"></i> <span data-i18n="navMasons">डकर्मी सूची</span></a></li>
+          <li><a href="designer-list.html"><i class="fa-solid fa-angle-right"></i> <span data-i18n="navDesigners">प्राविधिक सूची</span></a></li>
+          <li><a href="https://kageshworimanoharamun.gov.np" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> नगरपालिका मुख्य पोर्टल</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Support Hours & Emergency -->
+      <div class="footer-col">
+        <h4 class="footer-col-title" data-i18n="footerHelpdeskTitle">ई-विपिएस सहायता कक्ष</h4>
+        <div class="footer-hours-box">
+          <p style="margin-bottom: 8px;"><strong data-i18n="footerHoursTitle">कार्यालय समय:</strong></p>
+          <p style="margin-bottom: 4px;" data-i18n="footerHours1">आइतबार – बिहीबार: १०:०० AM – ५:०० PM</p>
+          <p style="margin-bottom: 12px;" data-i18n="footerHours2">शुक्रबार: १०:०० AM – ३:०० PM</p>
+          <p style="font-size: 0.82rem; color: #a7f3d0;">
+            * ई-विपिएस अनलाइन आवेदन २४ सै घण्टा खुला रहनेछ।
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Copyright Bottom Strip -->
+    <div class="footer-bottom">
+      <div data-i18n="footerCopyright">
+        © सर्वाधिकार सुरक्षित २०८१ / 2026 - कागेश्वरी मनोहरा नगरपालिका
+      </div>
+      <div class="footer-dev-credit">
+        ई-विपिएस प्रणाली | E-BPS System
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/register-designer.js"></script>
+</body>
+</html>
