@@ -1,14 +1,14 @@
 /**
  * Kageshwori Manohara Municipality - E-BPS
- * Register Designer (Sign Up) Form Controller
- * Strictly adheres to municipal E-BPS requirements with modern UX & validation
+ * Register Designer Form Controller
+ * Modern UX, Drag-and-Drop File Uploads, Image Preview, Validation & Bilingual Support
  */
 
 let currentCaptchaText = '';
 
 document.addEventListener('DOMContentLoaded', () => {
   initRegistrationMethodToggle();
-  initFileUploadHandlers();
+  initDropzoneUploads();
   initCaptchaGenerator();
   initFormSubmission();
 
@@ -19,8 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /**
  * Toggle sections based on Registration Method:
- * - 'nec': Hides Proprietor Details and Proprietor Documents
- * - 'consultancy': Shows Proprietor Details and Proprietor Documents
+ * - 'nec': Individual technical practitioner (Hides Proprietor Details and Proprietor Documents)
+ * - 'consultancy': Firm (Shows Proprietor Details and Proprietor Documents)
  */
 function initRegistrationMethodToggle() {
   const methodSelect = document.getElementById('regMethodSelect');
@@ -35,11 +35,17 @@ function initRegistrationMethodToggle() {
     if (val === 'consultancy') {
       if (proprietorDetailsSec) proprietorDetailsSec.style.display = 'block';
       if (proprietorDocsSec) proprietorDocsSec.style.display = 'block';
-      if (firmNameGroup) firmNameGroup.querySelector('.req-star').style.display = 'inline';
+      if (firmNameGroup) {
+        const star = firmNameGroup.querySelector('.req-star');
+        if (star) star.style.display = 'inline';
+      }
     } else {
       if (proprietorDetailsSec) proprietorDetailsSec.style.display = 'none';
       if (proprietorDocsSec) proprietorDocsSec.style.display = 'none';
-      if (firmNameGroup) firmNameGroup.querySelector('.req-star').style.display = 'none';
+      if (firmNameGroup) {
+        const star = firmNameGroup.querySelector('.req-star');
+        if (star) star.style.display = 'none';
+      }
     }
   }
 
@@ -48,58 +54,125 @@ function initRegistrationMethodToggle() {
 }
 
 /**
- * Handle custom file upload triggers and validate < 500 KB limit
+ * Modern tactile dropzone file upload widget:
+ * - Click anywhere to browse
+ * - Drag and drop files directly
+ * - Automatic image thumbnail preview for Designer Image
+ * - Enforces < 500 KB limit
+ * - Clear / remove button
  */
-function initFileUploadHandlers() {
-  const fileInputs = document.querySelectorAll('input[type="file"].custom-file-input');
+function initDropzoneUploads() {
+  const dropzones = document.querySelectorAll('.upload-dropzone-box');
 
-  fileInputs.forEach(input => {
-    const parent = input.closest('.file-upload-item');
-    if (!parent) return;
+  dropzones.forEach(dropzone => {
+    const input = dropzone.querySelector('input[type="file"]');
+    const defaultView = dropzone.querySelector('.dropzone-default-view');
+    const previewView = dropzone.querySelector('.dropzone-preview-view');
+    const removeBtn = dropzone.querySelector('.btn-dropzone-remove');
+    const fileNameEl = dropzone.querySelector('.preview-filename');
+    const fileSizeEl = dropzone.querySelector('.preview-filesize');
+    const previewImg = dropzone.querySelector('.dropzone-preview-img');
 
-    const btn = parent.querySelector('.btn-file-custom');
-    const statusText = parent.querySelector('.file-chosen-status');
+    if (!input) return;
 
-    if (btn) {
-      btn.addEventListener('click', () => {
+    // Trigger file dialog on dropzone click (unless clicking remove button)
+    dropzone.addEventListener('click', (e) => {
+      if (e.target.closest('.btn-dropzone-remove')) return;
+      input.click();
+    });
+
+    // Keyboard accessibility (Enter or Space)
+    dropzone.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
         input.click();
+      }
+    });
+
+    // Drag & Drop events
+    ['dragenter', 'dragover'].forEach(eventName => {
+      dropzone.addEventListener(eventName, (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        dropzone.classList.add('drag-over');
+      });
+    });
+
+    ['dragleave', 'drop'].forEach(eventName => {
+      dropzone.addEventListener(eventName, (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        dropzone.classList.remove('drag-over');
+      });
+    });
+
+    dropzone.addEventListener('drop', (e) => {
+      const dt = e.dataTransfer;
+      if (dt && dt.files && dt.files.length > 0) {
+        input.files = dt.files;
+        handleSelectedFile(input.files[0]);
+      }
+    });
+
+    // Native file input change
+    input.addEventListener('change', () => {
+      if (input.files && input.files.length > 0) {
+        handleSelectedFile(input.files[0]);
+      } else {
+        resetDropzone();
+      }
+    });
+
+    // Remove file button
+    if (removeBtn) {
+      removeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        resetDropzone();
       });
     }
 
-    input.addEventListener('change', () => {
-      if (!input.files || input.files.length === 0) {
-        if (statusText) {
-          const isEn = (typeof currentLang !== 'undefined' && currentLang === 'en');
-          statusText.textContent = isEn ? 'No file chosen' : 'कुनै फाइल छानिएको छैन';
-          statusText.classList.remove('has-file');
-        }
-        return;
-      }
-
-      const file = input.files[0];
-      const maxSizeBytes = 500 * 1024; // 500 KB limit as mandated
+    function handleSelectedFile(file) {
+      const maxSizeBytes = 500 * 1024; // 500 KB limit
+      const isEn = (typeof currentLang !== 'undefined' && currentLang === 'en');
 
       if (file.size > maxSizeBytes) {
-        const isEn = (typeof currentLang !== 'undefined' && currentLang === 'en');
-        alert(isEn 
+        alert(isEn
           ? `File "${file.name}" exceeds maximum allowed size of 500 KB (${(file.size / 1024).toFixed(1)} KB). Please choose a smaller file.`
           : `फाइल "${file.name}" ५०० KB भन्दा ठूलो छ (${(file.size / 1024).toFixed(1)} KB)। कृपया ५०० KB भन्दा सानो फाइल छान्नुहोस्।`);
-        input.value = '';
-        if (statusText) {
-          statusText.textContent = isEn ? 'File too large (> 500 KB)' : 'फाइल ५०० KB भन्दा ठूलो भयो';
-          statusText.classList.remove('has-file');
-          statusText.style.color = '#dc2626';
-        }
+        resetDropzone();
         return;
       }
 
       const sizeKb = (file.size / 1024).toFixed(1);
-      if (statusText) {
-        statusText.textContent = `${file.name} (${sizeKb} KB)`;
-        statusText.classList.add('has-file');
-        statusText.style.color = '#047857';
+      if (fileNameEl) fileNameEl.textContent = file.name;
+      if (fileSizeEl) fileSizeEl.textContent = `${sizeKb} KB`;
+
+      // If this is an image file and preview element exists, render thumbnail
+      if (previewImg && file.type.startsWith('image/')) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          previewImg.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
       }
-    });
+
+      if (defaultView) defaultView.style.display = 'none';
+      if (previewView) previewView.style.display = 'flex';
+      dropzone.classList.add('has-file-selected');
+    }
+
+    function resetDropzone() {
+      input.value = '';
+      if (previewImg) previewImg.src = '';
+      if (fileNameEl) fileNameEl.textContent = '';
+      if (fileSizeEl) fileSizeEl.textContent = '';
+      if (defaultView) defaultView.style.display = 'flex';
+      if (previewView) previewView.style.display = 'none';
+      dropzone.classList.remove('has-file-selected');
+    }
+
+    // Attach reset function to element for easy external resets
+    dropzone._resetDropzone = resetDropzone;
   });
 }
 
@@ -131,7 +204,7 @@ function initCaptchaGenerator() {
 }
 
 /**
- * Handle form submission validation & confirmation
+ * Handle form submission validation & confirmation modal
  */
 function initFormSubmission() {
   const form = document.getElementById('designerRegistrationForm');
@@ -142,10 +215,10 @@ function initFormSubmission() {
       const isEn = (typeof currentLang !== 'undefined' && currentLang === 'en');
       if (confirm(isEn ? 'Are you sure you want to reset the form?' : 'के तपाईं फारम खाली गर्न निश्चित हुनुहुन्छ?')) {
         form.reset();
-        document.querySelectorAll('.file-chosen-status').forEach(s => {
-          s.textContent = isEn ? 'No file chosen' : 'कुनै फाइल छानिएको छैन';
-          s.classList.remove('has-file');
-          s.style.color = '#64748b';
+        document.querySelectorAll('.upload-dropzone-box').forEach(dz => {
+          if (typeof dz._resetDropzone === 'function') {
+            dz._resetDropzone();
+          }
         });
         const methodSelect = document.getElementById('regMethodSelect');
         if (methodSelect) {
@@ -186,15 +259,49 @@ function initFormSubmission() {
       return;
     }
 
+    // If Consultancy Firm, validate Firm & Proprietor fields
+    if (methodSelect.value === 'consultancy') {
+      const firmName = document.getElementById('firmNameInput');
+      if (!firmName || !firmName.value.trim()) {
+        alert(isEn ? 'Please enter Consultancy Firm Name.' : 'कृपया परामर्शदाता फर्मको नाम लेख्नुहोस्।');
+        if (firmName) firmName.focus();
+        return;
+      }
+
+      const propName = document.getElementById('propName');
+      if (!propName || !propName.value.trim()) {
+        alert(isEn ? "Please enter Proprietor's Full Name." : 'कृपया प्रोपराइटरको पूरा नाम लेख्नुहोस्।');
+        if (propName) propName.focus();
+        return;
+      }
+    }
+
     // 4. Check Designer Name
-    const designerNameEn = document.getElementById('designerNameEn');
-    if (!designerNameEn || !designerNameEn.value.trim()) {
-      alert(isEn ? "Please enter Designer's Full Name (In English)." : 'कृपया डिजाइनरको पूरा नाम (अंग्रेजीमा) लेख्नुहोस्।');
-      if (designerNameEn) designerNameEn.focus();
+    const designerName = document.getElementById('designerName');
+    if (!designerName || !designerName.value.trim()) {
+      alert(isEn ? "Please enter Designer's Full Name." : 'कृपया डिजाइनरको पूरा नाम लेख्नुहोस्।');
+      if (designerName) designerName.focus();
       return;
     }
 
-    // 5. Check Mobile and Email
+    // 5. Check Designer Image upload
+    const designerImageInput = document.getElementById('designerImageInput');
+    if (!designerImageInput || !designerImageInput.files || designerImageInput.files.length === 0) {
+      alert(isEn ? 'Please upload Designer Image.' : 'कृपया डिजाइनरको फोटो अपलोड गर्नुहोस्।');
+      const designerDropzone = document.getElementById('designerImageDropzone');
+      if (designerDropzone) designerDropzone.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    // 6. Check Citizenship Number
+    const citizenshipNo = document.getElementById('designerCitizenshipNo');
+    if (!citizenshipNo || !citizenshipNo.value.trim()) {
+      alert(isEn ? 'Please enter Citizenship Number.' : 'कृपया नागरिकता प्रमाणपत्र नम्बर लेख्नुहोस्।');
+      if (citizenshipNo) citizenshipNo.focus();
+      return;
+    }
+
+    // 7. Check Mobile & Email
     const mobileNo = document.getElementById('designerMobile');
     if (!mobileNo || !mobileNo.value.trim()) {
       alert(isEn ? 'Please enter Designer Mobile Number.' : 'कृपया मोबाइल नम्बर प्रविष्ट गर्नुहोस्।');
@@ -209,7 +316,7 @@ function initFormSubmission() {
       return;
     }
 
-    // 6. Check Captcha
+    // 8. Check Captcha
     const captchaInput = document.getElementById('captchaInput');
     if (!captchaInput || captchaInput.value.trim().toUpperCase() !== currentCaptchaText.toUpperCase()) {
       alert(isEn ? 'Invalid Captcha Code. Please try again.' : 'क्याप्चा कोड मिलेन। कृपया पुनः प्रयास गर्नुहोस्।');
@@ -220,7 +327,7 @@ function initFormSubmission() {
       return;
     }
 
-    // 7. Check Declaration Checkbox
+    // 9. Check Declaration Checkbox
     const declarationCheck = document.getElementById('declarationCheckbox');
     if (!declarationCheck || !declarationCheck.checked) {
       alert(isEn 
@@ -256,7 +363,7 @@ function showSuccessModal(refCode) {
       </div>
       <h3 class="modal-title-success">${title}</h3>
       <div class="modal-desc-success">${desc}</div>
-      <div style="display: flex; justify-content: center; gap: 12px;">
+      <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
         <button type="button" class="btn-modal-close" onclick="window.print()">
           <i class="fa-solid fa-print"></i> ${isEn ? 'Print Slip' : 'रसिद छाप्नुहोस्'}
         </button>
@@ -271,11 +378,8 @@ function showSuccessModal(refCode) {
 }
 
 /**
- * Handle dynamic language updates for file chosen status and captcha
+ * Handle dynamic language updates
  */
 function onLanguageChanged(lang) {
-  const isEn = lang === 'en';
-  document.querySelectorAll('.file-chosen-status:not(.has-file)').forEach(el => {
-    el.textContent = isEn ? 'No file chosen' : 'कुनै फाइल छानिएको छैन';
-  });
+  // Handled automatically through data-i18n attributes
 }

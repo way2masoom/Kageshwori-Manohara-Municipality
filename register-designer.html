@@ -279,28 +279,21 @@
 
             <div class="form-grid-2">
               <div class="form-group">
-                <label for="propNameEn" class="form-label">
-                  <span data-i18n="lblPropNameEn">प्रोपराइटरको नाम (अंग्रेजीमा) *</span>
+                <label for="propName" class="form-label">
+                  <span data-i18n="lblPropName">प्रोपराइटरको नाम *</span>
                 </label>
-                <input type="text" id="propNameEn" class="form-control" placeholder="Proprietor's Full Name..." data-i18n-placeholder="phPropNameEn">
+                <input type="text" id="propName" class="form-control" placeholder="प्रोपराइटरको पूरा नाम लेख्नुहोस्..." data-i18n-placeholder="phPropName">
               </div>
 
-              <div class="form-group">
-                <label for="propNameNe" class="form-label">
-                  <span data-i18n="lblPropNameNe">प्रोपराइटरको नाम (नेपालीमा) *</span>
-                </label>
-                <input type="text" id="propNameNe" class="form-control" placeholder="प्रोपराइटरको पूरा नाम..." data-i18n-placeholder="phPropNameNe">
-              </div>
-            </div>
-
-            <div class="form-grid-3">
               <div class="form-group">
                 <label for="propAddress" class="form-label">
                   <span data-i18n="lblPropAddress">ठेगाना *</span>
                 </label>
                 <input type="text" id="propAddress" class="form-control" placeholder="स्थायी ठेगाना..." data-i18n-placeholder="phPropAddress">
               </div>
+            </div>
 
+            <div class="form-grid-2">
               <div class="form-group">
                 <label for="propEmail" class="form-label">
                   <span data-i18n="lblPropEmail">इमेल ठेगाना *</span>
@@ -318,7 +311,7 @@
           </div>
 
           <!-- ==============================================
-               SECTION 3: PROPRIETOR DOCUMENTS
+               SECTION 3: PROPRIETOR & FIRM DOCUMENTS
                (Visible when Consultancy Firm is selected)
                ============================================== -->
           <div class="form-section-block" id="proprietorDocsSection" style="display: none;">
@@ -333,83 +326,171 @@
             </div>
 
             <div class="form-grid-2">
-              <!-- Profile Photo -->
-              <div class="file-upload-item">
+              <!-- Proprietor Photo -->
+              <div class="doc-upload-box-wrapper">
                 <label class="form-label"><span data-i18n="lblPropPhoto">प्रोपराइटरको फोटो *</span></label>
-                <div class="file-upload-btn-wrap">
-                  <button type="button" class="btn-file-custom"><i class="fa-solid fa-arrow-up-from-bracket"></i> Choose File</button>
-                  <input type="file" class="custom-file-input" accept=".jpg,.jpeg,.png,.pdf" style="display: none;">
-                  <span class="file-chosen-status">कुनै फाइल छानिएको छैन</span>
-                </div>
-              </div>
-
-              <!-- PAN/VAT Certificate -->
-              <div class="file-upload-item">
-                <label class="form-label"><span data-i18n="lblPanVatCert">प्यान / भ्याट दर्ता प्रमाणपत्र *</span></label>
-                <div class="file-upload-btn-wrap">
-                  <button type="button" class="btn-file-custom"><i class="fa-solid fa-arrow-up-from-bracket"></i> Choose File</button>
-                  <input type="file" class="custom-file-input" accept=".jpg,.jpeg,.png,.pdf" style="display: none;">
-                  <span class="file-chosen-status">कुनै फाइल छानिएको छैन</span>
+                <div class="upload-dropzone-box" tabindex="0">
+                  <input type="file" class="upload-dropzone-input custom-file-input" accept=".jpg,.jpeg,.png,.pdf" style="display: none;">
+                  <div class="dropzone-default-view">
+                    <div class="dropzone-icon-circle"><i class="fa-solid fa-user-circle"></i></div>
+                    <div class="dropzone-text-group">
+                      <div class="dropzone-main-text"><span class="highlight">फोटो अपलोड गर्नुहोस्</span> (Upload Photo)</div>
+                      <div class="dropzone-sub-text">JPG, PNG, PDF • अधिकतम ५०० KB</div>
+                    </div>
+                    <button type="button" class="btn-dropzone-browse"><i class="fa-solid fa-cloud-arrow-up"></i> Choose</button>
+                  </div>
+                  <div class="dropzone-preview-view" style="display: none;">
+                    <div class="dropzone-icon-circle success-circle"><i class="fa-solid fa-circle-check"></i></div>
+                    <div class="dropzone-preview-info">
+                      <span class="preview-filename">file.jpg</span>
+                      <span class="preview-filesize">0 KB</span>
+                    </div>
+                    <button type="button" class="btn-dropzone-remove" title="हटाउनुहोस्"><i class="fa-solid fa-xmark"></i></button>
+                  </div>
                 </div>
               </div>
 
               <!-- Company Registration Certificate -->
-              <div class="file-upload-item">
+              <div class="doc-upload-box-wrapper">
                 <label class="form-label"><span data-i18n="lblCompanyRegCert">कम्पनी दर्ता प्रमाणपत्र *</span></label>
-                <div class="file-upload-btn-wrap">
-                  <button type="button" class="btn-file-custom"><i class="fa-solid fa-arrow-up-from-bracket"></i> Choose File</button>
-                  <input type="file" class="custom-file-input" accept=".jpg,.jpeg,.png,.pdf" style="display: none;">
-                  <span class="file-chosen-status">कुनै फाइल छानिएको छैन</span>
+                <div class="upload-dropzone-box" tabindex="0">
+                  <input type="file" class="upload-dropzone-input custom-file-input" accept=".jpg,.jpeg,.png,.pdf" style="display: none;">
+                  <div class="dropzone-default-view">
+                    <div class="dropzone-icon-circle"><i class="fa-solid fa-file-contract"></i></div>
+                    <div class="dropzone-text-group">
+                      <div class="dropzone-main-text"><span class="highlight">कम्पनी दर्ता प्रमाणपत्र</span> (Company Reg. Cert.)</div>
+                      <div class="dropzone-sub-text">PDF, JPG, PNG • अधिकतम ५०० KB</div>
+                    </div>
+                    <button type="button" class="btn-dropzone-browse"><i class="fa-solid fa-cloud-arrow-up"></i> Choose</button>
+                  </div>
+                  <div class="dropzone-preview-view" style="display: none;">
+                    <div class="dropzone-icon-circle success-circle"><i class="fa-solid fa-circle-check"></i></div>
+                    <div class="dropzone-preview-info">
+                      <span class="preview-filename">file.pdf</span>
+                      <span class="preview-filesize">0 KB</span>
+                    </div>
+                    <button type="button" class="btn-dropzone-remove" title="हटाउनुहोस्"><i class="fa-solid fa-xmark"></i></button>
+                  </div>
                 </div>
               </div>
 
               <!-- Company Renewal Certificate -->
-              <div class="file-upload-item">
+              <div class="doc-upload-box-wrapper">
                 <label class="form-label"><span data-i18n="lblCompanyRenewCert">कम्पनी नविकरण प्रमाणपत्र *</span></label>
-                <div class="file-upload-btn-wrap">
-                  <button type="button" class="btn-file-custom"><i class="fa-solid fa-arrow-up-from-bracket"></i> Choose File</button>
-                  <input type="file" class="custom-file-input" accept=".jpg,.jpeg,.png,.pdf" style="display: none;">
-                  <span class="file-chosen-status">कुनै फाइल छानिएको छैन</span>
+                <div class="upload-dropzone-box" tabindex="0">
+                  <input type="file" class="upload-dropzone-input custom-file-input" accept=".jpg,.jpeg,.png,.pdf" style="display: none;">
+                  <div class="dropzone-default-view">
+                    <div class="dropzone-icon-circle"><i class="fa-solid fa-file-shield"></i></div>
+                    <div class="dropzone-text-group">
+                      <div class="dropzone-main-text"><span class="highlight">नविकरण प्रमाणपत्र</span> (Renewal Cert.)</div>
+                      <div class="dropzone-sub-text">PDF, JPG, PNG • अधिकतम ५०० KB</div>
+                    </div>
+                    <button type="button" class="btn-dropzone-browse"><i class="fa-solid fa-cloud-arrow-up"></i> Choose</button>
+                  </div>
+                  <div class="dropzone-preview-view" style="display: none;">
+                    <div class="dropzone-icon-circle success-circle"><i class="fa-solid fa-circle-check"></i></div>
+                    <div class="dropzone-preview-info">
+                      <span class="preview-filename">file.pdf</span>
+                      <span class="preview-filesize">0 KB</span>
+                    </div>
+                    <button type="button" class="btn-dropzone-remove" title="हटाउनुहोस्"><i class="fa-solid fa-xmark"></i></button>
+                  </div>
                 </div>
               </div>
 
               <!-- Tax Clearance Certificate -->
-              <div class="file-upload-item">
+              <div class="doc-upload-box-wrapper">
                 <label class="form-label"><span data-i18n="lblTaxClearCert">कर चुक्ता प्रमाणपत्र *</span></label>
-                <div class="file-upload-btn-wrap">
-                  <button type="button" class="btn-file-custom"><i class="fa-solid fa-arrow-up-from-bracket"></i> Choose File</button>
-                  <input type="file" class="custom-file-input" accept=".jpg,.jpeg,.png,.pdf" style="display: none;">
-                  <span class="file-chosen-status">कुनै फाइल छानिएको छैन</span>
+                <div class="upload-dropzone-box" tabindex="0">
+                  <input type="file" class="upload-dropzone-input custom-file-input" accept=".jpg,.jpeg,.png,.pdf" style="display: none;">
+                  <div class="dropzone-default-view">
+                    <div class="dropzone-icon-circle"><i class="fa-solid fa-receipt"></i></div>
+                    <div class="dropzone-text-group">
+                      <div class="dropzone-main-text"><span class="highlight">कर चुक्ता प्रमाणपत्र</span> (Tax Clearance)</div>
+                      <div class="dropzone-sub-text">PDF, JPG, PNG • अधिकतम ५०० KB</div>
+                    </div>
+                    <button type="button" class="btn-dropzone-browse"><i class="fa-solid fa-cloud-arrow-up"></i> Choose</button>
+                  </div>
+                  <div class="dropzone-preview-view" style="display: none;">
+                    <div class="dropzone-icon-circle success-circle"><i class="fa-solid fa-circle-check"></i></div>
+                    <div class="dropzone-preview-info">
+                      <span class="preview-filename">file.pdf</span>
+                      <span class="preview-filesize">0 KB</span>
+                    </div>
+                    <button type="button" class="btn-dropzone-remove" title="हटाउनुहोस्"><i class="fa-solid fa-xmark"></i></button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- PAN/VAT Certificate -->
+              <div class="doc-upload-box-wrapper">
+                <label class="form-label"><span data-i18n="lblPanVatCert">प्यान / भ्याट दर्ता प्रमाणपत्र *</span></label>
+                <div class="upload-dropzone-box" tabindex="0">
+                  <input type="file" class="upload-dropzone-input custom-file-input" accept=".jpg,.jpeg,.png,.pdf" style="display: none;">
+                  <div class="dropzone-default-view">
+                    <div class="dropzone-icon-circle"><i class="fa-solid fa-id-badge"></i></div>
+                    <div class="dropzone-text-group">
+                      <div class="dropzone-main-text"><span class="highlight">प्यान/भ्याट प्रमाणपत्र</span> (PAN / VAT)</div>
+                      <div class="dropzone-sub-text">PDF, JPG, PNG • अधिकतम ५०० KB</div>
+                    </div>
+                    <button type="button" class="btn-dropzone-browse"><i class="fa-solid fa-cloud-arrow-up"></i> Choose</button>
+                  </div>
+                  <div class="dropzone-preview-view" style="display: none;">
+                    <div class="dropzone-icon-circle success-circle"><i class="fa-solid fa-circle-check"></i></div>
+                    <div class="dropzone-preview-info">
+                      <span class="preview-filename">file.pdf</span>
+                      <span class="preview-filesize">0 KB</span>
+                    </div>
+                    <button type="button" class="btn-dropzone-remove" title="हटाउनुहोस्"><i class="fa-solid fa-xmark"></i></button>
+                  </div>
                 </div>
               </div>
 
               <!-- MOA / AOA -->
-              <div class="file-upload-item">
+              <div class="doc-upload-box-wrapper">
                 <label class="form-label"><span data-i18n="lblMoaAoa">प्रबन्ध पत्र र नियमावली (MOA/AOA)</span></label>
-                <div class="file-upload-btn-wrap">
-                  <button type="button" class="btn-file-custom"><i class="fa-solid fa-arrow-up-from-bracket"></i> Choose File</button>
-                  <input type="file" class="custom-file-input" accept=".jpg,.jpeg,.png,.pdf" style="display: none;">
-                  <span class="file-chosen-status">कुनै फाइल छानिएको छैन</span>
+                <div class="upload-dropzone-box" tabindex="0">
+                  <input type="file" class="upload-dropzone-input custom-file-input" accept=".jpg,.jpeg,.png,.pdf" style="display: none;">
+                  <div class="dropzone-default-view">
+                    <div class="dropzone-icon-circle"><i class="fa-solid fa-book-bookmark"></i></div>
+                    <div class="dropzone-text-group">
+                      <div class="dropzone-main-text"><span class="highlight">प्रबन्ध पत्र / नियमावली</span> (MOA / AOA)</div>
+                      <div class="dropzone-sub-text">PDF, JPG, PNG • अधिकतम ५०० KB</div>
+                    </div>
+                    <button type="button" class="btn-dropzone-browse"><i class="fa-solid fa-cloud-arrow-up"></i> Choose</button>
+                  </div>
+                  <div class="dropzone-preview-view" style="display: none;">
+                    <div class="dropzone-icon-circle success-circle"><i class="fa-solid fa-circle-check"></i></div>
+                    <div class="dropzone-preview-info">
+                      <span class="preview-filename">file.pdf</span>
+                      <span class="preview-filesize">0 KB</span>
+                    </div>
+                    <button type="button" class="btn-dropzone-remove" title="हटाउनुहोस्"><i class="fa-solid fa-xmark"></i></button>
+                  </div>
                 </div>
               </div>
 
-              <!-- Citizenship Front -->
-              <div class="file-upload-item">
-                <label class="form-label"><span data-i18n="lblCitizenshipFront">नागरिकता अगाडिको भाग *</span></label>
-                <div class="file-upload-btn-wrap">
-                  <button type="button" class="btn-file-custom"><i class="fa-solid fa-arrow-up-from-bracket"></i> Choose File</button>
-                  <input type="file" class="custom-file-input" accept=".jpg,.jpeg,.png,.pdf" style="display: none;">
-                  <span class="file-chosen-status">कुनै फाइल छानिएको छैन</span>
-                </div>
-              </div>
-
-              <!-- Citizenship Back -->
-              <div class="file-upload-item">
-                <label class="form-label"><span data-i18n="lblCitizenshipBack">नागरिकता पछाडिको भाग *</span></label>
-                <div class="file-upload-btn-wrap">
-                  <button type="button" class="btn-file-custom"><i class="fa-solid fa-arrow-up-from-bracket"></i> Choose File</button>
-                  <input type="file" class="custom-file-input" accept=".jpg,.jpeg,.png,.pdf" style="display: none;">
-                  <span class="file-chosen-status">कुनै फाइल छानिएको छैन</span>
+              <!-- Single Citizenship Certificate Upload -->
+              <div class="doc-upload-box-wrapper">
+                <label class="form-label"><span data-i18n="lblCitizenshipDoc">नागरिकता प्रमाणपत्र (Citizenship Certificate) *</span></label>
+                <div class="upload-dropzone-box" tabindex="0">
+                  <input type="file" class="upload-dropzone-input custom-file-input" accept=".jpg,.jpeg,.png,.pdf" style="display: none;">
+                  <div class="dropzone-default-view">
+                    <div class="dropzone-icon-circle"><i class="fa-solid fa-address-card"></i></div>
+                    <div class="dropzone-text-group">
+                      <div class="dropzone-main-text"><span class="highlight">नागरिकता प्रमाणपत्र</span> (Citizenship)</div>
+                      <div class="dropzone-sub-text">PDF, JPG, PNG • अधिकतम ५०० KB</div>
+                    </div>
+                    <button type="button" class="btn-dropzone-browse"><i class="fa-solid fa-cloud-arrow-up"></i> Choose</button>
+                  </div>
+                  <div class="dropzone-preview-view" style="display: none;">
+                    <div class="dropzone-icon-circle success-circle"><i class="fa-solid fa-circle-check"></i></div>
+                    <div class="dropzone-preview-info">
+                      <span class="preview-filename">file.pdf</span>
+                      <span class="preview-filesize">0 KB</span>
+                    </div>
+                    <button type="button" class="btn-dropzone-remove" title="हटाउनुहोस्"><i class="fa-solid fa-xmark"></i></button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -424,29 +505,66 @@
               <span data-i18n="secDesignerTitle">डिजाइनर / प्राविधिकको व्यक्तिगत विवरण (Designer Details)</span>
             </h3>
 
-            <!-- Designer Names -->
-            <div class="form-grid-2">
-              <div class="form-group">
-                <label for="designerNameEn" class="form-label">
-                  <span data-i18n="lblDesignerNameEn">डिजाइनरको नाम (अंग्रेजीमा) *</span>
-                </label>
-                <input type="text" id="designerNameEn" class="form-control" placeholder="Designer's Full Name (In English)..." data-i18n-placeholder="phDesignerNameEn" required>
+            <!-- Top Row: Designer Name & Citizenship No + Designer Image Upload Box -->
+            <div class="designer-personal-top-grid">
+              <div class="designer-personal-fields">
+                <!-- Designer Single Full Name -->
+                <div class="form-group">
+                  <label for="designerName" class="form-label">
+                    <span data-i18n="lblDesignerName">डिजाइनरको नाम *</span>
+                  </label>
+                  <input type="text" id="designerName" class="form-control" placeholder="डिजाइनरको पूरा नाम लेख्नुहोस्..." data-i18n-placeholder="phDesignerName" required>
+                </div>
+
+                <!-- Citizenship No -->
+                <div class="form-group">
+                  <label for="designerCitizenshipNo" class="form-label">
+                    <span data-i18n="lblCitizenshipNo">नागरिकता नम्बर *</span>
+                  </label>
+                  <input type="text" id="designerCitizenshipNo" class="form-control" placeholder="नागरिकता प्रमाणपत्र नम्बर..." data-i18n-placeholder="phCitizenshipNo" required>
+                </div>
               </div>
 
-              <div class="form-group">
-                <label for="designerNameNe" class="form-label">
-                  <span data-i18n="lblDesignerNameNe">डिजाइनरको नाम (नेपालीमा) *</span>
+              <!-- Designer Image Box (Modern Card with Preview) -->
+              <div class="designer-photo-upload-container">
+                <label class="form-label">
+                  <span data-i18n="lblDesignerImage">डिजाइनरको फोटो (Designer Image) *</span>
                 </label>
-                <input type="text" id="designerNameNe" class="form-control" placeholder="डिजाइनरको नाम (नेपालीमा)..." data-i18n-placeholder="phDesignerNameNe">
-              </div>
-            </div>
+                <div class="upload-dropzone-box image-dropzone-box" id="designerImageDropzone" tabindex="0">
+                  <input type="file" id="designerImageInput" class="upload-dropzone-input" accept=".jpg,.jpeg,.png" style="display: none;" required>
+                  
+                  <div class="dropzone-default-view">
+                    <div class="dropzone-icon-circle image-icon">
+                      <i class="fa-solid fa-cloud-arrow-up"></i>
+                    </div>
+                    <div class="dropzone-text-group">
+                      <div class="dropzone-main-text">
+                        <span class="highlight">फोटो छान्नुहोस् वा तान्नुहोस्</span> (Upload Image)
+                      </div>
+                      <div class="dropzone-sub-text">
+                        JPG, PNG, JPEG • अधिकतम ५०० KB
+                      </div>
+                    </div>
+                    <button type="button" class="btn-dropzone-browse">
+                      <i class="fa-solid fa-camera"></i> <span>Browse Photo</span>
+                    </button>
+                  </div>
 
-            <!-- Citizenship No -->
-            <div class="form-group" style="max-width: 50%;">
-              <label for="designerCitizenshipNo" class="form-label">
-                <span data-i18n="lblCitizenshipNo">नागरिकता नम्बर *</span>
-              </label>
-              <input type="text" id="designerCitizenshipNo" class="form-control" placeholder="नागरिकता प्रमाणपत्र नम्बर..." data-i18n-placeholder="phCitizenshipNo" required>
+                  <div class="dropzone-preview-view" style="display: none;">
+                    <div class="dropzone-img-preview-wrap">
+                      <img src="" alt="Designer Preview" class="dropzone-preview-img" id="designerImagePreviewImg">
+                    </div>
+                    <div class="dropzone-preview-info">
+                      <span class="preview-filename" id="designerImageFileName">photo.jpg</span>
+                      <span class="preview-filesize" id="designerImageFileSize">0 KB</span>
+                      <span class="preview-badge success"><i class="fa-solid fa-circle-check"></i> तयार भयो (Ready)</span>
+                    </div>
+                    <button type="button" class="btn-dropzone-remove" id="btnRemoveDesignerImage" title="हटाउनुहोस्">
+                      <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <!-- Permanent Address -->
@@ -568,138 +686,125 @@
             </div>
 
             <div class="form-grid-2">
-              <!-- Profile Photo -->
-              <div class="file-upload-item">
-                <label class="form-label"><span data-i18n="lblDesignerPhoto">डिजाइनरको पासपोर्ट साइज फोटो *</span></label>
-                <div class="file-upload-btn-wrap">
-                  <button type="button" class="btn-file-custom"><i class="fa-solid fa-arrow-up-from-bracket"></i> Choose File</button>
-                  <input type="file" class="custom-file-input" accept=".jpg,.jpeg,.png,.pdf" style="display: none;">
-                  <span class="file-chosen-status">कुनै फाइल छानिएको छैन</span>
-                </div>
-              </div>
-
               <!-- Bank Voucher -->
-              <div class="file-upload-item">
+              <div class="doc-upload-box-wrapper">
                 <label class="form-label"><span data-i18n="lblBankVoucher">बैंक भौचर / राजश्व रसिद *</span></label>
-                <div class="file-upload-btn-wrap">
-                  <button type="button" class="btn-file-custom"><i class="fa-solid fa-arrow-up-from-bracket"></i> Choose File</button>
-                  <input type="file" class="custom-file-input" accept=".jpg,.jpeg,.png,.pdf" style="display: none;">
-                  <span class="file-chosen-status">कुनै फाइल छानिएको छैन</span>
-                </div>
-              </div>
-
-              <!-- Experience Letter -->
-              <div class="file-upload-item">
-                <label class="form-label"><span data-i18n="lblExperienceLetter">कार्य अनुभव पत्र (Experience Letter)</span></label>
-                <div class="file-upload-btn-wrap">
-                  <button type="button" class="btn-file-custom"><i class="fa-solid fa-arrow-up-from-bracket"></i> Choose File</button>
-                  <input type="file" class="custom-file-input" accept=".jpg,.jpeg,.png,.pdf" style="display: none;">
-                  <span class="file-chosen-status">कुनै फाइल छानिएको छैन</span>
+                <div class="upload-dropzone-box" tabindex="0">
+                  <input type="file" class="upload-dropzone-input custom-file-input" accept=".jpg,.jpeg,.png,.pdf" style="display: none;">
+                  <div class="dropzone-default-view">
+                    <div class="dropzone-icon-circle"><i class="fa-solid fa-receipt"></i></div>
+                    <div class="dropzone-text-group">
+                      <div class="dropzone-main-text"><span class="highlight">बैंक भौचर / रसिद</span> (Bank Voucher)</div>
+                      <div class="dropzone-sub-text">PDF, JPG, PNG • अधिकतम ५०० KB</div>
+                    </div>
+                    <button type="button" class="btn-dropzone-browse"><i class="fa-solid fa-cloud-arrow-up"></i> Choose</button>
+                  </div>
+                  <div class="dropzone-preview-view" style="display: none;">
+                    <div class="dropzone-icon-circle success-circle"><i class="fa-solid fa-circle-check"></i></div>
+                    <div class="dropzone-preview-info">
+                      <span class="preview-filename">file.pdf</span>
+                      <span class="preview-filesize">0 KB</span>
+                    </div>
+                    <button type="button" class="btn-dropzone-remove" title="हटाउनुहोस्"><i class="fa-solid fa-xmark"></i></button>
+                  </div>
                 </div>
               </div>
 
               <!-- NEC Certificate -->
-              <div class="file-upload-item">
+              <div class="doc-upload-box-wrapper">
                 <label class="form-label"><span data-i18n="lblNecCert">नेपाल इन्जिनियरिङ्ग परिषद् प्रमाणपत्र *</span></label>
-                <div class="file-upload-btn-wrap">
-                  <button type="button" class="btn-file-custom"><i class="fa-solid fa-arrow-up-from-bracket"></i> Choose File</button>
-                  <input type="file" class="custom-file-input" accept=".jpg,.jpeg,.png,.pdf" style="display: none;">
-                  <span class="file-chosen-status">कुनै फाइल छानिएको छैन</span>
+                <div class="upload-dropzone-box" tabindex="0">
+                  <input type="file" class="upload-dropzone-input custom-file-input" accept=".jpg,.jpeg,.png,.pdf" style="display: none;">
+                  <div class="dropzone-default-view">
+                    <div class="dropzone-icon-circle"><i class="fa-solid fa-award"></i></div>
+                    <div class="dropzone-text-group">
+                      <div class="dropzone-main-text"><span class="highlight">NEC दर्ता प्रमाणपत्र</span> (NEC Certificate)</div>
+                      <div class="dropzone-sub-text">PDF, JPG, PNG • अधिकतम ५०० KB</div>
+                    </div>
+                    <button type="button" class="btn-dropzone-browse"><i class="fa-solid fa-cloud-arrow-up"></i> Choose</button>
+                  </div>
+                  <div class="dropzone-preview-view" style="display: none;">
+                    <div class="dropzone-icon-circle success-circle"><i class="fa-solid fa-circle-check"></i></div>
+                    <div class="dropzone-preview-info">
+                      <span class="preview-filename">file.pdf</span>
+                      <span class="preview-filesize">0 KB</span>
+                    </div>
+                    <button type="button" class="btn-dropzone-remove" title="हटाउनुहोस्"><i class="fa-solid fa-xmark"></i></button>
+                  </div>
                 </div>
               </div>
 
               <!-- Bachelor Transcript -->
-              <div class="file-upload-item">
+              <div class="doc-upload-box-wrapper">
                 <label class="form-label"><span data-i18n="lblBachelorTranscript">स्नातक तह (BE/B.Arch) ट्रान्सक्रिप्ट *</span></label>
-                <div class="file-upload-btn-wrap">
-                  <button type="button" class="btn-file-custom"><i class="fa-solid fa-arrow-up-from-bracket"></i> Choose File</button>
-                  <input type="file" class="custom-file-input" accept=".jpg,.jpeg,.png,.pdf" style="display: none;">
-                  <span class="file-chosen-status">कुनै फाइल छानिएको छैन</span>
+                <div class="upload-dropzone-box" tabindex="0">
+                  <input type="file" class="upload-dropzone-input custom-file-input" accept=".jpg,.jpeg,.png,.pdf" style="display: none;">
+                  <div class="dropzone-default-view">
+                    <div class="dropzone-icon-circle"><i class="fa-solid fa-graduation-cap"></i></div>
+                    <div class="dropzone-text-group">
+                      <div class="dropzone-main-text"><span class="highlight">BE / B.Arch ट्रान्सक्रिप्ट</span> (Bachelor Transcript)</div>
+                      <div class="dropzone-sub-text">PDF, JPG, PNG • अधिकतम ५०० KB</div>
+                    </div>
+                    <button type="button" class="btn-dropzone-browse"><i class="fa-solid fa-cloud-arrow-up"></i> Choose</button>
+                  </div>
+                  <div class="dropzone-preview-view" style="display: none;">
+                    <div class="dropzone-icon-circle success-circle"><i class="fa-solid fa-circle-check"></i></div>
+                    <div class="dropzone-preview-info">
+                      <span class="preview-filename">file.pdf</span>
+                      <span class="preview-filesize">0 KB</span>
+                    </div>
+                    <button type="button" class="btn-dropzone-remove" title="हटाउनुहोस्"><i class="fa-solid fa-xmark"></i></button>
+                  </div>
                 </div>
               </div>
 
               <!-- Master Transcript -->
-              <div class="file-upload-item">
+              <div class="doc-upload-box-wrapper">
                 <label class="form-label"><span data-i18n="lblMasterTranscript">स्नातकोत्तर तह (ME/M.Sc) ट्रान्सक्रिप्ट</span></label>
-                <div class="file-upload-btn-wrap">
-                  <button type="button" class="btn-file-custom"><i class="fa-solid fa-arrow-up-from-bracket"></i> Choose File</button>
-                  <input type="file" class="custom-file-input" accept=".jpg,.jpeg,.png,.pdf" style="display: none;">
-                  <span class="file-chosen-status">कुनै फाइल छानिएको छैन</span>
+                <div class="upload-dropzone-box" tabindex="0">
+                  <input type="file" class="upload-dropzone-input custom-file-input" accept=".jpg,.jpeg,.png,.pdf" style="display: none;">
+                  <div class="dropzone-default-view">
+                    <div class="dropzone-icon-circle"><i class="fa-solid fa-user-graduate"></i></div>
+                    <div class="dropzone-text-group">
+                      <div class="dropzone-main-text"><span class="highlight">ME / M.Sc ट्रान्सक्रिप्ट</span> (Master Transcript)</div>
+                      <div class="dropzone-sub-text">PDF, JPG, PNG • अधिकतम ५०० KB</div>
+                    </div>
+                    <button type="button" class="btn-dropzone-browse"><i class="fa-solid fa-cloud-arrow-up"></i> Choose</button>
+                  </div>
+                  <div class="dropzone-preview-view" style="display: none;">
+                    <div class="dropzone-icon-circle success-circle"><i class="fa-solid fa-circle-check"></i></div>
+                    <div class="dropzone-preview-info">
+                      <span class="preview-filename">file.pdf</span>
+                      <span class="preview-filesize">0 KB</span>
+                    </div>
+                    <button type="button" class="btn-dropzone-remove" title="हटाउनुहोस्"><i class="fa-solid fa-xmark"></i></button>
+                  </div>
                 </div>
               </div>
 
-              <!-- Citizenship Front -->
-              <div class="file-upload-item">
-                <label class="form-label"><span data-i18n="lblCitizenshipFront">नागरिकता अगाडिको भाग *</span></label>
-                <div class="file-upload-btn-wrap">
-                  <button type="button" class="btn-file-custom"><i class="fa-solid fa-arrow-up-from-bracket"></i> Choose File</button>
-                  <input type="file" class="custom-file-input" accept=".jpg,.jpeg,.png,.pdf" style="display: none;">
-                  <span class="file-chosen-status">कुनै फाइल छानिएको छैन</span>
+              <!-- Single Citizenship Certificate Upload -->
+              <div class="doc-upload-box-wrapper">
+                <label class="form-label"><span data-i18n="lblCitizenshipDoc">नागरिकता प्रमाणपत्र (Citizenship Certificate) *</span></label>
+                <div class="upload-dropzone-box" tabindex="0">
+                  <input type="file" class="upload-dropzone-input custom-file-input" accept=".jpg,.jpeg,.png,.pdf" style="display: none;">
+                  <div class="dropzone-default-view">
+                    <div class="dropzone-icon-circle"><i class="fa-solid fa-address-card"></i></div>
+                    <div class="dropzone-text-group">
+                      <div class="dropzone-main-text"><span class="highlight">नागरिकता प्रमाणपत्र</span> (Citizenship)</div>
+                      <div class="dropzone-sub-text">PDF, JPG, PNG • अधिकतम ५०० KB</div>
+                    </div>
+                    <button type="button" class="btn-dropzone-browse"><i class="fa-solid fa-cloud-arrow-up"></i> Choose</button>
+                  </div>
+                  <div class="dropzone-preview-view" style="display: none;">
+                    <div class="dropzone-icon-circle success-circle"><i class="fa-solid fa-circle-check"></i></div>
+                    <div class="dropzone-preview-info">
+                      <span class="preview-filename">file.pdf</span>
+                      <span class="preview-filesize">0 KB</span>
+                    </div>
+                    <button type="button" class="btn-dropzone-remove" title="हटाउनुहोस्"><i class="fa-solid fa-xmark"></i></button>
+                  </div>
                 </div>
               </div>
-
-              <!-- Citizenship Back -->
-              <div class="file-upload-item">
-                <label class="form-label"><span data-i18n="lblCitizenshipBack">नागरिकता पछाडिको भाग *</span></label>
-                <div class="file-upload-btn-wrap">
-                  <button type="button" class="btn-file-custom"><i class="fa-solid fa-arrow-up-from-bracket"></i> Choose File</button>
-                  <input type="file" class="custom-file-input" accept=".jpg,.jpeg,.png,.pdf" style="display: none;">
-                  <span class="file-chosen-status">कुनै फाइल छानिएको छैन</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- ==============================================
-               SECTION 6: EDUCATION QUALIFICATION
-               ============================================== -->
-          <div class="form-section-block" id="educationSection">
-            <h3 class="form-section-title">
-              <i class="fa-solid fa-graduation-cap"></i>
-              <span data-i18n="secEducationTitle">शैक्षिक योग्यता (Educational Qualification)</span>
-            </h3>
-
-            <div class="edu-table-wrap">
-              <table class="edu-table">
-                <thead>
-                  <tr>
-                    <th style="width: 25%;" data-i18n="thEquivalentLevel">तह (Level)</th>
-                    <th style="width: 25%;" data-i18n="thSubject">विषय (Subject)</th>
-                    <th style="width: 30%;" data-i18n="thInstitute">शिक्षण संस्था / देश (Institute / Country)</th>
-                    <th style="width: 20%;" data-i18n="thYear">उत्तीर्ण साल (Year)</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <!-- SLC / SEE -->
-                  <tr>
-                    <td class="edu-level-label" data-i18n="lvlSlc">SLC / SEE / Certificate *</td>
-                    <td><input type="text" class="form-control" placeholder="विषय..." data-i18n-placeholder="phSubject" required></td>
-                    <td><input type="text" class="form-control" placeholder="संस्था वा विद्यालय..." data-i18n-placeholder="phInstitute" required></td>
-                    <td><input type="text" class="form-control" placeholder="साल..." data-i18n-placeholder="phYear" required></td>
-                  </tr>
-                  <!-- BE / Bachelor -->
-                  <tr>
-                    <td class="edu-level-label" data-i18n="lvlBe">BE / B.Arch / Equivalent *</td>
-                    <td><input type="text" class="form-control" placeholder="विषय..." data-i18n-placeholder="phSubject" required></td>
-                    <td><input type="text" class="form-control" placeholder="कलेज वा विश्वविद्यालय..." data-i18n-placeholder="phInstitute" required></td>
-                    <td><input type="text" class="form-control" placeholder="साल..." data-i18n-placeholder="phYear" required></td>
-                  </tr>
-                  <!-- ME / Master -->
-                  <tr>
-                    <td class="edu-level-label" data-i18n="lvlMe">ME / M.Sc / Equivalent</td>
-                    <td><input type="text" class="form-control" placeholder="विषय..." data-i18n-placeholder="phSubject"></td>
-                    <td><input type="text" class="form-control" placeholder="विश्वविद्यालय..." data-i18n-placeholder="phInstitute"></td>
-                    <td><input type="text" class="form-control" placeholder="साल..." data-i18n-placeholder="phYear"></td>
-                  </tr>
-                  <!-- Ph.D -->
-                  <tr>
-                    <td class="edu-level-label" data-i18n="lvlPhd">Ph.D / Equivalent</td>
-                    <td><input type="text" class="form-control" placeholder="विषय..." data-i18n-placeholder="phSubject"></td>
-                    <td><input type="text" class="form-control" placeholder="विश्वविद्यालय..." data-i18n-placeholder="phInstitute"></td>
-                    <td><input type="text" class="form-control" placeholder="साल..." data-i18n-placeholder="phYear"></td>
-                  </tr>
-                </tbody>
-              </table>
             </div>
           </div>
 
