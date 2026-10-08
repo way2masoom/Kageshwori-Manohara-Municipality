@@ -166,28 +166,25 @@
       <!-- Top Banner with Breadcrumb & Stats -->
       <section class="designer-page-header">
         <div class="designer-breadcrumb">
-          <a href="index.html#home"><i class="fa-solid fa-house"></i> गृहपृष्ठ</a>
+          <a href="index.html#home"><i class="fa-solid fa-house"></i> <span data-i18n="navHome">गृहपृष्ठ</span></a>
           <span>/</span>
-          <span>प्राविधिक सूची (Designer Application Summary)</span>
+          <span data-i18n="navDesigners">प्राविधिक सूची</span>
         </div>
 
         <div class="designer-page-title-row">
           <div>
             <h1 class="designer-main-title">
               <i class="fa-solid fa-compass-drafting"></i>
-              DESIGNER APPLICATION SUMMARY
+              <span data-i18n="designerMainTitle">दर्ता भएका प्राविधिक (डिजाईनर) सूची</span>
             </h1>
-            <p class="designer-main-subtitle">
+            <p class="designer-main-subtitle" data-i18n="designerMainSubtitle">
               कागेश्वरी मनोहरा नगरपालिका ई-विपिएस (E-BPS) प्रणालीमा दर्ता भएका आधिकारिक इन्जिनियर, आर्किटेक्ट तथा प्राविधिक परामर्शदाताहरूको विवरण।
             </p>
           </div>
           
           <div class="designer-badges-wrap">
-            <span class="status-badge" id="apiStatusBadge">
-              <i class="fa-solid fa-shield-halved"></i> आधिकारिक दर्ता विवरण (Official Registered Directory)
-            </span>
             <div class="count-badge-wrap">
-              जम्मा प्रविष्टि: <strong id="totalCountBadge">91</strong>
+              <span data-i18n="designerTotalCountLabel">जम्मा सूचीकृत:</span> <strong id="totalCountBadge">0</strong>
             </div>
           </div>
         </div>
@@ -199,27 +196,27 @@
         <!-- Controls Toolbar -->
         <div class="designer-toolbar">
           <div class="toolbar-left">
-            <button type="button" class="btn-export-excel" id="exportExcelBtn" title="Excel / CSV ढाँचामा डाउनलोड गर्नुहोस्">
+            <button type="button" class="btn-export-excel" id="exportExcelBtn" title="Excel / CSV">
               <i class="fa-solid fa-file-excel"></i>
-              <span>Export to Excel</span>
+              <span data-i18n="btnExportExcelText">Excel डाउनलोड</span>
             </button>
 
             <div class="entries-wrap">
-              <label for="entriesSelect">Show</label>
+              <label for="entriesSelect" data-i18n="lblShow">देखाउनुहोस्</label>
               <select id="entriesSelect" class="entries-select">
                 <option value="10">10</option>
                 <option value="25">25</option>
                 <option value="50">50</option>
-                <option value="all">सबै (All)</option>
+                <option value="all" data-i18n="optAllEntries">सबै</option>
               </select>
-              <span>entries</span>
+              <span data-i18n="lblEntries">प्रविष्टि</span>
             </div>
           </div>
 
           <div class="toolbar-right">
             <div class="search-input-box">
               <i class="fa-solid fa-magnifying-glass search-icon-inside"></i>
-              <input type="text" id="designerSearchInput" class="search-field" placeholder="Search: नाम, ठेगाना वा फोन...">
+              <input type="text" id="designerSearchInput" class="search-field" placeholder="खोज्नुहोस्: नाम, ठेगाना वा फोन..." data-i18n-placeholder="designerSearchPlaceholder">
               <button type="button" id="searchClearBtn" class="search-clear-btn" title="Clear search">
                 <i class="fa-solid fa-xmark"></i>
               </button>
@@ -230,7 +227,7 @@
         <!-- Loading Spinner -->
         <div id="designerLoader" class="designer-loader-wrap">
           <div class="designer-spinner"></div>
-          <div>प्राविधिक तथ्याङ्क लोड हुँदैछ... (Loading Designer Records)</div>
+          <div data-i18n="designerLoadingText">प्राविधिक तथ्याङ्क लोड हुँदैछ...</div>
         </div>
 
         <!-- Error Notification (Hidden by default) -->
@@ -241,12 +238,12 @@
           <table class="designer-modern-table" id="designer-report-table">
             <thead>
               <tr>
-                <th class="col-sn">#</th>
-                <th class="col-photo">Photo</th>
-                <th class="col-name">Name</th>
-                <th class="col-address">Address</th>
-                <th class="col-email">Email</th>
-                <th class="col-phone">Phone</th>
+                <th class="col-sn" data-i18n="thSN">क्र.सं.</th>
+                <th class="col-photo" data-i18n="thPhoto">फोटो</th>
+                <th class="col-name" data-i18n="thName">नाम</th>
+                <th class="col-address" data-i18n="thAddress">ठेगाना</th>
+                <th class="col-email" data-i18n="thEmail">इमेल</th>
+                <th class="col-phone" data-i18n="thPhone">सम्पर्क फोन</th>
               </tr>
             </thead>
             <tbody id="designerTableBody">
@@ -257,8 +254,8 @@
           <!-- Empty search result state -->
           <div id="tableEmptyState" class="table-empty-box">
             <i class="fa-regular fa-folder-open"></i>
-            <h4>कुनै प्राविधिक फेला परेन (No Data Found)</h4>
-            <p>खोजिएको शब्दसँग मिल्दो कुनै पनि विवरण भेटिएन। कृपया अर्को नाम वा ठेगाना टाइप गर्नुहोस्।</p>
+            <h4 data-i18n="emptyTitle">कुनै प्राविधिक फेला परेन</h4>
+            <p data-i18n="emptyDesc">खोजिएको शब्दसँग मिल्दो कुनै पनि विवरण भेटिएन।</p>
           </div>
         </div>
 

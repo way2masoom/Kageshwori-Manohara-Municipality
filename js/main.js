@@ -50,9 +50,9 @@ const TRANSLATIONS = {
     serv5Sub: 'डिजिटल हस्ताक्षरयुक्त',
 
     // About Section
-    aboutPill: 'डिजिटल भवन निर्माण प्रणाली | Digital Governance',
-    ebpsTitle: 'E-BPS',
-    ebpsSubtitle: 'Electronic Building Permit System',
+    aboutPill: 'डिजिटल भवन निर्माण तथा सुशासन प्रणाली',
+    ebpsTitle: 'ई-विपिएस (E-BPS)',
+    ebpsSubtitle: 'विद्युतीय भवन निर्माण इजाजत प्रणाली',
     aboutChip1: 'NBC 105:2020 मापदण्ड प्रमाणीकरण',
     aboutChip2: '१००% कागज-रहित पारदर्शी सेवा',
     aboutChip3: 'वडा-नगरपालिका एकीकृत प्रणाली',
@@ -64,17 +64,37 @@ const TRANSLATIONS = {
     btnReadLess: 'कम जानकारी देखाउनुहोस्',
 
     // Cards Grid
-    processPill: 'मार्गदर्शन तथा निर्देशिका | Guidelines & Portals',
-    sectionProcessTitle: 'BUILDING PERMIT PROCESS INFORMATION',
-    card1Title: 'Municipal Building Permit Process',
+    processPill: 'मार्गदर्शन तथा डिजिटल निर्देशिका',
+    sectionProcessTitle: 'भवन निर्माण इजाजत प्रक्रिया जानकारी',
+    card1Title: 'नगरपालिका भवन निर्माण इजाजत प्रक्रिया',
     card1Desc: 'कागेश्वरी मनोहरा नगरपालिका क्षेत्रभित्र जुनसुकै प्रकारका आवासीय वा व्यावसायिक भवन निर्माण गर्नका लागि आवश्यक अनलाइन नक्सा पास प्रक्रिया, चरणबद्ध नियम तथा स्थायी इजाजतका मापदण्डहरु।',
-    card1Link: 'Read More',
-    card2Title: 'Registered Designers',
+    card1Link: 'थप पढ्नुहोस्',
+    card2Title: 'सूचीकृत प्राविधिक तथा परामर्शदाता',
     card2Desc: 'नगरपालिकामा आधिकारिक रूपमा सूचीकृत भएका अनुभवी सिभिल इन्जिनियर, आर्किटेक्ट, स्ट्रक्चरल कन्सल्ट्यान्ट तथा परामर्शदाता संस्थाहरूको अद्यावधिक नामावली र सम्पर्क विवरण।',
-    card2Link: 'Read More',
-    card3Title: 'बिल्डिङ बाई-लज (Building By-Laws)',
+    card2Link: 'थप पढ्नुहोस्',
+    card3Title: 'भवन निर्माण मापदण्ड तथा संहिता',
     card3Desc: 'कागेश्वरी मनोहरा नगरपालिका भवन निर्माण मापदण्ड २०८० अनुसार सेटब्याक (Setback), सडकको चौडाइ, जमिन कभरेज (Ground Coverage), FAR तथा राष्ट्रिय भवन संहिता NBC 105:2020।',
-    card3Link: 'Read More',
+    card3Link: 'थप पढ्नुहोस्',
+
+    // Designer List Page
+    designerMainTitle: 'दर्ता भएका प्राविधिक (डिजाईनर) सूची',
+    designerMainSubtitle: 'कागेश्वरी मनोहरा नगरपालिका ई-विपिएस प्रणालीमा दर्ता भएका आधिकारिक इन्जिनियर, आर्किटेक्ट तथा प्राविधिक परामर्शदाताहरूको विवरण।',
+    designerTotalCountLabel: 'जम्मा सूचीकृत:',
+    btnExportExcelText: 'Excel डाउनलोड',
+    lblShow: 'देखाउनुहोस्',
+    lblEntries: 'प्रविष्टि',
+    optAllEntries: 'सबै',
+    designerSearchPlaceholder: 'खोज्नुहोस्: नाम, ठेगाना वा फोन...',
+    designerLoadingText: 'प्राविधिक तथ्याङ्क लोड हुँदैछ...',
+    thSN: 'क्र.सं.',
+    thPhoto: 'फोटो',
+    thName: 'नाम',
+    thAddress: 'ठेगाना',
+    thEmail: 'इमेल',
+    thPhone: 'सम्पर्क फोन',
+    emptyTitle: 'कुनै प्राविधिक फेला परेन',
+    emptyDesc: 'खोजिएको शब्दसँग मिल्दो कुनै पनि विवरण भेटिएन।',
+    masonModalTitle: 'भूकम्प प्रतिरोधी तालिमप्राप्त डकर्मी सूची',
 
     // Footer
     footerContactTitle: 'सम्पर्क ठेगाना',
@@ -157,9 +177,29 @@ const TRANSLATIONS = {
     card2Title: 'Registered Designers',
     card2Desc: 'Official municipal directory of authorized Civil Engineers, Architects, and structural consultancy firms recognized for building drawing submissions.',
     card2Link: 'Read More',
-    card3Title: 'Building By-Laws',
+    card3Title: 'Building By-Laws & NBC Codes',
     card3Desc: 'Comprehensive municipal zoning regulations, setbacks, road width requirements, ground coverage, FAR, and National Building Code NBC 105:2020 compliances.',
     card3Link: 'Read More',
+
+    // Designer List Page
+    designerMainTitle: 'DESIGNER APPLICATION SUMMARY',
+    designerMainSubtitle: 'Official municipal directory of registered engineers, architects, and technical consultancies in Kageshwori Manohara Municipality.',
+    designerTotalCountLabel: 'Total Registered:',
+    btnExportExcelText: 'Export to Excel',
+    lblShow: 'Show',
+    lblEntries: 'entries',
+    optAllEntries: 'All',
+    designerSearchPlaceholder: 'Search by name, address or phone...',
+    designerLoadingText: 'Loading designer records...',
+    thSN: '#',
+    thPhoto: 'Photo',
+    thName: 'Name',
+    thAddress: 'Address',
+    thEmail: 'Email',
+    thPhone: 'Phone',
+    emptyTitle: 'No Designers Found',
+    emptyDesc: 'No matching records found for your search query.',
+    masonModalTitle: 'Certified Masons Directory',
 
     // Footer
     footerContactTitle: 'Contact Us',
@@ -176,7 +216,7 @@ const TRANSLATIONS = {
   }
 };
 
-let currentLang = 'ne';
+let currentLang = localStorage.getItem('ebps_lang') || 'ne';
 
 document.addEventListener('DOMContentLoaded', () => {
   initLanguageSwitcher();
@@ -269,10 +309,13 @@ function initHeroBgCarousel() {
    ======================================================== */
 function initLanguageSwitcher() {
   const toggleBtn = document.getElementById('langToggleBtn');
+  applyLanguage(currentLang);
+
   if (!toggleBtn) return;
 
   toggleBtn.addEventListener('click', () => {
     currentLang = currentLang === 'ne' ? 'en' : 'ne';
+    localStorage.setItem('ebps_lang', currentLang);
     applyLanguage(currentLang);
   });
 }
@@ -295,6 +338,13 @@ function applyLanguage(lang) {
     }
   });
 
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const key = el.getAttribute('data-i18n-placeholder');
+    if (data[key]) {
+      el.placeholder = data[key];
+    }
+  });
+
   const langBtnText = document.getElementById('langBtnText');
   if (langBtnText) {
     langBtnText.textContent = data.langBtnText;
@@ -308,6 +358,9 @@ function applyLanguage(lang) {
       textSpan.textContent = isExpanded ? data.btnReadLess : data.btnReadMore;
     }
   }
+
+  // Notify other modules of language change
+  window.dispatchEvent(new CustomEvent('languageChanged', { detail: { lang } }));
 }
 
 /* ========================================================

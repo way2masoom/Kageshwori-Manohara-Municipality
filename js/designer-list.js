@@ -2,7 +2,7 @@
  * Kageshwori Manohara Municipality - E-BPS
  * Designer List Management Controller
  * Strictly fetches live data from https://192.168.1.73:8444/ebps/designer-list/fetch
- * NO static data or fallback files.
+ * Pure Nepali / English localization without mixing.
  */
 
 const API_URL = 'https://192.168.1.73:8444/ebps/designer-list/fetch';
@@ -16,6 +16,10 @@ let searchQuery = '';
 document.addEventListener('DOMContentLoaded', () => {
   setupEventListeners();
   loadDesignerData();
+
+  window.addEventListener('languageChanged', () => {
+    applyFilterAndRender();
+  });
 });
 
 /**
@@ -25,16 +29,10 @@ async function loadDesignerData() {
   const loader = document.getElementById('designerLoader');
   const errorMsg = document.getElementById('designerErrorMessage');
   const tableWrap = document.getElementById('designerTableWrap');
-  const statusBadge = document.getElementById('apiStatusBadge');
 
   if (loader) loader.style.display = 'flex';
   if (errorMsg) errorMsg.style.display = 'none';
   if (tableWrap) tableWrap.style.display = 'none';
-
-  if (statusBadge) {
-    statusBadge.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> सर्भरबाट लोड हुँदैछ (Connecting: 192.168.1.73:8444)...';
-    statusBadge.className = 'status-badge';
-  }
 
   try {
     const response = await fetch(API_URL, {
@@ -53,16 +51,13 @@ async function loadDesignerData() {
     if (loader) loader.style.display = 'none';
 
     if (data.Error || !data.data || !Array.isArray(data.data)) {
-      showError(data.Error || 'सर्भरबाट कुनै प्राविधिक डेटा प्राप्त भएन (No Data Found in response).');
+      const isEn = (typeof currentLang !== 'undefined' && currentLang === 'en');
+      const errText = data.Error || (isEn ? 'No designer records found.' : 'कुनै प्राविधिक विवरण प्राप्त भएन।');
+      showError(errText);
       return;
     }
 
     allDesigners = data.data;
-
-    if (statusBadge) {
-      statusBadge.innerHTML = '<i class="fa-solid fa-circle-check"></i> प्रत्यक्ष सर्भरबाट लोड (Live API: 192.168.1.73:8444)';
-      statusBadge.className = 'status-badge status-live';
-    }
 
     if (tableWrap) tableWrap.style.display = 'block';
     applyFilterAndRender();
@@ -70,40 +65,41 @@ async function loadDesignerData() {
   } catch (err) {
     if (loader) loader.style.display = 'none';
 
-    if (statusBadge) {
-      statusBadge.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> सर्भर सम्पर्क हुन सकेन (Connection Failed)';
-      statusBadge.className = 'status-badge';
-      statusBadge.style.background = 'rgba(239, 68, 68, 0.2)';
-      statusBadge.style.color = '#fca5a5';
-      statusBadge.style.border = '1px solid rgba(239, 68, 68, 0.4)';
-    }
-
+    const isEn = (typeof currentLang !== 'undefined' && currentLang === 'en');
     const isSslOrNetworkError = (err.message && err.message.includes('Failed to fetch')) || err.name === 'TypeError';
 
     let errorDetail = `
       <div style="font-weight: 700; font-size: 1rem; margin-bottom: 8px;">
-        <i class="fa-solid fa-circle-exclamation"></i> API बाट तथ्याङ्क तान्न सकिएन (Error fetching data)
+        <i class="fa-solid fa-circle-exclamation"></i> ${isEn ? 'Error fetching data from server' : 'सर्भरबाट तथ्याङ्क तान्न सकिएन'}
       </div>
       <div style="font-size: 0.88rem; margin-bottom: 12px; color: #4b5563;">
-        <strong>लक्ष्य URL:</strong> <code>${API_URL}</code><br>
-        <strong>विवरण:</strong> ${err.message || err}
+        <strong>URL:</strong> <code>${API_URL}</code><br>
+        <strong>${isEn ? 'Detail' : 'विवरण'}:</strong> ${err.message || err}
       </div>
     `;
 
     if (isSslOrNetworkError) {
-      errorDetail += `
+      errorDetail += isEn ? `
+        <div style="font-size: 0.85rem; background: #fff; padding: 12px; border-radius: 6px; border: 1px dashed #fca5a5; text-align: left; margin-bottom: 12px; color: #374151;">
+          <strong><i class="fa-solid fa-lightbulb" style="color: #f59e0b;"></i> Possible Cause & Solution:</strong><br>
+          1. The server <code>https://192.168.1.73:8444</code> may be using a self-signed SSL certificate.<br>
+          2. Please open this link in a new tab: <a href="${API_URL}" target="_blank" style="color: #2563eb; font-weight: 600; text-decoration: underline;">${API_URL}</a> and click <strong>"Advanced &rarr; Proceed (unsafe)"</strong>.<br>
+          3. Then click the button below to retry.
+        </div>
+      ` : `
         <div style="font-size: 0.85rem; background: #fff; padding: 12px; border-radius: 6px; border: 1px dashed #fca5a5; text-align: left; margin-bottom: 12px; color: #374151;">
           <strong><i class="fa-solid fa-lightbulb" style="color: #f59e0b;"></i> सम्भावित कारण र समाधान:</strong><br>
-          १. सर्भर <code>https://192.168.1.73:8444</code> मा सेल्फ-साइन्ड (Self-Signed) SSL सर्टिफिकेट प्रयोग भएको हुनसक्छ।<br>
-          २. कृपया नयाँ ट्याबमा सिधै यो लिङ्क खोल्नुहोस्: <a href="${API_URL}" target="_blank" style="color: #2563eb; font-weight: 600; text-decoration: underline;">${API_URL}</a> र <strong>"Advanced &rarr; Proceed (unsafe)"</strong> मा क्लिक गरी सर्टिफिकेट स्वीकार गर्नुहोस्।<br>
+          १. सर्भर <code>https://192.168.1.73:8444</code> मा सेल्फ-साइन्ड SSL सर्टिफिकेट प्रयोग भएको हुनसक्छ।<br>
+          २. कृपया नयाँ ट्याबमा सिधै यो लिङ्क खोल्नुहोस्: <a href="${API_URL}" target="_blank" style="color: #2563eb; font-weight: 600; text-decoration: underline;">${API_URL}</a> र <strong>"Advanced &rarr; Proceed (unsafe)"</strong> मा क्लिक गरी अनुमति दिनुहोस्।<br>
           ३. त्यसपछि तलको बटन थिचेर पुनः प्रयास गर्नुहोस्।
         </div>
       `;
     }
 
+    const retryText = isEn ? 'Retry Fetch' : 'पुनः प्रयास गर्नुहोस्';
     errorDetail += `
       <button type="button" onclick="loadDesignerData()" style="background: #dc2626; color: #fff; border: none; padding: 8px 18px; border-radius: 6px; font-weight: 600; cursor: pointer;">
-        <i class="fa-solid fa-rotate-right"></i> पुनः प्रयास गर्नुहोस् (Retry Fetch)
+        <i class="fa-solid fa-rotate-right"></i> ${retryText}
       </button>
     `;
 
@@ -210,6 +206,10 @@ function renderTable() {
 
   if (emptyState) emptyState.style.display = 'none';
 
+  const isEn = (typeof currentLang !== 'undefined' && currentLang === 'en');
+  const badgeText = isEn ? 'Certified Designer' : 'प्रमाणित प्राविधिक';
+  const fallbackConsultant = isEn ? 'Consultant' : 'परामर्शदाता';
+
   const startIndex = (currentPage - 1) * pageSize;
   const endIndex = Math.min(startIndex + pageSize, filteredDesigners.length);
   const pageItems = filteredDesigners.slice(startIndex, endIndex);
@@ -218,7 +218,7 @@ function renderTable() {
     const globalIndex = startIndex + index + 1;
     const serialNumber = item.number || globalIndex;
     const displayName = (!item.name || item.name.trim() === '-' || item.name.trim() === '')
-      ? 'परामर्शदाता (Registered Designer)'
+      ? fallbackConsultant
       : item.name;
     const displayAddress = (!item.address || item.address.trim() === '-' || item.address.trim() === '')
       ? '-'
@@ -255,7 +255,7 @@ function renderTable() {
         <td class="col-name">
           <div class="designer-name-box">
             <span class="designer-name">${displayName}</span>
-            <span class="designer-badge"><i class="fa-solid fa-certificate"></i> प्रमाणित प्राविधिक</span>
+            <span class="designer-badge"><i class="fa-solid fa-certificate"></i> ${badgeText}</span>
           </div>
         </td>
         <td class="col-address">
@@ -299,13 +299,17 @@ function renderPagination() {
     return;
   }
 
+  const isEn = (typeof currentLang !== 'undefined' && currentLang === 'en');
+  const prevLabel = isEn ? 'Previous' : 'अघिल्लो';
+  const nextLabel = isEn ? 'Next' : 'पछिल्लो';
+
   let html = '';
 
   html += `
     <button class="page-btn page-nav-btn ${currentPage === 1 ? 'disabled' : ''}" 
             onclick="changePage(${currentPage - 1})" 
             ${currentPage === 1 ? 'disabled' : ''}>
-      <i class="fa-solid fa-chevron-left"></i> Previous
+      <i class="fa-solid fa-chevron-left"></i> ${prevLabel}
     </button>
   `;
 
@@ -340,7 +344,7 @@ function renderPagination() {
     <button class="page-btn page-nav-btn ${currentPage === totalPages ? 'disabled' : ''}" 
             onclick="changePage(${currentPage + 1})" 
             ${currentPage === totalPages ? 'disabled' : ''}>
-      Next <i class="fa-solid fa-chevron-right"></i>
+      ${nextLabel} <i class="fa-solid fa-chevron-right"></i>
     </button>
   `;
 
@@ -369,8 +373,10 @@ function updateEntriesInfo() {
 
   if (!infoEl) return;
 
+  const isEn = (typeof currentLang !== 'undefined' && currentLang === 'en');
+
   if (filteredDesigners.length === 0) {
-    infoEl.textContent = 'कुनै नतिजा फेला परेन (Showing 0 entries)';
+    infoEl.textContent = isEn ? 'Showing 0 entries' : 'कुनै नतिजा फेला परेन';
     return;
   }
 
@@ -378,7 +384,9 @@ function updateEntriesInfo() {
   const end = Math.min(currentPage * pageSize, filteredDesigners.length);
   const total = filteredDesigners.length;
 
-  infoEl.textContent = `प्रविष्टि ${start} देखि ${end} सम्म देखाउँदै (जम्मा ${total} मध्ये) | Showing ${start} to ${end} of ${total} entries`;
+  infoEl.textContent = isEn
+    ? `Showing ${start} to ${end} of ${total} entries`
+    : `प्रविष्टि ${start} देखि ${end} सम्म देखाउँदै (जम्मा ${total} मध्ये)`;
 }
 
 /**
@@ -386,12 +394,16 @@ function updateEntriesInfo() {
  */
 function exportToExcelCSV() {
   const dataToExport = filteredDesigners.length > 0 ? filteredDesigners : allDesigners;
+  const isEn = (typeof currentLang !== 'undefined' && currentLang === 'en');
+
   if (dataToExport.length === 0) {
-    alert('डाउनलोड गर्न कुनै तथ्याङ्क छैन। (No data to export)');
+    alert(isEn ? 'No data available to export.' : 'डाउनलोड गर्न कुनै तथ्याङ्क छैन।');
     return;
   }
 
-  const headers = ['क्र.सं. (S.N.)', 'नाम (Designer Name)', 'ठेगाना (Address)', 'इमेल (Email)', 'सम्पर्क नं (Phone)'];
+  const headers = isEn
+    ? ['#', 'Name', 'Address', 'Email', 'Phone']
+    : ['क्र.सं.', 'नाम', 'ठेगाना', 'इमेल', 'सम्पर्क फोन'];
   
   const csvRows = [
     headers.join(',')
@@ -413,7 +425,7 @@ function exportToExcelCSV() {
 
   const link = document.createElement('a');
   link.setAttribute('href', url);
-  link.setAttribute('download', `Kageshwori_Manohara_EBPS_Registered_Designers_${new Date().toISOString().slice(0, 10)}.csv`);
+  link.setAttribute('download', `Kageshwori_Manohara_EBPS_Designers_${new Date().toISOString().slice(0, 10)}.csv`);
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
