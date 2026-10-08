@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Designer Application Summary | कागेश्वरी मनोहरा नगरपालिका - E-BPS</title>
+  
+  <!-- SEO & OpenGraph Meta -->
+  <meta name="description" content="कागेश्वरी मनोहरा नगरपालिका ई-विपिएस (E-BPS) प्रणालीमा दर्ता भएका इन्जिनियर, आर्किटेक्ट तथा प्राविधिक परामर्शदाताहरूको आधिकारिक सूची (Designer Application Summary)">
+  <meta name="keywords" content="EBPS, Kageshwori Manohara, Designer List, Registered Engineers, Building Permit, Danchhi">
+  <meta name="author" content="कागेश्वरी मनोहरा नगरपालिका">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/nepal_sarkar_logo.png">
+
+  <!-- Google Fonts: Mukta & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome 6 Pro / Free CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Master Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ========================================================
+       1. TOP EMERGENCY & QUICK CONTACT BAR
+       ======================================================== -->
+  <header class="top-bar">
+    <div class="top-bar-container">
+      <div class="top-bar-left">
+        <a href="tel:014451242" class="top-item">
+          <i class="fa-solid fa-phone"></i>
+          <span data-i18n="topPhone">+९७७ ०१-४४५१२४२ / ४४५०९८६</span>
+        </a>
+        <span class="top-divider">|</span>
+        <span class="top-item">
+          <i class="fa-solid fa-headset"></i>
+          <span data-i18n="topTollFree">टोल-फ्री: १६६००१२७७७७</span>
+        </span>
+      </div>
+
+      <div class="top-bar-right">
+        <a href="index.html#home" class="top-item">
+          <i class="fa-solid fa-house"></i>
+          <span data-i18n="navHome">गृहपृष्ठ</span>
+        </a>
+        <span class="top-divider">|</span>
+        <a href="index.html#about-ebps" class="top-item">
+          <i class="fa-solid fa-circle-info"></i>
+          <span data-i18n="navAbout">हाम्रो बारेमा</span>
+        </a>
+        <span class="top-divider">|</span>
+        <div class="auth-btn-group">
+          <a href="https://ebps.damakmun.gov.np/webui/" class="btn-top-login">
+            <i class="fa-solid fa-lock"></i>
+            <span data-i18n="navLogin">लगइन</span>
+          </a>
+          <a href="#" class="btn-top-signup" onclick="alert('E-BPS नयाँ दर्ता...')">
+            <i class="fa-solid fa-user-plus"></i>
+            <span data-i18n="navSignUp">दर्ता</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================
+       2. MAIN NAVBAR & DUAL LOGO BRANDING
+       ======================================================== -->
+  <nav class="main-header" id="navbar">
+    <div class="header-container">
+      <!-- Dual Logos Brand Identity -->
+      <a href="index.html#home" class="brand-identity">
+        <div class="logos-group">
+          <!-- Nepal Government Emblem -->
+          <img src="images/nepal_sarkar_logo.png" alt="नेपाल सरकार" class="logo-nepal" title="नेपाल सरकार निशान छाप">
+          <!-- Kageshwori Manohara Municipality Emblem -->
+          <div class="logo-kageshwori-wrap" title="कागेश्वरी मनोहरा नगरपालिका">
+            <img src="images/kageshwori_logo.png" alt="कागेश्वरी मनोहरा नगरपालिका" class="logo-kageshwori">
+          </div>
+        </div>
+        <div class="brand-text">
+          <span class="brand-sub1" data-i18n="munOffice">नगर कार्यपालिकाको कार्यालय</span>
+          <span class="brand-title" data-i18n="munTitle">कागेश्वरी मनोहरा नगरपालिका</span>
+          <span class="brand-sub2" data-i18n="munLocation">डाँछी, काठमाडौं | बागमती प्रदेश</span>
+        </div>
+      </a>
+
+      <!-- Mobile Navigation Hamburger -->
+      <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="नेभिगेसन खोल्नुहोस्">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+      <!-- Desktop & Mobile Navigation Links -->
+      <div class="navbar-nav" id="navbarLinks">
+        <a href="index.html#home" class="nav-link">
+          <span data-i18n="navHome">गृहपृष्ठ</span>
+        </a>
+        <a href="index.html#about-ebps" class="nav-link">
+          <span data-i18n="navAbout">हाम्रो बारेमा</span>
+        </a>
+
+        <!-- Ward Information Dropdown -->
+        <div class="nav-dropdown">
+          <a href="#" class="nav-link dropdown-toggle" id="wardDropdownBtn">
+            <span data-i18n="navWard">वडा विवरण</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="index.html#" class="dropdown-item trigger-ward-item" data-ward="1">वडा नं. १ (गागलफेदी)</a>
+            <a href="index.html#" class="dropdown-item trigger-ward-item" data-ward="2">वडा नं. २ (आलापोट)</a>
+            <a href="index.html#" class="dropdown-item trigger-ward-item" data-ward="3">वडा नं. ३ (भद्रबास)</a>
+            <a href="index.html#" class="dropdown-item trigger-ward-item" data-ward="4">वडा नं. ४ (डाँछी उत्तर)</a>
+            <a href="index.html#" class="dropdown-item trigger-ward-item" data-ward="5">वडा नं. ५ (थली)</a>
+            <a href="index.html#" class="dropdown-item trigger-ward-item" data-ward="6">वडा नं. ६ (मूलपानी)</a>
+            <a href="index.html#" class="dropdown-item trigger-ward-item" data-ward="7">वडा नं. ७ (काँडाघारी)</a>
+            <a href="index.html#" class="dropdown-item trigger-ward-item" data-ward="8">वडा नं. ८ (गोठाटार)</a>
+            <a href="index.html#" class="dropdown-item trigger-ward-item" data-ward="9">वडा नं. ९ (गोठाटार दक्षिण)</a>
+          </div>
+        </div>
+
+        <!-- References Dropdown -->
+        <div class="nav-dropdown">
+          <a href="#" class="nav-link dropdown-toggle" id="refDropdownBtn">
+            <span data-i18n="navReferences">सन्दर्भ सामग्री</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="index.html#" class="dropdown-item trigger-bylaws-modal"><i class="fa-solid fa-book"></i> <span data-i18n="bylawsDoc">भवन निर्माण मापदण्ड २०८०</span></a>
+            <a href="index.html#" class="dropdown-item trigger-bylaws-modal"><i class="fa-solid fa-building-shield"></i> <span data-i18n="nbcCode">राष्ट्रिय भवन संहिता (NBC 105)</span></a>
+            <a href="index.html#" class="dropdown-item trigger-process-modal"><i class="fa-solid fa-file-invoice"></i> <span data-i18n="docChecklist">आवश्यक कागजात चेकलिस्ट</span></a>
+            <a href="index.html#" class="dropdown-item trigger-bylaws-modal"><i class="fa-solid fa-hand-holding-dollar"></i> <span data-i18n="feeRates">राजश्व तथा दस्तुर दररेट</span></a>
+            <a href="index.html#" class="dropdown-item trigger-bylaws-modal"><i class="fa-solid fa-signature"></i> <span data-i18n="digiSign">डिजिटल हस्ताक्षर निर्देशिका</span></a>
+          </div>
+        </div>
+
+        <!-- Masons List -->
+        <a href="index.html#masons" class="nav-link">
+          <span data-i18n="navMasons">डकर्मी सूची</span>
+        </a>
+
+        <!-- Designer List (Active) -->
+        <a href="designer-list.html" class="nav-link active" style="color: var(--primary-light); font-weight: 700;">
+          <span data-i18n="navDesigners">प्राविधिक सूची</span>
+        </a>
+
+        <!-- Language Switcher Button -->
+        <button type="button" class="nav-lang-btn" id="langToggleBtn" title="भाषा परिवर्तन / Change Language">
+          <i class="fa-solid fa-globe"></i>
+          <span id="langBtnText">English</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========================================================
+       3. DESIGNER APPLICATION SUMMARY CONTENT
+       ======================================================== -->
+  <main class="designer-page-wrapper">
+    <div class="designer-container">
+      
+      <!-- Top Banner with Breadcrumb & Stats -->
+      <section class="designer-page-header">
+        <div class="designer-breadcrumb">
+          <a href="index.html#home"><i class="fa-solid fa-house"></i> गृहपृष्ठ</a>
+          <span>/</span>
+          <span>प्राविधिक सूची (Designer Application Summary)</span>
+        </div>
+
+        <div class="designer-page-title-row">
+          <div>
+            <h1 class="designer-main-title">
+              <i class="fa-solid fa-compass-drafting"></i>
+              DESIGNER APPLICATION SUMMARY
+            </h1>
+            <p class="designer-main-subtitle">
+              कागेश्वरी मनोहरा नगरपालिका ई-विपिएस (E-BPS) प्रणालीमा दर्ता भएका आधिकारिक इन्जिनियर, आर्किटेक्ट तथा प्राविधिक परामर्शदाताहरूको विवरण।
+            </p>
+          </div>
+          
+          <div class="designer-badges-wrap">
+            <span class="status-badge" id="apiStatusBadge">
+              <i class="fa-solid fa-shield-halved"></i> आधिकारिक दर्ता विवरण (Official Registered Directory)
+            </span>
+            <div class="count-badge-wrap">
+              जम्मा प्रविष्टि: <strong id="totalCountBadge">91</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Main Data Card -->
+      <div class="designer-report-card">
+        
+        <!-- Controls Toolbar -->
+        <div class="designer-toolbar">
+          <div class="toolbar-left">
+            <button type="button" class="btn-export-excel" id="exportExcelBtn" title="Excel / CSV ढाँचामा डाउनलोड गर्नुहोस्">
+              <i class="fa-solid fa-file-excel"></i>
+              <span>Export to Excel</span>
+            </button>
+
+            <div class="entries-wrap">
+              <label for="entriesSelect">Show</label>
+              <select id="entriesSelect" class="entries-select">
+                <option value="10">10</option>
+                <option value="25">25</option>
+                <option value="50">50</option>
+                <option value="all">सबै (All)</option>
+              </select>
+              <span>entries</span>
+            </div>
+          </div>
+
+          <div class="toolbar-right">
+            <div class="search-input-box">
+              <i class="fa-solid fa-magnifying-glass search-icon-inside"></i>
+              <input type="text" id="designerSearchInput" class="search-field" placeholder="Search: नाम, ठेगाना वा फोन...">
+              <button type="button" id="searchClearBtn" class="search-clear-btn" title="Clear search">
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Loading Spinner -->
+        <div id="designerLoader" class="designer-loader-wrap">
+          <div class="designer-spinner"></div>
+          <div>प्राविधिक तथ्याङ्क लोड हुँदैछ... (Loading Designer Records)</div>
+        </div>
+
+        <!-- Error Notification (Hidden by default) -->
+        <div id="designerErrorMessage" style="display: none; padding: 16px; background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; border-radius: 8px; margin-bottom: 16px; text-align: center;"></div>
+
+        <!-- Data Table Container -->
+        <div class="designer-table-container" id="designerTableWrap" style="display: none;">
+          <table class="designer-modern-table" id="designer-report-table">
+            <thead>
+              <tr>
+                <th class="col-sn">#</th>
+                <th class="col-photo">Photo</th>
+                <th class="col-name">Name</th>
+                <th class="col-address">Address</th>
+                <th class="col-email">Email</th>
+                <th class="col-phone">Phone</th>
+              </tr>
+            </thead>
+            <tbody id="designerTableBody">
+              <!-- Dynamically populated rows -->
+            </tbody>
+          </table>
+
+          <!-- Empty search result state -->
+          <div id="tableEmptyState" class="table-empty-box">
+            <i class="fa-regular fa-folder-open"></i>
+            <h4>कुनै प्राविधिक फेला परेन (No Data Found)</h4>
+            <p>खोजिएको शब्दसँग मिल्दो कुनै पनि विवरण भेटिएन। कृपया अर्को नाम वा ठेगाना टाइप गर्नुहोस्।</p>
+          </div>
+        </div>
+
+        <!-- Table Footer: Counter & Pagination -->
+        <div class="table-footer-row">
+          <div class="table-entries-info" id="tableEntriesInfo">
+            प्रविष्टिहरू लोड हुँदैछ...
+          </div>
+          <div class="pagination-controls" id="paginationControls">
+            <!-- Dynamic page buttons -->
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ========================================================
+       4. FOOTER SECTION
+       ======================================================== -->
+  <footer class="main-footer">
+    <div class="footer-container">
+      <!-- Col 1: Contact Information -->
+      <div class="footer-col">
+        <h4 class="footer-col-title" data-i18n="footerContactTitle">सम्पर्क ठेगाना</h4>
+        <div class="footer-contact-list">
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-building-columns"></i>
+            <div>
+              <strong>कागेश्वरी मनोहरा नगरपालिका</strong><br>
+              <span data-i18n="footerAddress">नगर कार्यपालिकाको कार्यालय, डाँछी, काठमाडौं</span>
+            </div>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-phone"></i>
+            <div class="footer-contact-details">
+              <div class="contact-line">
+                <span class="contact-label" data-i18n="footerPhoneLabel">फोन:</span>
+                <a href="tel:014451242" class="footer-contact-link">+९७७ ०१-४४५१२४२</a>, 
+                <a href="tel:014450986" class="footer-contact-link">०१-४४५०९८६</a>
+              </div>
+              <div class="footer-tollfree">
+                <span class="tollfree-badge" data-i18n="footerTollFreeLabel">टोल-फ्री:</span>
+                <a href="tel:16600127777" class="footer-contact-link tollfree-link">१६६००१२७७७७</a>
+              </div>
+            </div>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-envelope"></i>
+            <div class="footer-contact-details">
+              <span class="contact-label" data-i18n="footerEmailLabel">इमेल:</span>
+              <div class="footer-email-list">
+                <a href="mailto:info@kageshworimanoharamun.gov.np" class="footer-contact-link email-link">
+                  <i class="fa-regular fa-envelope"></i> info@kageshworimanoharamun.gov.np
+                </a>
+                <a href="mailto:er.kageshworimun@gmail.com" class="footer-contact-link email-link">
+                  <i class="fa-regular fa-envelope"></i> er.kageshworimun@gmail.com
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Col 2: Quick Links -->
+      <div class="footer-col">
+        <h4 class="footer-col-title" data-i18n="footerLinksTitle">द्रुत लिङ्कहरु</h4>
+        <ul class="footer-links-list">
+          <li><a href="index.html#"><i class="fa-solid fa-angle-right"></i> <span data-i18n="bylawsDoc">भवन निर्माण मापदण्ड २०८०</span></a></li>
+          <li><a href="index.html#ward"><i class="fa-solid fa-angle-right"></i> <span data-i18n="navWard">वडा विवरण</span></a></li>
+          <li><a href="designer-list.html"><i class="fa-solid fa-angle-right"></i> <span data-i18n="navDesigners">प्राविधिक सूची</span></a></li>
+          <li><a href="https://kageshworimanoharamun.gov.np" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> नगरपालिका मुख्य पोर्टल</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Support Hours & Emergency -->
+      <div class="footer-col">
+        <h4 class="footer-col-title" data-i18n="footerHelpdeskTitle">ई-विपिएस सहायता कक्ष</h4>
+        <div class="footer-hours-box">
+          <p style="margin-bottom: 8px;"><strong data-i18n="footerHoursTitle">कार्यालय समय:</strong></p>
+          <p style="margin-bottom: 4px;" data-i18n="footerHours1">आइतबार – बिहीबार: १०:०० AM – ५:०० PM</p>
+          <p style="margin-bottom: 12px;" data-i18n="footerHours2">शुक्रबार: १०:०० AM – ३:०० PM</p>
+          <p style="font-size: 0.82rem; color: #a7f3d0;">
+            * ई-विपिएस अनलाइन आवेदन २४ सै घण्टा खुला रहनेछ।
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Copyright Bottom Strip -->
+    <div class="footer-bottom">
+      <div data-i18n="footerCopyright">
+        © सर्वाधिकार सुरक्षित २०८१ / 2026 - कागेश्वरी मनोहरा नगरपालिका
+      </div>
+      <div class="footer-dev-credit">
+        ई-विपिएस प्रणाली | E-BPS System
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/designer-data.js"></script>
+  <script src="js/designer-list.js"></script>
+</body>
+</html>
