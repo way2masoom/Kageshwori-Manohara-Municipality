@@ -872,39 +872,73 @@ body.lang-en .hero-stable-title {
 }
 
 /* ========================================================
-   6. BUILDING PERMIT PROCESS INFORMATION (CARD GRID)
+   5. BUILDING PERMIT PROCESS INFORMATION (CENTERED & COMPACT)
    ======================================================== */
 .process-info-section {
-  padding: 65px 24px 85px;
+  padding: 60px 24px 85px;
   background: #f8fafc;
 }
 
-.section-headline {
-  font-size: 1.55rem;
+.process-container {
+  max-width: 1040px;
+  margin: 0 auto;
+}
+
+.process-header-center {
+  text-align: center;
+  margin-bottom: 38px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.process-pill-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #ffffff;
+  color: var(--primary-emerald);
+  padding: 5px 16px;
+  border-radius: var(--radius-full);
+  font-size: 0.84rem;
   font-weight: 700;
+  margin-bottom: 12px;
+  border: 1px solid rgba(13, 110, 68, 0.18);
+  box-shadow: 0 2px 8px rgba(10, 82, 51, 0.05);
+}
+
+.process-pill-badge i {
+  color: var(--accent-gold);
+}
+
+.section-headline-center {
+  font-size: 1.6rem;
+  font-weight: 800;
   color: var(--primary-dark);
   text-transform: uppercase;
-  margin-bottom: 35px;
   letter-spacing: 0.5px;
-  border-left: 5px solid var(--primary-emerald);
-  padding-left: 14px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.process-underline {
+  width: 60px;
+  height: 3.5px;
+  background: linear-gradient(90deg, var(--primary-emerald), var(--accent-gold));
+  border-radius: 4px;
 }
 
 .cards-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
+  gap: 24px;
 }
 
 .info-card {
   background: #ffffff;
-  border-radius: var(--radius-md);
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: var(--shadow-sm);
-  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.06);
+  border: 1px solid rgba(226, 232, 240, 0.8);
   display: flex;
   flex-direction: column;
   transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
@@ -912,14 +946,14 @@ body.lang-en .hero-stable-title {
 }
 
 .info-card:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--shadow-hover);
-  border-color: var(--border-green);
+  transform: translateY(-6px);
+  box-shadow: 0 16px 32px rgba(10, 82, 51, 0.12);
+  border-color: rgba(13, 110, 68, 0.3);
 }
 
 .card-img-wrap {
   width: 100%;
-  height: 220px;
+  height: 185px;
   overflow: hidden;
   background: #e2e8f0;
   position: relative;
@@ -933,21 +967,21 @@ body.lang-en .hero-stable-title {
 }
 
 .info-card:hover .card-img {
-  transform: scale(1.08);
+  transform: scale(1.06);
 }
 
 .card-badge {
   position: absolute;
-  top: 14px;
-  left: 14px;
-  background: rgba(10, 82, 51, 0.88);
+  top: 12px;
+  left: 12px;
+  background: rgba(10, 82, 51, 0.9);
   backdrop-filter: blur(6px);
   color: #ffffff;
-  font-size: 0.74rem;
+  font-size: 0.72rem;
   font-weight: 700;
   padding: 3px 10px;
-  border-radius: 4px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  border-radius: var(--radius-full);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
 }
 
 .card-body {

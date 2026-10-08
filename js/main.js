@@ -63,6 +63,7 @@ const TRANSLATIONS = {
     btnReadLess: 'कम जानकारी देखाउनुहोस्',
 
     // Cards Grid
+    processPill: 'मार्गदर्शन तथा निर्देशिका | Guidelines & Portals',
     sectionProcessTitle: 'BUILDING PERMIT PROCESS INFORMATION',
     card1Title: 'Municipal Building Permit Process',
     card1Desc: 'कागेश्वरी मनोहरा नगरपालिका क्षेत्रभित्र जुनसुकै प्रकारका आवासीय वा व्यावसायिक भवन निर्माण गर्नका लागि आवश्यक अनलाइन नक्सा पास प्रक्रिया, चरणबद्ध नियम तथा स्थायी इजाजतका मापदण्डहरु।',
@@ -146,6 +147,7 @@ const TRANSLATIONS = {
     btnReadLess: 'Show Less Details',
 
     // Cards Grid
+    processPill: 'Guidelines & Reference Portals',
     sectionProcessTitle: 'BUILDING PERMIT PROCESS INFORMATION',
     card1Title: 'Municipal Building Permit Process',
     card1Desc: 'Step-by-step procedural guideline and documentation required for acquiring residential and commercial building construction permits in Kageshwori Manohara Municipality.',
