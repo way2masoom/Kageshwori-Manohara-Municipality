@@ -1377,28 +1377,37 @@ body.lang-en .hero-stable-title {
 .footer-email-list {
   display: flex;
   flex-direction: column;
-  gap: 7px;
-  margin-top: 4px;
+  gap: 8px;
+  margin-top: 6px;
 }
 
-.footer-email-list .email-link {
+.footer-email-list .email-link,
+.footer-contact-link.email-link {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   color: #cbd5e1;
-  font-size: 0.92rem;
+  background: transparent !important;
+  border: none !important;
+  padding: 2px 0 !important;
+  font-size: 0.90rem;
+  font-weight: 500;
+  text-decoration: none;
   word-break: break-all;
-  transition: var(--transition);
+  transition: all 0.2s ease;
 }
 
-.footer-email-list .email-link i {
+.footer-email-list .email-link i,
+.footer-contact-link.email-link i {
   color: var(--accent-gold);
   font-size: 0.85rem;
   margin-top: 0;
+  flex-shrink: 0;
 }
 
-.footer-email-list .email-link:hover {
-  color: #ffffff;
+.footer-email-list .email-link:hover,
+.footer-contact-link.email-link:hover {
+  color: #ffffff !important;
   transform: translateX(4px);
   text-decoration: underline;
 }
@@ -1991,25 +2000,25 @@ body.lang-en .hero-stable-title {
   transition: all 0.2s ease;
 }
 
-.email-link {
+.designer-contact-link.email-link {
   color: #0369a1;
   background: #f0f9ff;
   border: 1px solid #bae6fd;
 }
 
-.email-link:hover {
+.designer-contact-link.email-link:hover {
   background: #e0f2fe;
   color: #0284c7;
   text-decoration: underline;
 }
 
-.phone-link {
+.designer-contact-link.phone-link {
   color: #15803d;
   background: #f0fdf4;
   border: 1px solid #bbf7d0;
 }
 
-.phone-link:hover {
+.designer-contact-link.phone-link:hover {
   background: #dcfce7;
   color: #166534;
   text-decoration: underline;
