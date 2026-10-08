@@ -348,6 +348,8 @@ function applyLanguage(lang) {
   const data = TRANSLATIONS[lang];
   if (!data) return;
 
+  document.body.classList.add('lang-switching');
+
   document.documentElement.lang = lang;
   if (lang === 'en') {
     document.body.classList.add('lang-en');
@@ -387,6 +389,12 @@ function applyLanguage(lang) {
 
   // Notify other modules of language change
   window.dispatchEvent(new CustomEvent('languageChanged', { detail: { lang } }));
+
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      document.body.classList.remove('lang-switching');
+    });
+  });
 }
 
 /* ========================================================

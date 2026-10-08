@@ -76,6 +76,12 @@ body.lang-en {
   font-family: var(--font-en);
 }
 
+/* Prevent layout reflow stutter / volume jumps during language toggle */
+body.lang-switching,
+body.lang-switching * {
+  transition: none !important;
+}
+
 a {
   text-decoration: none;
   color: inherit;
@@ -288,11 +294,12 @@ button {
 .brand-text {
   display: flex;
   flex-direction: column;
+  min-width: 250px;
 }
 
 .gov-title {
   font-family: var(--font-ne);
-  font-size: 1.45rem;
+  font-size: 1.42rem;
   font-weight: 700;
   color: #ffffff;
   line-height: 1.22;
@@ -302,14 +309,14 @@ button {
 
 body.lang-en .gov-title {
   font-family: var(--font-en);
-  font-size: 1.28rem;
+  font-size: 1.26rem;
   font-weight: 700;
   letter-spacing: -0.3px;
 }
 
 .gov-office {
   font-family: var(--font-ne);
-  font-size: 1.02rem;
+  font-size: 0.98rem;
   font-weight: 600;
   color: #f1f5f9;
   line-height: 1.25;
@@ -317,21 +324,21 @@ body.lang-en .gov-title {
 
 body.lang-en .gov-office {
   font-family: var(--font-en);
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   font-weight: 500;
   color: #f1f5f9;
 }
 
 .gov-location {
   font-family: var(--font-ne);
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   color: #a7f3d0;
   font-weight: 500;
 }
 
 body.lang-en .gov-location {
   font-family: var(--font-en);
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 500;
   color: #a7f3d0;
 }
@@ -340,34 +347,35 @@ body.lang-en .gov-location {
 .navbar-nav {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
 }
 
 .nav-link {
   color: #ffffff;
-  padding: 8px 14px;
+  padding: 7px 12px;
   border-radius: var(--radius-sm);
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
   white-space: nowrap;
   position: relative;
   transition: var(--transition);
+  line-height: 1.25;
 }
 
 /* Nepali Typography for Nav */
 body:not(.lang-en) .nav-link,
 body.lang-ne .nav-link {
   font-family: var(--font-ne);
-  font-size: 1.05rem;
+  font-size: 0.98rem;
   font-weight: 600;
-  letter-spacing: 0.2px;
+  letter-spacing: 0.1px;
 }
 
 body:not(.lang-en) .dropdown-menu .dropdown-item,
 body.lang-ne .dropdown-menu .dropdown-item {
   font-family: var(--font-ne);
-  font-size: 0.98rem;
+  font-size: 0.94rem;
   font-weight: 500;
 }
 
