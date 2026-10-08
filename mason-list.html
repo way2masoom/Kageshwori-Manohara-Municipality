@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Designer Application Summary | कागेश्वरी मनोहरा नगरपालिका - E-BPS</title>
+  <title>Certified Masons Directory | कागेश्वरी मनोहरा नगरपालिका - E-BPS</title>
   
   <!-- SEO & OpenGraph Meta -->
-  <meta name="description" content="कागेश्वरी मनोहरा नगरपालिका ई-विपिएस (E-BPS) प्रणालीमा दर्ता भएका इन्जिनियर, आर्किटेक्ट तथा प्राविधिक परामर्शदाताहरूको आधिकारिक सूची (Designer Application Summary)">
-  <meta name="keywords" content="EBPS, Kageshwori Manohara, Designer List, Registered Engineers, Building Permit, Danchhi">
+  <meta name="description" content="कागेश्वरी मनोहरा नगरपालिका ई-विपिएस (E-BPS) प्रणालीमा सूचीकृत भूकम्प प्रतिरोधी तालिमप्राप्त प्रमाणित डकर्मीहरूको आधिकारिक सूची">
+  <meta name="keywords" content="EBPS, Kageshwori Manohara, Masons List, Certified Masons, Earthquake Resistant, Danchhi">
   <meta name="author" content="कागेश्वरी मनोहरा नगरपालिका">
 
   <!-- Favicon -->
@@ -138,13 +138,13 @@
           </div>
         </div>
 
-        <!-- Masons List -->
-        <a href="mason-list.html" class="nav-link">
+        <!-- Masons List (Active) -->
+        <a href="mason-list.html" class="nav-link active" style="color: var(--primary-light); font-weight: 700;">
           <span data-i18n="navMasons">डकर्मी सूची</span>
         </a>
 
-        <!-- Designer List (Active) -->
-        <a href="designer-list.html" class="nav-link active" style="color: var(--primary-light); font-weight: 700;">
+        <!-- Designer List -->
+        <a href="designer-list.html" class="nav-link">
           <span data-i18n="navDesigners">प्राविधिक सूची</span>
         </a>
 
@@ -158,7 +158,7 @@
   </nav>
 
   <!-- ========================================================
-       3. DESIGNER APPLICATION SUMMARY CONTENT
+       3. MASON DIRECTORY CONTENT
        ======================================================== -->
   <main class="designer-page-wrapper">
     <div class="designer-container">
@@ -168,23 +168,23 @@
         <div class="designer-breadcrumb">
           <a href="index.html#home"><i class="fa-solid fa-house"></i> <span data-i18n="navHome">गृहपृष्ठ</span></a>
           <span>/</span>
-          <span data-i18n="navDesigners">प्राविधिक सूची</span>
+          <span data-i18n="navMasons">डकर्मी सूची</span>
         </div>
 
         <div class="designer-page-title-row">
           <div>
             <h1 class="designer-main-title">
-              <i class="fa-solid fa-compass-drafting"></i>
-              <span data-i18n="designerMainTitle">दर्ता भएका प्राविधिक (डिजाईनर) सूची</span>
+              <i class="fa-solid fa-helmet-safety"></i>
+              <span data-i18n="masonMainTitle">भूकम्प प्रतिरोधी तालिमप्राप्त डकर्मी सूची</span>
             </h1>
-            <p class="designer-main-subtitle" data-i18n="designerMainSubtitle">
-              कागेश्वरी मनोहरा नगरपालिका ई-विपिएस (E-BPS) प्रणालीमा दर्ता भएका आधिकारिक इन्जिनियर, आर्किटेक्ट तथा प्राविधिक परामर्शदाताहरूको विवरण।
+            <p class="designer-main-subtitle" data-i18n="masonMainSubtitle">
+              कागेश्वरी मनोहरा नगरपालिका ई-विपिएस प्रणालीमा सूचीकृत भूकम्प प्रतिरोधी आवास निर्माण तालिमप्राप्त प्रमाणित डकर्मीहरूको विवरण।
             </p>
           </div>
           
           <div class="designer-badges-wrap">
             <div class="count-badge-wrap">
-              <span data-i18n="designerTotalCountLabel">जम्मा सूचीकृत:</span> <strong id="totalCountBadge">0</strong>
+              <span data-i18n="masonTotalCountLabel">जम्मा सूचीकृत डकर्मी:</span> <strong id="totalCountBadge">0</strong>
             </div>
           </div>
         </div>
@@ -216,7 +216,7 @@
           <div class="toolbar-right">
             <div class="search-input-box">
               <i class="fa-solid fa-magnifying-glass search-icon-inside"></i>
-              <input type="text" id="designerSearchInput" class="search-field" placeholder="खोज्नुहोस्: नाम, ठेगाना वा फोन..." data-i18n-placeholder="designerSearchPlaceholder">
+              <input type="text" id="masonSearchInput" class="search-field" placeholder="खोज्नुहोस्: नाम, ठेगाना वा फोन..." data-i18n-placeholder="masonSearchPlaceholder">
               <button type="button" id="searchClearBtn" class="search-clear-btn" title="Clear search">
                 <i class="fa-solid fa-xmark"></i>
               </button>
@@ -225,17 +225,17 @@
         </div>
 
         <!-- Loading Spinner -->
-        <div id="designerLoader" class="designer-loader-wrap">
+        <div id="masonLoader" class="designer-loader-wrap">
           <div class="designer-spinner"></div>
-          <div data-i18n="designerLoadingText">प्राविधिक तथ्याङ्क लोड हुँदैछ...</div>
+          <div data-i18n="masonLoadingText">डकर्मी तथ्याङ्क लोड हुँदैछ...</div>
         </div>
 
         <!-- Error Notification (Hidden by default) -->
-        <div id="designerErrorMessage" style="display: none; padding: 16px; background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; border-radius: 8px; margin-bottom: 16px; text-align: center;"></div>
+        <div id="masonErrorMessage" style="display: none; padding: 16px; background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; border-radius: 8px; margin-bottom: 16px; text-align: center;"></div>
 
         <!-- Data Table Container -->
-        <div class="designer-table-container" id="designerTableWrap" style="display: none;">
-          <table class="designer-modern-table" id="designer-report-table">
+        <div class="designer-table-container" id="masonTableWrap" style="display: none;">
+          <table class="designer-modern-table" id="mason-report-table">
             <thead>
               <tr>
                 <th class="col-sn" data-i18n="thSN">क्र.सं.</th>
@@ -246,7 +246,7 @@
                 <th class="col-phone" data-i18n="thPhone">सम्पर्क फोन</th>
               </tr>
             </thead>
-            <tbody id="designerTableBody">
+            <tbody id="masonTableBody">
               <!-- Dynamically populated rows -->
             </tbody>
           </table>
@@ -254,8 +254,8 @@
           <!-- Empty search result state -->
           <div id="tableEmptyState" class="table-empty-box">
             <i class="fa-regular fa-folder-open"></i>
-            <h4 data-i18n="emptyTitle">कुनै प्राविधिक फेला परेन</h4>
-            <p data-i18n="emptyDesc">खोजिएको शब्दसँग मिल्दो कुनै पनि विवरण भेटिएन।</p>
+            <h4 data-i18n="emptyMasonTitle">कुनै डकर्मी फेला परेन</h4>
+            <p data-i18n="emptyMasonDesc">खोजिएको शब्दसँग मिल्दो कुनै पनि विवरण भेटिएन।</p>
           </div>
         </div>
 
@@ -360,6 +360,6 @@
 
   <!-- Scripts -->
   <script src="js/main.js"></script>
-  <script src="js/designer-list.js"></script>
+  <script src="js/mason-list.js"></script>
 </body>
 </html>

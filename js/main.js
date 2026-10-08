@@ -96,6 +96,17 @@ const TRANSLATIONS = {
     emptyDesc: 'खोजिएको शब्दसँग मिल्दो कुनै पनि विवरण भेटिएन।',
     masonModalTitle: 'भूकम्प प्रतिरोधी तालिमप्राप्त डकर्मी सूची',
 
+    // Mason List Page
+    masonMainTitle: 'भूकम्प प्रतिरोधी तालिमप्राप्त डकर्मी सूची',
+    masonMainSubtitle: 'कागेश्वरी मनोहरा नगरपालिका ई-विपिएस प्रणालीमा सूचीकृत भूकम्प प्रतिरोधी आवास निर्माण तालिमप्राप्त प्रमाणित डकर्मीहरूको विवरण।',
+    masonTotalCountLabel: 'जम्मा सूचीकृत डकर्मी:',
+    masonSearchPlaceholder: 'खोज्नुहोस्: नाम, ठेगाना वा फोन...',
+    masonLoadingText: 'डकर्मी तथ्याङ्क लोड हुँदैछ...',
+    masonBadge: 'प्रमाणित डकर्मी',
+    masonFallbackName: 'डकर्मी',
+    emptyMasonTitle: 'कुनै डकर्मी फेला परेन',
+    emptyMasonDesc: 'खोजिएको शब्दसँग मिल्दो कुनै पनि विवरण भेटिएन।',
+
     // Footer
     footerContactTitle: 'सम्पर्क ठेगाना',
     footerAddress: 'नगर कार्यपालिकाको कार्यालय, डाँछी, काठमाडौं',
@@ -200,6 +211,17 @@ const TRANSLATIONS = {
     emptyTitle: 'No Designers Found',
     emptyDesc: 'No matching records found for your search query.',
     masonModalTitle: 'Certified Masons Directory',
+
+    // Mason List Page
+    masonMainTitle: 'CERTIFIED MASONS DIRECTORY',
+    masonMainSubtitle: 'Official municipal directory of certified earthquake-resistant trained masons registered under E-BPS in Kageshwori Manohara Municipality.',
+    masonTotalCountLabel: 'Total Registered Masons:',
+    masonSearchPlaceholder: 'Search by name, address or phone...',
+    masonLoadingText: 'Loading mason records...',
+    masonBadge: 'Certified Mason',
+    masonFallbackName: 'Mason',
+    emptyMasonTitle: 'No Masons Found',
+    emptyMasonDesc: 'No matching records found for your search query.',
 
     // Footer
     footerContactTitle: 'Contact Us',
