@@ -274,6 +274,15 @@ function initFormSubmission() {
         if (propName) propName.focus();
         return;
       }
+
+      // Check Company Registration Certificate for Consultancy
+      const companyRegCert = document.getElementById('companyRegCertInput');
+      if (!companyRegCert || !companyRegCert.files || companyRegCert.files.length === 0) {
+        alert(isEn ? 'Please upload Company Registration Certificate (*).' : 'कृपया कम्पनी दर्ता प्रमाणपत्र (*) अपलोड गर्नुहोस्।');
+        const compDz = companyRegCert ? companyRegCert.closest('.upload-dropzone-box') : null;
+        if (compDz) compDz.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
     }
 
     // 4. Check Designer Name
@@ -287,7 +296,7 @@ function initFormSubmission() {
     // 5. Check Designer Image upload
     const designerImageInput = document.getElementById('designerImageInput');
     if (!designerImageInput || !designerImageInput.files || designerImageInput.files.length === 0) {
-      alert(isEn ? 'Please upload Designer Image.' : 'कृपया डिजाइनरको फोटो अपलोड गर्नुहोस्।');
+      alert(isEn ? 'Please upload Designer Image (*).' : 'कृपया डिजाइनरको फोटो (*) अपलोड गर्नुहोस्।');
       const designerDropzone = document.getElementById('designerImageDropzone');
       if (designerDropzone) designerDropzone.scrollIntoView({ behavior: 'smooth', block: 'center' });
       return;
@@ -313,6 +322,31 @@ function initFormSubmission() {
     if (!email || !email.value.trim()) {
       alert(isEn ? 'Please enter Designer Email Address.' : 'कृपया इमेल ठेगाना प्रविष्ट गर्नुहोस्।');
       if (email) email.focus();
+      return;
+    }
+
+    // 8. Check Required Designer Documents
+    const necCert = document.getElementById('necCertInput');
+    if (!necCert || !necCert.files || necCert.files.length === 0) {
+      alert(isEn ? 'Please upload Nepal Engineering Council Certificate (*).' : 'कृपया नेपाल इन्जिनियरिङ्ग परिषद् प्रमाणपत्र (*) अपलोड गर्नुहोस्।');
+      const necDz = necCert ? necCert.closest('.upload-dropzone-box') : null;
+      if (necDz) necDz.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    const bachelorTranscript = document.getElementById('bachelorTranscriptInput');
+    if (!bachelorTranscript || !bachelorTranscript.files || bachelorTranscript.files.length === 0) {
+      alert(isEn ? 'Please upload Transcript of Bachelor Degree (*).' : 'कृपया स्नातक तह (BE/B.Arch) ट्रान्सक्रिप्ट (*) अपलोड गर्नुहोस्।');
+      const bachDz = bachelorTranscript ? bachelorTranscript.closest('.upload-dropzone-box') : null;
+      if (bachDz) bachDz.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    const citizenshipDoc = document.getElementById('citizenshipDocInput');
+    if (!citizenshipDoc || !citizenshipDoc.files || citizenshipDoc.files.length === 0) {
+      alert(isEn ? 'Please upload Citizenship Certificate (*).' : 'कृपया नागरिकता प्रमाणपत्र (*) अपलोड गर्नुहोस्।');
+      const citDz = citizenshipDoc ? citizenshipDoc.closest('.upload-dropzone-box') : null;
+      if (citDz) citDz.scrollIntoView({ behavior: 'smooth', block: 'center' });
       return;
     }
 
