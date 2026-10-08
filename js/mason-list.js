@@ -185,15 +185,15 @@ function applyFilterAndRender() {
     filteredMasons = allMasons.filter(m => {
       const num = (m.number || m.sn || m.id || '').toString().toLowerCase();
       const name = (m.name || m.mason_name || m.fullName || '').toLowerCase();
+      const regNo = (m.Municipal_Registration_No || m.municipal_registration_no || m.reg_no || m.registration_no || '').toString().toLowerCase();
       const address = (m.address || m.tole || m.municipality || '').toLowerCase();
       const ward = (m.ward || '').toString().toLowerCase();
       const phone = (m.phone || m.mobile || m.contact || '').toLowerCase();
-      const email = (m.email || m.mail || '').toLowerCase();
       return name.includes(searchQuery) ||
+             regNo.includes(searchQuery) ||
              address.includes(searchQuery) ||
              ward.includes(searchQuery) ||
              phone.includes(searchQuery) ||
-             email.includes(searchQuery) ||
              num.includes(searchQuery);
     });
   }
@@ -244,8 +244,9 @@ function renderTable() {
       displayAddress = '-';
     }
 
+    const rawRegNo = item.Municipal_Registration_No || item.municipal_registration_no || item.reg_no || item.registration_no || '';
+    const displayRegNo = (!rawRegNo || rawRegNo.toString().trim() === '-' || rawRegNo.toString().trim() === '') ? '-' : rawRegNo.toString().trim();
     const displayPhone = item.phone || item.mobile || item.contact || '-';
-    const displayEmail = item.email || item.mail || '-';
 
     // Photo avatar handling (base64 or URL or fallback)
     const rawImg = item.image || item.photo || item.avatar || '';
@@ -278,9 +279,16 @@ function renderTable() {
           <div class="designer-name-box">
             <span class="designer-name">${displayName}</span>
             <span class="designer-badge" style="background: #fef3c7; color: #b45309; border-color: #fde68a;">
-              <i class="fa-solid fa-helmet-safety"></i> ${item.training || badgeText}
+              <i class="fa-solid fa-helmet-safety"></i> ${badgeText}
             </span>
           </div>
+        </td>
+        <td class="col-reg">
+          ${displayRegNo !== '-' ? `
+            <span class="reg-number-badge" title="${isEn ? 'Municipal Reg. No.' : 'नगरपालिका दर्ता नं.'}">
+              <i class="fa-solid fa-id-card"></i> ${displayRegNo}
+            </span>
+          ` : '<span class="text-muted">-</span>'}
         </td>
         <td class="col-address">
           <div class="designer-address-box">
@@ -288,17 +296,9 @@ function renderTable() {
             <span>${displayAddress}</span>
           </div>
         </td>
-        <td class="col-email">
-          ${displayEmail !== '-' ? `
-            <a href="mailto:${displayEmail}" class="designer-contact-link email-link" title="${displayEmail}">
-              <i class="fa-regular fa-envelope"></i>
-              <span>${displayEmail}</span>
-            </a>
-          ` : '<span class="text-muted">-</span>'}
-        </td>
         <td class="col-phone">
           ${displayPhone !== '-' ? `
-            <a href="tel:${displayPhone.replace(/[^0-9+]/g, '')}" class="designer-contact-link phone-link" title="${displayPhone}">
+            <a href="tel:${displayPhone.toString().replace(/[^0-9+]/g, '')}" class="designer-contact-link phone-link" title="${displayPhone}">
               <i class="fa-solid fa-phone"></i>
               <span>${displayPhone}</span>
             </a>
@@ -426,8 +426,8 @@ function exportToExcelCSV() {
   }
 
   const headers = isEn
-    ? ['#', 'Name', 'Address', 'Email', 'Phone']
-    : ['क्र.सं.', 'नाम', 'ठेगाना', 'इमेल', 'सम्पर्क फोन'];
+    ? ['#', 'Name', 'Municipal Reg. No.', 'Address', 'Phone']
+    : ['क्र.सं.', 'नाम', 'नगरपालिका दर्ता नं.', 'ठेगाना', 'सम्पर्क फोन'];
   
   const csvRows = [
     headers.join(',')
@@ -438,19 +438,19 @@ function exportToExcelCSV() {
     const rawName = item.name || item.mason_name || item.fullName || '';
     const name = `"${rawName.replace(/"/g, '""')}"`;
 
+    const rawRegNo = item.Municipal_Registration_No || item.municipal_registration_no || item.reg_no || item.registration_no || '';
+    const regNo = `"${rawRegNo.toString().replace(/"/g, '""')}"`;
+
     let rawAddr = item.address || item.tole || item.municipality || '';
     if (!rawAddr && item.ward) {
       rawAddr = isEn ? `Ward No. ${item.ward}` : `वडा नं. ${item.ward}`;
     }
     const address = `"${rawAddr.replace(/"/g, '""')}"`;
 
-    const rawEmail = item.email || item.mail || '';
-    const email = `"${rawEmail.replace(/"/g, '""')}"`;
-
     const rawPhone = item.phone || item.mobile || item.contact || '';
-    const phone = `"${rawPhone.replace(/"/g, '""')}"`;
+    const phone = `"${rawPhone.toString().replace(/"/g, '""')}"`;
 
-    csvRows.push([sn, name, address, email, phone].join(','));
+    csvRows.push([sn, name, regNo, address, phone].join(','));
   });
 
   const csvContent = '\uFEFF' + csvRows.join('\r\n');
