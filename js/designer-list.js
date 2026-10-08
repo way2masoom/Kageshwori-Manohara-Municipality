@@ -11,11 +11,8 @@ let currentPage = 1;
 let pageSize = 10;
 let searchQuery = '';
 
-const API_ENDPOINTS = [
-  'https://192.168.1.73:8444/ebps/designer-list/fetch',
-  'https://localhost:8443/ebps/designer-list/fetch',
-  'https://ebps.damakmun.gov.np/ebps/register-designer-report/fetch'
-];
+const BACKEND_API_URL = 'https://192.168.1.73:8444/ebps/designer-list/fetch';
+const LOCAL_JSON_URL = 'designer-list.json';
 
 document.addEventListener('DOMContentLoaded', () => {
   initDesignerPage();
@@ -27,8 +24,8 @@ async function initDesignerPage() {
 }
 
 /**
- * Attempt to fetch live data from the municipal backend endpoint.
- * Falls back immediately to the official 91-item dataset if offline or unreachable.
+ * Fetch data strictly from your friend's backend API (https://192.168.1.73:8444/ebps/designer-list/fetch)
+ * or fallback directly to your local designer-list.json file.
  */
 async function loadDesignerData() {
   const loader = document.getElementById('designerLoader');
@@ -40,46 +37,61 @@ async function loadDesignerData() {
   if (errorMsg) errorMsg.style.display = 'none';
 
   let fetchedData = null;
+  let dataSource = '';
 
-  // Try API endpoints with a fast timeout
-  for (const endpoint of API_ENDPOINTS) {
+  // 1. Try friend's live API endpoint
+  try {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 2500);
+
+    const response = await fetch(BACKEND_API_URL, {
+      method: 'GET',
+      headers: { 'Accept': 'application/json' },
+      signal: controller.signal
+    });
+    clearTimeout(timeoutId);
+
+    if (response.ok) {
+      const json = await response.json();
+      if (json && json.data && Array.isArray(json.data) && json.data.length > 0) {
+        fetchedData = json.data;
+        dataSource = 'live_api';
+      }
+    }
+  } catch (err) {
+    console.warn('Backend API (192.168.1.73:8444) unreachable or certificate rejected. Falling back to local designer-list.json.', err);
+  }
+
+  // 2. Fallback to your local designer-list.json
+  if (!fetchedData) {
     try {
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 2500);
-
-      const response = await fetch(endpoint, {
-        method: 'GET',
-        headers: { 'Accept': 'application/json' },
-        signal: controller.signal
-      });
-      clearTimeout(timeoutId);
-
-      if (response.ok) {
-        const json = await response.json();
-        if (json && json.data && Array.isArray(json.data) && json.data.length > 0) {
-          fetchedData = json.data;
-          if (statusBadge) {
-            statusBadge.innerHTML = '<i class="fa-solid fa-circle-check"></i> प्रत्यक्ष सर्भरबाट लोड (Live API Connected)';
-            statusBadge.className = 'status-badge status-live';
-          }
-          break;
+      const localResponse = await fetch(LOCAL_JSON_URL, { cache: 'no-store' });
+      if (localResponse.ok) {
+        const localJson = await localResponse.json();
+        if (localJson && localJson.data && Array.isArray(localJson.data)) {
+          fetchedData = localJson.data;
+          dataSource = 'local_json';
         }
       }
-    } catch (e) {
-      // Continue to next endpoint or fallback
+    } catch (localErr) {
+      console.warn('Failed to fetch designer-list.json via HTTP, checking in-memory dataset...', localErr);
     }
   }
 
-  if (fetchedData) {
-    allDesigners = fetchedData;
-  } else {
-    // Graceful fallback to verified 91 official municipal registered designers
-    allDesigners = (typeof DEFAULT_DESIGNER_DATA !== 'undefined' && Array.isArray(DEFAULT_DESIGNER_DATA))
-      ? DEFAULT_DESIGNER_DATA
-      : [];
+  // 3. Fallback to in-memory DEFAULT_DESIGNER_DATA
+  if (!fetchedData && typeof DEFAULT_DESIGNER_DATA !== 'undefined' && Array.isArray(DEFAULT_DESIGNER_DATA)) {
+    fetchedData = DEFAULT_DESIGNER_DATA;
+    dataSource = 'memory_data';
+  }
 
-    if (statusBadge) {
-      statusBadge.innerHTML = '<i class="fa-solid fa-shield-halved"></i> आधिकारिक नगरपालिका दर्ता विवरण (Official Registered Directory)';
+  allDesigners = fetchedData || [];
+
+  if (statusBadge) {
+    if (dataSource === 'live_api') {
+      statusBadge.innerHTML = '<i class="fa-solid fa-network-wired"></i> प्रत्यक्ष सर्भरबाट लोड (Live API: 192.168.1.73:8444)';
+      statusBadge.className = 'status-badge status-live';
+    } else {
+      statusBadge.innerHTML = '<i class="fa-solid fa-file-code"></i> आधिकारिक JSON बाट लोड (Loaded from designer-list.json)';
       statusBadge.className = 'status-badge status-verified';
     }
   }
