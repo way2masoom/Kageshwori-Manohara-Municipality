@@ -393,18 +393,26 @@
             <!-- Top Row: Designer Name & Citizenship No + Designer Image Upload Box -->
             <div class="designer-personal-top-grid">
               <div class="designer-personal-fields">
-                <!-- Designer Single Full Name -->
+                <!-- Designer Single Full Name (English - Name) -->
                 <div class="form-group">
                   <label for="designerName" class="form-label">
-                    <span data-i18n="lblDesignerName">डिजाइनरको नाम *</span>
+                    <span data-i18n="lblDesignerName">डिजाइनरको नाम (English) *</span>
                   </label>
-                  <input type="text" id="designerName" class="form-control" placeholder="डिजाइनरको पूरा नाम लेख्नुहोस्..." data-i18n-placeholder="phDesignerName" required>
+                  <input type="text" id="designerName" class="form-control" placeholder="Full name in English..." data-i18n-placeholder="phDesignerName" required>
                 </div>
 
-                <!-- Citizenship No -->
+                <!-- Designer Name in Nepali (Name2) -->
+                <div class="form-group">
+                  <label for="designerNameNepali" class="form-label">
+                    <span data-i18n="lblDesignerNameNepali">डिजाइनरको नाम (नेपालीमा - Name2) *</span>
+                  </label>
+                  <input type="text" id="designerNameNepali" class="form-control" placeholder="डिजाइनरको पूरा नाम नेपालीमा लेख्नुहोस्..." data-i18n-placeholder="phDesignerNameNepali" required>
+                </div>
+
+                <!-- Citizenship No (citizen_no) -->
                 <div class="form-group">
                   <label for="designerCitizenshipNo" class="form-label">
-                    <span data-i18n="lblCitizenshipNo">नागरिकता नम्बर *</span>
+                    <span data-i18n="lblCitizenshipNo">नागरिकता नम्बर (Citizenship No.) *</span>
                   </label>
                   <input type="text" id="designerCitizenshipNo" class="form-control" placeholder="नागरिकता प्रमाणपत्र नम्बर..." data-i18n-placeholder="phCitizenshipNo" required>
                 </div>
@@ -619,15 +627,15 @@
                 </div>
               </div>
 
-              <!-- Master Transcript -->
+              <!-- Company Registration Certificate (registercompany) -->
               <div class="doc-upload-box-wrapper">
-                <label class="form-label"><span data-i18n="lblMasterTranscript">स्नातकोत्तर तह (ME/M.Sc) ट्रान्सक्रिप्ट</span></label>
+                <label class="form-label"><span data-i18n="lblCompanyRegDoc">कम्पनी / फर्म दर्ता प्रमाणपत्र (Company Registration) *</span></label>
                 <div class="upload-dropzone-box" tabindex="0">
-                  <input type="file" id="masterTranscriptInput" class="upload-dropzone-input custom-file-input" accept=".jpg,.jpeg,.png,.pdf" style="display: none;">
+                  <input type="file" id="companyRegDocInput" class="upload-dropzone-input custom-file-input" accept=".jpg,.jpeg,.png,.pdf" style="display: none;">
                   <div class="dropzone-default-view">
-                    <div class="dropzone-icon-circle"><i class="fa-solid fa-user-graduate"></i></div>
+                    <div class="dropzone-icon-circle"><i class="fa-solid fa-file-contract"></i></div>
                     <div class="dropzone-text-group">
-                      <div class="dropzone-main-text"><span class="highlight">ME / M.Sc ट्रान्सक्रिप्ट</span> (Master Transcript)</div>
+                      <div class="dropzone-main-text"><span class="highlight">कम्पनी दर्ता प्रमाणपत्र</span> (Company Registration)</div>
                       <div class="dropzone-sub-text">PDF, JPG, PNG • अधिकतम ५०० KB</div>
                     </div>
                     <button type="button" class="btn-dropzone-browse"><i class="fa-solid fa-cloud-arrow-up"></i> Choose</button>
@@ -643,7 +651,7 @@
                 </div>
               </div>
 
-              <!-- Single Citizenship Certificate Upload -->
+              <!-- Single Citizenship Certificate Upload (citizenship_photo) -->
               <div class="doc-upload-box-wrapper">
                 <label class="form-label"><span data-i18n="lblCitizenshipDoc">नागरिकता प्रमाणपत्र (Citizenship Certificate) *</span></label>
                 <div class="upload-dropzone-box" tabindex="0">
@@ -660,6 +668,54 @@
                     <div class="dropzone-icon-circle success-circle"><i class="fa-solid fa-circle-check"></i></div>
                     <div class="dropzone-preview-info">
                       <span class="preview-filename">file.pdf</span>
+                      <span class="preview-filesize">0 KB</span>
+                    </div>
+                    <button type="button" class="btn-dropzone-remove" title="हटाउनुहोस्"><i class="fa-solid fa-xmark"></i></button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Designer Signature Image (signature_ID) -->
+              <div class="doc-upload-box-wrapper">
+                <label class="form-label"><span data-i18n="lblSignatureDoc">डिजाइनरको हस्ताक्षर (Signature Photo) *</span></label>
+                <div class="upload-dropzone-box" tabindex="0">
+                  <input type="file" id="designerSignatureInput" class="upload-dropzone-input custom-file-input" accept=".jpg,.jpeg,.png" style="display: none;">
+                  <div class="dropzone-default-view">
+                    <div class="dropzone-icon-circle"><i class="fa-solid fa-signature"></i></div>
+                    <div class="dropzone-text-group">
+                      <div class="dropzone-main-text"><span class="highlight">डिजाइनरको हस्ताक्षर</span> (Signature Image)</div>
+                      <div class="dropzone-sub-text">JPG, PNG • अधिकतम ५०० KB</div>
+                    </div>
+                    <button type="button" class="btn-dropzone-browse"><i class="fa-solid fa-cloud-arrow-up"></i> Choose</button>
+                  </div>
+                  <div class="dropzone-preview-view" style="display: none;">
+                    <div class="dropzone-icon-circle success-circle"><i class="fa-solid fa-circle-check"></i></div>
+                    <div class="dropzone-preview-info">
+                      <span class="preview-filename">signature.png</span>
+                      <span class="preview-filesize">0 KB</span>
+                    </div>
+                    <button type="button" class="btn-dropzone-remove" title="हटाउनुहोस्"><i class="fa-solid fa-xmark"></i></button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Firm / Consultancy Stamp Image (stamp_ID) -->
+              <div class="doc-upload-box-wrapper">
+                <label class="form-label"><span data-i18n="lblStampDoc">कन्सल्टेन्सीको आधिकारिक छाप (Company Stamp)</span></label>
+                <div class="upload-dropzone-box" tabindex="0">
+                  <input type="file" id="consultancyStampInput" class="upload-dropzone-input custom-file-input" accept=".jpg,.jpeg,.png" style="display: none;">
+                  <div class="dropzone-default-view">
+                    <div class="dropzone-icon-circle"><i class="fa-solid fa-stamp"></i></div>
+                    <div class="dropzone-text-group">
+                      <div class="dropzone-main-text"><span class="highlight">कम्पनीको छाप</span> (Firm/Company Stamp)</div>
+                      <div class="dropzone-sub-text">JPG, PNG • अधिकतम ५०० KB</div>
+                    </div>
+                    <button type="button" class="btn-dropzone-browse"><i class="fa-solid fa-cloud-arrow-up"></i> Choose</button>
+                  </div>
+                  <div class="dropzone-preview-view" style="display: none;">
+                    <div class="dropzone-icon-circle success-circle"><i class="fa-solid fa-circle-check"></i></div>
+                    <div class="dropzone-preview-info">
+                      <span class="preview-filename">stamp.png</span>
                       <span class="preview-filesize">0 KB</span>
                     </div>
                     <button type="button" class="btn-dropzone-remove" title="हटाउनुहोस्"><i class="fa-solid fa-xmark"></i></button>

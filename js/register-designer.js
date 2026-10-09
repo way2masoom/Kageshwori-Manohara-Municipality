@@ -301,24 +301,32 @@ function initFormSubmission() {
       }
     }
 
-    // 4. Check Designer Name
+    // 4. Check Designer Name (English)
     const designerName = document.getElementById('designerName');
     if (!designerName || !designerName.value.trim()) {
-      alert(isEn ? "Please enter Designer's Full Name." : 'कृपया डिजाइनरको पूरा नाम लेख्नुहोस्।');
+      alert(isEn ? "Please enter Designer's Full Name in English." : 'कृपया डिजाइनरको अंग्रेजी नाम लेख्नुहोस्।');
       if (designerName) designerName.focus();
       return;
     }
 
-    // 5. Check Designer Image upload
+    // Check Designer Name in Nepali (Name2)
+    const designerNameNepali = document.getElementById('designerNameNepali');
+    if (!designerNameNepali || !designerNameNepali.value.trim()) {
+      alert(isEn ? "Please enter Designer's Full Name in Nepali (Name2)." : 'कृपया डिजाइनरको पूरा नाम नेपालीमा (Name2) लेख्नुहोस्।');
+      if (designerNameNepali) designerNameNepali.focus();
+      return;
+    }
+
+    // 5. Check Designer Image upload (ad_image_ID)
     const designerImageInput = document.getElementById('designerImageInput');
     if (!designerImageInput || !designerImageInput.files || designerImageInput.files.length === 0) {
-      alert(isEn ? 'Please upload Designer Image (*).' : 'कृपया डिजाइनरको फोटो (*) अपलोड गर्नुहोस्।');
+      alert(isEn ? 'Please upload Designer Photo (*).' : 'कृपया डिजाइनरको फोटो (*) अपलोड गर्नुहोस्।');
       const designerDropzone = document.getElementById('designerImageDropzone');
       if (designerDropzone) designerDropzone.scrollIntoView({ behavior: 'smooth', block: 'center' });
       return;
     }
 
-    // 6. Check Citizenship Number
+    // 6. Check Citizenship Number (citizen_no)
     const citizenshipNo = document.getElementById('designerCitizenshipNo');
     if (!citizenshipNo || !citizenshipNo.value.trim()) {
       alert(isEn ? 'Please enter Citizenship Number.' : 'कृपया नागरिकता प्रमाणपत्र नम्बर लेख्नुहोस्।');
@@ -350,6 +358,7 @@ function initFormSubmission() {
     }
 
     // 8. Check Required Designer Documents
+    // Engineer Certificate (certificate)
     const necCert = document.getElementById('necCertInput');
     if (!necCert || !necCert.files || necCert.files.length === 0) {
       alert(isEn ? 'Please upload Nepal Engineering Council Certificate (*).' : 'कृपया नेपाल इन्जिनियरिङ्ग परिषद् प्रमाणपत्र (*) अपलोड गर्नुहोस्।');
@@ -358,23 +367,46 @@ function initFormSubmission() {
       return;
     }
 
+    // Transcript / Bachelor Degree (education_degree)
     const bachelorTranscript = document.getElementById('bachelorTranscriptInput');
     if (!bachelorTranscript || !bachelorTranscript.files || bachelorTranscript.files.length === 0) {
-      alert(isEn ? 'Please upload Transcript of Bachelor Degree (*).' : 'कृपया स्नातक तह (BE/B.Arch) ट्रान्सक्रिप्ट (*) अपलोड गर्नुहोस्।');
+      alert(isEn ? 'Please upload Transcript / Education Degree (*).' : 'कृपया शैक्षिक ट्रान्सक्रिप्ट (Transcript) (*) अपलोड गर्नुहोस्।');
       const bachDz = bachelorTranscript ? bachelorTranscript.closest('.upload-dropzone-box') : null;
       if (bachDz) bachDz.scrollIntoView({ behavior: 'smooth', block: 'center' });
       return;
     }
 
+    // Company Registration (registercompany)
+    const compRegDoc = document.getElementById('companyRegDocInput');
+    const compRegCert = document.getElementById('companyRegCertInput');
+    const hasCompanyReg = (compRegDoc && compRegDoc.files && compRegDoc.files.length > 0) ||
+                          (compRegCert && compRegCert.files && compRegCert.files.length > 0);
+    if (!hasCompanyReg && methodSelect.value === 'consultancy') {
+      alert(isEn ? 'Please upload Company Registration Document (*).' : 'कृपया कम्पनी दर्ता प्रमाणपत्र (*) अपलोड गर्नुहोस्।');
+      const compDz = compRegDoc ? compRegDoc.closest('.upload-dropzone-box') : (compRegCert ? compRegCert.closest('.upload-dropzone-box') : null);
+      if (compDz) compDz.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    // Citizenship Document (citizenship_photo)
     const citizenshipDoc = document.getElementById('citizenshipDocInput');
     if (!citizenshipDoc || !citizenshipDoc.files || citizenshipDoc.files.length === 0) {
-      alert(isEn ? 'Please upload Citizenship Certificate (*).' : 'कृपया नागरिकता प्रमाणपत्र (*) अपलोड गर्नुहोस्।');
+      alert(isEn ? 'Please upload Citizenship Certificate Photos (*).' : 'कृपया नागरिकता प्रमाणपत्र फोटो (*) अपलोड गर्नुहोस्।');
       const citDz = citizenshipDoc ? citizenshipDoc.closest('.upload-dropzone-box') : null;
       if (citDz) citDz.scrollIntoView({ behavior: 'smooth', block: 'center' });
       return;
     }
 
-    // 8. Check Captcha
+    // Designer Signature Photo (signature_ID)
+    const designerSignature = document.getElementById('designerSignatureInput');
+    if (!designerSignature || !designerSignature.files || designerSignature.files.length === 0) {
+      alert(isEn ? 'Please upload Designer Signature Image (*).' : 'कृपया डिजाइनरको हस्ताक्षर फोटो (*) अपलोड गर्नुहोस्।');
+      const sigDz = designerSignature ? designerSignature.closest('.upload-dropzone-box') : null;
+      if (sigDz) sigDz.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    // 9. Check Captcha
     const captchaInput = document.getElementById('captchaInput');
     if (!captchaInput || captchaInput.value.trim().toUpperCase() !== currentCaptchaText.toUpperCase()) {
       alert(isEn ? 'Invalid Captcha Code. Please try again.' : 'क्याप्चा कोड मिलेन। कृपया पुनः प्रयास गर्नुहोस्।');
@@ -385,7 +417,7 @@ function initFormSubmission() {
       return;
     }
 
-    // 9. Check Declaration Checkbox
+    // 10. Check Declaration Checkbox
     const declarationCheck = document.getElementById('declarationCheckbox');
     if (!declarationCheck || !declarationCheck.checked) {
       alert(isEn
@@ -437,46 +469,78 @@ function initFormSubmission() {
 
     // Collect asynchronous Base64 file readings
     Promise.all([
-      getFileBase64(document.getElementById('necCertInput')),
-      getFileBase64(document.getElementById('citizenshipDocInput')),
-      getFileBase64(document.getElementById('companyRegCertInput')),
-      getFileBase64(document.getElementById('designerImageInput')),
-      getFileBase64(document.getElementById('bachelorTranscriptInput')),
-      getFileBase64(document.getElementById('masterTranscriptInput')),
-      getFileBase64(document.getElementById('panVatCertInput'))
-    ]).then(async ([necCertBase64, citizenDocBase64, companyRegBase64, photoBase64, bachTransBase64, mastTransBase64, panVatBase64]) => {
+      getFileBase64(document.getElementById('necCertInput')),           // certificate (engineer certificate)
+      getFileBase64(document.getElementById('citizenshipDocInput')),    // citizenship_photo (citizenship photos)
+      getFileBase64(document.getElementById('companyRegDocInput')),     // registercompany (company registration doc)
+      getFileBase64(document.getElementById('companyRegCertInput')),    // registercompany fallback
+      getFileBase64(document.getElementById('designerImageInput')),     // ad_image_ID (designer photo)
+      getFileBase64(document.getElementById('bachelorTranscriptInput')),// education_degree (transcript)
+      getFileBase64(document.getElementById('designerSignatureInput')), // signature_ID (person signature image)
+      getFileBase64(document.getElementById('consultancyStampInput')),  // stamp_ID (consultancy stamp image)
+      getFileBase64(document.getElementById('panVatCertInput'))         // pan_vat_certificate
+    ]).then(async ([
+      necCertBase64,
+      citizenDocBase64,
+      compRegDocBase64,
+      compRegCertBase64,
+      photoBase64,
+      transcriptBase64,
+      signatureBase64,
+      stampBase64,
+      panVatBase64
+    ]) => {
 
       const regMethod = methodSelect.value;
       const consultancyName = (regMethod === 'consultancy' && document.getElementById('firmNameInput'))
         ? document.getElementById('firmNameInput').value.trim()
-        : '';
+        : ((document.getElementById('firmNameInput') && document.getElementById('firmNameInput').value.trim()) || '');
       const panNo = (regMethod === 'consultancy' && document.getElementById('firmPan') && document.getElementById('firmPan').value.trim())
         ? document.getElementById('firmPan').value.trim()
         : (document.getElementById('designerPan') ? document.getElementById('designerPan').value.trim() : '');
+      const companyRegBase64 = compRegDocBase64 || compRegCertBase64 || '';
 
-      // Payload strictly mapped to Java UserModel & AD_User columns
+      // Payload mapped to the exact database columns requested:
+      // consultancy_name, citizen_no, ad_image_ID, registercompany, certificate,
+      // citizenship_photo, education_degree, Name2, stamp_ID, signature_ID
       const payload = {
         name: designerName.value.trim(),
+        Name: designerName.value.trim(),
+        Name2: designerNameNepali.value.trim(),
+        name2: designerNameNepali.value.trim(),
+        citizen_no: citizenshipNo.value.trim(),
+        consultancy_name: consultancyName,
         email: email.value.trim(),
         phone: mobileNo.value.trim(),
         nec_no: necNo.value.trim(),
-        value: necNo.value.trim(),                    // Supported for model.getvalue() in legacy service
-        registration_class: designerTypeSelect.value, // Maps to UserPIN in AD_User
-        userpin: designerTypeSelect.value,            // Extra mapping for UserPIN
-        consultancy_name: consultancyName,
+        value: necNo.value.trim(),                    // For legacy model.getvalue()
+        registration_class: designerTypeSelect.value, // UserPIN
+        userpin: designerTypeSelect.value,
         pan_no: panNo,
-        address: permAddress,                         // Concatenated Permanent Address
-        address1: tempAddress,                       // Concatenated Temporary Address
-        registration_no: generatedRef,               // Maps to registration_no in AD_User
+        address: permAddress,                         // Permanent Address
+        address1: tempAddress,                       // Temporary Address
+        registration_no: generatedRef,
 
-        // Base64 document attachments
-        certificate: necCertBase64,                  // Maps to certificate in AD_User
-        citizenship_photo: citizenDocBase64,         // Maps to citizenship_photo in AD_User
-        registercompany: companyRegBase64,           // Maps to registercompany in AD_User
-        photo: photoBase64,                          // Designer Profile Photo
-        transcript: bachTransBase64,                 // Bachelor Transcript
-        master_transcript: mastTransBase64,          // Master Transcript (Optional)
-        pan_vat_certificate: panVatBase64            // Firm PAN/VAT Registration Certificate
+        // Required Database Column Mappings
+        ad_image_ID: photoBase64,                     // Designer photo
+        ad_image_id: photoBase64,
+        photo: photoBase64,
+
+        registercompany: companyRegBase64,           // Company registration
+
+        certificate: necCertBase64,                  // Engineer certificate
+
+        citizenship_photo: citizenDocBase64,         // Citizenship photos
+
+        education_degree: transcriptBase64,          // Transcript
+        transcript: transcriptBase64,
+
+        signature_ID: signatureBase64,               // Person signature image
+        signature_id: signatureBase64,
+
+        stamp_ID: stampBase64,                       // Image of stamp / consult of stamp
+        stamp_id: stampBase64,
+
+        pan_vat_certificate: panVatBase64
       };
 
       // API Endpoint URL - Matches https://192.168.1.73:8444/ebps/ backend
