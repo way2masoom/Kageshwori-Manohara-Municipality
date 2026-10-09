@@ -422,16 +422,18 @@ function initFormSubmission() {
     const generatedRef = 'KM-EBPS-REG-' + new Date().getFullYear() + '-' + Math.floor(1000 + Math.random() * 9000);
 
     // Concatenate permanent address
-    const pDist = (document.getElementById('permDistrict') && document.getElementById('permDistrict').value) || '';
-    const pMun = (document.getElementById('permMunicipality') && document.getElementById('permMunicipality').value) || '';
-    const pWard = (document.getElementById('permWard') && document.getElementById('permWard').value) || '';
-    const permAddress = [pDist, pMun, pWard ? (isEn ? `Ward No. ${pWard}` : `वडा नं. ${pWard}`) : ''].filter(Boolean).join(', ');
+    const pDist = (document.getElementById('permDistrict') && document.getElementById('permDistrict').value.trim()) || '';
+    const pMun = (document.getElementById('permMunicipality') && document.getElementById('permMunicipality').value.trim()) || '';
+    const pWard = (document.getElementById('permWard') && document.getElementById('permWard').value.trim()) || '';
+    const pWardText = pWard ? (isEn ? `Ward No. ${pWard}` : `वडा नं. ${pWard}`) : '';
+    const permAddress = [pDist, pMun, pWardText].filter(Boolean).join(', ');
 
     // Concatenate temporary address
-    const tDist = (document.getElementById('tempDistrict') && document.getElementById('tempDistrict').value) || '';
-    const tMun = (document.getElementById('tempMunicipality') && document.getElementById('tempMunicipality').value) || '';
-    const tWard = (document.getElementById('tempWard') && document.getElementById('tempWard').value) || '';
-    const tempAddress = [tDist, tMun, tWard ? (isEn ? `Ward No. ${tWard}` : `वडा नं. ${tWard}`) : ''].filter(Boolean).join(', ');
+    const tDist = (document.getElementById('tempDistrict') && document.getElementById('tempDistrict').value.trim()) || '';
+    const tMun = (document.getElementById('tempMunicipality') && document.getElementById('tempMunicipality').value.trim()) || '';
+    const tWard = (document.getElementById('tempWard') && document.getElementById('tempWard').value.trim()) || '';
+    const tWardText = tWard ? (isEn ? `Ward No. ${tWard}` : `वडा नं. ${tWard}`) : '';
+    const tempAddress = [tDist, tMun, tWardText].filter(Boolean).join(', ') || permAddress;
 
     // Collect asynchronous Base64 file readings
     Promise.all([
@@ -463,8 +465,8 @@ function initFormSubmission() {
         userpin: designerTypeSelect.value,            // Extra mapping for UserPIN
         consultancy_name: consultancyName,
         pan_no: panNo,
-        address: permAddress,                         // Maps to Address in AD_User
-        address1: tempAddress,                       // Maps to Address1 in AD_User
+        address: permAddress,                         // Concatenated Permanent Address
+        address1: tempAddress,                       // Concatenated Temporary Address
         registration_no: generatedRef,               // Maps to registration_no in AD_User
 
         // Base64 document attachments
@@ -480,7 +482,7 @@ function initFormSubmission() {
       // API Endpoint URL - Matches https://192.168.1.73:8444/ebps/ backend
       const apiUrl = window.EBPS_API_URL || 'https://192.168.1.73:8444/ebps/ebpsuser';
 
-      console.log(`[EBPS] Submitting registration POST to Java backend: ${apiUrl}`);
+      console.log(`[EBPS] Submitting registration POST to Java backend: ${apiUrl}`, payload);
 
       try {
         const response = await fetch(apiUrl, {
@@ -517,8 +519,8 @@ function initFormSubmission() {
       } catch (networkError) {
         console.error(`[EBPS] Network error contacting ${apiUrl}:`, networkError);
         const connectionMsg = isEn
-          ? `Could not connect to Java Backend Server at:\n${apiUrl}\n\nReason: ${networkError.message}\n\nPlease verify that:\n1. Your Java backend server (Tomcat/Jetty) is running on 192.168.1.73.\n2. Port 8080 is open in the firewall on 192.168.1.73.`
-          : `ब्याकएन्ड सर्भर (${apiUrl}) मा सम्पर्क हुन सकेन।\n\nकारण: ${networkError.message}\n\nकृपया निम्न कुराहरू जाँच गर्नुहोस्:\n१. 192.168.1.73 मा Java सर्भर (Tomcat/Eclipse) चालु छ?\n२. 192.168.1.73 को Firewall ले पोर्ट 8080 लाई Allow गरेको छ?`;
+          ? `Could not connect to Java Backend Server at:\n${apiUrl}\n\nReason: ${networkError.message}\n\nIf you see an SSL/Certificate error in your browser:\n1. Open ${apiUrl} in a new tab once\n2. Click "Advanced" -> "Proceed to 192.168.1.73 (unsafe)" to trust the SSL certificate\n3. Return here and submit again.`
+          : `ब्याकएन्ड सर्भर (${apiUrl}) मा सम्पर्क हुन सकेन।\n\nकारण: ${networkError.message}\n\nयदि ब्राउजरमा SSL / Certificate को समस्या आएको हो भने:\n१. नयाँ ट्याबमा ${apiUrl} खोल्नुहोस्\n२. "Advanced" ➔ "Proceed to 192.168.1.73 (unsafe)" क्लिक गर्नुहोस्\n३. त्यसपछि यहाँ फर्किएर पुनः सबमिट गर्नुहोस्।`;
         alert(connectionMsg);
       }
 
