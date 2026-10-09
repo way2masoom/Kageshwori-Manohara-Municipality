@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ward Information | कागेश्वरी मनोहरा नगरपालिका - E-BPS</title>
+  
+  <meta name="description" content="कागेश्वरी मनोहरा नगरपालिकाका ९ वटै वडाहरूको ई-विपिएस (E-BPS) नक्सा पास सेवा तथा वडा प्राविधिक विवरण।">
+  <meta name="keywords" content="EBPS, Ward Information, Kageshwori Manohara, Danchhi, Mulpani, Gothatar, Thali, Gagalphedi">
+  <meta name="author" content="कागेश्वरी मनोहरा नगरपालिका">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="../images/nepal_sarkar_logo.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Master Stylesheet -->
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <!-- Scroll Progress Indicator -->
+  <div id="scrollProgress"></div>
+
+  <!-- Back to Top Floating Button -->
+  <button id="backToTopBtn" aria-label="Scroll to top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <!-- ========================================================
+       1. TOP UTILITY BAR
+       ======================================================== -->
+  <header class="top-bar">
+    <div class="top-bar-container">
+      <div class="top-bar-left">
+        <a href="tel:014451242" class="top-item">
+          <i class="fa-solid fa-phone"></i>
+          <span data-i18n="topPhone">+९७७ ०१-४४५१२४२ / ४४५०९८६</span>
+        </a>
+        <span class="top-divider">|</span>
+        <span class="top-item">
+          <i class="fa-solid fa-headset"></i>
+          <span data-i18n="topTollFree">टोल-फ्री: १६६००१२७७७७</span>
+        </span>
+      </div>
+
+      <div class="top-bar-right">
+        <a href="../index.html#home" class="top-item">
+          <i class="fa-solid fa-house"></i>
+          <span data-i18n="navHome">गृहपृष्ठ</span>
+        </a>
+        <span class="top-divider">|</span>
+        <a href="../index.html#about-ebps" class="top-item">
+          <i class="fa-solid fa-circle-info"></i>
+          <span data-i18n="navAbout">हाम्रो बारेमा</span>
+        </a>
+        <span class="top-divider">|</span>
+        <div class="auth-btn-group">
+          <a href="https://ebps.kageshworimanoharamun.gov.np/webui/" class="btn-top-login">
+            <i class="fa-solid fa-lock"></i>
+            <span data-i18n="navLogin">लगइन</span>
+          </a>
+          <a href="register-designer.html" class="btn-top-signup">
+            <i class="fa-solid fa-user-plus"></i>
+            <span data-i18n="navSignUp">दर्ता</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================
+       2. MAIN NAVBAR & DUAL LOGO BRANDING
+       ======================================================== -->
+  <nav class="main-header" id="navbar">
+    <div class="header-container">
+      <a href="../index.html#home" class="brand-identity">
+        <div class="logos-group">
+          <img src="../images/nepal_sarkar_logo.png" alt="नेपाल सरकार" class="logo-nepal" title="नेपाल सरकार निशान छाप">
+          <div class="logo-kageshwori-wrap" title="कागेश्वरी मनोहरा नगरपालिका">
+            <img src="../images/kageshwori_logo.png" alt="कागेश्वरी मनोहरा नगरपालिका" class="logo-kageshwori">
+          </div>
+        </div>
+        <div class="brand-text">
+          <h1 class="gov-title" data-i18n="munTitle">कागेश्वरी मनोहरा नगरपालिका</h1>
+          <span class="gov-office" data-i18n="munOffice">नगर कार्यपालिकाको कार्यालय</span>
+          <span class="gov-location" data-i18n="munLocation">डाँछी, काठमाडौं | बागमती प्रदेश</span>
+        </div>
+      </a>
+
+      <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+      <div class="navbar-nav" id="navbarCollapse">
+        <a href="../index.html#home" class="nav-link">
+          <span data-i18n="navHome">गृहपृष्ठ</span>
+        </a>
+
+        <!-- Ward Details -->
+        <a href="ward-info.html" class="nav-link active">
+          <span data-i18n="navWard">वडा विवरण</span>
+        </a>
+
+        <!-- References Dropdown -->
+        <div class="nav-dropdown">
+          <a href="#" class="nav-link">
+            <span data-i18n="navReferences">सन्दर्भ सामग्री</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="bylaws.html" class="dropdown-item"><i class="fa-solid fa-book"></i> <span data-i18n="bylawsDoc">भवन निर्माण मापदण्ड २०८०</span></a>
+            <a href="process-guide.html" class="dropdown-item"><i class="fa-solid fa-file-invoice"></i> <span data-i18n="docChecklist">आवश्यक कागजात चेकलिस्ट</span></a>
+          </div>
+        </div>
+
+        <!-- Masons List -->
+        <a href="mason-list.html" class="nav-link">
+          <span data-i18n="navMasons">डकर्मी सूची</span>
+        </a>
+
+        <!-- Designer List -->
+        <a href="designer-list.html" class="nav-link">
+          <span data-i18n="navDesigners">प्राविधिक सूची</span>
+        </a>
+
+        <!-- Language Switcher Button -->
+        <button type="button" class="nav-lang-btn" id="langToggleBtn" title="भाषा परिवर्तन / Change Language">
+          <i class="fa-solid fa-globe"></i>
+          <span id="langBtnText">English</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========================================================
+       3. PAGE HEADER HERO BANNER
+       ======================================================== -->
+  <section class="list-page-header">
+    <div class="list-header-container">
+      <div class="breadcrumb-trail">
+        <a href="../index.html#home"><i class="fa-solid fa-house"></i> <span data-i18n="navHome">गृहपृष्ठ</span></a>
+        <span>/</span>
+        <span data-i18n="navWard">वडा विवरण</span>
+      </div>
+
+      <div class="list-title-wrap">
+        <div class="list-icon-badge">
+          <i class="fa-solid fa-map-location-dot"></i>
+        </div>
+        <div>
+          <h2 class="list-page-heading">
+            <span>वडा कार्यालय तथा ई-विपिएस सेवा विवरण</span>
+          </h2>
+          <p class="list-page-subheading">
+            कागेश्वरी मनोहरा नगरपालिकाका वडा नं. १ देखि ९ सम्मका कार्यालयहरू तथा नक्सा पास सर्जिमिन सेवा।
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       4. 9 WARDS GRID DIRECTORY
+       ======================================================== -->
+  <main class="list-content-section" style="max-width: 1200px; margin: 0 auto; padding: 40px 20px;">
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px;">
+      
+      <!-- Ward 1 -->
+      <div style="background: white; border-radius: 14px; padding: 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border-top: 4px solid var(--primary-emerald);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+          <h3 style="font-size: 1.25rem; color: #0f172a; margin: 0;">वडा नं. १ (गागलफेदी)</h3>
+          <span class="preview-badge success">सक्रिय E-BPS</span>
+        </div>
+        <p style="font-size: 0.92rem; color: #475569; margin-bottom: 14px;"><i class="fa-solid fa-location-dot" style="color: var(--primary-emerald);"></i> स्थान: गागलफेदी, काठमाडौं</p>
+        <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.88rem; color: #334155; line-height: 1.8;">
+          <li><strong>सर्जिमिन दिन:</strong> आइतबार र मंगलबार</li>
+          <li><strong>ई-विपिएस प्राविधिक:</strong> वडा सब-इन्जिनियर</li>
+          <li><strong>सम्पर्क फोन:</strong> ०१-४४५१२४२ (Ext: 101)</li>
+        </ul>
+      </div>
+
+      <!-- Ward 2 -->
+      <div style="background: white; border-radius: 14px; padding: 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border-top: 4px solid var(--primary-emerald);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+          <h3 style="font-size: 1.25rem; color: #0f172a; margin: 0;">वडा नं. २ (आलापोट)</h3>
+          <span class="preview-badge success">सक्रिय E-BPS</span>
+        </div>
+        <p style="font-size: 0.92rem; color: #475569; margin-bottom: 14px;"><i class="fa-solid fa-location-dot" style="color: var(--primary-emerald);"></i> स्थान: आलापोट, काठमाडौं</p>
+        <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.88rem; color: #334155; line-height: 1.8;">
+          <li><strong>सर्जिमिन दिन:</strong> सोमबार र बुधबार</li>
+          <li><strong>ई-विपिएस प्राविधिक:</strong> वडा सब-इन्जिनियर</li>
+          <li><strong>सम्पर्क फोन:</strong> ०१-४४५१२४२ (Ext: 102)</li>
+        </ul>
+      </div>
+
+      <!-- Ward 3 -->
+      <div style="background: white; border-radius: 14px; padding: 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border-top: 4px solid var(--primary-emerald);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+          <h3 style="font-size: 1.25rem; color: #0f172a; margin: 0;">वडा नं. ३ (भद्रबास)</h3>
+          <span class="preview-badge success">सक्रिय E-BPS</span>
+        </div>
+        <p style="font-size: 0.92rem; color: #475569; margin-bottom: 14px;"><i class="fa-solid fa-location-dot" style="color: var(--primary-emerald);"></i> स्थान: भद्रबास, काठमाडौं</p>
+        <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.88rem; color: #334155; line-height: 1.8;">
+          <li><strong>सर्जिमिन दिन:</strong> आइतबार र बिहीबार</li>
+          <li><strong>ई-विपिएस प्राविधिक:</strong> वडा सब-इन्जिनियर</li>
+          <li><strong>सम्पर्क फोन:</strong> ०१-४४५१२४२ (Ext: 103)</li>
+        </ul>
+      </div>
+
+      <!-- Ward 4 -->
+      <div style="background: white; border-radius: 14px; padding: 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border-top: 4px solid var(--accent-gold);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+          <h3 style="font-size: 1.25rem; color: #0f172a; margin: 0;">वडा नं. ४ (डाँछी)</h3>
+          <span class="preview-badge success">केन्द्रीय सर्भर</span>
+        </div>
+        <p style="font-size: 0.92rem; color: #475569; margin-bottom: 14px;"><i class="fa-solid fa-location-dot" style="color: var(--accent-gold);"></i> स्थान: डाँछी (नगरपालिका कार्यालय परिसर)</p>
+        <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.88rem; color: #334155; line-height: 1.8;">
+          <li><strong>सर्जिमिन दिन:</strong> नियमित दैनिक</li>
+          <li><strong>ई-विपिएस प्राविधिक:</strong> इन्जिनियर तथा प्राविधिक अधिकृत</li>
+          <li><strong>सम्पर्क फोन:</strong> ०१-४४५१२४२ (Ext: 104)</li>
+        </ul>
+      </div>
+
+      <!-- Ward 5 -->
+      <div style="background: white; border-radius: 14px; padding: 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border-top: 4px solid var(--primary-emerald);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+          <h3 style="font-size: 1.25rem; color: #0f172a; margin: 0;">वडा नं. ५ (थली)</h3>
+          <span class="preview-badge success">सक्रिय E-BPS</span>
+        </div>
+        <p style="font-size: 0.92rem; color: #475569; margin-bottom: 14px;"><i class="fa-solid fa-location-dot" style="color: var(--primary-emerald);"></i> स्थान: थली, काठमाडौं</p>
+        <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.88rem; color: #334155; line-height: 1.8;">
+          <li><strong>सर्जिमिन दिन:</strong> सोमबार र बुधबार</li>
+          <li><strong>ई-विपिएस प्राविधिक:</strong> वडा सब-इन्जिनियर</li>
+          <li><strong>सम्पर्क फोन:</strong> ०१-४४५१२४२ (Ext: 105)</li>
+        </ul>
+      </div>
+
+      <!-- Ward 6 -->
+      <div style="background: white; border-radius: 14px; padding: 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border-top: 4px solid var(--primary-emerald);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+          <h3 style="font-size: 1.25rem; color: #0f172a; margin: 0;">वडा नं. ६ (मूलपानी)</h3>
+          <span class="preview-badge success">सक्रिय E-BPS</span>
+        </div>
+        <p style="font-size: 0.92rem; color: #475569; margin-bottom: 14px;"><i class="fa-solid fa-location-dot" style="color: var(--primary-emerald);"></i> स्थान: मूलपानी, काठमाडौं</p>
+        <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.88rem; color: #334155; line-height: 1.8;">
+          <li><strong>सर्जिमिन दिन:</strong> आइतबार र मंगलबार</li>
+          <li><strong>ई-विपिएस प्राविधिक:</strong> वडा सब-इन्जिनियर</li>
+          <li><strong>सम्पर्क फोन:</strong> ०१-४४५१२४२ (Ext: 106)</li>
+        </ul>
+      </div>
+
+      <!-- Ward 7 -->
+      <div style="background: white; border-radius: 14px; padding: 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border-top: 4px solid var(--primary-emerald);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+          <h3 style="font-size: 1.25rem; color: #0f172a; margin: 0;">वडा नं. ७ (हरहर महादेव / काँडाघारी)</h3>
+          <span class="preview-badge success">सक्रिय E-BPS</span>
+        </div>
+        <p style="font-size: 0.92rem; color: #475569; margin-bottom: 14px;"><i class="fa-solid fa-location-dot" style="color: var(--primary-emerald);"></i> स्थान: हरहर महादेव, काठमाडौं</p>
+        <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.88rem; color: #334155; line-height: 1.8;">
+          <li><strong>सर्जिमिन दिन:</strong> मंगलबार र बिहीबार</li>
+          <li><strong>ई-विपिएस प्राविधिक:</strong> वडा सब-इन्जिनियर</li>
+          <li><strong>सम्पर्क फोन:</strong> ०१-४४५१२४२ (Ext: 107)</li>
+        </ul>
+      </div>
+
+      <!-- Ward 8 -->
+      <div style="background: white; border-radius: 14px; padding: 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border-top: 4px solid var(--primary-emerald);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+          <h3 style="font-size: 1.25rem; color: #0f172a; margin: 0;">वडा नं. ८ (गोठाटार)</h3>
+          <span class="preview-badge success">सक्रिय E-BPS</span>
+        </div>
+        <p style="font-size: 0.92rem; color: #475569; margin-bottom: 14px;"><i class="fa-solid fa-location-dot" style="color: var(--primary-emerald);"></i> स्थान: गोठाटार, काठमाडौं</p>
+        <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.88rem; color: #334155; line-height: 1.8;">
+          <li><strong>सर्जिमिन दिन:</strong> सोमबार र बुधबार</li>
+          <li><strong>ई-विपिएस प्राविधिक:</strong> वडा सब-इन्जिनियर</li>
+          <li><strong>सम्पर्क फोन:</strong> ०१-४४५१२४२ (Ext: 108)</li>
+        </ul>
+      </div>
+
+      <!-- Ward 9 -->
+      <div style="background: white; border-radius: 14px; padding: 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border-top: 4px solid var(--primary-emerald);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+          <h3 style="font-size: 1.25rem; color: #0f172a; margin: 0;">वडा नं. ९ (काँडाघारी)</h3>
+          <span class="preview-badge success">सक्रिय E-BPS</span>
+        </div>
+        <p style="font-size: 0.92rem; color: #475569; margin-bottom: 14px;"><i class="fa-solid fa-location-dot" style="color: var(--primary-emerald);"></i> स्थान: काँडाघारी, काठमाडौं</p>
+        <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.88rem; color: #334155; line-height: 1.8;">
+          <li><strong>सर्जिमिन दिन:</strong> आइतबार र बिहीबार</li>
+          <li><strong>ई-विपिएस प्राविधिक:</strong> वडा सब-इन्जिनियर</li>
+          <li><strong>सम्पर्क फोन:</strong> ०१-४४५१२४२ (Ext: 109)</li>
+        </ul>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- ========================================================
+       5. MAIN FOOTER
+       ======================================================== -->
+  <footer class="main-footer">
+    <div class="footer-container">
+      <div class="footer-col">
+        <h4 class="footer-col-title" data-i18n="footerContactTitle">सम्पर्क ठेगाना</h4>
+        <div class="footer-contact-list">
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-building-columns"></i>
+            <div>
+              <strong>कागेश्वरी मनोहरा नगरपालिका</strong><br>
+              <span data-i18n="footerAddress">नगर कार्यपालिकाको कार्यालय, डाँछी, काठमाडौं</span>
+            </div>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-phone"></i>
+            <div class="footer-contact-details">
+              <div class="contact-line">
+                <span class="contact-label" data-i18n="footerPhoneLabel">फोन:</span>
+                <a href="tel:014451242" class="footer-contact-link">+९७७ ०१-४४५१२४२</a>, 
+                <a href="tel:014450986" class="footer-contact-link">०१-४४५०९८६</a>
+              </div>
+              <div class="footer-tollfree">
+                <span class="tollfree-badge" data-i18n="footerTollFreeLabel">टोल-फ्री:</span>
+                <a href="tel:16600127777" class="footer-contact-link tollfree-link">१६६००१२७७७७</a>
+              </div>
+            </div>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-envelope"></i>
+            <div class="footer-contact-details">
+              <span class="contact-label" data-i18n="footerEmailLabel">इमेल:</span>
+              <div class="footer-email-list">
+                <a href="mailto:info@kageshworimanoharamun.gov.np" class="footer-contact-link email-link">info@kageshworimanoharamun.gov.np</a>
+                <a href="mailto:er.kageshworimun@gmail.com" class="footer-contact-link email-link">er.kageshworimun@gmail.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-col-title" data-i18n="footerLinksTitle">द्रुत लिङ्कहरु</h4>
+        <ul class="footer-links-list">
+          <li><a href="bylaws.html"><i class="fa-solid fa-angle-right"></i> <span data-i18n="bylawsDoc">भवन निर्माण मापदण्ड २०८०</span></a></li>
+          <li><a href="process-guide.html"><i class="fa-solid fa-angle-right"></i> <span data-i18n="docChecklist">आवश्यक कागजात चेकलिस्ट</span></a></li>
+          <li><a href="ward-info.html"><i class="fa-solid fa-angle-right"></i> <span data-i18n="navWard">वडा विवरण</span></a></li>
+          <li><a href="mason-list.html"><i class="fa-solid fa-angle-right"></i> <span data-i18n="navMasons">डकर्मी सूची</span></a></li>
+          <li><a href="designer-list.html"><i class="fa-solid fa-angle-right"></i> <span data-i18n="navDesigners">प्राविधिक सूची</span></a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-col-title" data-i18n="footerHelpdeskTitle">ई-विपिएस सहायता कक्ष</h4>
+        <div class="footer-hours-box">
+          <p style="margin-bottom: 8px;"><strong data-i18n="footerHoursTitle">कार्यालय समय:</strong></p>
+          <p style="margin-bottom: 4px;" data-i18n="footerHours1">आइतबार – बिहीबार: १०:०० AM – ५:०० PM</p>
+          <p style="margin-bottom: 12px;" data-i18n="footerHours2">शुक्रबार: १०:०० AM – ३:०० PM</p>
+          <p style="font-size: 0.82rem; color: #a7f3d0;">
+            * ई-विपिएस अनलाइन आवेदन २४ सै घण्टा खुला रहनेछ।
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div data-i18n="footerCopyright">
+        © सर्वाधिकार सुरक्षित २०८१ / 2026 - कागेश्वरी मनोहरा नगरपालिका
+      </div>
+      <div class="footer-dev-credit">
+        ई-विपिएस प्रणाली | E-BPS System
+      </div>
+    </div>
+  </footer>
+
+  <!-- Main JavaScript File -->
+  <script src="../js/main.js"></script>
+</body>
+</html>

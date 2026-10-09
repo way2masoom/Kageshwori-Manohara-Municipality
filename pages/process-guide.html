@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Permit Process & Checklist | कागेश्वरी मनोहरा नगरपालिका - E-BPS</title>
+  
+  <meta name="description" content="कागेश्वरी मनोहरा नगरपालिका भवन निर्माण इजाजत प्रक्रिया तथा आवश्यक कागजात चेकलिस्ट।">
+  <meta name="keywords" content="EBPS, Permit Process, Document Checklist, Building Permit Steps, Kageshwori Manohara, Danchhi">
+  <meta name="author" content="कागेश्वरी मनोहरा नगरपालिका">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="../images/nepal_sarkar_logo.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Master Stylesheet -->
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <!-- Scroll Progress Indicator -->
+  <div id="scrollProgress"></div>
+
+  <!-- Back to Top Floating Button -->
+  <button id="backToTopBtn" aria-label="Scroll to top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <!-- ========================================================
+       1. TOP UTILITY BAR
+       ======================================================== -->
+  <header class="top-bar">
+    <div class="top-bar-container">
+      <div class="top-bar-left">
+        <a href="tel:014451242" class="top-item">
+          <i class="fa-solid fa-phone"></i>
+          <span data-i18n="topPhone">+९७७ ०१-४४५१२४२ / ४४५०९८६</span>
+        </a>
+        <span class="top-divider">|</span>
+        <span class="top-item">
+          <i class="fa-solid fa-headset"></i>
+          <span data-i18n="topTollFree">टोल-फ्री: १६६००१२७७७७</span>
+        </span>
+      </div>
+
+      <div class="top-bar-right">
+        <a href="../index.html#home" class="top-item">
+          <i class="fa-solid fa-house"></i>
+          <span data-i18n="navHome">गृहपृष्ठ</span>
+        </a>
+        <span class="top-divider">|</span>
+        <a href="../index.html#about-ebps" class="top-item">
+          <i class="fa-solid fa-circle-info"></i>
+          <span data-i18n="navAbout">हाम्रो बारेमा</span>
+        </a>
+        <span class="top-divider">|</span>
+        <div class="auth-btn-group">
+          <a href="https://ebps.kageshworimanoharamun.gov.np/webui/" class="btn-top-login">
+            <i class="fa-solid fa-lock"></i>
+            <span data-i18n="navLogin">लगइन</span>
+          </a>
+          <a href="register-designer.html" class="btn-top-signup">
+            <i class="fa-solid fa-user-plus"></i>
+            <span data-i18n="navSignUp">दर्ता</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================
+       2. MAIN NAVBAR & DUAL LOGO BRANDING
+       ======================================================== -->
+  <nav class="main-header" id="navbar">
+    <div class="header-container">
+      <a href="../index.html#home" class="brand-identity">
+        <div class="logos-group">
+          <img src="../images/nepal_sarkar_logo.png" alt="नेपाल सरकार" class="logo-nepal" title="नेपाल सरकार निशान छाप">
+          <div class="logo-kageshwori-wrap" title="कागेश्वरी मनोहरा नगरपालिका">
+            <img src="../images/kageshwori_logo.png" alt="कागेश्वरी मनोहरा नगरपालिका" class="logo-kageshwori">
+          </div>
+        </div>
+        <div class="brand-text">
+          <h1 class="gov-title" data-i18n="munTitle">कागेश्वरी मनोहरा नगरपालिका</h1>
+          <span class="gov-office" data-i18n="munOffice">नगर कार्यपालिकाको कार्यालय</span>
+          <span class="gov-location" data-i18n="munLocation">डाँछी, काठमाडौं | बागमती प्रदेश</span>
+        </div>
+      </a>
+
+      <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+      <div class="navbar-nav" id="navbarCollapse">
+        <a href="../index.html#home" class="nav-link">
+          <span data-i18n="navHome">गृहपृष्ठ</span>
+        </a>
+
+        <!-- Ward Details -->
+        <a href="ward-info.html" class="nav-link">
+          <span data-i18n="navWard">वडा विवरण</span>
+        </a>
+
+        <!-- References Dropdown -->
+        <div class="nav-dropdown">
+          <a href="#" class="nav-link active">
+            <span data-i18n="navReferences">सन्दर्भ सामग्री</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="bylaws.html" class="dropdown-item"><i class="fa-solid fa-book"></i> <span data-i18n="bylawsDoc">भवन निर्माण मापदण्ड २०८०</span></a>
+            <a href="process-guide.html" class="dropdown-item active"><i class="fa-solid fa-file-invoice"></i> <span data-i18n="docChecklist">आवश्यक कागजात चेकलिस्ट</span></a>
+          </div>
+        </div>
+
+        <!-- Masons List -->
+        <a href="mason-list.html" class="nav-link">
+          <span data-i18n="navMasons">डकर्मी सूची</span>
+        </a>
+
+        <!-- Designer List -->
+        <a href="designer-list.html" class="nav-link">
+          <span data-i18n="navDesigners">प्राविधिक सूची</span>
+        </a>
+
+        <!-- Language Switcher Button -->
+        <button type="button" class="nav-lang-btn" id="langToggleBtn" title="भाषा परिवर्तन / Change Language">
+          <i class="fa-solid fa-globe"></i>
+          <span id="langBtnText">English</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========================================================
+       3. PAGE HEADER HERO BANNER
+       ======================================================== -->
+  <section class="list-page-header">
+    <div class="list-header-container">
+      <div class="breadcrumb-trail">
+        <a href="../index.html#home"><i class="fa-solid fa-house"></i> <span data-i18n="navHome">गृहपृष्ठ</span></a>
+        <span>/</span>
+        <span data-i18n="docChecklist">आवश्यक कागजात चेकलिस्ट तथा प्रक्रिया</span>
+      </div>
+
+      <div class="list-title-wrap">
+        <div class="list-icon-badge">
+          <i class="fa-solid fa-file-circle-check"></i>
+        </div>
+        <div>
+          <h2 class="list-page-heading">
+            <span>भवन निर्माण इजाजत प्रक्रिया तथा कागजात चेकलिस्ट</span>
+          </h2>
+          <p class="list-page-subheading">
+            ई-विपिएस प्रणालीमार्फत अनलाइन नक्सा पासका ७ चरणहरू, आवश्यक कागजातहरूको पूर्ण विवरण तथा राजश्व दररेट।
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       4. MAIN CONTENT: 7 STEPS WORKFLOW & CHECKLIST
+       ======================================================== -->
+  <main class="list-content-section" style="max-width: 1200px; margin: 0 auto; padding: 40px 20px;">
+    
+    <!-- 7 Step Process Workflow Timeline -->
+    <div style="background: white; border-radius: 16px; padding: 36px; box-shadow: 0 8px 30px rgba(0,0,0,0.06); margin-bottom: 40px;">
+      <h3 style="font-size: 1.4rem; color: var(--primary-emerald); margin-bottom: 25px; display: flex; align-items: center; gap: 10px;">
+        <i class="fa-solid fa-diagram-project"></i>
+        <span>इजाजत प्रक्रियाका ७ चरणहरू (Step-by-Step Approval Workflow)</span>
+      </h3>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+        
+        <div style="background: #f8fafc; border-radius: 12px; padding: 20px; border-top: 4px solid var(--primary-emerald);">
+          <div style="font-weight: 700; color: var(--primary-emerald); font-size: 1.1rem; margin-bottom: 6px;">चरण १: अनलाइन दर्ता</div>
+          <p style="font-size: 0.92rem; color: #475569;">सूचीकृत डिजाइनरमार्फत घरधनीको विवरण, लालपुर्जा, नक्सा र डिजिटल AutoCAD ड्रइङ पेश गरिन्छ।</p>
+        </div>
+
+        <div style="background: #f8fafc; border-radius: 12px; padding: 20px; border-top: 4px solid var(--accent-gold);">
+          <div style="font-weight: 700; color: var(--accent-gold); font-size: 1.1rem; margin-bottom: 6px;">चरण २: प्रारम्भिक प्राविधिक जाँच</div>
+          <p style="font-size: 0.92rem; color: #475569;">नगरपालिका प्राविधिक शाखाले पेश गरिएका कागजात, सेटब्याक तथा NBC 105:2020 मापदण्ड रुजु गर्दछ।</p>
+        </div>
+
+        <div style="background: #f8fafc; border-radius: 12px; padding: 20px; border-top: 4px solid #2563eb);">
+          <div style="font-weight: 700; color: #2563eb; font-size: 1.1rem; margin-bottom: 6px;">चरण ३: १५ दिने सार्वजनिक सूचना</div>
+          <p style="font-size: 0.92rem; color: #475569;">सम्बन्धित वडा कार्यालय र कार्यपालिकाको वेबसाइटमा १५ दिने हकदाबी सूचना जारी हुन्छ।</p>
+        </div>
+
+        <div style="background: #f8fafc; border-radius: 12px; padding: 20px; border-top: 4px solid #7c3aed);">
+          <div style="font-weight: 700; color: #7c3aed; font-size: 1.1rem; margin-bottom: 6px;">चरण ४: वडा स्तरीय स्थलगत सर्जिमिन</div>
+          <p style="font-size: 0.92rem; color: #475569;">वडा प्राविधिक टोलीले निर्माण स्थलमा पुगी बाटोको चौडाइ र चारकिल्ला सर्जिमिन मुचुल्का उठाउँछ।</p>
+        </div>
+
+        <div style="background: #f8fafc; border-radius: 12px; padding: 20px; border-top: 4px solid #059669);">
+          <div style="font-weight: 700; color: #059669; font-size: 1.1rem; margin-bottom: 6px;">चरण ५: प्लिन्थ लेवल इजाजत</div>
+          <p style="font-size: 0.92rem; color: #475569;">राजश्व दस्तुर भुक्तानी पश्चात् डीपीसी (DPC) सम्म निर्माण गर्न अस्थायी इजाजत पत्र जारी गरिन्छ।</p>
+        </div>
+
+        <div style="background: #f8fafc; border-radius: 12px; padding: 20px; border-top: 4px solid #d97706);">
+          <div style="font-weight: 700; color: #d97706; font-size: 1.1rem; margin-bottom: 6px;">चरण ६: सुपरस्ट्रक्चर इजाजत</div>
+          <p style="font-size: 0.92rem; color: #475569;">प्लिन्थ निरीक्षण सम्पन्न भएपछि माथिल्लो तला (Superstructure) निर्माणका लागि स्थायी इजाजत दिइन्छ।</p>
+        </div>
+
+        <div style="background: #f8fafc; border-radius: 12px; padding: 20px; border-top: 4px solid #dc2626; grid-column: 1 / -1;">
+          <div style="font-weight: 700; color: #dc2626; font-size: 1.1rem; margin-bottom: 6px;">चरण ७: अन्तिम निर्माण सम्पन्न प्रमाणपत्र (Completion Certificate)</div>
+          <p style="font-size: 0.92rem; color: #475569;">भवन निर्माण सम्पन्न भएपछि नगरपालिकाको इन्जिनियर टोलीद्वारा अन्तिम निरीक्षण गरी डिजिटल निर्माण सम्पन्न प्रमाणपत्र जारी गरिन्छ।</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Required Documents Checklist Table -->
+    <div style="background: white; border-radius: 16px; padding: 36px; box-shadow: 0 8px 30px rgba(0,0,0,0.06);">
+      <h3 style="font-size: 1.4rem; color: var(--primary-emerald); margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
+        <i class="fa-solid fa-list-check"></i>
+        <span>आवश्यक कागजातहरूको चेकलिस्ट (Required Document Checklist)</span>
+      </h3>
+
+      <div style="overflow-x: auto;">
+        <table style="width: 100%; border-collapse: collapse; font-size: 0.95rem;">
+          <thead>
+            <tr style="background: #f1f5f9; color: #1e293b; text-align: left; border-bottom: 2px solid #cbd5e1;">
+              <th style="padding: 12px 16px;">क्र.सं.</th>
+              <th style="padding: 12px 16px;">कागजातको नाम</th>
+              <th style="padding: 12px 16px;">प्रमाणीकरण गर्ने निकाय</th>
+              <th style="padding: 12px 16px;">स्थिति</th>
+            </tr>
+          </thead>
+          <tbody style="color: #334155;">
+            <tr style="border-bottom: 1px solid #e2e8f0;">
+              <td style="padding: 12px 16px; font-weight: 600;">१</td>
+              <td style="padding: 12px 16px;"><strong>जग्गाधनी प्रमाण पुर्जा (लालपुर्जा)</strong> को स्पष्ट प्रतिलिपि</td>
+              <td style="padding: 12px 16px;">मालपोत कार्यालय</td>
+              <td style="padding: 12px 16px;"><span class="preview-badge success">अनिवार्य</span></td>
+            </tr>
+            <tr style="border-bottom: 1px solid #e2e8f0;">
+              <td style="padding: 12px 16px; font-weight: 600;">२</td>
+              <td style="padding: 12px 16px;"><strong>जग्गाधनीको नागरिकता प्रमाणपत्र</strong> प्रतिलिपि</td>
+              <td style="padding: 12px 16px;">जिल्ला प्रशासन कार्यालय</td>
+              <td style="padding: 12px 16px;"><span class="preview-badge success">अनिवार्य</span></td>
+            </tr>
+            <tr style="border-bottom: 1px solid #e2e8f0;">
+              <td style="padding: 12px 16px; font-weight: 600;">३</td>
+              <td style="padding: 12px 16px;"><strong>नापी नक्सा (ट्रेस नक्सा) र फिल्डबुक उतार</strong></td>
+              <td style="padding: 12px 16px;">नापी कार्यालय</td>
+              <td style="padding: 12px 16px;"><span class="preview-badge success">अनिवार्य</span></td>
+            </tr>
+            <tr style="border-bottom: 1px solid #e2e8f0;">
+              <td style="padding: 12px 16px; font-weight: 600;">४</td>
+              <td style="padding: 12px 16px;"><strong>चालु आर्थिक वर्षको एकीकृत सम्पत्ति कर / मालपोत रसिद</strong></td>
+              <td style="padding: 12px 16px;">सम्बन्धित वडा कार्यालय</td>
+              <td style="padding: 12px 16px;"><span class="preview-badge success">अनिवार्य</span></td>
+            </tr>
+            <tr style="border-bottom: 1px solid #e2e8f0;">
+              <td style="padding: 12px 16px; font-weight: 600;">५</td>
+              <td style="padding: 12px 16px;"><strong>डिजिटल आर्किटेक्चरल, स्ट्रक्चरल, स्यानिटरी तथा विद्युतीय ड्रइङ</strong></td>
+              <td style="padding: 12px 16px;">सूचीकृत इन्जिनियर / कन्सल्टेन्सी</td>
+              <td style="padding: 12px 16px;"><span class="preview-badge success">अनिवार्य</span></td>
+            </tr>
+            <tr>
+              <td style="padding: 12px 16px; font-weight: 600;">६</td>
+              <td style="padding: 12px 16px;"><strong>सडक पहुँच तथा चारकिल्ला वडा सिफारिस</strong></td>
+              <td style="padding: 12px 16px;">सम्बन्धित वडा कार्यालय</td>
+              <td style="padding: 12px 16px;"><span class="preview-badge success">अनिवार्य</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div style="margin-top: 30px; display: flex; gap: 15px; flex-wrap: wrap;">
+        <a href="https://ebps.kageshworimanoharamun.gov.np/webui/" class="btn-top-login" style="padding: 12px 24px; border-radius: 8px; text-decoration: none;">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i> अनलाइन नक्सा पास प्रणाली लगइन गर्नुहोस्
+        </a>
+        <a href="bylaws.html" class="btn-top-signup" style="padding: 12px 24px; border-radius: 8px; text-decoration: none;">
+          <i class="fa-solid fa-book"></i> भवन निर्माण मापदण्ड हेर्नुहोस्
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ========================================================
+       5. MAIN FOOTER
+       ======================================================== -->
+  <footer class="main-footer">
+    <div class="footer-container">
+      <div class="footer-col">
+        <h4 class="footer-col-title" data-i18n="footerContactTitle">सम्पर्क ठेगाना</h4>
+        <div class="footer-contact-list">
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-building-columns"></i>
+            <div>
+              <strong>कागेश्वरी मनोहरा नगरपालिका</strong><br>
+              <span data-i18n="footerAddress">नगर कार्यपालिकाको कार्यालय, डाँछी, काठमाडौं</span>
+            </div>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-phone"></i>
+            <div class="footer-contact-details">
+              <div class="contact-line">
+                <span class="contact-label" data-i18n="footerPhoneLabel">फोन:</span>
+                <a href="tel:014451242" class="footer-contact-link">+९७७ ०१-४४५१२४२</a>, 
+                <a href="tel:014450986" class="footer-contact-link">०१-४४५०९८६</a>
+              </div>
+              <div class="footer-tollfree">
+                <span class="tollfree-badge" data-i18n="footerTollFreeLabel">टोल-फ्री:</span>
+                <a href="tel:16600127777" class="footer-contact-link tollfree-link">१६६००१२७७७७</a>
+              </div>
+            </div>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-envelope"></i>
+            <div class="footer-contact-details">
+              <span class="contact-label" data-i18n="footerEmailLabel">इमेल:</span>
+              <div class="footer-email-list">
+                <a href="mailto:info@kageshworimanoharamun.gov.np" class="footer-contact-link email-link">info@kageshworimanoharamun.gov.np</a>
+                <a href="mailto:er.kageshworimun@gmail.com" class="footer-contact-link email-link">er.kageshworimun@gmail.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-col-title" data-i18n="footerLinksTitle">द्रुत लिङ्कहरु</h4>
+        <ul class="footer-links-list">
+          <li><a href="bylaws.html"><i class="fa-solid fa-angle-right"></i> <span data-i18n="bylawsDoc">भवन निर्माण मापदण्ड २०८०</span></a></li>
+          <li><a href="process-guide.html"><i class="fa-solid fa-angle-right"></i> <span data-i18n="docChecklist">आवश्यक कागजात चेकलिस्ट</span></a></li>
+          <li><a href="ward-info.html"><i class="fa-solid fa-angle-right"></i> <span data-i18n="navWard">वडा विवरण</span></a></li>
+          <li><a href="mason-list.html"><i class="fa-solid fa-angle-right"></i> <span data-i18n="navMasons">डकर्मी सूची</span></a></li>
+          <li><a href="designer-list.html"><i class="fa-solid fa-angle-right"></i> <span data-i18n="navDesigners">प्राविधिक सूची</span></a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-col-title" data-i18n="footerHelpdeskTitle">ई-विपिएस सहायता कक्ष</h4>
+        <div class="footer-hours-box">
+          <p style="margin-bottom: 8px;"><strong data-i18n="footerHoursTitle">कार्यालय समय:</strong></p>
+          <p style="margin-bottom: 4px;" data-i18n="footerHours1">आइतबार – बिहीबार: १०:०० AM – ५:०० PM</p>
+          <p style="margin-bottom: 12px;" data-i18n="footerHours2">शुक्रबार: १०:०० AM – ३:०० PM</p>
+          <p style="font-size: 0.82rem; color: #a7f3d0;">
+            * ई-विपिएस अनलाइन आवेदन २४ सै घण्टा खुला रहनेछ।
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div data-i18n="footerCopyright">
+        © सर्वाधिकार सुरक्षित २०८१ / 2026 - कागेश्वरी मनोहरा नगरपालिका
+      </div>
+      <div class="footer-dev-credit">
+        ई-विपिएस प्रणाली | E-BPS System
+      </div>
+    </div>
+  </footer>
+
+  <!-- Main JavaScript File -->
+  <script src="../js/main.js"></script>
+</body>
+</html>
