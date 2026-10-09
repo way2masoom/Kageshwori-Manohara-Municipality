@@ -563,10 +563,10 @@ body.lang-en .nav-lang-btn {
   width: 100%;
   background: radial-gradient(circle at 50% 25%, #0a4928 0%, #06381e 50%, #032011 100%);
   color: #ffffff;
-  padding: 60px 24px 85px;
+  padding: 60px 24px 0;
   text-align: center;
   overflow: visible;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 4px solid #f59e0b;
 }
 
 .hero-premium-container {
@@ -745,11 +745,11 @@ body.lang-ne .hero-main-title {
   color: #34d399;
 }
 
-/* Floating White Quick-Action Dock */
+/* Floating White Quick-Action Dock (3D Elevated Overlap across Hero Border) */
 .hero-quick-dock-wrapper {
   max-width: 1220px;
   width: 100%;
-  margin: 35px auto -68px;
+  margin: 40px auto -54px;
   padding: 0 20px;
   position: relative;
   z-index: 40;
@@ -758,12 +758,17 @@ body.lang-ne .hero-main-title {
 .hero-quick-dock {
   background: #ffffff;
   border-radius: 22px;
-  padding: 22px 30px;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.13), 0 2px 6px rgba(0, 0, 0, 0.04);
-  border: 1px solid rgba(226, 232, 240, 0.9);
+  padding: 20px 28px;
+  box-shadow: 0 20px 48px -4px rgba(0, 0, 0, 0.28), 0 8px 18px -2px rgba(0, 0, 0, 0.14), 0 0 0 1px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(226, 232, 240, 0.95);
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 16px;
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease;
+}
+
+.hero-quick-dock:hover {
+  box-shadow: 0 26px 56px -4px rgba(0, 0, 0, 0.34), 0 10px 22px -2px rgba(0, 0, 0, 0.16);
 }
 
 .dock-item {
@@ -845,7 +850,7 @@ body.lang-ne .hero-main-title {
    4. ABOUT E-BPS SECTION (MATCHING IMAGE 2)
    ======================================================== */
 .about-ebps-section {
-  padding: 105px 24px 75px;
+  padding: 95px 24px 75px;
   background: #f8fafc;
   position: relative;
 }
@@ -1115,8 +1120,14 @@ body.lang-ne .about-section-heading {
 
 /* Responsive Breakpoints for Hero & About */
 @media (max-width: 1024px) {
+  .hero-quick-dock-wrapper {
+    margin-bottom: -60px;
+  }
   .hero-quick-dock {
     grid-template-columns: repeat(2, 1fr);
+  }
+  .about-ebps-section {
+    padding-top: 105px;
   }
   .about-two-col-grid {
     grid-template-columns: 1fr;
@@ -1132,9 +1143,15 @@ body.lang-ne .about-section-heading {
 }
 
 @media (max-width: 640px) {
+  .hero-quick-dock-wrapper {
+    margin-bottom: -40px;
+  }
   .hero-quick-dock {
     grid-template-columns: 1fr;
     padding: 16px;
+  }
+  .about-ebps-section {
+    padding-top: 75px;
   }
   .hero-action-buttons {
     flex-direction: column;
