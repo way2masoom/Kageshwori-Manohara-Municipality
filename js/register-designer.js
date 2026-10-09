@@ -477,62 +477,49 @@ function initFormSubmission() {
         pan_vat_certificate: panVatBase64            // Firm PAN/VAT Registration Certificate
       };
 
-      // API Endpoint URL - Priority: window.EBPS_API_URL -> http://192.168.1.73:8080/ebpsapi/rest -> http://localhost:8080/ebpsapi/rest
-      const endpointsToTry = [];
-      if (window.EBPS_API_URL) {
-        endpointsToTry.push(window.EBPS_API_URL.endsWith('/ebpsuser') ? window.EBPS_API_URL : window.EBPS_API_URL + '/ebpsuser');
-      }
-      endpointsToTry.push('http://192.168.1.73:8080/ebpsapi/rest/ebpsuser');
-      endpointsToTry.push('http://localhost:8080/ebpsapi/rest/ebpsuser');
+      // API Endpoint URL - Strictly use Java backend on 192.168.1.73
+      const apiUrl = (window.EBPS_API_URL || 'http://192.168.1.73:8080/ebpsapi/rest') + (window.EBPS_API_URL && window.EBPS_API_URL.endsWith('/ebpsuser') ? '' : '/ebpsuser');
 
-      let lastError = null;
-      let isSuccess = false;
+      console.log(`[EBPS] Submitting registration POST to Java backend: ${apiUrl}`);
 
-      for (const apiUrl of endpointsToTry) {
+      try {
+        const response = await fetch(apiUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
+
+        const rawText = await response.text();
+        let resData = null;
         try {
-          console.log(`[EBPS] Attempting POST to: ${apiUrl}`);
-          const response = await fetch(apiUrl, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'Accept': 'application/json'
-            },
-            body: JSON.stringify(payload)
-          });
-
-          const rawText = await response.text();
-          let resData = null;
-          try {
-            resData = JSON.parse(rawText);
-          } catch (e) {
-            // response is plain text / html
-          }
-
-          if (response.ok && (!resData || resData.error !== true)) {
-            const finalRef = (resData && (resData.ref_no || resData.registration_no)) || generatedRef;
-            showSuccessModal(finalRef);
-            form.reset();
-            document.querySelectorAll('.upload-dropzone-box').forEach(dz => {
-              if (typeof dz._resetDropzone === 'function') dz._resetDropzone();
-            });
-            initCaptchaGenerator();
-            isSuccess = true;
-            break;
-          } else {
-            const serverMsg = (resData && resData.message) ? resData.message : rawText.trim();
-            lastError = `Server [${apiUrl}] responded with HTTP ${response.status} (${response.statusText}):\n${serverMsg || 'Unknown error'}`;
-            console.error(lastError);
-            // If the server answered with an explicit status (e.g. 400 or 500), stop trying other endpoints
-            break;
-          }
-        } catch (netErr) {
-          console.warn(`[EBPS] Endpoint ${apiUrl} failed:`, netErr.message);
-          lastError = `Network connection to ${apiUrl} failed: ${netErr.message}`;
+          resData = JSON.parse(rawText);
+        } catch (e) {
+          // Response is plain text or HTML
         }
-      }
 
-      if (!isSuccess) {
-        alert((isEn ? 'Backend Registration Error:\n\n' : 'सर्भर त्रुटि:\n\n') + lastError);
+        if (response.ok && (!resData || resData.error !== true)) {
+          const finalRef = (resData && (resData.ref_no || resData.registration_no)) || generatedRef;
+          showSuccessModal(finalRef);
+          form.reset();
+          document.querySelectorAll('.upload-dropzone-box').forEach(dz => {
+            if (typeof dz._resetDropzone === 'function') dz._resetDropzone();
+          });
+          initCaptchaGenerator();
+        } else {
+          const serverMsg = (resData && resData.message) ? resData.message : rawText.trim();
+          const errorDetail = `Backend Server [${apiUrl}] responded with HTTP ${response.status} (${response.statusText}):\n\n${serverMsg || 'Unknown error'}`;
+          console.error(errorDetail);
+          alert((isEn ? 'Registration Failed:\n\n' : 'दर्ता प्रक्रिया असफल भयो:\n\n') + errorDetail);
+        }
+      } catch (networkError) {
+        console.error(`[EBPS] Network error contacting ${apiUrl}:`, networkError);
+        const connectionMsg = isEn
+          ? `Could not connect to Java Backend Server at:\n${apiUrl}\n\nReason: ${networkError.message}\n\nPlease verify that:\n1. Your Java backend server (Tomcat/Jetty) is running on 192.168.1.73.\n2. Port 8080 is open in the firewall on 192.168.1.73.`
+          : `ब्याकएन्ड सर्भर (${apiUrl}) मा सम्पर्क हुन सकेन।\n\nकारण: ${networkError.message}\n\nकृपया निम्न कुराहरू जाँच गर्नुहोस्:\n१. 192.168.1.73 मा Java सर्भर (Tomcat/Eclipse) चालु छ?\n२. 192.168.1.73 को Firewall ले पोर्ट 8080 लाई Allow गरेको छ?`;
+        alert(connectionMsg);
       }
 
       if (submitBtn) {
