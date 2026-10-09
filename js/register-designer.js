@@ -458,7 +458,9 @@ function initFormSubmission() {
         email: email.value.trim(),
         phone: mobileNo.value.trim(),
         nec_no: necNo.value.trim(),
+        value: necNo.value.trim(),                    // Supported for model.getvalue() in legacy service
         registration_class: designerTypeSelect.value, // Maps to UserPIN in AD_User
+        userpin: designerTypeSelect.value,            // Extra mapping for UserPIN
         consultancy_name: consultancyName,
         pan_no: panNo,
         address: permAddress,                         // Maps to Address in AD_User
@@ -475,53 +477,67 @@ function initFormSubmission() {
         pan_vat_certificate: panVatBase64            // Firm PAN/VAT Registration Certificate
       };
 
-      // API Endpoint URL (configurable via window.EBPS_API_URL)
-      const apiUrl = (window.EBPS_API_URL || 'http://localhost:8080/ebpsapi/rest') + '/ebpsuser';
+      // API Endpoint URL - Priority: window.EBPS_API_URL -> http://192.168.1.73:8080/ebpsapi/rest -> http://localhost:8080/ebpsapi/rest
+      const endpointsToTry = [];
+      if (window.EBPS_API_URL) {
+        endpointsToTry.push(window.EBPS_API_URL.endsWith('/ebpsuser') ? window.EBPS_API_URL : window.EBPS_API_URL + '/ebpsuser');
+      }
+      endpointsToTry.push('http://192.168.1.73:8080/ebpsapi/rest/ebpsuser');
+      endpointsToTry.push('http://localhost:8080/ebpsapi/rest/ebpsuser');
 
-      try {
-        const response = await fetch(apiUrl, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-          },
-          body: JSON.stringify(payload)
-        });
+      let lastError = null;
+      let isSuccess = false;
 
-        let resData = null;
+      for (const apiUrl of endpointsToTry) {
         try {
-          resData = await response.json();
-        } catch (jsonErr) {
-          // If response body is plain text or empty
-        }
-
-        if (response.ok && (!resData || resData.error !== true)) {
-          const finalRef = (resData && (resData.ref_no || resData.registration_no)) || generatedRef;
-          showSuccessModal(finalRef);
-          form.reset();
-          document.querySelectorAll('.upload-dropzone-box').forEach(dz => {
-            if (typeof dz._resetDropzone === 'function') dz._resetDropzone();
+          console.log(`[EBPS] Attempting POST to: ${apiUrl}`);
+          const response = await fetch(apiUrl, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+            },
+            body: JSON.stringify(payload)
           });
-          initCaptchaGenerator();
-        } else {
-          const errMsg = (resData && resData.message)
-            ? resData.message
-            : (isEn ? 'Failed to save registration on backend. Please check your data and retry.' : 'सर्भरमा आवेदन दर्ता हुन सकेन। कृपया विवरण जाँची पुनः प्रयास गर्नुहोस्।');
-          alert(errMsg);
+
+          const rawText = await response.text();
+          let resData = null;
+          try {
+            resData = JSON.parse(rawText);
+          } catch (e) {
+            // response is plain text / html
+          }
+
+          if (response.ok && (!resData || resData.error !== true)) {
+            const finalRef = (resData && (resData.ref_no || resData.registration_no)) || generatedRef;
+            showSuccessModal(finalRef);
+            form.reset();
+            document.querySelectorAll('.upload-dropzone-box').forEach(dz => {
+              if (typeof dz._resetDropzone === 'function') dz._resetDropzone();
+            });
+            initCaptchaGenerator();
+            isSuccess = true;
+            break;
+          } else {
+            const serverMsg = (resData && resData.message) ? resData.message : rawText.trim();
+            lastError = `Server [${apiUrl}] responded with HTTP ${response.status} (${response.statusText}):\n${serverMsg || 'Unknown error'}`;
+            console.error(lastError);
+            // If the server answered with an explicit status (e.g. 400 or 500), stop trying other endpoints
+            break;
+          }
+        } catch (netErr) {
+          console.warn(`[EBPS] Endpoint ${apiUrl} failed:`, netErr.message);
+          lastError = `Network connection to ${apiUrl} failed: ${netErr.message}`;
         }
-      } catch (networkError) {
-        console.warn('Backend server call error:', networkError);
-        // If testing frontend standalone or server is not yet reachable, provide clear notice and demonstrate success flow
-        const fallbackMsg = isEn
-          ? `Backend API (${apiUrl}) could not be contacted directly.\n\nSimulating local registration slip for demonstration.`
-          : `ब्याकएन्ड सर्भर (${apiUrl}) हाल सम्पर्कमा छैन।\n\nडेमो प्रदर्शनका लागि स्थानीय रसिद देखाइएको छ।`;
-        alert(fallbackMsg);
-        showSuccessModal(generatedRef);
-      } finally {
-        if (submitBtn) {
-          submitBtn.disabled = false;
-          submitBtn.innerHTML = originalBtnHtml;
-        }
+      }
+
+      if (!isSuccess) {
+        alert((isEn ? 'Backend Registration Error:\n\n' : 'सर्भर त्रुटि:\n\n') + lastError);
+      }
+
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalBtnHtml;
       }
     }).catch(err => {
       console.error('File reading failed:', err);
