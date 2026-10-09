@@ -7,6 +7,11 @@
   <meta name="description" content="कागेश्वरी मनोहरा नगरपालिकाको विद्युतीय भवन निर्माण इजाजत प्रणाली (Electronic Building Permit System - E-BPS)।">
   <link rel="icon" type="image/png" href="images/kageshwori_logo.png">
 
+  <!-- Google Fonts Preconnect & Styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -134,141 +139,241 @@
   </nav>
 
   <!-- ========================================================
-       3. HERO SECTION (BACKGROUND CAROUSEL & STABLE TEXT)
+       3. HERO SECTION (MATCHING IMAGE 1)
        ======================================================== -->
-  <section class="hero-stable-section hero-bg-carousel-section" id="home">
-    <!-- Background Carousel Images (Automatic Crossfade & Full Cover) -->
-    <div class="hero-bg-slider" id="heroBgSlider">
-      <div class="hero-bg-slide active">
-        <img src="images/kageshwori_building.jpg" alt="कागेश्वरी मनोहरा नगरपालिका भवन डाँछी" class="hero-stable-bg">
+  <section class="hero-premium-section" id="home">
+    <div class="hero-premium-container">
+      <!-- Top Department Badge -->
+      <div class="hero-dept-badge reveal-on-scroll">
+        <span class="nepal-flag-icon">🇳🇵</span>
+        <span data-i18n="heroDeptPill">नगर कार्यपालिकाको कार्यालय, डाँछी, काठमाडौं | सहरी विकास तथा भवन सुरक्षा महाशाखा</span>
       </div>
-      <div class="hero-bg-slide">
-        <img src="images/kageshwori_cultural.jpg" alt="कागेश्वरी धाम, काग तिहार" class="hero-stable-bg">
+
+      <!-- Motto Tagline with Golden Underline -->
+      <div class="hero-motto-headline reveal-on-scroll">
+        <span data-i18n="heroMottoPart1">सुदृढ पूर्वाधार, </span><span class="motto-gold-underline" data-i18n="heroMottoPart2">सुरक्षित भविष्य</span>
       </div>
-    </div>
 
-    <!-- Gradient Overlay for Contrast and Readability -->
-    <div class="hero-stable-overlay"></div>
+      <!-- Main E-BPS Heading -->
+      <h1 class="hero-main-title reveal-on-scroll">
+        <span data-i18n="heroMainTitleText">विद्युतीय भवन निर्माण इजाजत प्रणाली</span> <span class="gold-abbr" data-i18n="heroMainTitleAbbr">(E-BPS)</span>
+      </h1>
 
-    <!-- Completely Stable Foreground Content (Text stays the same) -->
-    <div class="hero-stable-container">
-      <div class="hero-stable-content reveal-on-scroll">
-        <div class="hero-stable-pill">
-          <i class="fa-solid fa-landmark"></i>
-          <span data-i18n="heroPill">नगर कार्यपालिकाको कार्यालय, डाँछी, काठमाडौं</span>
+      <!-- Description Paragraph -->
+      <p class="hero-description reveal-on-scroll" data-i18n="heroDescriptionText">
+        कागेश्वरी मनोहरा नगरपालिकाको विद्युतीय भवन निर्माण इजाजत प्रणाली (Electronic Building Permit System - E-BPS) मार्फत सुरक्षित, भूकम्प प्रतिरोधी र व्यवस्थित सहरी विकासका लागि १००% पारदर्शी र कागज-रहित अनलाइन नक्सा पास सेवा।
+      </p>
+
+      <!-- Action Buttons -->
+      <div class="hero-action-buttons reveal-on-scroll">
+        <a href="pages/bylaws.html" class="hero-btn-primary">
+          <i class="fa-solid fa-book-bookmark"></i>
+          <span data-i18n="heroBtnBylawsText">भवन निर्माण मापदण्ड र NBC १०५</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+        <a href="pages/designer-list.html" class="hero-btn-secondary">
+          <i class="fa-solid fa-user-pen"></i>
+          <span data-i18n="heroBtnDesignersText">दर्ता भएका प्राविधिक (डिजाइनर) सूची</span>
+        </a>
+      </div>
+
+      <!-- 3 Compliance Capsules -->
+      <div class="hero-compliance-capsules reveal-on-scroll">
+        <div class="compliance-capsule">
+          <i class="fa-solid fa-shield-halved capsule-gold-icon"></i>
+          <span data-i18n="heroCapsule1">NBC 105:2020 भूकम्प संहिता प्रमाणीकरण</span>
         </div>
-        <h2 class="hero-stable-title">
-          <span class="hero-motto-tagline" data-i18n="heroMottoMain">सुदृढ पूर्वाधार, समृद्ध नगर</span>
-          <span class="hero-title-main">
-            <span class="gold-text" data-i18n="heroMottoHighlight">विद्युतीय भवन निर्माण इजाजत प्रणाली</span>
-            <span class="hero-abbr" data-i18n="heroMottoAbbr">(E‑BPS)</span>
-          </span>
-        </h2>
-        <p class="hero-stable-desc" data-i18n="heroDesc">
-          कागेश्वरी मनोहरा नगरपालिकाको विद्युतीय भवन निर्माण इजाजत प्रणाली (Electronic Building Permit System - E-BPS) मार्फत सुरक्षित, भूकम्प प्रतिरोधी र व्यवस्थित सहरी विकासका लागि १००% पारदर्शी र कागज-रहित अनलाइन नक्सा पास सेवा।
-        </p>
+        <div class="compliance-capsule">
+          <i class="fa-solid fa-file-shield capsule-teal-icon"></i>
+          <span data-i18n="heroCapsule2">१००% डिजिटल तथा कागज-रहित दर्ता</span>
+        </div>
+        <div class="compliance-capsule">
+          <i class="fa-solid fa-building-columns capsule-gold-icon"></i>
+          <span data-i18n="heroCapsule3">वडा नं. १–९ पूर्ण एकीकृत पहुँच</span>
+        </div>
       </div>
     </div>
 
-    <!-- Carousel Controls (Arrows & Indicators) -->
-    <button class="hero-nav-arrow hero-nav-prev" id="heroPrevBtn" aria-label="अघिल्लो फोटो / Previous Background Image">
-      <i class="fa-solid fa-chevron-left"></i>
-    </button>
-    <button class="hero-nav-arrow hero-nav-next" id="heroNextBtn" aria-label="पछिल्लो फोटो / Next Background Image">
-      <i class="fa-solid fa-chevron-right"></i>
-    </button>
+    <!-- Floating White Quick-Action Dock (Bridging Hero and About) -->
+    <div class="hero-quick-dock-wrapper">
+      <div class="hero-quick-dock reveal-on-scroll">
+        <a href="pages/process-guide.html" class="dock-item">
+          <div class="dock-icon-box dock-icon-green">
+            <i class="fa-solid fa-file-circle-check"></i>
+          </div>
+          <div class="dock-text">
+            <h4 class="dock-title" data-i18n="dockPermitTitle">इजाजत प्रक्रिया</h4>
+            <p class="dock-desc" data-i18n="dockPermitDesc">चरणबद्ध मार्गदर्शन</p>
+          </div>
+        </a>
 
-    <div class="hero-slider-dots" id="heroDotsWrap">
-      <div class="slider-dot active" data-slide="0" aria-label="नगरपालिका भवन"></div>
-      <div class="slider-dot" data-slide="1" aria-label="कागेश्वरी धाम सांस्कृतिक सम्पदा"></div>
+        <a href="pages/designer-list.html" class="dock-item">
+          <div class="dock-icon-box dock-icon-amber">
+            <i class="fa-solid fa-user-pen"></i>
+          </div>
+          <div class="dock-text">
+            <h4 class="dock-title" data-i18n="dockDesignersTitle">सूचीकृत प्राविधिक</h4>
+            <p class="dock-desc" data-i18n="dockDesignersDesc">प्रमाणित इन्जिनियर तथा आर्किटेक्ट</p>
+          </div>
+        </a>
+
+        <a href="pages/mason-list.html" class="dock-item">
+          <div class="dock-icon-box dock-icon-teal">
+            <i class="fa-solid fa-trowel-bricks"></i>
+          </div>
+          <div class="dock-text">
+            <h4 class="dock-title" data-i18n="dockMasonsTitle">प्रमाणित डकर्मी</h4>
+            <p class="dock-desc" data-i18n="dockMasonsDesc">भूकम्प प्रतिरोधी तालिमप्राप्त</p>
+          </div>
+        </a>
+
+        <a href="pages/ward-info.html" class="dock-item">
+          <div class="dock-icon-box dock-icon-gold">
+            <i class="fa-solid fa-building-columns"></i>
+          </div>
+          <div class="dock-text">
+            <h4 class="dock-title" data-i18n="dockWardTitle">वडा प्राविधिक डेस्क</h4>
+            <p class="dock-desc" data-i18n="dockWardDesc">वडा १ देखि ९ प्रत्यक्ष सेवा</p>
+          </div>
+        </a>
+      </div>
     </div>
   </section>
 
   <!-- ========================================================
-       4. E-BPS ABOUT SECTION (Modern Showcase Card & Animation)
+       4. ABOUT E-BPS SECTION (MATCHING IMAGE 2)
        ======================================================== -->
-  <section class="about-ebps-section reveal-on-scroll" id="about-ebps">
+  <section class="about-ebps-section" id="about-ebps">
     <div class="section-container">
-      <div class="about-ebps-card">
-        <!-- Modern Pill Badge -->
+      <!-- Section Header -->
+      <div class="about-header-center reveal-on-scroll">
         <div class="about-pill-badge">
-          <i class="fa-solid fa-certificate"></i>
+          <span class="badge-star-icon">🌟</span>
           <span data-i18n="aboutPill">डिजिटल भवन निर्माण तथा सुशासन प्रणाली</span>
         </div>
+        <h2 class="about-section-heading" data-i18n="aboutSectionHeading">
+          ई-विपिएस (E-BPS) — नगरपालिकामा डिजिटल रूपान्तरण
+        </h2>
+        <div class="gold-accent-line"></div>
+        <p class="about-section-subheading" data-i18n="aboutSectionSubheading">
+          कागेश्वरी मनोहरामा भवन संहिता पालना, भूकम्प प्रतिरोधी संरचना र नागरिक पारदर्शिता।
+        </p>
+      </div>
 
-        <h2 class="ebps-main-heading" data-i18n="ebpsTitle">E-BPS</h2>
-        <div class="ebps-sub-heading" data-i18n="ebpsSubtitle">विद्युतीय भवन निर्माण इजाजत प्रणाली</div>
-        <div class="ebps-underline"></div>
-
-        <!-- 3 Feature Chips -->
-        <div class="about-feature-chips">
-          <div class="feature-chip">
-            <i class="fa-solid fa-shield-halved"></i>
-            <span data-i18n="aboutChip1">NBC 105:2020 मापदण्ड प्रमाणीकरण</span>
+      <!-- 2-Column Grid -->
+      <div class="about-two-col-grid reveal-on-scroll">
+        <!-- Left Big Card: Institutional Building Governance -->
+        <div class="about-gov-card">
+          <div class="gov-card-header">
+            <i class="fa-solid fa-landmark gov-header-icon"></i>
+            <h3 class="gov-card-title" data-i18n="aboutGovTitle">संस्थागत भवन निर्माण सुशासन</h3>
           </div>
-          <div class="feature-chip">
-            <i class="fa-solid fa-file-shield"></i>
-            <span data-i18n="aboutChip2">१००% कागज-रहित पारदर्शी सेवा</span>
+          <div class="gov-card-body">
+            <p data-i18n="aboutGovP1">
+              ई-विपिएस (E-BPS) कागेश्वरी मनोहरा नगरपालिकामा भवन निर्माण इजाजत प्रक्रियालाई पारदर्शी, छिटो र व्यवस्थित बनाउन लागू गरिएको विद्युतीय प्रणाली हो। यसले नेपाल राष्ट्रिय भवन संहिता (NBC 105:2020) र नगरपालिकाको भवन निर्माण मापदण्डको पूर्ण पालना सुनिश्चित गरी सुरक्षित र योजनाबद्ध सहरी विकासमा सहयोग पुर्‍याउँछ।
+            </p>
+            <p data-i18n="aboutGovP2">
+              यस प्रणालीमार्फत नगरबासी तथा सूचीकृत प्राविधिकहरूले घरमै बसी अनलाइनबाटै नक्सा दर्ता गर्न, स्थलगत सर्जिमिन स्थिति बुझ्न, १५ दिने सूचना प्रक्रिया तथा अन्तिम निर्माण सम्पन्न प्रमाणपत्र प्राप्त गर्न सक्दछन्।
+            </p>
           </div>
-          <div class="feature-chip">
-            <i class="fa-solid fa-network-wired"></i>
-            <span data-i18n="aboutChip3">वडा-नगरपालिका एकीकृत प्रणाली</span>
+          <div class="gov-card-footer">
+            <a href="pages/process-guide.html" class="btn-explore-guidelines">
+              <span data-i18n="btnExploreGuidelines">सञ्चालन कार्यविधि हेर्नुहोस्</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            <span class="gov-tag-text" data-i18n="govTagText">कागज-रहित तथा पारदर्शी</span>
           </div>
         </div>
 
-        <div class="ebps-text-content">
-          <p data-i18n="ebpsP1">
-            ई-विपिएस (E-BPS) कागेश्वरी मनोहरा नगरपालिकामा भवन निर्माण इजाजत प्रक्रियालाई पारदर्शी, छिटो र व्यवस्थित बनाउन लागू गरिएको विद्युतीय प्रणाली हो। यसले नेपाल राष्ट्रिय भवन संहिता (NBC 105:2020) र नगरपालिकाको भवन निर्माण मापदण्डको पूर्ण पालना सुनिश्चित गरी सुरक्षित र योजनाबद्ध सहरी विकासमा सहयोग पुर्‍याउँछ।
-          </p>
-          <p data-i18n="ebpsP2">
-            यस प्रणालीमार्फत नगरबासी तथा सूचीकृत प्राविधिकहरूले घरमै बसी अनलाइनबाटै नक्सा दर्ता गर्न, स्थलगत सर्जिमिन स्थिति बुझ्न, १५ दिने सूचना प्रक्रिया तथा अन्तिम निर्माण सम्पन्न प्रमाणपत्र प्राप्त गर्न सक्दछन्।
-          </p>
-
-          <!-- Extra details with smooth accordion -->
-          <div class="ebps-extra-wrapper" id="ebpsExtraDetails">
-            <div class="ebps-extra-inner">
-              <p data-i18n="ebpsP3">
-                यो सफ्टवेयर प्रणालीले भौतिक कागजातको झन्झट हटाउँदै आर्किटेक्चरल, स्ट्रक्चरल ड्रइङ तथा कित्ता नम्बर र जिओ-कोअर्डिनेटको डिजिटल रेकर्ड सुरक्षित राख्दछ। सूचीकृत इन्जिनियर, नगरपालिकाका प्राविधिक अधिकृत तथा वडा सचिवहरू एउटै सुरक्षित प्लेटफर्ममा जोडिएका छन्।
+        <!-- Right Stacked Cards (3 Features) -->
+        <div class="about-features-stack">
+          <!-- Card 1 -->
+          <div class="feature-stack-card">
+            <div class="feature-icon-box feature-icon-green">
+              <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <div class="feature-content">
+              <h4 class="feature-title" data-i18n="feat1Title">NBC 105:2020 मापदण्ड प्रमाणीकरण</h4>
+              <p class="feature-desc" data-i18n="feat1Desc">
+                राष्ट्रिय भवन संहिता अनुसार भूकम्प प्रतिरोधी मापदण्ड, स्ट्रक्चरल अडिट र स्वचालित चेकलिस्ट प्रमाणीकरण।
               </p>
-              <p data-i18n="ebpsP4">
-                कागेश्वरी मनोहरा नगरपालिकाका वडा नं. १ देखि ९ सम्मका सम्पूर्ण वडा कार्यालयहरू सिधै नगर कार्यपालिकाको ई-विपिएस केन्द्रिय सर्भरसँग जोडिएका छन्, जसले गर्दा सेवाग्राहीले आफ्नै वडाबाट सहजै सर्जिमिन तथा स्थलगत प्रतिवेदन प्रमाणीकरण गर्न सक्दछन्।
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="feature-stack-card">
+            <div class="feature-icon-box feature-icon-amber">
+              <i class="fa-solid fa-file-circle-check"></i>
+            </div>
+            <div class="feature-content">
+              <h4 class="feature-title" data-i18n="feat2Title">१००% कागज-रहित र पारदर्शी</h4>
+              <p class="feature-desc" data-i18n="feat2Desc">
+                डिजिटल नक्सा दर्ता, स्वचालित राजश्व गणना तथा सुरक्षित डिजिटल हस्ताक्षरयुक्त प्रमाणपत्र वितरण।
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="feature-stack-card">
+            <div class="feature-icon-box feature-icon-teal">
+              <i class="fa-solid fa-network-wired"></i>
+            </div>
+            <div class="feature-content">
+              <h4 class="feature-title" data-i18n="feat3Title">एकीकृत नगरपालिका र वडा प्रणाली</h4>
+              <p class="feature-desc" data-i18n="feat3Desc">
+                स्थलगत सर्जिमिन तथा स्वीकृतिको लागि सबै ९ वटा वडा कार्यालय र केन्द्रीय प्राविधिक महाशाखाबीच डिजिटल समन्वय।
               </p>
             </div>
           </div>
         </div>
+      </div>
 
-        <!-- Modern Rounded Button with Slide/Pulse Animation -->
-        <button class="btn-read-more-modern" id="btnReadMoreEbps" aria-expanded="false" title="थप विवरण पढ्नुहोस्">
-          <span class="btn-text" data-i18n="btnReadMore">थप जानकारी पढ्नुहोस्</span>
-          <span class="btn-icon-bubble">
-            <i class="fa-solid fa-arrow-right"></i>
-          </span>
-        </button>
+      <!-- Bottom Stats Strip (4 items) -->
+      <div class="about-stats-strip reveal-on-scroll">
+        <div class="stat-strip-item">
+          <div class="stat-number" data-i18n="stat1Num">९ वडा</div>
+          <div class="stat-label" data-i18n="stat1Label">पूर्ण डिजिटल पहुँच</div>
+        </div>
+        <div class="stat-strip-divider"></div>
+        <div class="stat-strip-item">
+          <div class="stat-number" data-i18n="stat2Num">१००%</div>
+          <div class="stat-label" data-i18n="stat2Label">कागज-रहित कार्यप्रणाली</div>
+        </div>
+        <div class="stat-strip-divider"></div>
+        <div class="stat-strip-item">
+          <div class="stat-number" data-i18n="stat3Num">NBC 105:2020</div>
+          <div class="stat-label" data-i18n="stat3Label">संहिता प्रमाणीकृत</div>
+        </div>
+        <div class="stat-strip-divider"></div>
+        <div class="stat-strip-item">
+          <div class="stat-number" data-i18n="stat4Num">० पटक भ्रमण</div>
+          <div class="stat-label" data-i18n="stat4Label">झन्झटमुक्त सेवा</div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- ========================================================
-       5. BUILDING PERMIT PROCESS INFORMATION (CENTERED & COMPACT)
+       5. BUILDING PERMIT PROCESS INFORMATION (MATCHING IMAGE 3)
        ======================================================== -->
   <section class="process-info-section reveal-on-scroll" id="process-info">
     <div class="process-container">
       <div class="process-header-center">
         <div class="process-pill-badge">
-          <i class="fa-solid fa-layer-group"></i>
-          <span data-i18n="processPill">मार्गदर्शन तथा डिजिटल निर्देशिका</span>
+          <i class="fa-solid fa-book-open"></i>
+          <span data-i18n="processPill">मार्गदर्शन तथा डिजिटल सन्दर्भ पोर्टल</span>
         </div>
-        <h3 class="section-headline-center">
-          <span data-i18n="sectionProcessTitle">भवन निर्माण इजाजत प्रक्रिया जानकारी</span>
+        <h3 class="section-headline-center" data-i18n="sectionProcessTitle">
+          भवन निर्माण इजाजत प्रक्रिया जानकारी
         </h3>
-        <div class="process-underline"></div>
+        <div class="gold-accent-line"></div>
       </div>
 
       <div class="cards-grid">
         <!-- Card 1: Municipal Building Permit Process -->
         <article class="info-card">
           <div class="card-img-wrap">
-            <span class="card-badge">प्रक्रिया निर्देशिका</span>
+            <span class="card-badge" data-i18n="card1Badge">प्रक्रिया निर्देशिका</span>
             <img src="images/permit_process.jpg" alt="Municipal Building Permit Process" class="card-img">
           </div>
           <div class="card-body">
@@ -286,7 +391,7 @@
         <!-- Card 2: Registered Designers -->
         <article class="info-card">
           <div class="card-img-wrap">
-            <span class="card-badge">प्राविधिक सूची</span>
+            <span class="card-badge" data-i18n="card2Badge">प्राविधिक सूची</span>
             <img src="images/registered_designers.jpg" alt="Registered Designers" class="card-img">
           </div>
           <div class="card-body">
@@ -301,11 +406,11 @@
           </div>
         </article>
 
-        <!-- Card 3: Building By-Laws -->
+        <!-- Card 3: Building By-Laws & NBC Codes -->
         <article class="info-card">
           <div class="card-img-wrap">
-            <span class="card-badge">मापदण्ड तथा ऐन</span>
-            <img src="images/building_bylaws.jpg" alt="Building By-Laws" class="card-img">
+            <span class="card-badge" data-i18n="card3Badge">मापदण्ड तथा ऐन</span>
+            <img src="images/building_bylaws.jpg" alt="Building By-Laws & NBC Codes" class="card-img">
           </div>
           <div class="card-body">
             <h4 class="card-title" data-i18n="card3Title">भवन निर्माण मापदण्ड तथा संहिता</h4>
