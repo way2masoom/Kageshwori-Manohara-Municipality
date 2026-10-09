@@ -243,11 +243,11 @@ function initFormSubmission() {
       return;
     }
 
-    // 2. Check Designer Type
-    const designerTypeSelect = document.getElementById('designerTypeSelect');
-    if (!designerTypeSelect || !designerTypeSelect.value) {
-      alert(isEn ? 'Please select a Designer Type.' : 'कृपया डिजाइनर प्रकार छान्नुहोस्।');
-      if (designerTypeSelect) designerTypeSelect.focus();
+    // 2. Check Registration Class (formerly Designer Type)
+    const designerClassSelect = document.getElementById('designerClassSelect') || document.getElementById('designerTypeSelect');
+    if (!designerClassSelect || !designerClassSelect.value) {
+      alert(isEn ? 'Please select a Class (वर्ग).' : 'कृपया वर्ग (Class) छान्नुहोस्।');
+      if (designerClassSelect) designerClassSelect.focus();
       return;
     }
 
@@ -513,8 +513,8 @@ function initFormSubmission() {
         phone: mobileNo.value.trim(),
         nec_no: necNo.value.trim(),
         value: necNo.value.trim(),                    // For legacy model.getvalue()
-        registration_class: designerTypeSelect.value, // UserPIN
-        userpin: designerTypeSelect.value,
+        registration_class: (designerClassSelect ? designerClassSelect.value : ''), // Class A, B, C, D (stored in registration_class / UserPIN)
+        userpin: (designerClassSelect ? designerClassSelect.value : ''),            // Maps to UserPIN in AD_USER
         pan_no: panNo,
         address: permAddress,                         // Permanent Address
         address1: tempAddress,                       // Temporary Address
