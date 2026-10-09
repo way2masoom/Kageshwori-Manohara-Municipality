@@ -51,26 +51,15 @@
       </div>
 
       <div class="top-bar-right">
-        <a href="../index.html#home" class="top-item">
-          <i class="fa-solid fa-house"></i>
-          <span data-i18n="navHome">गृहपृष्ठ</span>
-        </a>
+        <span class="top-item">
+          <i class="fa-solid fa-clock"></i>
+          <span>आइतबार – शुक्रबार: १०:०० – ५:००</span>
+        </span>
         <span class="top-divider">|</span>
-        <a href="../index.html#about-ebps" class="top-item">
-          <i class="fa-solid fa-circle-info"></i>
-          <span data-i18n="navAbout">हाम्रो बारेमा</span>
+        <a href="mailto:ebps@kageshworimanoharamun.gov.np" class="top-item">
+          <i class="fa-solid fa-envelope"></i>
+          <span>ebps@kageshworimanoharamun.gov.np</span>
         </a>
-        <span class="top-divider">|</span>
-        <div class="auth-btn-group">
-          <a href="https://ebps.kageshworimanoharamun.gov.np/webui/" class="btn-top-login">
-            <i class="fa-solid fa-lock"></i>
-            <span data-i18n="navLogin">लगइन</span>
-          </a>
-          <a href="register-designer.html" class="btn-top-signup">
-            <i class="fa-solid fa-user-plus"></i>
-            <span data-i18n="navSignUp">दर्ता</span>
-          </a>
-        </div>
       </div>
     </div>
   </header>
@@ -99,18 +88,27 @@
       </button>
 
       <div class="navbar-nav" id="navbarCollapse">
+        <!-- 1. Home -->
         <a href="../index.html#home" class="nav-link">
+          <i class="fa-solid fa-house"></i>
           <span data-i18n="navHome">गृहपृष्ठ</span>
         </a>
 
-        <!-- Ward Details Dropdown (Active) -->
+        <!-- 2. About Us -->
+        <a href="../index.html#about-ebps" class="nav-link">
+          <i class="fa-solid fa-circle-info"></i>
+          <span data-i18n="navAbout">हाम्रो बारेमा</span>
+        </a>
+
+        <!-- 3. Ward Details Dropdown (Active) -->
         <div class="nav-dropdown">
           <a href="ward-info.html" class="nav-link active">
+            <i class="fa-solid fa-building-columns"></i>
             <span data-i18n="navWard">वडा विवरण</span>
             <i class="fa-solid fa-chevron-down"></i>
           </a>
           <div class="dropdown-menu">
-            <a href="ward-info.html" class="dropdown-item"><i class="fa-solid fa-layer-group"></i> <strong><span data-i18n="allWards">सबै वडा विवरण (१–९)</span></strong></a>
+            <a href="ward-info.html" class="dropdown-item active"><i class="fa-solid fa-layer-group"></i> <strong><span data-i18n="allWards">सबै वडा विवरण (१–९)</span></strong></a>
             <a href="ward-info.html#ward-1" class="dropdown-item"><i class="fa-solid fa-location-dot"></i> <span data-i18n="ward1">वडा नं. १ (गागलफेदी)</span></a>
             <a href="ward-info.html#ward-2" class="dropdown-item"><i class="fa-solid fa-location-dot"></i> <span data-i18n="ward2">वडा नं. २ (आलापोट)</span></a>
             <a href="ward-info.html#ward-3" class="dropdown-item"><i class="fa-solid fa-location-dot"></i> <span data-i18n="ward3">वडा नं. ३ (भद्रबास)</span></a>
@@ -123,9 +121,10 @@
           </div>
         </div>
 
-        <!-- References Dropdown -->
+        <!-- 4. References Dropdown -->
         <div class="nav-dropdown">
           <a href="bylaws.html" class="nav-link">
+            <i class="fa-solid fa-book-bookmark"></i>
             <span data-i18n="navReferences">सन्दर्भ सामग्री</span>
             <i class="fa-solid fa-chevron-down"></i>
           </a>
@@ -138,17 +137,19 @@
           </div>
         </div>
 
-        <!-- Masons List -->
-        <a href="mason-list.html" class="nav-link">
-          <span data-i18n="navMasons">डकर्मी सूची</span>
-        </a>
+        <!-- 5. Auth Buttons Group -->
+        <div class="nav-auth-group">
+          <a href="https://ebps.kageshworimanoharamun.gov.np/webui/" class="nav-btn-login">
+            <i class="fa-solid fa-lock"></i>
+            <span data-i18n="navLogin">लगइन</span>
+          </a>
+          <a href="register-designer.html" class="nav-btn-signup">
+            <i class="fa-solid fa-user-plus"></i>
+            <span data-i18n="navSignUp">दर्ता</span>
+          </a>
+        </div>
 
-        <!-- Designer List -->
-        <a href="designer-list.html" class="nav-link">
-          <span data-i18n="navDesigners">प्राविधिक सूची</span>
-        </a>
-
-        <!-- Language Switcher Button -->
+        <!-- 6. Language Switcher Button -->
         <button type="button" class="nav-lang-btn" id="langToggleBtn" title="भाषा परिवर्तन / Change Language">
           <i class="fa-solid fa-globe"></i>
           <span id="langBtnText">English</span>
