@@ -49,15 +49,15 @@ const TRANSLATIONS = {
     heroMottoAbbr: '(E‑BPS)',
     heroMainTitleText: 'विद्युतीय भवन निर्माण इजाजत प्रणाली',
     heroMainTitleAbbr: '(E-BPS)',
-    heroDesc: 'कागेश्वरी मनोहरा नगरपालिकाको विद्युतीय भवन निर्माण इजाजत प्रणाली (Electronic Building Permit System - E-BPS) मार्फत सुरक्षित, भूकम्प प्रतिरोधी र व्यवस्थित सहरी विकासका लागि १००% पारदर्शी र कागज-रहित अनलाइन नक्सा पास सेवा।',
-    heroDescriptionText: 'कागेश्वरी मनोहरा नगरपालिकाको विद्युतीय भवन निर्माण इजाजत प्रणाली (Electronic Building Permit System - E-BPS) मार्फत सुरक्षित, भूकम्प प्रतिरोधी र व्यवस्थित सहरी विकासका लागि १००% पारदर्शी र कागज-रहित अनलाइन नक्सा पास सेवा।',
+    heroDesc: 'कागेश्वरी मनोहरा नगरपालिकाको विद्युतीय भवन निर्माण इजाजत प्रणाली (Electronic Building Permit System - E-BPS) मार्फत सुरक्षित, भूकम्प प्रतिरोधी र व्यवस्थित सहरी विकासका लागि पारदर्शी, आधुनिक र द्रुत अनलाइन नक्सा पास सेवा।',
+    heroDescriptionText: 'कागेश्वरी मनोहरा नगरपालिकाको विद्युतीय भवन निर्माण इजाजत प्रणाली (Electronic Building Permit System - E-BPS) मार्फत सुरक्षित, भूकम्प प्रतिरोधी र व्यवस्थित सहरी विकासका लागि पारदर्शी, आधुनिक र द्रुत अनलाइन नक्सा पास सेवा।',
     heroBtnRegister: 'प्राविधिक अनलाइन दर्ता',
     heroBtnBylawsText: 'प्राविधिक अनलाइन दर्ता',
     heroBtnDesignersText: 'दर्ता भएका प्राविधिक (डिजाइनर) सूची',
     heroBtnApply: 'नयाँ नक्सा पास आवेदन →',
     heroBtnBylaws: 'प्राविधिक अनलाइन दर्ता →',
     heroCapsule1: 'सुरक्षित तथा पारदर्शी ई-प्रणाली',
-    heroCapsule2: '१००% डिजिटल तथा कागज-रहित दर्ता',
+    heroCapsule2: 'डिजिटल नक्सा तथा सुरक्षित अभिलेखीकरण',
     heroCapsule3: '२४/७ अनलाइन नक्सा दर्ता सुविधा',
 
     // Floating Quick-Action Dock
@@ -78,10 +78,10 @@ const TRANSLATIONS = {
     aboutGovP1: 'ई-विपिएस (E-BPS) कागेश्वरी मनोहरा नगरपालिकामा भवन निर्माण इजाजत प्रक्रियालाई पारदर्शी, छिटो र व्यवस्थित बनाउन लागू गरिएको विद्युतीय प्रणाली हो। यसले नगरपालिकामा सुरक्षित, सुव्यवस्थित र योजनाबद्ध सहरी विकासमा सहयोग पुर्‍याउँछ।',
     aboutGovP2: 'यस प्रणालीमार्फत नगरबासी तथा सूचीकृत प्राविधिकहरूले घरमै बसी अनलाइनबाटै नक्सा दर्ता गर्न, स्थलगत सर्जिमिन स्थिति बुझ्न, १५ दिने सूचना प्रक्रिया तथा अन्तिम निर्माण सम्पन्न प्रमाणपत्र प्राप्त गर्न सक्दछन्।',
     btnExploreGuidelines: 'सञ्चालन कार्यविधि हेर्नुहोस्',
-    govTagText: 'कागज-रहित तथा पारदर्शी',
+    govTagText: 'पारदर्शी तथा आधुनिक प्रणाली',
     feat1Title: 'डिजिटल प्रमाणीकरण तथा सुरक्षा मापदण्ड',
     feat1Desc: 'डिजिटल नक्सा परीक्षण, स्वचालित नियम रुजु तथा पारदर्शी प्राविधिक मूल्याङ्कन प्रणाली।',
-    feat2Title: '१००% कागज-रहित र पारदर्शी',
+    feat2Title: 'डिजिटल नक्सा दर्ता तथा अभिलेखीकरण',
     feat2Desc: 'डिजिटल नक्सा दर्ता, स्वचालित राजश्व गणना तथा सुरक्षित डिजिटल हस्ताक्षरयुक्त प्रमाणपत्र वितरण।',
     feat3Title: 'एकीकृत डिजिटल समन्वय प्रणाली',
     feat3Desc: 'स्थलगत सर्जिमिन तथा स्वीकृतिको लागि प्राविधिक महाशाखा र नागरिकबीच प्रत्यक्ष अनलाइन समन्वय।',
@@ -89,18 +89,18 @@ const TRANSLATIONS = {
     // About Stats Strip
     stat1Num: '२४/७',
     stat1Label: 'पूर्ण डिजिटल पहुँच',
-    stat2Num: '१००%',
-    stat2Label: 'कागज-रहित कार्यप्रणाली',
+    stat2Num: 'ई-नक्सा',
+    stat2Label: 'डिजिटल नक्सा पास प्रक्रिया',
     stat3Num: 'अनलाइन',
     stat3Label: 'द्रुत सेवा प्रमाणीकरण',
-    stat4Num: '० पटक भ्रमण',
-    stat4Label: 'झन्झटमुक्त सेवा',
+    stat4Num: 'भूकम्प प्रतिरोधी',
+    stat4Label: 'सुरक्षित एवं दिगो निर्माण',
 
     // Legacy / Extra about fields
     ebpsTitle: 'ई-विपिएस (E-BPS)',
     ebpsSubtitle: 'विद्युतीय भवन निर्माण इजाजत प्रणाली',
     aboutChip1: 'NBC 105:2020 मापदण्ड प्रमाणीकरण',
-    aboutChip2: '१००% कागज-रहित पारदर्शी सेवा',
+    aboutChip2: 'डिजिटल तथा पारदर्शी सेवा',
     aboutChip3: 'वडा-नगरपालिका एकीकृत प्रणाली',
     ebpsP1: 'ई-विपिएस (E-BPS) कागेश्वरी मनोहरा नगरपालिकामा भवन निर्माण इजाजत प्रक्रियालाई पारदर्शी, छिटो र व्यवस्थित बनाउन लागू गरिएको विद्युतीय प्रणाली हो।',
     ebpsP2: 'यस प्रणालीमार्फत नगरबासी तथा सूचीकृत प्राविधिकहरूले घरमै बसी अनलाइनबाटै नक्सा दर्ता गर्न सक्दछन्।',
@@ -428,15 +428,15 @@ const TRANSLATIONS = {
     heroMottoAbbr: '(E‑BPS)',
     heroMainTitleText: 'Electronic Building Permit System',
     heroMainTitleAbbr: '(E-BPS)',
-    heroDesc: 'Empowering planned, earthquake-resilient urban expansion in Kageshwori Manohara Municipality through an advanced paperless Electronic Building Permit System (E-BPS).',
-    heroDescriptionText: 'Empowering planned, earthquake-resilient urban expansion in Kageshwori Manohara Municipality through an advanced paperless Electronic Building Permit System (E-BPS).',
+    heroDesc: 'Empowering planned, earthquake-resilient urban expansion in Kageshwori Manohara Municipality through an advanced Electronic Building Permit System (E-BPS).',
+    heroDescriptionText: 'Empowering planned, earthquake-resilient urban expansion in Kageshwori Manohara Municipality through an advanced Electronic Building Permit System (E-BPS).',
     heroBtnRegister: 'Register as Designer Online',
     heroBtnBylawsText: 'Register as Designer Online',
     heroBtnDesignersText: 'Registered Designers Directory',
     heroBtnApply: 'Apply for Permit Online →',
     heroBtnBylaws: 'Register as Designer Online →',
     heroCapsule1: 'Secure & Transparent E-System',
-    heroCapsule2: '100% Digital & Paperless Filing',
+    heroCapsule2: 'Digital Submission & Archiving',
     heroCapsule3: '24/7 Online Map Registration',
 
     // Floating Quick-Action Dock
@@ -457,10 +457,10 @@ const TRANSLATIONS = {
     aboutGovP1: 'E-BPS is an advanced digital platform developed to modernize and streamline the municipal building permit process in Kageshwori Manohara Municipality, ensuring safe, transparent, and well-planned urban development.',
     aboutGovP2: 'Through this digital portal, citizens and certified technical consultants can submit drawings online, track field verifications, monitor 15-day public notices, and receive digitally signed construction completion certificates without visiting municipal offices in person.',
     btnExploreGuidelines: 'Explore Operational Guidelines',
-    govTagText: 'Paperless & Transparent',
+    govTagText: 'Transparent & Modern',
     feat1Title: 'Digital Verification & Safety Standards',
     feat1Desc: 'Automated drawing audits, digitized rules verification, and transparent municipal technical evaluations.',
-    feat2Title: '100% Paperless & Transparent',
+    feat2Title: 'Digital Permit & Record Archiving',
     feat2Desc: 'End-to-end digital architectural drawings, automated municipal revenue calculation, and tamper-proof digital certificate issuance.',
     feat3Title: 'Integrated Digital Coordination System',
     feat3Desc: 'Seamless online coordination between municipal divisions and citizens for site verifications and approvals.',
@@ -468,18 +468,18 @@ const TRANSLATIONS = {
     // About Stats Strip
     stat1Num: '24/7',
     stat1Label: 'Full Digital Access',
-    stat2Num: '100%',
-    stat2Label: 'Paperless Workflow',
+    stat2Num: 'E-Permit',
+    stat2Label: 'Digital Building Approval',
     stat3Num: 'Online',
     stat3Label: 'Rapid Verification',
-    stat4Num: '0 Visits',
-    stat4Label: 'Mandatory Office Queues',
+    stat4Num: 'Resilient',
+    stat4Label: 'Earthquake-Safe Standards',
 
     // Legacy / Extra about fields
     ebpsTitle: 'E-BPS',
     ebpsSubtitle: 'Electronic Building Permit System',
     aboutChip1: 'NBC 105:2020 Standard Compliance',
-    aboutChip2: '100% Paperless & Transparent',
+    aboutChip2: 'Digital & Transparent Service',
     aboutChip3: 'Integrated Municipal & Ward System',
     ebpsP1: 'E-BPS is an advanced application software system developed to modernize and streamline the municipal building permit process in Kageshwori Manohara Municipality.',
     ebpsP2: 'Through this digital portal, citizens and certified technical consultants can submit drawings online.',
@@ -969,7 +969,11 @@ function initScrollEffects() {
   }
 
   const revealElements = document.querySelectorAll('.reveal-on-scroll');
-  if ('IntersectionObserver' in window && revealElements.length > 0) {
+  if (revealElements.length === 0) return;
+
+  document.body.classList.add('js-reveal-ready');
+
+  if ('IntersectionObserver' in window) {
     const revealObserver = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -977,9 +981,16 @@ function initScrollEffects() {
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.15 });
+    }, { threshold: 0.02, rootMargin: '0px 0px -20px 0px' });
 
-    revealElements.forEach(el => revealObserver.observe(el));
+    revealElements.forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top <= window.innerHeight + 120) {
+        el.classList.add('revealed');
+      } else {
+        revealObserver.observe(el);
+      }
+    });
   } else {
     revealElements.forEach(el => el.classList.add('revealed'));
   }

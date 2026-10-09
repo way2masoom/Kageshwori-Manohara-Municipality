@@ -1,11 +1,20 @@
 /**
  * Kageshwori Manohara Municipality - E-BPS
  * Designer List Management Controller
- * Strictly fetches live data from https://192.168.1.73:8444/ebps/designer-list/fetch
+ * Strictly fetches live data from Java backend /ebps/designer-list/fetch
  * Pure Nepali / English localization without mixing.
  */
 
-const API_URL = 'https://192.168.1.73:8444/ebps/designer-list/fetch';
+function getDesignerApiUrl() {
+  if (window.EBPS_DESIGNER_API) return window.EBPS_DESIGNER_API;
+  const host = window.location.hostname || 'localhost';
+  if (host === 'localhost' || host === '127.0.0.1') {
+    return 'https://localhost:8444/ebps/designer-list/fetch';
+  }
+  return `https://${host}:8444/ebps/designer-list/fetch`;
+}
+
+const API_URL = getDesignerApiUrl();
 
 let allDesigners = [];
 let filteredDesigners = [];
@@ -79,17 +88,19 @@ async function loadDesignerData() {
     `;
 
     if (isSslOrNetworkError) {
+      let serverOrigin = 'https://localhost:8444';
+      try { serverOrigin = new URL(API_URL).origin; } catch(_) {}
       errorDetail += isEn ? `
         <div style="font-size: 0.85rem; background: #fff; padding: 12px; border-radius: 6px; border: 1px dashed #fca5a5; text-align: left; margin-bottom: 12px; color: #374151;">
           <strong><i class="fa-solid fa-lightbulb" style="color: #f59e0b;"></i> Possible Cause & Solution:</strong><br>
-          1. The server <code>https://192.168.1.73:8444</code> may be using a self-signed SSL certificate.<br>
+          1. The server <code>${serverOrigin}</code> may be stopped or using a self-signed SSL certificate.<br>
           2. Please open this link in a new tab: <a href="${API_URL}" target="_blank" style="color: #2563eb; font-weight: 600; text-decoration: underline;">${API_URL}</a> and click <strong>"Advanced &rarr; Proceed (unsafe)"</strong>.<br>
           3. Then click the button below to retry.
         </div>
       ` : `
         <div style="font-size: 0.85rem; background: #fff; padding: 12px; border-radius: 6px; border: 1px dashed #fca5a5; text-align: left; margin-bottom: 12px; color: #374151;">
           <strong><i class="fa-solid fa-lightbulb" style="color: #f59e0b;"></i> सम्भावित कारण र समाधान:</strong><br>
-          १. सर्भर <code>https://192.168.1.73:8444</code> मा सेल्फ-साइन्ड SSL सर्टिफिकेट प्रयोग भएको हुनसक्छ।<br>
+          १. सर्भर <code>${serverOrigin}</code> बन्द भएको वा सेल्फ-साइन्ड SSL सर्टिफिकेट प्रयोग भएको हुनसक्छ।<br>
           २. कृपया नयाँ ट्याबमा सिधै यो लिङ्क खोल्नुहोस्: <a href="${API_URL}" target="_blank" style="color: #2563eb; font-weight: 600; text-decoration: underline;">${API_URL}</a> र <strong>"Advanced &rarr; Proceed (unsafe)"</strong> मा क्लिक गरी अनुमति दिनुहोस्।<br>
           ३. त्यसपछि तलको बटन थिचेर पुनः प्रयास गर्नुहोस्।
         </div>

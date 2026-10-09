@@ -98,13 +98,25 @@
           <span data-i18n="navAbout">हाम्रो बारेमा</span>
         </a>
 
-        <!-- 3. Auth Buttons Group -->
+        <!-- 3. Designer List -->
+        <a href="designer-list.html" class="nav-link">
+          <i class="fa-solid fa-user-pen"></i>
+          <span data-i18n="navDesigners">प्राविधिक सूची</span>
+        </a>
+
+        <!-- 4. Mason List -->
+        <a href="mason-list.html" class="nav-link">
+          <i class="fa-solid fa-trowel-bricks"></i>
+          <span data-i18n="navMasons">डकर्मी सूची</span>
+        </a>
+
+        <!-- 5. Auth Buttons Group -->
         <div class="nav-auth-group">
           <a href="https://ebps.kageshworimanoharamun.gov.np/webui/" class="nav-btn-login">
             <i class="fa-solid fa-lock"></i>
             <span data-i18n="navLogin">लगइन</span>
           </a>
-          <a href="register-designer.html" class="nav-btn-signup">
+          <a href="register-designer.html" class="nav-btn-signup active">
             <i class="fa-solid fa-user-plus"></i>
             <span data-i18n="navSignUp">दर्ता</span>
           </a>
@@ -811,10 +823,6 @@
 
   <!-- Scripts -->
   <script src="../js/main.js?v=2.5"></script>
-  <script>
-    // Live Java Backend on Jetty/HTTPS
-    window.EBPS_API_URL = "https://192.168.1.73:8444/ebps/ebpsuser";
-  </script>
-  <script src="../js/register-designer.js?v=4.5"></script>
+  <script src="../js/register-designer.js?v=5.0"></script>
 </body>
 </html>

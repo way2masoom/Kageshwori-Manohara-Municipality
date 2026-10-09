@@ -543,8 +543,17 @@ function initFormSubmission() {
         pan_vat_certificate: panVatBase64
       };
 
-      // API Endpoint URL - Matches https://192.168.1.73:8444/ebps/ backend
-      const apiUrl = window.EBPS_API_URL || 'https://192.168.1.73:8444/ebps/ebpsuser';
+      // Dynamic API Endpoint URL auto-detection
+      function resolveBackendUrl() {
+        if (window.EBPS_API_URL) return window.EBPS_API_URL;
+        const host = window.location.hostname || 'localhost';
+        if (host === 'localhost' || host === '127.0.0.1') {
+          return 'https://localhost:8444/ebps/ebpsuser';
+        }
+        return `https://${host}:8444/ebps/ebpsuser`;
+      }
+
+      const apiUrl = resolveBackendUrl();
 
       console.log(`[EBPS] Submitting registration POST to Java backend: ${apiUrl}`, payload);
 
@@ -582,9 +591,14 @@ function initFormSubmission() {
         }
       } catch (networkError) {
         console.error(`[EBPS] Network error contacting ${apiUrl}:`, networkError);
+        let hostName = 'localhost';
+        try {
+          hostName = new URL(apiUrl, window.location.href).hostname;
+        } catch (_) {}
+
         const connectionMsg = isEn
-          ? `Could not connect to Java Backend Server at:\n${apiUrl}\n\nReason: ${networkError.message}\n\nIf you see an SSL/Certificate error in your browser:\n1. Open ${apiUrl} in a new tab once\n2. Click "Advanced" -> "Proceed to 192.168.1.73 (unsafe)" to trust the SSL certificate\n3. Return here and submit again.`
-          : `ब्याकएन्ड सर्भर (${apiUrl}) मा सम्पर्क हुन सकेन।\n\nकारण: ${networkError.message}\n\nयदि ब्राउजरमा SSL / Certificate को समस्या आएको हो भने:\n१. नयाँ ट्याबमा ${apiUrl} खोल्नुहोस्\n२. "Advanced" ➔ "Proceed to 192.168.1.73 (unsafe)" क्लिक गर्नुहोस्\n३. त्यसपछि यहाँ फर्किएर पुनः सबमिट गर्नुहोस्।`;
+          ? `Could not connect to Java Backend Server at:\n${apiUrl}\n\nReason: ${networkError.message}\n\nTroubleshooting steps:\n1. Ensure your Java Backend Server (Jetty/Eclipse) is actively RUNNING on port 8444.\n2. If your browser blocks self-signed SSL certificates:\n   - Open ${apiUrl} in a new browser tab\n   - Click "Advanced" -> "Proceed to ${hostName} (unsafe)"\n3. Return here and submit again.`
+          : `ब्याकएन्ड सर्भर (${apiUrl}) मा सम्पर्क हुन सकेन।\n\nकारण: ${networkError.message}\n\nसमाधानका उपायहरू:\n१. तपाईंको जाभा ब्याकएन्ड सर्भर (Jetty/Eclipse) पोर्ट 8444 मा चालू (Running) रहेको यकिन गर्नुहोस्।\n२. यदि ब्राउजरमा SSL / Certificate रोकिएको छ भने:\n   - नयाँ ट्याबमा सिधै यो खोल्नुहोस्: ${apiUrl}\n   - "Advanced" ➔ "Proceed to ${hostName} (unsafe)" क्लिक गर्नुहोस्\n३. त्यसपछि यहाँ फर्किएर पुनः सबमिट (Submit) गर्नुहोस्।`;
         alert(connectionMsg);
       }
 
