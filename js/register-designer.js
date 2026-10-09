@@ -440,8 +440,9 @@ function initFormSubmission() {
       getFileBase64(document.getElementById('companyRegCertInput')),
       getFileBase64(document.getElementById('designerImageInput')),
       getFileBase64(document.getElementById('bachelorTranscriptInput')),
-      getFileBase64(document.getElementById('masterTranscriptInput'))
-    ]).then(async ([necCertBase64, citizenDocBase64, companyRegBase64, photoBase64, bachTransBase64, mastTransBase64]) => {
+      getFileBase64(document.getElementById('masterTranscriptInput')),
+      getFileBase64(document.getElementById('panVatCertInput'))
+    ]).then(async ([necCertBase64, citizenDocBase64, companyRegBase64, photoBase64, bachTransBase64, mastTransBase64, panVatBase64]) => {
       
       const regMethod = methodSelect.value;
       const consultancyName = (regMethod === 'consultancy' && document.getElementById('firmNameInput')) 
@@ -470,7 +471,8 @@ function initFormSubmission() {
         registercompany: companyRegBase64,           // Maps to registercompany in AD_User
         photo: photoBase64,                          // Designer Profile Photo
         transcript: bachTransBase64,                 // Bachelor Transcript
-        master_transcript: mastTransBase64           // Master Transcript (Optional)
+        master_transcript: mastTransBase64,          // Master Transcript (Optional)
+        pan_vat_certificate: panVatBase64            // Firm PAN/VAT Registration Certificate
       };
 
       // API Endpoint URL (configurable via window.EBPS_API_URL)
