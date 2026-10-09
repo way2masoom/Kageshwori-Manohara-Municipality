@@ -478,7 +478,9 @@ function initFormSubmission() {
       };
 
       // API Endpoint URL - Strictly use Java backend on 192.168.1.73
-      const apiUrl = (window.EBPS_API_URL || 'http://192.168.1.73:8080/ebpsapi/rest') + (window.EBPS_API_URL && window.EBPS_API_URL.endsWith('/ebpsuser') ? '' : '/ebpsuser');
+      const apiUrl = window.EBPS_API_URL 
+        ? (window.EBPS_API_URL.endsWith('/ebpsuser') ? window.EBPS_API_URL : window.EBPS_API_URL + '/ebpsuser')
+        : 'http://192.168.1.73:8080/ebpsapi/rest/ebpsuser';
 
       console.log(`[EBPS] Submitting registration POST to Java backend: ${apiUrl}`);
 
