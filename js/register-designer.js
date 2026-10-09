@@ -395,9 +395,140 @@ function initFormSubmission() {
       return;
     }
 
-    // All valid - Generate tracking reference code
-    const randomRef = 'KM-EBPS-REG-' + new Date().getFullYear() + '-' + Math.floor(1000 + Math.random() * 9000);
-    showSuccessModal(randomRef);
+    // All valid - Prepare Data for Backend
+    const submitBtn = document.getElementById('btnSubmitForm');
+    const originalBtnHtml = submitBtn ? submitBtn.innerHTML : '';
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> ${isEn ? 'Submitting to Server...' : 'सर्भरमा दर्ता हुँदैछ...'}`;
+    }
+
+    // Helper: Convert File to Base64 Data URL
+    function getFileBase64(fileInput) {
+      return new Promise((resolve) => {
+        if (!fileInput || !fileInput.files || fileInput.files.length === 0) {
+          resolve('');
+          return;
+        }
+        const file = fileInput.files[0];
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = () => resolve('');
+        reader.readAsDataURL(file);
+      });
+    }
+
+    // Generate tracking reference code
+    const generatedRef = 'KM-EBPS-REG-' + new Date().getFullYear() + '-' + Math.floor(1000 + Math.random() * 9000);
+
+    // Concatenate permanent address
+    const pDist = (document.getElementById('permDistrict') && document.getElementById('permDistrict').value) || '';
+    const pMun = (document.getElementById('permMunicipality') && document.getElementById('permMunicipality').value) || '';
+    const pWard = (document.getElementById('permWard') && document.getElementById('permWard').value) || '';
+    const permAddress = [pDist, pMun, pWard ? (isEn ? `Ward No. ${pWard}` : `वडा नं. ${pWard}`) : ''].filter(Boolean).join(', ');
+
+    // Concatenate temporary address
+    const tDist = (document.getElementById('tempDistrict') && document.getElementById('tempDistrict').value) || '';
+    const tMun = (document.getElementById('tempMunicipality') && document.getElementById('tempMunicipality').value) || '';
+    const tWard = (document.getElementById('tempWard') && document.getElementById('tempWard').value) || '';
+    const tempAddress = [tDist, tMun, tWard ? (isEn ? `Ward No. ${tWard}` : `वडा नं. ${tWard}`) : ''].filter(Boolean).join(', ');
+
+    // Collect asynchronous Base64 file readings
+    Promise.all([
+      getFileBase64(document.getElementById('necCertInput')),
+      getFileBase64(document.getElementById('citizenshipDocInput')),
+      getFileBase64(document.getElementById('companyRegCertInput')),
+      getFileBase64(document.getElementById('designerImageInput')),
+      getFileBase64(document.getElementById('bachelorTranscriptInput')),
+      getFileBase64(document.getElementById('masterTranscriptInput'))
+    ]).then(async ([necCertBase64, citizenDocBase64, companyRegBase64, photoBase64, bachTransBase64, mastTransBase64]) => {
+      
+      const regMethod = methodSelect.value;
+      const consultancyName = (regMethod === 'consultancy' && document.getElementById('firmNameInput')) 
+        ? document.getElementById('firmNameInput').value.trim() 
+        : '';
+      const panNo = (regMethod === 'consultancy' && document.getElementById('firmPan') && document.getElementById('firmPan').value.trim())
+        ? document.getElementById('firmPan').value.trim()
+        : (document.getElementById('designerPan') ? document.getElementById('designerPan').value.trim() : '');
+
+      // Payload strictly mapped to Java UserModel & AD_User columns
+      const payload = {
+        name: designerName.value.trim(),
+        email: email.value.trim(),
+        phone: mobileNo.value.trim(),
+        nec_no: necNo.value.trim(),
+        registration_class: designerTypeSelect.value, // Maps to UserPIN in AD_User
+        consultancy_name: consultancyName,
+        pan_no: panNo,
+        address: permAddress,                         // Maps to Address in AD_User
+        address1: tempAddress,                       // Maps to Address1 in AD_User
+        registration_no: generatedRef,               // Maps to registration_no in AD_User
+        
+        // Base64 document attachments
+        certificate: necCertBase64,                  // Maps to certificate in AD_User
+        citizenship_photo: citizenDocBase64,         // Maps to citizenship_photo in AD_User
+        registercompany: companyRegBase64,           // Maps to registercompany in AD_User
+        photo: photoBase64,                          // Designer Profile Photo
+        transcript: bachTransBase64,                 // Bachelor Transcript
+        master_transcript: mastTransBase64           // Master Transcript (Optional)
+      };
+
+      // API Endpoint URL (configurable via window.EBPS_API_URL)
+      const apiUrl = (window.EBPS_API_URL || 'http://localhost:8080/ebpsapi/rest') + '/ebpsuser';
+
+      try {
+        const response = await fetch(apiUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
+
+        let resData = null;
+        try {
+          resData = await response.json();
+        } catch (jsonErr) {
+          // If response body is plain text or empty
+        }
+
+        if (response.ok && (!resData || resData.error !== true)) {
+          const finalRef = (resData && (resData.ref_no || resData.registration_no)) || generatedRef;
+          showSuccessModal(finalRef);
+          form.reset();
+          document.querySelectorAll('.upload-dropzone-box').forEach(dz => {
+            if (typeof dz._resetDropzone === 'function') dz._resetDropzone();
+          });
+          initCaptchaGenerator();
+        } else {
+          const errMsg = (resData && resData.message)
+            ? resData.message
+            : (isEn ? 'Failed to save registration on backend. Please check your data and retry.' : 'सर्भरमा आवेदन दर्ता हुन सकेन। कृपया विवरण जाँची पुनः प्रयास गर्नुहोस्।');
+          alert(errMsg);
+        }
+      } catch (networkError) {
+        console.warn('Backend server call error:', networkError);
+        // If testing frontend standalone or server is not yet reachable, provide clear notice and demonstrate success flow
+        const fallbackMsg = isEn
+          ? `Backend API (${apiUrl}) could not be contacted directly.\n\nSimulating local registration slip for demonstration.`
+          : `ब्याकएन्ड सर्भर (${apiUrl}) हाल सम्पर्कमा छैन।\n\nडेमो प्रदर्शनका लागि स्थानीय रसिद देखाइएको छ।`;
+        alert(fallbackMsg);
+        showSuccessModal(generatedRef);
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalBtnHtml;
+        }
+      }
+    }).catch(err => {
+      console.error('File reading failed:', err);
+      alert(isEn ? 'Error reading uploaded files. Please re-select the files.' : 'कागजात फाइल पढ्न समस्या भयो। कृपया फाइलहरू पुनः छान्नुहोस्।');
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalBtnHtml;
+      }
+    });
   });
 }
 
