@@ -103,20 +103,38 @@
           <span data-i18n="navHome">गृहपृष्ठ</span>
         </a>
 
-        <!-- Ward Details -->
-        <a href="ward-info.html" class="nav-link active">
-          <span data-i18n="navWard">वडा विवरण</span>
-        </a>
+        <!-- Ward Details Dropdown (Active) -->
+        <div class="nav-dropdown">
+          <a href="ward-info.html" class="nav-link active">
+            <span data-i18n="navWard">वडा विवरण</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="ward-info.html" class="dropdown-item"><i class="fa-solid fa-layer-group"></i> <strong><span data-i18n="allWards">सबै वडा विवरण (१–९)</span></strong></a>
+            <a href="ward-info.html#ward-1" class="dropdown-item"><i class="fa-solid fa-location-dot"></i> <span data-i18n="ward1">वडा नं. १ (गागलफेदी)</span></a>
+            <a href="ward-info.html#ward-2" class="dropdown-item"><i class="fa-solid fa-location-dot"></i> <span data-i18n="ward2">वडा नं. २ (आलापोट)</span></a>
+            <a href="ward-info.html#ward-3" class="dropdown-item"><i class="fa-solid fa-location-dot"></i> <span data-i18n="ward3">वडा नं. ३ (भद्रबास)</span></a>
+            <a href="ward-info.html#ward-4" class="dropdown-item"><i class="fa-solid fa-location-dot"></i> <span data-i18n="ward4">वडा नं. ४ (डाँछी)</span></a>
+            <a href="ward-info.html#ward-5" class="dropdown-item"><i class="fa-solid fa-location-dot"></i> <span data-i18n="ward5">वडा नं. ५ (थली)</span></a>
+            <a href="ward-info.html#ward-6" class="dropdown-item"><i class="fa-solid fa-location-dot"></i> <span data-i18n="ward6">वडा नं. ६ (मूलपानी)</span></a>
+            <a href="ward-info.html#ward-7" class="dropdown-item"><i class="fa-solid fa-location-dot"></i> <span data-i18n="ward7">वडा नं. ७ (काँडाघारी)</span></a>
+            <a href="ward-info.html#ward-8" class="dropdown-item"><i class="fa-solid fa-location-dot"></i> <span data-i18n="ward8">वडा नं. ८ (गोठाटार)</span></a>
+            <a href="ward-info.html#ward-9" class="dropdown-item"><i class="fa-solid fa-location-dot"></i> <span data-i18n="ward9">वडा नं. ९ (गोठाटार दक्षिण)</span></a>
+          </div>
+        </div>
 
         <!-- References Dropdown -->
         <div class="nav-dropdown">
-          <a href="#" class="nav-link">
+          <a href="bylaws.html" class="nav-link">
             <span data-i18n="navReferences">सन्दर्भ सामग्री</span>
             <i class="fa-solid fa-chevron-down"></i>
           </a>
           <div class="dropdown-menu">
-            <a href="bylaws.html" class="dropdown-item"><i class="fa-solid fa-book"></i> <span data-i18n="bylawsDoc">भवन निर्माण मापदण्ड २०८०</span></a>
-            <a href="process-guide.html" class="dropdown-item"><i class="fa-solid fa-file-invoice"></i> <span data-i18n="docChecklist">आवश्यक कागजात चेकलिस्ट</span></a>
+            <a href="bylaws.html#bylaws-2080" class="dropdown-item"><i class="fa-solid fa-book"></i> <span data-i18n="bylawsDoc">भवन निर्माण मापदण्ड २०८०</span></a>
+            <a href="bylaws.html#nbc-105" class="dropdown-item"><i class="fa-solid fa-building-shield"></i> <span data-i18n="nbcCode">राष्ट्रिय भवन संहिता (NBC 105)</span></a>
+            <a href="process-guide.html#checklist" class="dropdown-item"><i class="fa-solid fa-file-invoice"></i> <span data-i18n="docChecklist">आवश्यक कागजात चेकलिस्ट</span></a>
+            <a href="process-guide.html#fees" class="dropdown-item"><i class="fa-solid fa-hand-holding-dollar"></i> <span data-i18n="feeRates">राजश्व तथा दस्तुर दररेट</span></a>
+            <a href="bylaws.html#digital-signature" class="dropdown-item"><i class="fa-solid fa-signature"></i> <span data-i18n="digiSign">डिजिटल हस्ताक्षर निर्देशिका</span></a>
           </div>
         </div>
 
@@ -155,9 +173,9 @@
           <i class="fa-solid fa-map-location-dot"></i>
         </div>
         <div>
-          <h2 class="list-page-heading">
+          <h1 class="list-page-heading">
             <span>वडा कार्यालय तथा ई-विपिएस सेवा विवरण</span>
-          </h2>
+          </h1>
           <p class="list-page-subheading">
             कागेश्वरी मनोहरा नगरपालिकाका वडा नं. १ देखि ९ सम्मका कार्यालयहरू तथा नक्सा पास सर्जिमिन सेवा।
           </p>
@@ -171,132 +189,168 @@
        ======================================================== -->
   <main class="list-content-section" style="max-width: 1200px; margin: 0 auto; padding: 40px 20px;">
     
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px;">
+    <div class="ward-grid-container">
       
       <!-- Ward 1 -->
-      <div style="background: white; border-radius: 14px; padding: 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border-top: 4px solid var(--primary-emerald);">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-          <h3 style="font-size: 1.25rem; color: #0f172a; margin: 0;">वडा नं. १ (गागलफेदी)</h3>
+      <div class="ward-card" id="ward-1">
+        <div class="ward-header">
+          <h3 class="ward-title"><i class="fa-solid fa-landmark" style="color: var(--primary-emerald); font-size: 1rem;"></i> वडा नं. १ (गागलफेदी)</h3>
           <span class="preview-badge success">सक्रिय E-BPS</span>
         </div>
-        <p style="font-size: 0.92rem; color: #475569; margin-bottom: 14px;"><i class="fa-solid fa-location-dot" style="color: var(--primary-emerald);"></i> स्थान: गागलफेदी, काठमाडौं</p>
-        <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.88rem; color: #334155; line-height: 1.8;">
-          <li><strong>सर्जिमिन दिन:</strong> आइतबार र मंगलबार</li>
-          <li><strong>ई-विपिएस प्राविधिक:</strong> वडा सब-इन्जिनियर</li>
-          <li><strong>सम्पर्क फोन:</strong> ०१-४४५१२४२ (Ext: 101)</li>
+        <p class="ward-location"><i class="fa-solid fa-location-dot" style="color: var(--primary-emerald);"></i> स्थान: गागलफेदी, काठमाडौं</p>
+        <ul class="ward-details-list">
+          <li><i class="fa-regular fa-calendar-check"></i> <div><strong>सर्जिमिन दिन:</strong> आइतबार र मंगलबार</div></li>
+          <li><i class="fa-solid fa-user-gear"></i> <div><strong>ई-विपिएस प्राविधिक:</strong> वडा सब-इन्जिनियर</div></li>
+          <li><i class="fa-solid fa-phone"></i> <div><strong>सम्पर्क फोन:</strong> ०१-४४५१२४२ (Ext: 101)</div></li>
         </ul>
+        <div class="ward-action-row">
+          <span style="font-size: 0.8rem; color: #64748b;"><i class="fa-solid fa-circle-check" style="color: #10b981;"></i> नक्सा दर्ता उपलब्ध</span>
+          <a href="tel:014451242" class="ward-call-btn"><i class="fa-solid fa-phone-volume"></i> सम्पर्क गर्नुहोस्</a>
+        </div>
       </div>
 
       <!-- Ward 2 -->
-      <div style="background: white; border-radius: 14px; padding: 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border-top: 4px solid var(--primary-emerald);">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-          <h3 style="font-size: 1.25rem; color: #0f172a; margin: 0;">वडा नं. २ (आलापोट)</h3>
+      <div class="ward-card" id="ward-2">
+        <div class="ward-header">
+          <h3 class="ward-title"><i class="fa-solid fa-landmark" style="color: var(--primary-emerald); font-size: 1rem;"></i> वडा नं. २ (आलापोट)</h3>
           <span class="preview-badge success">सक्रिय E-BPS</span>
         </div>
-        <p style="font-size: 0.92rem; color: #475569; margin-bottom: 14px;"><i class="fa-solid fa-location-dot" style="color: var(--primary-emerald);"></i> स्थान: आलापोट, काठमाडौं</p>
-        <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.88rem; color: #334155; line-height: 1.8;">
-          <li><strong>सर्जिमिन दिन:</strong> सोमबार र बुधबार</li>
-          <li><strong>ई-विपिएस प्राविधिक:</strong> वडा सब-इन्जिनियर</li>
-          <li><strong>सम्पर्क फोन:</strong> ०१-४४५१२४२ (Ext: 102)</li>
+        <p class="ward-location"><i class="fa-solid fa-location-dot" style="color: var(--primary-emerald);"></i> स्थान: आलापोट, काठमाडौं</p>
+        <ul class="ward-details-list">
+          <li><i class="fa-regular fa-calendar-check"></i> <div><strong>सर्जिमिन दिन:</strong> सोमबार र बुधबार</div></li>
+          <li><i class="fa-solid fa-user-gear"></i> <div><strong>ई-विपिएस प्राविधिक:</strong> वडा सब-इन्जिनियर</div></li>
+          <li><i class="fa-solid fa-phone"></i> <div><strong>सम्पर्क फोन:</strong> ०१-४४५१२४२ (Ext: 102)</div></li>
         </ul>
+        <div class="ward-action-row">
+          <span style="font-size: 0.8rem; color: #64748b;"><i class="fa-solid fa-circle-check" style="color: #10b981;"></i> नक्सा दर्ता उपलब्ध</span>
+          <a href="tel:014451242" class="ward-call-btn"><i class="fa-solid fa-phone-volume"></i> सम्पर्क गर्नुहोस्</a>
+        </div>
       </div>
 
       <!-- Ward 3 -->
-      <div style="background: white; border-radius: 14px; padding: 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border-top: 4px solid var(--primary-emerald);">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-          <h3 style="font-size: 1.25rem; color: #0f172a; margin: 0;">वडा नं. ३ (भद्रबास)</h3>
+      <div class="ward-card" id="ward-3">
+        <div class="ward-header">
+          <h3 class="ward-title"><i class="fa-solid fa-landmark" style="color: var(--primary-emerald); font-size: 1rem;"></i> वडा नं. ३ (भद्रबास)</h3>
           <span class="preview-badge success">सक्रिय E-BPS</span>
         </div>
-        <p style="font-size: 0.92rem; color: #475569; margin-bottom: 14px;"><i class="fa-solid fa-location-dot" style="color: var(--primary-emerald);"></i> स्थान: भद्रबास, काठमाडौं</p>
-        <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.88rem; color: #334155; line-height: 1.8;">
-          <li><strong>सर्जिमिन दिन:</strong> आइतबार र बिहीबार</li>
-          <li><strong>ई-विपिएस प्राविधिक:</strong> वडा सब-इन्जिनियर</li>
-          <li><strong>सम्पर्क फोन:</strong> ०१-४४५१२४२ (Ext: 103)</li>
+        <p class="ward-location"><i class="fa-solid fa-location-dot" style="color: var(--primary-emerald);"></i> स्थान: भद्रबास, काठमाडौं</p>
+        <ul class="ward-details-list">
+          <li><i class="fa-regular fa-calendar-check"></i> <div><strong>सर्जिमिन दिन:</strong> आइतबार र बिहीबार</div></li>
+          <li><i class="fa-solid fa-user-gear"></i> <div><strong>ई-विपिएस प्राविधिक:</strong> वडा सब-इन्जिनियर</div></li>
+          <li><i class="fa-solid fa-phone"></i> <div><strong>सम्पर्क फोन:</strong> ०१-४४५१२४२ (Ext: 103)</div></li>
         </ul>
+        <div class="ward-action-row">
+          <span style="font-size: 0.8rem; color: #64748b;"><i class="fa-solid fa-circle-check" style="color: #10b981;"></i> नक्सा दर्ता उपलब्ध</span>
+          <a href="tel:014451242" class="ward-call-btn"><i class="fa-solid fa-phone-volume"></i> सम्पर्क गर्नुहोस्</a>
+        </div>
       </div>
 
       <!-- Ward 4 -->
-      <div style="background: white; border-radius: 14px; padding: 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border-top: 4px solid var(--accent-gold);">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-          <h3 style="font-size: 1.25rem; color: #0f172a; margin: 0;">वडा नं. ४ (डाँछी)</h3>
-          <span class="preview-badge success">केन्द्रीय सर्भर</span>
+      <div class="ward-card" id="ward-4" style="border-top-color: var(--accent-gold);">
+        <div class="ward-header">
+          <h3 class="ward-title"><i class="fa-solid fa-landmark" style="color: var(--accent-gold); font-size: 1rem;"></i> वडा नं. ४ (डाँछी)</h3>
+          <span class="preview-badge success" style="background: rgba(245, 158, 11, 0.15); color: #b45309;">केन्द्रीय सर्भर</span>
         </div>
-        <p style="font-size: 0.92rem; color: #475569; margin-bottom: 14px;"><i class="fa-solid fa-location-dot" style="color: var(--accent-gold);"></i> स्थान: डाँछी (नगरपालिका कार्यालय परिसर)</p>
-        <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.88rem; color: #334155; line-height: 1.8;">
-          <li><strong>सर्जिमिन दिन:</strong> नियमित दैनिक</li>
-          <li><strong>ई-विपिएस प्राविधिक:</strong> इन्जिनियर तथा प्राविधिक अधिकृत</li>
-          <li><strong>सम्पर्क फोन:</strong> ०१-४४५१२४२ (Ext: 104)</li>
+        <p class="ward-location"><i class="fa-solid fa-location-dot" style="color: var(--accent-gold);"></i> स्थान: डाँछी (नगरपालिका कार्यालय परिसर)</p>
+        <ul class="ward-details-list">
+          <li><i class="fa-regular fa-calendar-check"></i> <div><strong>सर्जिमिन दिन:</strong> नियमित दैनिक</div></li>
+          <li><i class="fa-solid fa-user-gear"></i> <div><strong>ई-विपिएस प्राविधिक:</strong> इन्जिनियर तथा प्राविधिक अधिकृत</div></li>
+          <li><i class="fa-solid fa-phone"></i> <div><strong>सम्पर्क फोन:</strong> ०१-४४५१२४२ (Ext: 104)</div></li>
         </ul>
+        <div class="ward-action-row">
+          <span style="font-size: 0.8rem; color: #64748b;"><i class="fa-solid fa-circle-check" style="color: #10b981;"></i> केन्द्रीय महाशाखा</span>
+          <a href="tel:014451242" class="ward-call-btn"><i class="fa-solid fa-phone-volume"></i> सम्पर्क गर्नुहोस्</a>
+        </div>
       </div>
 
       <!-- Ward 5 -->
-      <div style="background: white; border-radius: 14px; padding: 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border-top: 4px solid var(--primary-emerald);">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-          <h3 style="font-size: 1.25rem; color: #0f172a; margin: 0;">वडा नं. ५ (थली)</h3>
+      <div class="ward-card" id="ward-5">
+        <div class="ward-header">
+          <h3 class="ward-title"><i class="fa-solid fa-landmark" style="color: var(--primary-emerald); font-size: 1rem;"></i> वडा नं. ५ (थली)</h3>
           <span class="preview-badge success">सक्रिय E-BPS</span>
         </div>
-        <p style="font-size: 0.92rem; color: #475569; margin-bottom: 14px;"><i class="fa-solid fa-location-dot" style="color: var(--primary-emerald);"></i> स्थान: थली, काठमाडौं</p>
-        <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.88rem; color: #334155; line-height: 1.8;">
-          <li><strong>सर्जिमिन दिन:</strong> सोमबार र बुधबार</li>
-          <li><strong>ई-विपिएस प्राविधिक:</strong> वडा सब-इन्जिनियर</li>
-          <li><strong>सम्पर्क फोन:</strong> ०१-४४५१२४२ (Ext: 105)</li>
+        <p class="ward-location"><i class="fa-solid fa-location-dot" style="color: var(--primary-emerald);"></i> स्थान: थली, काठमाडौं</p>
+        <ul class="ward-details-list">
+          <li><i class="fa-regular fa-calendar-check"></i> <div><strong>सर्जिमिन दिन:</strong> सोमबार र बुधबार</div></li>
+          <li><i class="fa-solid fa-user-gear"></i> <div><strong>ई-विपिएस प्राविधिक:</strong> वडा सब-इन्जिनियर</div></li>
+          <li><i class="fa-solid fa-phone"></i> <div><strong>सम्पर्क फोन:</strong> ०१-४४५१२४२ (Ext: 105)</div></li>
         </ul>
+        <div class="ward-action-row">
+          <span style="font-size: 0.8rem; color: #64748b;"><i class="fa-solid fa-circle-check" style="color: #10b981;"></i> नक्सा दर्ता उपलब्ध</span>
+          <a href="tel:014451242" class="ward-call-btn"><i class="fa-solid fa-phone-volume"></i> सम्पर्क गर्नुहोस्</a>
+        </div>
       </div>
 
       <!-- Ward 6 -->
-      <div style="background: white; border-radius: 14px; padding: 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border-top: 4px solid var(--primary-emerald);">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-          <h3 style="font-size: 1.25rem; color: #0f172a; margin: 0;">वडा नं. ६ (मूलपानी)</h3>
+      <div class="ward-card" id="ward-6">
+        <div class="ward-header">
+          <h3 class="ward-title"><i class="fa-solid fa-landmark" style="color: var(--primary-emerald); font-size: 1rem;"></i> वडा नं. ६ (मूलपानी)</h3>
           <span class="preview-badge success">सक्रिय E-BPS</span>
         </div>
-        <p style="font-size: 0.92rem; color: #475569; margin-bottom: 14px;"><i class="fa-solid fa-location-dot" style="color: var(--primary-emerald);"></i> स्थान: मूलपानी, काठमाडौं</p>
-        <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.88rem; color: #334155; line-height: 1.8;">
-          <li><strong>सर्जिमिन दिन:</strong> आइतबार र मंगलबार</li>
-          <li><strong>ई-विपिएस प्राविधिक:</strong> वडा सब-इन्जिनियर</li>
-          <li><strong>सम्पर्क फोन:</strong> ०१-४४५१२४२ (Ext: 106)</li>
+        <p class="ward-location"><i class="fa-solid fa-location-dot" style="color: var(--primary-emerald);"></i> स्थान: मूलपानी, काठमाडौं</p>
+        <ul class="ward-details-list">
+          <li><i class="fa-regular fa-calendar-check"></i> <div><strong>सर्जिमिन दिन:</strong> आइतबार र मंगलबार</div></li>
+          <li><i class="fa-solid fa-user-gear"></i> <div><strong>ई-विपिएस प्राविधिक:</strong> वडा सब-इन्जिनियर</div></li>
+          <li><i class="fa-solid fa-phone"></i> <div><strong>सम्पर्क फोन:</strong> ०१-४४५१२४२ (Ext: 106)</div></li>
         </ul>
+        <div class="ward-action-row">
+          <span style="font-size: 0.8rem; color: #64748b;"><i class="fa-solid fa-circle-check" style="color: #10b981;"></i> नक्सा दर्ता उपलब्ध</span>
+          <a href="tel:014451242" class="ward-call-btn"><i class="fa-solid fa-phone-volume"></i> सम्पर्क गर्नुहोस्</a>
+        </div>
       </div>
 
       <!-- Ward 7 -->
-      <div style="background: white; border-radius: 14px; padding: 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border-top: 4px solid var(--primary-emerald);">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-          <h3 style="font-size: 1.25rem; color: #0f172a; margin: 0;">वडा नं. ७ (हरहर महादेव / काँडाघारी)</h3>
+      <div class="ward-card" id="ward-7">
+        <div class="ward-header">
+          <h3 class="ward-title"><i class="fa-solid fa-landmark" style="color: var(--primary-emerald); font-size: 1rem;"></i> वडा नं. ७ (हरहर महादेव / काँडाघारी)</h3>
           <span class="preview-badge success">सक्रिय E-BPS</span>
         </div>
-        <p style="font-size: 0.92rem; color: #475569; margin-bottom: 14px;"><i class="fa-solid fa-location-dot" style="color: var(--primary-emerald);"></i> स्थान: हरहर महादेव, काठमाडौं</p>
-        <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.88rem; color: #334155; line-height: 1.8;">
-          <li><strong>सर्जिमिन दिन:</strong> मंगलबार र बिहीबार</li>
-          <li><strong>ई-विपिएस प्राविधिक:</strong> वडा सब-इन्जिनियर</li>
-          <li><strong>सम्पर्क फोन:</strong> ०१-४४५१२४२ (Ext: 107)</li>
+        <p class="ward-location"><i class="fa-solid fa-location-dot" style="color: var(--primary-emerald);"></i> स्थान: हरहर महादेव, काठमाडौं</p>
+        <ul class="ward-details-list">
+          <li><i class="fa-regular fa-calendar-check"></i> <div><strong>सर्जिमिन दिन:</strong> मंगलबार र बिहीबार</div></li>
+          <li><i class="fa-solid fa-user-gear"></i> <div><strong>ई-विपिएस प्राविधिक:</strong> वडा सब-इन्जिनियर</div></li>
+          <li><i class="fa-solid fa-phone"></i> <div><strong>सम्पर्क फोन:</strong> ०१-४४५१२४२ (Ext: 107)</div></li>
         </ul>
+        <div class="ward-action-row">
+          <span style="font-size: 0.8rem; color: #64748b;"><i class="fa-solid fa-circle-check" style="color: #10b981;"></i> नक्सा दर्ता उपलब्ध</span>
+          <a href="tel:014451242" class="ward-call-btn"><i class="fa-solid fa-phone-volume"></i> सम्पर्क गर्नुहोस्</a>
+        </div>
       </div>
 
       <!-- Ward 8 -->
-      <div style="background: white; border-radius: 14px; padding: 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border-top: 4px solid var(--primary-emerald);">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-          <h3 style="font-size: 1.25rem; color: #0f172a; margin: 0;">वडा नं. ८ (गोठाटार)</h3>
+      <div class="ward-card" id="ward-8">
+        <div class="ward-header">
+          <h3 class="ward-title"><i class="fa-solid fa-landmark" style="color: var(--primary-emerald); font-size: 1rem;"></i> वडा नं. ८ (गोठाटार)</h3>
           <span class="preview-badge success">सक्रिय E-BPS</span>
         </div>
-        <p style="font-size: 0.92rem; color: #475569; margin-bottom: 14px;"><i class="fa-solid fa-location-dot" style="color: var(--primary-emerald);"></i> स्थान: गोठाटार, काठमाडौं</p>
-        <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.88rem; color: #334155; line-height: 1.8;">
-          <li><strong>सर्जिमिन दिन:</strong> सोमबार र बुधबार</li>
-          <li><strong>ई-विपिएस प्राविधिक:</strong> वडा सब-इन्जिनियर</li>
-          <li><strong>सम्पर्क फोन:</strong> ०१-४४५१२४२ (Ext: 108)</li>
+        <p class="ward-location"><i class="fa-solid fa-location-dot" style="color: var(--primary-emerald);"></i> स्थान: गोठाटार, काठमाडौं</p>
+        <ul class="ward-details-list">
+          <li><i class="fa-regular fa-calendar-check"></i> <div><strong>सर्जिमिन दिन:</strong> सोमबार र बुधबार</div></li>
+          <li><i class="fa-solid fa-user-gear"></i> <div><strong>ई-विपिएस प्राविधिक:</strong> वडा सब-इन्जिनियर</div></li>
+          <li><i class="fa-solid fa-phone"></i> <div><strong>सम्पर्क फोन:</strong> ०१-४४५१२४२ (Ext: 108)</div></li>
         </ul>
+        <div class="ward-action-row">
+          <span style="font-size: 0.8rem; color: #64748b;"><i class="fa-solid fa-circle-check" style="color: #10b981;"></i> नक्सा दर्ता उपलब्ध</span>
+          <a href="tel:014451242" class="ward-call-btn"><i class="fa-solid fa-phone-volume"></i> सम्पर्क गर्नुहोस्</a>
+        </div>
       </div>
 
       <!-- Ward 9 -->
-      <div style="background: white; border-radius: 14px; padding: 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border-top: 4px solid var(--primary-emerald);">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-          <h3 style="font-size: 1.25rem; color: #0f172a; margin: 0;">वडा नं. ९ (काँडाघारी)</h3>
+      <div class="ward-card" id="ward-9">
+        <div class="ward-header">
+          <h3 class="ward-title"><i class="fa-solid fa-landmark" style="color: var(--primary-emerald); font-size: 1rem;"></i> वडा नं. ९ (काँडाघारी)</h3>
           <span class="preview-badge success">सक्रिय E-BPS</span>
         </div>
-        <p style="font-size: 0.92rem; color: #475569; margin-bottom: 14px;"><i class="fa-solid fa-location-dot" style="color: var(--primary-emerald);"></i> स्थान: काँडाघारी, काठमाडौं</p>
-        <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.88rem; color: #334155; line-height: 1.8;">
-          <li><strong>सर्जिमिन दिन:</strong> आइतबार र बिहीबार</li>
-          <li><strong>ई-विपिएस प्राविधिक:</strong> वडा सब-इन्जिनियर</li>
-          <li><strong>सम्पर्क फोन:</strong> ०१-४४५१२४२ (Ext: 109)</li>
+        <p class="ward-location"><i class="fa-solid fa-location-dot" style="color: var(--primary-emerald);"></i> स्थान: काँडाघारी, काठमाडौं</p>
+        <ul class="ward-details-list">
+          <li><i class="fa-regular fa-calendar-check"></i> <div><strong>सर्जिमिन दिन:</strong> आइतबार र बिहीबार</div></li>
+          <li><i class="fa-solid fa-user-gear"></i> <div><strong>ई-विपिएस प्राविधिक:</strong> वडा सब-इन्जिनियर</div></li>
+          <li><i class="fa-solid fa-phone"></i> <div><strong>सम्पर्क फोन:</strong> ०१-४४५१२४२ (Ext: 109)</div></li>
         </ul>
+        <div class="ward-action-row">
+          <span style="font-size: 0.8rem; color: #64748b;"><i class="fa-solid fa-circle-check" style="color: #10b981;"></i> नक्सा दर्ता उपलब्ध</span>
+          <a href="tel:014451242" class="ward-call-btn"><i class="fa-solid fa-phone-volume"></i> सम्पर्क गर्नुहोस्</a>
+        </div>
       </div>
 
     </div>

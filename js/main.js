@@ -22,6 +22,16 @@ const TRANSLATIONS = {
     navMasons: 'डकर्मी सूची',
     navDesigners: 'प्राविधिक सूची',
     wardPrefix: 'वडा नं. ',
+    allWards: 'सबै वडा विवरण (१–९)',
+    ward1: 'वडा नं. १ (गागलफेदी)',
+    ward2: 'वडा नं. २ (आलापोट)',
+    ward3: 'वडा नं. ३ (भद्रबास)',
+    ward4: 'वडा नं. ४ (डाँछी)',
+    ward5: 'वडा नं. ५ (थली)',
+    ward6: 'वडा नं. ६ (मूलपानी)',
+    ward7: 'वडा नं. ७ (काँडाघारी)',
+    ward8: 'वडा नं. ८ (गोठाटार)',
+    ward9: 'वडा नं. ९ (गोठाटार दक्षिण)',
     bylawsDoc: 'भवन निर्माण मापदण्ड २०८०',
     nbcCode: 'राष्ट्रिय भवन संहिता (NBC 105)',
     docChecklist: 'आवश्यक कागजात चेकलिस्ट',
@@ -30,6 +40,8 @@ const TRANSLATIONS = {
     
     // Hero Section (Image 1)
     heroDeptPill: 'नगर कार्यपालिकाको कार्यालय, डाँछी, काठमाडौं | सहरी विकास तथा भवन सुरक्षा महाशाखा',
+    heroDeptPillMain: 'नगर कार्यपालिकाको कार्यालय, डाँछी, काठमाडौं',
+    heroDeptPillSub: ' | सहरी विकास तथा भवन सुरक्षा महाशाखा',
     heroMottoPart1: 'सुदृढ पूर्वाधार, ',
     heroMottoPart2: 'सुरक्षित भविष्य',
     heroMottoMain: 'सुदृढ पूर्वाधार, समृद्ध नगर',
@@ -242,6 +254,16 @@ const TRANSLATIONS = {
     navMasons: 'Masons List',
     navDesigners: 'Designer List',
     wardPrefix: 'Ward No. ',
+    allWards: 'All Wards Directory (1–9)',
+    ward1: 'Ward No. 1 (Gagalphedi)',
+    ward2: 'Ward No. 2 (Alapot)',
+    ward3: 'Ward No. 3 (Bhadrabas)',
+    ward4: 'Ward No. 4 (Danchhi)',
+    ward5: 'Ward No. 5 (Thali)',
+    ward6: 'Ward No. 6 (Mulpani)',
+    ward7: 'Ward No. 7 (Kandaghari)',
+    ward8: 'Ward No. 8 (Gothatar)',
+    ward9: 'Ward No. 9 (Gothatar South)',
     bylawsDoc: 'Building By-Laws 2080',
     nbcCode: 'National Building Code (NBC 105)',
     docChecklist: 'Required Documents Checklist',
@@ -250,6 +272,8 @@ const TRANSLATIONS = {
 
     // Hero Section (Image 1)
     heroDeptPill: 'Office of the Municipal Executive, Danchhi, Kathmandu | Urban Development & Building Safety Division',
+    heroDeptPillMain: 'Office of the Municipal Executive, Danchhi, Kathmandu',
+    heroDeptPillSub: ' | Urban Development & Building Safety Division',
     heroMottoPart1: 'Building Tomorrow, ',
     heroMottoPart2: 'Safeguarding Today',
     heroMottoMain: 'Building Tomorrow, Safeguarding Today',
@@ -668,13 +692,54 @@ function initMobileNav() {
   const navMenu = document.getElementById('navbarCollapse');
 
   if (toggleBtn && navMenu) {
-    toggleBtn.addEventListener('click', () => {
-      navMenu.classList.toggle('show');
+    toggleBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = navMenu.classList.toggle('show');
       const icon = toggleBtn.querySelector('i');
       if (icon) {
-        icon.classList.toggle('fa-bars');
-        icon.classList.toggle('fa-xmark');
+        icon.className = isOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
       }
+    });
+
+    // Close when tapping outside the mobile menu
+    document.addEventListener('click', (e) => {
+      if (!navMenu.contains(e.target) && !toggleBtn.contains(e.target)) {
+        if (navMenu.classList.contains('show')) {
+          navMenu.classList.remove('show');
+          const icon = toggleBtn.querySelector('i');
+          if (icon) icon.className = 'fa-solid fa-bars';
+        }
+      }
+    });
+
+    // Handle mobile dropdown click/touch
+    const dropdownLinks = navMenu.querySelectorAll('.nav-dropdown > .nav-link');
+    dropdownLinks.forEach((link) => {
+      link.addEventListener('click', (e) => {
+        if (window.innerWidth <= 900) {
+          e.preventDefault();
+          e.stopPropagation();
+          const parent = link.closest('.nav-dropdown');
+          if (parent) {
+            // Close other open dropdowns
+            navMenu.querySelectorAll('.nav-dropdown').forEach(d => {
+              if (d !== parent) d.classList.remove('open');
+            });
+            parent.classList.toggle('open');
+          }
+        }
+      });
+    });
+
+    // Close mobile nav when clicking any dropdown item or normal link
+    navMenu.querySelectorAll('.dropdown-item, .nav-link:not(:has(+ .dropdown-menu))').forEach((item) => {
+      item.addEventListener('click', () => {
+        if (window.innerWidth <= 900) {
+          navMenu.classList.remove('show');
+          const icon = toggleBtn.querySelector('i');
+          if (icon) icon.className = 'fa-solid fa-bars';
+        }
+      });
     });
   }
 }

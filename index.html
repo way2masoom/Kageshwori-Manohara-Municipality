@@ -99,23 +99,38 @@
 
       <!-- Navigation Menu Items -->
       <div class="navbar-nav" id="navbarCollapse">
-        <!-- Ward Details -->
-        <a href="pages/ward-info.html" class="nav-link">
-          <span data-i18n="navWard">वडा विवरण</span>
-        </a>
+        <!-- Ward Details Dropdown -->
+        <div class="nav-dropdown">
+          <a href="pages/ward-info.html" class="nav-link">
+            <span data-i18n="navWard">वडा विवरण</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="pages/ward-info.html" class="dropdown-item"><i class="fa-solid fa-layer-group"></i> <strong><span data-i18n="allWards">सबै वडा विवरण (१–९)</span></strong></a>
+            <a href="pages/ward-info.html#ward-1" class="dropdown-item"><i class="fa-solid fa-location-dot"></i> <span data-i18n="ward1">वडा नं. १ (गागलफेदी)</span></a>
+            <a href="pages/ward-info.html#ward-2" class="dropdown-item"><i class="fa-solid fa-location-dot"></i> <span data-i18n="ward2">वडा नं. २ (आलापोट)</span></a>
+            <a href="pages/ward-info.html#ward-3" class="dropdown-item"><i class="fa-solid fa-location-dot"></i> <span data-i18n="ward3">वडा नं. ३ (भद्रबास)</span></a>
+            <a href="pages/ward-info.html#ward-4" class="dropdown-item"><i class="fa-solid fa-location-dot"></i> <span data-i18n="ward4">वडा नं. ४ (डाँछी)</span></a>
+            <a href="pages/ward-info.html#ward-5" class="dropdown-item"><i class="fa-solid fa-location-dot"></i> <span data-i18n="ward5">वडा नं. ५ (थली)</span></a>
+            <a href="pages/ward-info.html#ward-6" class="dropdown-item"><i class="fa-solid fa-location-dot"></i> <span data-i18n="ward6">वडा नं. ६ (मूलपानी)</span></a>
+            <a href="pages/ward-info.html#ward-7" class="dropdown-item"><i class="fa-solid fa-location-dot"></i> <span data-i18n="ward7">वडा नं. ७ (काँडाघारी)</span></a>
+            <a href="pages/ward-info.html#ward-8" class="dropdown-item"><i class="fa-solid fa-location-dot"></i> <span data-i18n="ward8">वडा नं. ८ (गोठाटार)</span></a>
+            <a href="pages/ward-info.html#ward-9" class="dropdown-item"><i class="fa-solid fa-location-dot"></i> <span data-i18n="ward9">वडा नं. ९ (गोठाटार दक्षिण)</span></a>
+          </div>
+        </div>
 
         <!-- References Dropdown -->
         <div class="nav-dropdown">
-          <a href="#references" class="nav-link">
+          <a href="pages/bylaws.html" class="nav-link">
             <span data-i18n="navReferences">सन्दर्भ सामग्री</span>
             <i class="fa-solid fa-chevron-down"></i>
           </a>
           <div class="dropdown-menu">
-            <a href="pages/bylaws.html" class="dropdown-item"><i class="fa-solid fa-book"></i> <span data-i18n="bylawsDoc">भवन निर्माण मापदण्ड २०८०</span></a>
-            <a href="pages/bylaws.html" class="dropdown-item"><i class="fa-solid fa-building-shield"></i> <span data-i18n="nbcCode">राष्ट्रिय भवन संहिता (NBC 105)</span></a>
-            <a href="pages/process-guide.html" class="dropdown-item"><i class="fa-solid fa-file-invoice"></i> <span data-i18n="docChecklist">आवश्यक कागजात चेकलिस्ट</span></a>
-            <a href="pages/process-guide.html" class="dropdown-item"><i class="fa-solid fa-hand-holding-dollar"></i> <span data-i18n="feeRates">राजश्व तथा दस्तुर दररेट</span></a>
-            <a href="pages/bylaws.html" class="dropdown-item"><i class="fa-solid fa-signature"></i> <span data-i18n="digiSign">डिजिटल हस्ताक्षर निर्देशिका</span></a>
+            <a href="pages/bylaws.html#bylaws-2080" class="dropdown-item"><i class="fa-solid fa-book"></i> <span data-i18n="bylawsDoc">भवन निर्माण मापदण्ड २०८०</span></a>
+            <a href="pages/bylaws.html#nbc-105" class="dropdown-item"><i class="fa-solid fa-building-shield"></i> <span data-i18n="nbcCode">राष्ट्रिय भवन संहिता (NBC 105)</span></a>
+            <a href="pages/process-guide.html#checklist" class="dropdown-item"><i class="fa-solid fa-file-invoice"></i> <span data-i18n="docChecklist">आवश्यक कागजात चेकलिस्ट</span></a>
+            <a href="pages/process-guide.html#fees" class="dropdown-item"><i class="fa-solid fa-hand-holding-dollar"></i> <span data-i18n="feeRates">राजश्व तथा दस्तुर दररेट</span></a>
+            <a href="pages/bylaws.html#digital-signature" class="dropdown-item"><i class="fa-solid fa-signature"></i> <span data-i18n="digiSign">डिजिटल हस्ताक्षर निर्देशिका</span></a>
           </div>
         </div>
 
@@ -146,7 +161,8 @@
       <!-- Top Department Badge -->
       <div class="hero-dept-badge reveal-on-scroll">
         <span class="nepal-flag-icon">🇳🇵</span>
-        <span data-i18n="heroDeptPill">नगर कार्यपालिकाको कार्यालय, डाँछी, काठमाडौं | सहरी विकास तथा भवन सुरक्षा महाशाखा</span>
+        <span class="hero-dept-main" data-i18n="heroDeptPillMain">नगर कार्यपालिकाको कार्यालय, डाँछी, काठमाडौं</span>
+        <span class="hero-dept-sub" data-i18n="heroDeptPillSub"> | सहरी विकास तथा भवन सुरक्षा महाशाखा</span>
       </div>
 
       <!-- Motto Tagline with Golden Underline -->

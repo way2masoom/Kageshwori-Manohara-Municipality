@@ -1670,46 +1670,492 @@ body.lang-ne .about-section-heading {
    RESPONSIVE DESIGN
    ======================================================== */
 @media (max-width: 900px) {
+  .top-bar {
+    padding: 6px 0;
+  }
   .top-bar-container {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 12px;
   }
+  .top-contact-info {
+    font-size: 0.78rem;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .top-right-group {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 0.78rem;
+  }
+  .btn-top-login,
+  .btn-top-signup {
+    padding: 4px 10px;
+    font-size: 0.76rem;
+  }
+
+  /* Header and Mobile Hamburger Toggle */
+  .header-container {
+    padding: 8px 12px;
+    gap: 10px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .brand-identity {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+    min-width: 0;
+  }
+  .logos-group {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+  .logo-nepal {
+    height: 40px;
+    width: auto;
+  }
+  .logo-kageshwori-wrap {
+    width: 40px;
+    height: 40px;
+    padding: 1.5px;
+    border-width: 1.5px;
+  }
+  .brand-text {
+    min-width: 0;
+    flex: 1;
+    overflow: hidden;
+  }
+  .gov-title {
+    font-size: 0.88rem !important;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  body.lang-en .gov-title {
+    font-size: 0.82rem !important;
+  }
+  .gov-office {
+    font-size: 0.72rem !important;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .gov-location {
+    font-size: 0.66rem !important;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Pinned Mobile Hamburger Button */
+  .mobile-nav-toggle {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-left: auto;
+    padding: 7px 11px;
+    font-size: 1.3rem;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1.5px solid rgba(255, 255, 255, 0.35);
+    border-radius: var(--radius-sm);
+    color: #ffffff;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .mobile-nav-toggle:hover {
+    background: rgba(255, 255, 255, 0.25);
+  }
+
+  /* Mobile Navigation Drawer */
   .navbar-nav {
     display: none;
     position: absolute;
     top: 100%;
     left: 0;
+    right: 0;
     width: 100%;
-    background: var(--primary-dark);
+    background: #06381e;
+    border-top: 2px solid #10b981;
     flex-direction: column;
-    padding: 15px 20px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
+    padding: 14px 16px 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45);
+    max-height: calc(100vh - 75px);
+    overflow-y: auto;
+    z-index: 1000;
+    gap: 6px;
   }
   .navbar-nav.show {
-    display: flex;
+    display: flex !important;
   }
-  .mobile-nav-toggle {
-    display: block;
+  .nav-link {
+    width: 100%;
+    justify-content: space-between;
+    padding: 10px 14px;
+    font-size: 0.98rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
   }
-  .hero-motto-tagline {
-    font-size: 1.15rem;
-  }
-  .hero-title-main {
-    font-size: 1.85rem;
-    line-height: 1.22;
-  }
-  .hero-nav-arrow {
+  .nav-link::after {
     display: none;
   }
-  .hero-slider-dots {
-    bottom: 16px;
+  .nav-dropdown {
+    width: 100%;
   }
+  .nav-dropdown .dropdown-menu {
+    position: static;
+    width: 100%;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    box-shadow: none;
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-top: 2px solid #10b981;
+    margin-top: 5px;
+    padding: 6px 0;
+    display: none;
+  }
+  .nav-dropdown.open .dropdown-menu {
+    display: block !important;
+  }
+  .nav-dropdown.open .nav-link i.fa-chevron-down {
+    transform: rotate(180deg);
+  }
+  .dropdown-item {
+    color: #f1f5f9;
+    padding: 8px 14px;
+    font-size: 0.88rem;
+  }
+  .dropdown-item:hover {
+    background: rgba(16, 185, 129, 0.25);
+    color: #ffffff;
+    padding-left: 18px;
+  }
+  .dropdown-item i {
+    color: #34d399;
+  }
+  .nav-lang-btn {
+    margin: 10px 0 0 0;
+    width: 100%;
+    justify-content: center;
+    padding: 9px;
+  }
+
+  /* Hero Adjustments on Mobile/Tablet */
+  .hero-premium-section {
+    padding: 40px 16px 0;
+  }
+  .hero-dept-badge {
+    font-size: 0.78rem;
+    padding: 6px 14px;
+    margin-bottom: 16px;
+    max-width: 98%;
+  }
+  .hero-dept-sub {
+    display: none !important;
+  }
+  .hero-motto-headline {
+    font-size: 1.25rem;
+    margin-bottom: 12px;
+  }
+  .hero-main-title {
+    font-size: 1.85rem;
+    line-height: 1.25;
+    margin-bottom: 14px;
+  }
+  .hero-description {
+    font-size: 0.92rem;
+    line-height: 1.6;
+    margin-bottom: 22px;
+    padding: 0 4px;
+  }
+  .hero-action-buttons {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+    margin-bottom: 22px;
+  }
+  .hero-btn-primary,
+  .hero-btn-secondary {
+    width: 100%;
+    justify-content: center;
+    padding: 12px 16px;
+    font-size: 0.92rem;
+  }
+  .hero-compliance-capsules {
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .compliance-capsule {
+    width: 100%;
+    justify-content: center;
+    font-size: 0.78rem;
+    padding: 6px 12px;
+  }
+  .hero-quick-dock {
+    grid-template-columns: 1fr;
+    padding: 12px;
+    gap: 8px;
+  }
+
+  /* Grids & Footers */
   .cards-grid {
     grid-template-columns: 1fr;
   }
   .footer-container {
     grid-template-columns: 1fr;
   }
+}
+
+/* ========================================================
+   11B. LIST PAGE HEADER & WARD / BYLAWS STYLING
+   ======================================================== */
+.list-page-header {
+  background: linear-gradient(135deg, #0a5233 0%, #063d25 50%, #042919 100%);
+  color: #ffffff;
+  padding: 36px 20px 40px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(10, 82, 51, 0.18);
+  border-bottom: 4px solid #10b981;
+}
+
+.list-page-header::after {
+  content: '';
+  position: absolute;
+  top: -40%;
+  right: -5%;
+  width: 380px;
+  height: 380px;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.22) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.list-header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.breadcrumb-trail {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.88rem;
+  color: #a7f3d0;
+  margin-bottom: 14px;
+}
+
+.breadcrumb-trail a {
+  color: #a7f3d0;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.2s ease;
+}
+
+.breadcrumb-trail a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.list-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.list-icon-badge {
+  width: 58px;
+  height: 58px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1.5px solid rgba(16, 185, 129, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fbbf24;
+  font-size: 1.7rem;
+  flex-shrink: 0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.list-page-heading {
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 6px 0;
+  line-height: 1.25;
+}
+
+.list-page-subheading {
+  font-size: 0.98rem;
+  color: #d1fae5;
+  margin: 0;
+  line-height: 1.5;
+  max-width: 820px;
+}
+
+@media (max-width: 768px) {
+  .list-page-header {
+    padding: 24px 16px 28px;
+  }
+  .list-title-wrap {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .list-icon-badge {
+    width: 46px;
+    height: 46px;
+    font-size: 1.3rem;
+  }
+  .list-page-heading {
+    font-size: 1.35rem;
+  }
+  .list-page-subheading {
+    font-size: 0.88rem;
+  }
+}
+
+/* Ward Cards Styling */
+.ward-grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+.ward-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e2e8f0;
+  border-top: 4px solid var(--primary-emerald);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  scroll-margin-top: 110px;
+}
+
+.ward-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(10, 82, 51, 0.12);
+  border-color: #cbd5e1;
+  border-top-color: var(--primary-emerald);
+}
+
+.ward-card:target {
+  outline: 3px solid #10b981;
+  box-shadow: 0 0 0 6px rgba(16, 185, 129, 0.25), 0 12px 30px rgba(10, 82, 51, 0.15);
+  animation: wardCardHighlight 1.5s ease-out;
+}
+
+@keyframes wardCardHighlight {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+  100% { transform: scale(1); }
+}
+
+.ward-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  gap: 10px;
+}
+
+.ward-title {
+  font-size: 1.25rem;
+  color: #0f172a;
+  font-weight: 700;
+  margin: 0;
+}
+
+.ward-location {
+  font-size: 0.92rem;
+  color: #475569;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ward-details-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 16px 0;
+  font-size: 0.88rem;
+  color: #334155;
+  line-height: 1.85;
+}
+
+.ward-details-list li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 0;
+  border-bottom: 1px dashed #f1f5f9;
+}
+
+.ward-details-list li i {
+  color: var(--primary-emerald);
+  width: 16px;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+.ward-action-row {
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid #f1f5f9;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ward-call-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--primary-emerald);
+  text-decoration: none;
+  background: var(--bg-green-tint);
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.ward-call-btn:hover {
+  background: var(--primary-emerald);
+  color: #ffffff;
+}
+
+/* Anchors scroll-margin */
+#bylaws-2080, #nbc-105, #digital-signature, #checklist, #fees {
+  scroll-margin-top: 110px;
 }
 
 /* ========================================================
