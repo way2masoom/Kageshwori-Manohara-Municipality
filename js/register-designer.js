@@ -388,8 +388,8 @@ function initFormSubmission() {
     // 9. Check Declaration Checkbox
     const declarationCheck = document.getElementById('declarationCheckbox');
     if (!declarationCheck || !declarationCheck.checked) {
-      alert(isEn 
-        ? 'Please agree to the legal declaration checkbox before submitting.' 
+      alert(isEn
+        ? 'Please agree to the legal declaration checkbox before submitting.'
         : 'कृपया फारम पेश गर्नुअघि घोषणापत्रको सर्तमा टिक लगाउनुहोस्।');
       if (declarationCheck) declarationCheck.focus();
       return;
@@ -443,10 +443,10 @@ function initFormSubmission() {
       getFileBase64(document.getElementById('masterTranscriptInput')),
       getFileBase64(document.getElementById('panVatCertInput'))
     ]).then(async ([necCertBase64, citizenDocBase64, companyRegBase64, photoBase64, bachTransBase64, mastTransBase64, panVatBase64]) => {
-      
+
       const regMethod = methodSelect.value;
-      const consultancyName = (regMethod === 'consultancy' && document.getElementById('firmNameInput')) 
-        ? document.getElementById('firmNameInput').value.trim() 
+      const consultancyName = (regMethod === 'consultancy' && document.getElementById('firmNameInput'))
+        ? document.getElementById('firmNameInput').value.trim()
         : '';
       const panNo = (regMethod === 'consultancy' && document.getElementById('firmPan') && document.getElementById('firmPan').value.trim())
         ? document.getElementById('firmPan').value.trim()
@@ -466,7 +466,7 @@ function initFormSubmission() {
         address: permAddress,                         // Maps to Address in AD_User
         address1: tempAddress,                       // Maps to Address1 in AD_User
         registration_no: generatedRef,               // Maps to registration_no in AD_User
-        
+
         // Base64 document attachments
         certificate: necCertBase64,                  // Maps to certificate in AD_User
         citizenship_photo: citizenDocBase64,         // Maps to citizenship_photo in AD_User
@@ -477,10 +477,8 @@ function initFormSubmission() {
         pan_vat_certificate: panVatBase64            // Firm PAN/VAT Registration Certificate
       };
 
-      // API Endpoint URL - Strictly use Java backend on 192.168.1.73
-      const apiUrl = window.EBPS_API_URL 
-        ? (window.EBPS_API_URL.endsWith('/ebpsuser') ? window.EBPS_API_URL : window.EBPS_API_URL + '/ebpsuser')
-        : 'http://192.168.1.73:8080/ebpsapi/rest/ebpsuser';
+      // API Endpoint URL - Matches https://192.168.1.73:8444/ebps/ backend
+      const apiUrl = window.EBPS_API_URL || 'https://192.168.1.73:8444/ebps/ebpsuser';
 
       console.log(`[EBPS] Submitting registration POST to Java backend: ${apiUrl}`);
 
@@ -546,7 +544,7 @@ function showSuccessModal(refCode) {
   const isEn = (typeof currentLang !== 'undefined' && currentLang === 'en');
 
   const title = isEn ? 'Application Submitted Successfully!' : 'आवेदन सफलतापूर्वक दर्ता भयो!';
-  const desc = isEn 
+  const desc = isEn
     ? `Your application has been registered into the E-BPS system of Kageshwori Manohara Municipality.<br><br><strong>Application Reference No:</strong> <code style="color: #0a5233; font-size: 1.1rem; background: #e2e8f0; padding: 3px 8px; border-radius: 4px;">${refCode}</code><br><br>You will be notified via email and SMS once the municipal technical team verifies your documents.`
     : `तपाईंको प्राविधिक दर्ता आवेदन कागेश्वरी मनोहरा नगरपालिका ई-विपिएस प्रणालीमा सफलतापूर्वक दर्ता भएको छ।<br><br><strong>आवेदन दर्ता नम्बर (Reference No):</strong> <code style="color: #0a5233; font-size: 1.1rem; background: #e2e8f0; padding: 3px 8px; border-radius: 4px;">${refCode}</code><br><br>नगरपालिकाको प्राविधिक शाखाबाट कागजात प्रमाणीकरण भएपछि तपाईंलाई इमेल र एसएमएस मार्फत जानकारी गराइनेछ।`;
 
